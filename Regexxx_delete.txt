@@ -1,0 +1,108 @@
+   RebarID=6   Area=28.2999992370605   Diameter=6
+   RebarID=8   Area=50.2999992370605   Diameter=8
+   RebarID=10   Area=78.5   Diameter=10
+   RebarID=12   Area=113.099998474121   Diameter=12
+   RebarID=14   Area=153.899993896484   Diameter=14
+   RebarID=16   Area=201.100006103516   Diameter=16
+   RebarID=18   Area=254.5   Diameter=18
+   RebarID=20   Area=314.200012207031   Diameter=20
+   RebarID=22   Area=380.100006103516   Diameter=22
+   RebarID=25   Area=490.899993896484   Diameter=25
+   RebarID=26   Area=530.900024414063   Diameter=26
+   RebarID=28   Area=615.799987792969   Diameter=28
+   RebarID=32   Area=804.200012207031   Diameter=32
+   RebarID=36   Area=1017.90002441406   Diameter=36
+   RebarID=40   Area=1256.59997558594   Diameter=40
+   RebarID=50   Area=1963.5   Diameter=50
+   
+  //  \d+\.?\d*\b
+  // (?<==)\d+
+
+  
+  
+  
+  
+     Point=1   GlobalX=-2000   GlobalY=-2000   GlobalZ=0   SpecialPt=No
+   Point=2   GlobalX=10000   GlobalY=-2000   GlobalZ=0   SpecialPt=No
+   Point=3   GlobalX=10000   GlobalY=2000   GlobalZ=0   SpecialPt=No
+   Point=4   GlobalX=-2000   GlobalY=2000   GlobalZ=0   SpecialPt=No
+   Point=5   GlobalX=-300   GlobalY=-300   GlobalZ=0   SpecialPt=No
+   Point=6   GlobalX=300   GlobalY=-300   GlobalZ=0   SpecialPt=No
+   Point=7   GlobalX=300   GlobalY=300   GlobalZ=0   SpecialPt=No
+   Point=8   GlobalX=-300   GlobalY=300   GlobalZ=0   SpecialPt=No
+   Point=9   GlobalX=7700   GlobalY=-300   GlobalZ=0   SpecialPt=No
+   Point=10   GlobalX=8300   GlobalY=-300   GlobalZ=0   SpecialPt=No
+   Point=11   GlobalX=8300   GlobalY=300   GlobalZ=0   SpecialPt=No
+   Point=12   GlobalX=7700   GlobalY=300   GlobalZ=0   SpecialPt=No
+   Point=13   GlobalX=0   GlobalY=0   GlobalZ=0   SpecialPt=Yes
+   Point=14   GlobalX=8000   GlobalY=0   GlobalZ=0   SpecialPt=Yes
+   Point=15   GlobalX=-2000   GlobalY=0   GlobalZ=0   SpecialPt=No
+   Point=16   GlobalX=10000   GlobalY=0   GlobalZ=0   SpecialPt=No
+   Point=17   GlobalX=0   GlobalY=-2000   GlobalZ=0   SpecialPt=No
+   Point=18   GlobalX=0   GlobalY=2000   GlobalZ=0   SpecialPt=No
+   Point=19   GlobalX=4000   GlobalY=-2000   GlobalZ=0   SpecialPt=No
+   Point=20   GlobalX=4000   GlobalY=2000   GlobalZ=0   SpecialPt=No
+   Point=21   GlobalX=8000   GlobalY=-2000   GlobalZ=0   SpecialPt=No
+   Point=22   GlobalX=8000   GlobalY=2000   GlobalZ=0   SpecialPt=No
+   
+//  [-]?\d+\.?\d*\b
+//(?<==)\d+
+//  //((\d+\.?\d*\b)|((?<==)\w+))
+  
+  
+  
+  
+  
+     Strip=CSA1   Point=15   GlobalX=-2000   GlobalY=0   WALeft=2000   WARight=2000
+   Strip=CSA1   Point=16   GlobalX=10000   GlobalY=0   WBLeft=2000   WBRight=2000
+   Strip=CSB1   Point=17   GlobalX=0   GlobalY=-2000   WALeft=2000   WARight=1000
+   Strip=CSB1   Point=18   GlobalX=0   GlobalY=2000   WBLeft=2000   WBRight=1000
+   Strip=CSB2   Point=21   GlobalX=8000   GlobalY=-2000   WALeft=1000   WARight=2000
+   Strip=CSB2   Point=22   GlobalX=8000   GlobalY=2000   WBLeft=1000   WBRight=2000
+   Strip=MSB1   Point=19   GlobalX=4000   GlobalY=-2000   WALeft=3000   WARight=3000
+   Strip=MSB1   Point=20   GlobalX=4000   GlobalY=2000   WBLeft=3000   WBRight=3000
+	Strip=MSB132   Point=20   GlobalX=4000   GlobalY=2000   WBLeft=3000   WBRight=3000
+	
+//   (([-]?\d+\b)|(\w\w\w\d+\b))
+
+
+
+
+TABLE:  "OBJECT GEOMETRY - AREAS 01 - GENERAL"
+   Area=LOAD1   NumPoints=4   Point1=5   Point2=6   Point3=7   Point4=8   Auto=No   TotalArea=360000   AreaType=Slab   CurvedEdges=0
+   Area=LOAD2   NumPoints=4   Point1=9   Point2=10   Point3=11   Point4=12   Auto=No   TotalArea=360000   AreaType=Slab   CurvedEdges=0
+   Area=FOOTING   NumPoints=4   Point1=1   Point2=2   Point3=3   Point4=4   Auto=No   TotalArea=48000000   AreaType=Slab   CurvedEdges=0
+ 
+
+(([a-zA-Z]+\d?\s+\b)|\b\d+\b)
+//(?<==)\d+
+//(?<==)\w+
+
+
+TABLE:  "OBJECT GEOMETRY - DESIGN STRIPS"
+   Strip=CSA1   Point=15   GlobalX=-2000   GlobalY=0   WALeft=2000   WARight=2000
+   Strip=CSA1   Point=16   GlobalX=10000   GlobalY=0   WBLeft=2000   WBRight=2000
+   Strip=CSB1   Point=17   GlobalX=0   GlobalY=-2000   WALeft=2000   WARight=1000
+   Strip=CSB1   Point=18   GlobalX=0   GlobalY=2000   WBLeft=2000   WBRight=1000
+   Strip=CSB2   Point=21   GlobalX=8000   GlobalY=-2000   WALeft=1000   WARight=2000
+   Strip=CSB2   Point=22   GlobalX=8000   GlobalY=2000   WBLeft=1000   WBRight=2000
+   Strip=MSB1   Point=19   GlobalX=4000   GlobalY=-2000   WALeft=3000   WARight=3000
+   Strip=MSB1   Point=20   GlobalX=4000   GlobalY=2000   WBLeft=3000   WBRight=3000
+(([a-zA-Z]+\d?\s+\b)|\b\d+\b)
+
+
+"LOAD ASSIGNMENTS - POINT LOADS"
+   Point=13   LoadPat=DEAD   Fx=0   Fy=0   Fgrav=1000000   Mx=50000000   My=70000000   Mz=0   XDim=600   YDim=600
+   Point=13   LoadPat=LIVE   Fx=0   Fy=0   Fgrav=500000   Mx=60000000   My=80000000   Mz=0   XDim=600   YDim=600
+   Point=14   LoadPat=DEAD   Fx=0   Fy=0   Fgrav=700000   Mx=90000000   My=110000000   Mz=0   XDim=600   YDim=600
+   Point=14   LoadPat=LIVE   Fx=0   Fy=0   Fgrav=800000   Mx=100000000   My=120000000   Mz=0   XDim=600   YDim=600
+
+   (([a-zA-Z]+\d?\s+\b)|(\b\d+\b))
+
+   
+   "LOAD ASSIGNMENTS - POINT LOADS"
+   Point=13   LoadPat=DEAD   Fx=0   Fy=0   Fgrav=1000000   Mx=50000000   My=70000000   Mz=0   XDim=600   YDim=600
+   Point=13   LoadPat=LIVE   Fx=0   Fy=0   Fgrav=500000   Mx=60000000   My=80000000   Mz=0   XDim=600   YDim=600
+   Point=14   LoadPat=DEAD   Fx=0   Fy=0   Fgrav=700000   Mx=90000000   My=110000000   Mz=0   XDim=600   YDim=600
+   Point=14   LoadPat=LIVE   Fx=0   Fy=0   Fgrav=800000   Mx=100000000   My=120000000   Mz=0   XDim=600   YDim=600
+   (([a-zA-Z]+\d?\s+\b)|\b\d+\b)

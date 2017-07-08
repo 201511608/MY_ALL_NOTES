@@ -1,0 +1,37 @@
+VISUAL STUDIO
+Lines on TOOLS -> OPTION -> TEXT EDITOR -> ALL LANGUAGES -> GENERAL->  LINE NUMBERS "CHECK IT"
+
+F5  				Run
+Shift + F5 			BREAK
+Shift + 8      		Comment by selecting text
+Ctrl + shift + B  	Build
+
+Shift + f9			Add Watch Quick during BREAK
+Ctrl + F11			Move one step inner and forword while BREAK		 ?
+Ctrl + F10			Move one step forword Not inner while BREAK		 ?
+
+Ctrl + M + O        Collaps  // Minimize
+Ctrl + M + P		Expand   // Maximize
+
+Alt + up or down    Move line up and down
+
+Ctrl + K + C        comment     //select line and comment
+Ctrl + K + u        Uncomment   //select line and Uncomment
+
+Ctrl + G            Goto anyline
+
+Ctrl + W + S        Solution View
+Ctrl + \ + Ctrl + M Team Explorer
+Ctrl + W,X          Tool Box
+
+Ctrl + Shift + A    Add new item
+
+Alt + Enter     	Properties project
+
+// Very impotant for DEBUGGING
+
+F12 				Go to Defination  'Goes to Define Function
+
+Ctrl +				Code Map    'Show call in Boxes
+
+Pause				To Know Where the Program is !

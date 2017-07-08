@@ -1,0 +1,104 @@
+MFC NOTES
+An MFC DLL is a binary file,shared library of functions that can be used simultaneously by multiple applications
+Create an MFC DLL project is to use the MFC DLL Wizard
+
+virtual function to use different function with same name , pointer defining class must have virtual function
+in pure virtual it must be equal to zero =0  class become abstract class  it cannot creat instiate as object
+abstract calls which have pure virtual function;
+abstract child call will be pure virtual function if pure virtual function function not define in child class
+virtual function is a member function in base class that you expect to redefine in derived classes.
+
+MFC APPLICATION CAN ME MAKE BY 3 METHODS
+1 FORM EMPTY ADD DLL AND MAIN.CPP FILES
+2 WIZARD OF MFC AUTOMATICLLAY WILL INCLUDE EVERY THING
+3 WIN32 AND THEN ADD DLL AND .CPP
+
+Any application has two main sections: 
+ Class  Frame or Window 
+
+ To create an APPLICATION, we need to derive a class from the MFC's CWINAPP
+ class CExample : public CWinApp 
+{ 
+ BOOL InitInstance() 
+ { 
+  return TRUE; 
+ } 
+};
+
+
+Need a FRAME/WINDOW to show the content MFC's CFRAMEWND .
+class CMyFrame : public CFrameWnd 
+{ 
+public: 
+ CMyFrame() 
+ { 
+  Create(NULL, _T("MFC Application Tutorial")); 
+ } 
+}; 
+
+TOTAL PROGRAM EXAMPLE
+#include <afxwin.h> 
+ 
+class CMyFrame : public CFrameWnd 
+{ 
+public: 
+ CMyFrame() 
+ { 
+  Create(NULL, _T("MFC Application Tutorial")); 
+ } 
+}; 
+ 
+class CExample : public CWinApp 
+{ 
+ BOOL InitInstance() 
+ { 
+  CMyFrame *Frame = new CMyFrame(); 
+  m_pMainWnd = Frame; 
+ 
+  Frame->ShowWindow(SW_NORMAL); 
+  Frame->UpdateWindow(); 
+ 
+  return TRUE; 
+ } 
+}; 
+ 
+CExample theApp; 
+
+
+ FRAMES 
+#define SW_HIDE             0
+#define SW_SHOWNORMAL       1
+#define SW_NORMAL           1
+#define SW_SHOWMINIMIZED    2
+#define SW_SHOWMAXIMIZED    3
+#define SW_MAXIMIZE         3
+#define SW_SHOWNOACTIVATE   4
+#define SW_SHOW             5
+#define SW_MINIMIZE         6
+#define SW_SHOWMINNOACTIVE  7
+#define SW_SHOWNA           8
+#define SW_RESTORE          9
+#define SW_SHOWDEFAULT      10
+#define SW_FORCEMINIMIZE    11
+#define SW_MAX              11
+
+
+WINDOWS STYLE
+
+WS_CAPTION 
+WS_CHILDWINDO
+check more in  MFC file ...
+
+//
+CPoint(); 
+CPoint(int X, int Y); 
+
+CSize(); 
+CSize(int initCX, int initCY); more
+
+CRect(); 
+CRect(int l, int t, int r, int b); more
+
+
+A resource is a text file that allows the compiler to manage objects such as
+pictures, sounds, mouse cursors, dialog boxes, etc.

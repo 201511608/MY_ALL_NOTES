@@ -1,0 +1,847 @@
+Imports System.Text.RegularExpressions
+Imports System.IO
+Imports System.Text
+Imports System.Xml
+Module Module1
+    '"PROGRAM CONTROL" S=STORE
+    Dim DT_PC_S As New DataTable
+
+    Dim dtarea_ele_pass As New DataTable
+
+    ''' '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    Dim dtOGPC_read As New DataTable  '"OBJECT GEOMETRY - POINT COORDINATES"
+    Dim dtOGL_read As New DataTable   '"OBJECT GEOMETRY - LINES 01 - GENERAL"
+    Dim dtOGA_read As New DataTable   '"OBJECT GEOMETRY - AREAS 01 - GENERAL"
+    Dim dtOGDS_read As New DataTable  '"OBJECT GEOMETRY - DESIGN STRIPS"
+    Dim dtMPG_read As New DataTable  '"MATERIAL PROPERTIES 01 - GENERAL"
+    Dim dtMPC_read As New DataTable  '"MATERIAL PROPERTIES 03 - CONCRETE"
+    Dim dtMPR_read As New DataTable  '"MATERIAL PROPERTIES 04 - REBAR"
+    Dim dtMPT_read As New DataTable  '"MATERIAL PROPERTIES 05 - TENDON"
+    Dim dtSPG_read As New DataTable  '"SLAB PROPERTIES 01 - GENERAL"
+    Dim dtSPSS_read As New DataTable '"SLAB PROPERTIES 02 - SOLID SLABS"
+    Dim dtSP_read As New DataTable   '"SOIL PROPERTIES"
+    Dim dtSPL_read As New DataTable   '"SPRING PROPERTIES - LINE"
+    Dim dtSPP_read As New DataTable   '"SPRING PROPERTIES - POINT"
+    Dim dtBPG_read As New DataTable   '"BEAM PROPERTIES 01 - GENERAL"
+    Dim dtBPRB_read As New DataTable  '"BEAM PROPERTIES 02 - RECTANGULAR BEAM"
+    Dim dtCPG_read As New DataTable   '"COLUMN PROPERTIES 01 - GENERAL"
+    Dim dtCPR_read As New DataTable   '"COLUMN PROPERTIES 02 - RECTANGULAR"
+    Dim dtWP_read As New DataTable    '"WALL PROPERTIES"
+    Dim dtLP_read As New DataTable    '"LOAD PATTERNS"
+    Dim dtLCG_read As New DataTable   ' "LOAD CASES 01 - GENERAL"
+    Dim dtLCS_read As New DataTable   ' "LOAD CASES 02 - STATIC"
+    Dim dtLCLA_read As New DataTable  ' "LOAD CASES 06 - LOADS APPLIED"
+    Dim dtLC_read As New DataTable    '  "TABLE:  "LOAD COMBINATIONS"
+
+    Dim dtSPA_read As New DataTable   '"SLAB PROPERTY ASSIGNMENTS"
+    Dim dtBPA_read As New DataTable   '"BEAM PROPERTY ASSIGNMENTS"
+    Dim dtBIP_read As New DataTable   '"BEAM INSERTION POINT"
+    Dim dtCPA_read As New DataTable  '"COLUMN PROPERTY ASSIGNMENTS"
+    Dim dtCLA_read As New DataTable  '"COLUMN LOCAL AXES"
+    Dim dtCIP_read As New DataTable  '"COLUMN INSERTION POINT"
+    Dim dtWPA_read As New DataTable  '"WALL PROPERTY ASSIGNMENTS"
+    Dim dtPRA_read As New DataTable  '"POINT RESTRAINT ASSIGNMENTS"
+    Dim dtLASL_read As New DataTable ' "LOAD ASSIGNMENTS - SURFACE LOADS"
+
+    Dim dtLAPL_read As New DataTable '"LOAD ASSIGNMENTS - POINT LOADS"
+
+    Sub Main()
+        'OGPC
+        dtOGPC_read.Columns.Add("Point")
+        dtOGPC_read.Columns.Add("GlobalX")
+        dtOGPC_read.Columns.Add("GlobalY")
+        dtOGPC_read.Columns.Add("GlobalZ")
+        dtOGPC_read.Columns.Add("SpecialPt")
+        'OGL
+        dtOGL_read.Columns.Add("Line")
+        dtOGL_read.Columns.Add("PointI")
+        dtOGL_read.Columns.Add("PointJ")
+        dtOGL_read.Columns.Add("LineType")
+        dtOGL_read.Columns.Add("Length")
+        dtOGL_read.Columns.Add("CurveType")
+        'dtOGA
+        dtOGA_read.Columns.Add("Area")
+        dtOGA_read.Columns.Add("NumPoints")
+        dtOGA_read.Columns.Add("Point1")
+        dtOGA_read.Columns.Add("Point2")
+        dtOGA_read.Columns.Add("Point3")
+        dtOGA_read.Columns.Add("Point4")
+        dtOGA_read.Columns.Add("Auto")
+        dtOGA_read.Columns.Add("TotalArea")
+        dtOGA_read.Columns.Add("AreaType")
+        dtOGA_read.Columns.Add("CurvedEdges")
+
+        'OGDS
+        dtOGL_read.Columns.Add("Strip")
+        dtOGL_read.Columns.Add("Point")
+        dtOGL_read.Columns.Add("GlobalX")
+        dtOGL_read.Columns.Add("GlobalY")
+        dtOGL_read.Columns.Add("WALeft")
+        dtOGL_read.Columns.Add("WARight")
+
+        'dtMPG
+        dtMPG_read.Columns.Add("Material")
+        dtMPG_read.Columns.Add("Type")
+        dtMPG_read.Columns.Add("Color")
+        dtMPG_read.Columns.Add("Notes")
+
+        'dtMPC
+        dtMPC_read.Columns.Add("Material")
+        dtMPC_read.Columns.Add("E")
+        dtMPC_read.Columns.Add("U")
+        dtMPC_read.Columns.Add("A")
+        dtMPC_read.Columns.Add("UnitWt")
+        dtMPC_read.Columns.Add("Fc")
+        dtMPC_read.Columns.Add("LtWtConc")
+
+        'dtMPR
+        dtMPR_read.Columns.Add("Material")
+        dtMPR_read.Columns.Add("E")
+        dtMPR_read.Columns.Add("UnitWt")
+        dtMPR_read.Columns.Add("Fy")
+        dtMPR_read.Columns.Add("Fu")
+
+        'dtMPT
+        dtMPT_read.Columns.Add("Material")
+        dtMPT_read.Columns.Add("E")
+        dtMPT_read.Columns.Add("UnitWt")
+        dtMPT_read.Columns.Add("Fy")
+        dtMPT_read.Columns.Add("Fu")
+
+        'dtSPG
+        dtSPG_read.Columns.Add("Slab")
+        dtSPG_read.Columns.Add("Type")
+        dtSPG_read.Columns.Add("Color")
+
+        'dtSPSS
+        dtSPSS_read.Columns.Add("Slab")
+        dtSPSS_read.Columns.Add("Type")
+        dtSPSS_read.Columns.Add("MatProp")
+        dtSPSS_read.Columns.Add("Thickness")
+        dtSPSS_read.Columns.Add("Ortho")
+
+        'dtSP
+        dtSP_read.Columns.Add("Soil")
+        dtSP_read.Columns.Add("Subgrade")
+        dtSP_read.Columns.Add("Color")
+
+        'dtSPL
+        dtSPL_read.Columns.Add("Spring")
+        dtSPL_read.Columns.Add("VertStiff")
+        dtSPL_read.Columns.Add("RotStiff")
+        dtSPL_read.Columns.Add("NonlinOpt")
+        dtSPL_read.Columns.Add("Color")
+
+        'dtSPP
+        dtSPP_read.Columns.Add("Spring")
+        dtSPP_read.Columns.Add("Ux")
+        dtSPP_read.Columns.Add("Uy")
+        dtSPP_read.Columns.Add("Uz")
+        dtSPP_read.Columns.Add("Rx")
+        dtSPP_read.Columns.Add("Ry")
+        dtSPP_read.Columns.Add("Rz")
+        dtSPP_read.Columns.Add("NonlinOpt")
+        dtSPP_read.Columns.Add("Color")
+
+        'dtBPG 
+        dtBPG_read.Columns.Add("Beam")
+        dtBPG_read.Columns.Add("Type")
+        dtBPG_read.Columns.Add("Color")
+        dtBPG_read.Columns.Add("Notes")
+
+        'dtBPRB  
+        dtBPRB_read.Columns.Add("Beam")
+        dtBPRB_read.Columns.Add("MatProp")
+        dtBPRB_read.Columns.Add("Depth")
+        dtBPRB_read.Columns.Add("WidthTop")
+        dtBPRB_read.Columns.Add("WidthBot")
+
+        'dtCPG   
+        dtCPG_read.Columns.Add("Column")
+        dtCPG_read.Columns.Add("Type")
+        dtCPG_read.Columns.Add("Color")
+        dtCPG_read.Columns.Add("Notes")
+
+        'dtCPR   
+        dtCPR_read.Columns.Add("Column")
+        dtCPR_read.Columns.Add("MatProp")
+        dtCPR_read.Columns.Add("SecDim2")
+        dtCPR_read.Columns.Add("SecDim3")
+        dtCPR_read.Columns.Add("AutoRigid")
+        dtCPR_read.Columns.Add("AutoDrop")
+        dtCPR_read.Columns.Add("DropDim2")
+        dtCPR_read.Columns.Add("DropDim3")
+        dtCPR_read.Columns.Add("DropProp")
+        dtCPR_read.Columns.Add("IncludeCap")
+
+
+        'dtWP
+        dtWP_read.Columns.Add("Wall")
+        dtWP_read.Columns.Add("MatProp")
+        dtWP_read.Columns.Add("Thickness")
+        dtWP_read.Columns.Add("AutoRigid")
+        dtWP_read.Columns.Add("OutOfPlane")
+        dtWP_read.Columns.Add("Color")
+        dtWP_read.Columns.Add("Notes")
+
+
+        'dtLP
+        dtLP_read.Columns.Add("LoadPat")
+        dtLP_read.Columns.Add("Type")
+        dtLP_read.Columns.Add("SelfWtMult")
+
+
+        'dtLCG
+        dtLCG_read.Columns.Add("LoadCase")
+        dtLCG_read.Columns.Add("Type")
+        dtLCG_read.Columns.Add("DesignOpt")
+        dtLCG_read.Columns.Add("DesignType")
+
+
+        'dtLCS
+        dtLCS_read.Columns.Add("LoadCase")
+        dtLCS_read.Columns.Add("InitialCond")
+        dtLCS_read.Columns.Add("AType")
+
+        'dtLCLA 
+        dtLCLA_read.Columns.Add("LoadCas")
+        dtLCLA_read.Columns.Add("LoadPat")
+        dtLCLA_read.Columns.Add("SF")
+
+        ' dtLC
+        dtLC_read.Columns.Add("Combo")
+        dtLC_read.Columns.Add("Load")
+        dtLC_read.Columns.Add("SF")
+        dtLC_read.Columns.Add("Type")
+        dtLC_read.Columns.Add("DSStrength")
+        dtLC_read.Columns.Add("DSServInit")
+        dtLC_read.Columns.Add("DSServNorm")
+        dtLC_read.Columns.Add("DSServLong")
+        dtLC_read.Columns.Add("AutoDesign")
+
+
+
+        'dtSPA  ' Dim dtSPA_read As New DataTable   '"SLAB PROPERTY ASSIGNMENTS"
+        dtSPA_read.Columns.Add("Area")
+        dtSPA_read.Columns.Add("SlabProp")
+        dtSPA_read.Columns.Add("OpeningType")
+
+
+
+        'dtBPS 'Dim dtBPS_read As New DataTable   '"BEAM PROPERTY ASSIGNMENTS"
+        dtBPA_read.Columns.Add("Line")
+        dtBPA_read.Columns.Add("BeamProp")
+
+
+        'dtBIP      ' Dim dtBIP_read As New DataTable   '"BEAM INSERTION POINT"
+        dtBIP_read.Columns.Add("Line")
+        dtBIP_read.Columns.Add("CardinalPt")
+        dtBIP_read.Columns.Add("OffsetXI")
+        dtBIP_read.Columns.Add("OffsetYI")
+        dtBIP_read.Columns.Add("OffsetZI")
+        dtBIP_read.Columns.Add("OffsetXJ")
+        dtBIP_read.Columns.Add("OffsetYJ")
+        dtBIP_read.Columns.Add("OffsetZJ")
+
+
+        'dtCPA   Dim dtCPA_read As New DataTable  '"COLUMN PROPERTY ASSIGNMENTS"
+        dtCPA_read.Columns.Add("Line")
+        dtCPA_read.Columns.Add("ColProp")
+
+        'dtCLA  Dim dtCLA_read As New DataTable  '"COLUMN LOCAL AXES"
+        dtCLA_read.Columns.Add("Line")
+        dtCLA_read.Columns.Add("Angle")
+
+
+        ' dtCIP Dim dtCIP_read As New DataTable  '"COLUMN INSERTION POINT"
+        dtCIP_read.Columns.Add("Line")
+        dtCIP_read.Columns.Add("CardinalPt")
+        dtCIP_read.Columns.Add("OffsetXI")
+        dtCIP_read.Columns.Add("OffsetYI")
+        dtCIP_read.Columns.Add("OffsetZI")
+        dtCIP_read.Columns.Add("OffsetXJ")
+        dtCIP_read.Columns.Add("OffsetYJ")
+        dtCIP_read.Columns.Add("OffsetZJ")
+
+        'dtWPA Dim dtWPA_read As New DataTable  '"WALL PROPERTY ASSIGNMENTS"
+        dtWPA_read.Columns.Add("Area")
+        dtWPA_read.Columns.Add("WallProp")
+
+        'dtPRA Dim dtPRA_read As New DataTable  '"POINT RESTRAINT ASSIGNMENTS"
+        dtPRA_read.Columns.Add("Point")
+        dtPRA_read.Columns.Add("Ux")
+        dtPRA_read.Columns.Add("Uy")
+        dtPRA_read.Columns.Add("Uz")
+        dtPRA_read.Columns.Add("Rx")
+        dtPRA_read.Columns.Add("Ry")
+        dtPRA_read.Columns.Add("Rz")
+
+        ' dtLASL Dim dtLASL_read As New DataTable ' "LOAD ASSIGNMENTS - SURFACE LOADS"
+        dtLASL_read.Columns.Add("Area")
+        dtLASL_read.Columns.Add("LoadPat")
+        dtLASL_read.Columns.Add("Dir")
+        dtLASL_read.Columns.Add("UnifLoad")
+        dtLASL_read.Columns.Add("A")
+        dtLASL_read.Columns.Add("B")
+        dtLASL_read.Columns.Add("C")
+
+        'dtLAPL ' Dim dtLAPL_read As New DataTable '"LOAD ASSIGNMENTS - POINT LOADS"
+        dtLAPL_read.Columns.Add("Point")
+        dtLAPL_read.Columns.Add("LoadPat")
+        dtLAPL_read.Columns.Add("Fx")
+        dtLAPL_read.Columns.Add("Fy")
+        dtLAPL_read.Columns.Add("Fgrav")
+        dtLAPL_read.Columns.Add("Mx")
+        dtLAPL_read.Columns.Add("My")
+        dtLAPL_read.Columns.Add("Mz")
+        dtLAPL_read.Columns.Add("XDim")
+        dtLAPL_read.Columns.Add("YDim")
+
+
+        dtarea_ele_pass.Columns.Add("Connectivity_count")
+        dtarea_ele_pass.Columns.Add("material")
+        dtarea_ele_pass.Columns.Add("property")
+        dtarea_ele_pass.Columns.Add("N1")
+        dtarea_ele_pass.Columns.Add("N2")
+        dtarea_ele_pass.Columns.Add("N3")
+        dtarea_ele_pass.Columns.Add("N4")
+        dtarea_ele_pass.Columns.Add("SUB")
+        dtarea_ele_pass.Columns.Add("WID")
+        dtarea_ele_pass.Columns.Add("Orignal_area_name")
+        dtarea_ele_pass.Columns.Add("Orignal_area_story")
+        dtarea_ele_pass.Columns.Add("chker")
+
+
+        FileOpen(2, "Hello.mgt", OpenMode.Output)
+        Dim readText As String = File.ReadAllText("dummy6.f2k")
+        Dim words() As String = Split(readText, "TABLE:")
+        Dim node As String = """REINFORCING BAR SIZES"""
+        Dim str2 As String = "muzafar"
+        Dim temp As String = ""
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+        PRINTSTARTLINES(2)
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+        For a = 0 To words.Length - 1
+            If words(a).Contains("""OBJECT GEOMETRY - POINT COORDINATES""") Then
+                temp = words(a).Remove(2, ("""OBJECT GEOMETRY - POINT COORDINATES""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((\d+\.?\d*\b)|((?<==)\w+))")
+                For b = 0 To mc.Count - 1 Step 5
+                    dtOGPC_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4))
+                Next
+            End If
+
+            If words(a).Contains("""OBJECT GEOMETRY - LINES 01 - GENERAL""") Then
+                temp = words(a).Remove(2, ("""OBJECT GEOMETRY - LINES 01 - GENERAL""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((\d+\.?\d*\b)|((?<==)\w+))")
+                Dim b As Integer = 0
+                While b < mc.Count - 1
+                    If Convert.ToString(mc(b + 3)) = "Column" Then
+                        dtOGL_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), "Column", mc(b + 4))
+                        b = b + 5
+                    Else
+                        dtOGL_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), mc(b + 5))
+                        b = b + 6
+                    End If
+                End While
+            End If
+
+            If words(a).Contains("""OBJECT GEOMETRY - AREAS 01 - GENERAL""") Then
+                temp = words(a).Remove(2, ("""OBJECT GEOMETRY - AREAS 01 - GENERAL""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)\w*\.?\w*)")
+                Dim b As Integer = 0
+                While b < mc.Count - 1
+                    If Convert.ToString(mc(b + 1)) = "4" And Convert.ToString(mc(b + 8)) = "Wall" Then  ' Initial b =0
+                        dtOGA_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), _
+                                            mc(b + 5), mc(b + 6), mc(b + 7), mc(b + 8), "NIL")                      
+                        b = b + 9
+                    ElseIf Convert.ToString(mc(b + 1)) = "4" And Convert.ToString(mc(b + 8)) = "Slab" Then  ' Initial b =0
+                        dtOGA_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), _
+                                            mc(b + 5), mc(b + 6), mc(b + 7), mc(b + 8), mc(b + 9))                      
+                        b = b + 10                   
+                    ElseIf Convert.ToString(mc(b + 1)) = "3" And Convert.ToString(mc(b + 7)) = "Slab" Then  ' Initial b =0
+                        dtOGA_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), _
+                                            "NIL", mc(b + 5), mc(b + 6), mc(b + 7), mc(b + 8))
+                        '  dtOGA_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), mc(b + 5))
+                        b = b + 9
+                    ElseIf CInt(Convert.ToString(mc(b + 1))) > 4 And Convert.ToString(mc(b + 8)) = "Slab" Then  ' Initial b =0
+                        'Else
+                        dtOGA_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), _
+                                           mc(b + 5), mc(b + 6), mc(b + 7), mc(b + 8), mc(b + 9))
+                        Dim temp2 As Integer 'store previous b valuein >4
+                        Dim temp1 As Integer ' 4 or 3 or2 element in line
+                        temp2 = b
+                        temp1 = CInt(Convert.ToString(mc(b + 1))) - 4  'Reducing four pointes for each step
+                        b = b + 10
+
+                        While Convert.ToUInt32(Convert.ToString(mc(b))) = Convert.ToUInt32(Convert.ToString(mc(temp2))) 'BACK == FORNT
+
+                            If temp1 >= 4 Then
+                                dtOGA_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), _
+                                           "NIL", "NIL", "NIL", "NIL", "NIL")
+                                b = b + 5 : temp1 = temp1 - 4
+                                If temp1 = 0 Then  ' if not error in end of line
+                                    Exit While
+                                End If
+                            ElseIf temp1 = 3 Then
+                                dtOGA_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), "NIL", _
+                                           "NIL", "NIL", "NIL", "NIL", "NIL")
+                                b = b + 4 : temp1 = temp1 - 3
+                                If temp1 = 0 Then  ' if not error in end of line
+                                    Exit While
+                                End If
+                            ElseIf temp1 = 2 Then
+                                dtOGA_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), "NIL", "NIL", _
+                                                     "NIL", "NIL", "NIL", "NIL", "NIL")
+                                b = b + 3 : temp1 = temp1 - 2
+                                If temp1 = 0 Then  ' if not error in end of line
+                                    Exit While
+                                End If
+                            ElseIf temp1 = 1 Then
+                                dtOGA_read.Rows.Add(mc(b), mc(b + 1), "NIL", "NIL", "NIL", _
+                                                     "NIL", "NIL", "NIL", "NIL", "NIL")
+                                b = b + 2 : temp1 = temp1 - 1
+                                If temp1 = 0 Then  ' if not error in end of line
+                                    Exit While
+                                End If
+                            End If
+                        End While
+                    End If
+                End While               
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""OBJECT GEOMETRY - DESIGN STRIPS""") Then
+                temp = words(a).Remove(2, ("""OBJECT GEOMETRY - DESIGN STRIPS""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)\w*\.?\w*)")
+                For b = 0 To mc.Count - 1 Step 6
+                    dtOGL_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), mc(b + 5))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            ' 
+            If words(a).Contains("""MATERIAL PROPERTIES 01 - GENERAL""") Then
+                temp = words(a).Remove(2, ("""MATERIAL PROPERTIES 01 - GENERAL""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "(((?<==)\w*\.?\w*)(?=\s\s))|("".*"")")
+                For b = 0 To mc.Count - 1 Step 4
+                    dtMPG_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""MATERIAL PROPERTIES 03 - CONCRETE""") Then
+                temp = words(a).Remove(2, ("""MATERIAL PROPERTIES 03 - CONCRETE""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-]+)")
+                For b = 0 To mc.Count - 1 Step 7
+                    dtMPC_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), mc(b + 5), mc(b + 6))
+                Next
+
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""MATERIAL PROPERTIES 04 - REBAR""") Then
+                temp = words(a).Remove(2, ("""MATERIAL PROPERTIES 04 - REBAR""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-]+)")
+                For b = 0 To mc.Count - 1 Step 5
+                    dtMPR_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""MATERIAL PROPERTIES 05 - TENDON""") Then
+                temp = words(a).Remove(2, ("""MATERIAL PROPERTIES 05 - TENDON""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-]+)")
+                For b = 0 To mc.Count - 1 Step 5
+                    dtMPT_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""SLAB PROPERTIES 01 - GENERAL""") Then
+                temp = words(a).Remove(2, ("""SLAB PROPERTIES 01 - GENERAL""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-]+)")
+                For b = 0 To mc.Count - 1 Step 3
+                    dtSPG_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""SLAB PROPERTIES 02 - SOLID SLABS""") Then
+                temp = words(a).Remove(2, ("""SLAB PROPERTIES 02 - SOLID SLABS""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-]+)")
+                For b = 0 To mc.Count - 1 Step 5
+                    dtSPSS_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""SOIL PROPERTIES""") Then
+                temp = words(a).Remove(2, ("""SOIL PROPERTIES""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-]+)")
+                For b = 0 To mc.Count - 1 Step 3
+                    dtSP_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""SPRING PROPERTIES - LINE""") Then
+                temp = words(a).Remove(2, ("""SPRING PROPERTIES - LINE""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 5
+                    dtSPL_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""SPRING PROPERTIES - POINT""") Then
+                temp = words(a).Remove(2, ("""SPRING PROPERTIES - POINT""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 9
+                    dtSPP_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), mc(b + 5), mc(b + 6), mc(b + 7), mc(b + 8))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""BEAM PROPERTIES 01 - GENERAL""") Then
+                temp = words(a).Remove(2, ("""BEAM PROPERTIES 01 - GENERAL""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 4
+
+                    dtBPG_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""BEAM PROPERTIES 02 - RECTANGULAR BEAM""") Then
+                temp = words(a).Remove(2, ("""BEAM PROPERTIES 02 - RECTANGULAR BEAM""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 5
+                    dtBPRB_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4))
+                Next
+            End If
+ 
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""COLUMN PROPERTIES 01 - GENERAL""") Then
+                temp = words(a).Remove(2, ("""COLUMN PROPERTIES 01 - GENERAL""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 4
+                    dtCPG_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+
+            If words(a).Contains("""COLUMN PROPERTIES 02 - RECTANGULAR""") Then
+                temp = words(a).Remove(2, ("""COLUMN PROPERTIES 02 - RECTANGULAR""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 10
+                    dtCPR_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), mc(b + 5), mc(b + 6), mc(b + 7), mc(b + 8), mc(b + 9))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""WALL PROPERTIES""") Then
+                temp = words(a).Remove(2, ("""WALL PROPERTIES""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 10
+                    dtWP_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), mc(b + 5), mc(b + 6))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            'Dim dtLP_read As New DataTable    '"LOAD PATTERNS"
+            If words(a).Contains("""LOAD PATTERNS""") Then
+                temp = words(a).Remove(2, ("""LOAD PATTERNS""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 3
+                    dtLP_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+
+            'Dim dtLCG_read As New DataTable  ' "LOAD CASES 01 - GENERAL"
+            If words(a).Contains("""LOAD CASES 01 - GENERAL""") Then
+                temp = words(a).Remove(2, ("""LOAD CASES 01 - GENERAL""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 4
+                    dtLCG_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+
+            'Dim dtLCS_read As New DataTable  ' "LOAD CASES 02 - STATIC"
+            If words(a).Contains("""LOAD CASES 02 - STATIC""") Then
+                temp = words(a).Remove(2, ("""LOAD CASES 02 - STATIC""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 3
+                    dtLCS_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            'Dim dtLCLA_read As New DataTable ' "LOAD CASES 06 - LOADS APPLIED"
+            If words(a).Contains("""LOAD CASES 06 - LOADS APPLIED""") Then
+                temp = words(a).Remove(2, ("""LOAD CASES 06 - LOADS APPLIED""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 3
+                    dtLCLA_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            'Dim dtLC_read As New DataTable   '  "TABLE:  "LOAD COMBINATIONS"
+            If words(a).Contains("""LOAD COMBINATIONS""") Then
+                temp = words(a).Remove(2, ("""LOAD COMBINATIONS""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                Dim count As Integer = 0
+                Dim b As Integer = 0
+                Dim temp1 As String ' to store previous Combo
+                temp1 = ""
+                While count < mc.Count - 1
+                    b = count
+                    If Convert.ToString(mc(b)) = temp1 Then
+                        dtLC_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), "NIL", "NIL", "NIL", "NIL", "NIL", "NIL")
+                        temp1 = Convert.ToString(mc(b))
+                        count = count + 3
+                    Else
+                        dtLC_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), mc(b + 5), mc(b + 6), mc(b + 7), mc(b + 8))
+                        temp1 = Convert.ToString(mc(b))
+                        count = count + 9
+                    End If
+                End While
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            'dtLAPL_read
+            If words(a).Contains("""LOAD ASSIGNMENTS - POINT LOADS""") Then
+                temp = words(a).Remove(2, ("""LOAD ASSIGNMENTS - POINT LOADS""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 10
+                    dtLAPL_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), mc(b + 5), mc(b + 6), mc(b + 7), mc(b + 8), mc(b + 9))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+
+            If words(a).Contains("""SLAB PROPERTY ASSIGNMENTS""") Then
+                temp = words(a).Remove(2, ("""SLAB PROPERTY ASSIGNMENTS""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 3
+                    Console.Write(Convert.ToString(mc(b)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 1)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 2)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 3)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 4)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 5)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 6)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 7)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 8)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 9)) + " ")
+
+                    Console.WriteLine()
+                    dtSPA_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""BEAM PROPERTY ASSIGNMENTS""") Then
+                temp = words(a).Remove(2, ("""BEAM PROPERTY ASSIGNMENTS""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 2
+                    Console.Write(Convert.ToString(mc(b)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 1)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 2)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 3)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 4)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 5)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 6)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 7)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 8)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 9)) + " ")
+
+                    Console.WriteLine()
+                    dtBPA_read.Rows.Add(mc(b), mc(b + 1))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""BEAM INSERTION POINT""") Then
+                temp = words(a).Remove(2, ("""BEAM INSERTION POINT""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 8
+                    Console.Write(Convert.ToString(mc(b)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 1)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 2)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 3)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 4)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 5)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 6)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 7)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 8)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 9)) + " ")
+
+                    Console.WriteLine()
+                    dtBIP_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), mc(b + 5), mc(b + 6), mc(b + 7))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""COLUMN PROPERTY ASSIGNMENTS""") Then
+                temp = words(a).Remove(2, ("""COLUMN PROPERTY ASSIGNMENTS""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 2
+                    Console.Write(Convert.ToString(mc(b)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 1)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 2)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 3)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 4)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 5)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 6)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 7)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 8)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 9)) + " ")
+
+                    Console.WriteLine()
+                    dtCPA_read.Rows.Add(mc(b), mc(b + 1))
+                Next
+            End If
+            If words(a).Contains("""COLUMN LOCAL AXES""") Then
+                temp = words(a).Remove(2, ("""COLUMN LOCAL AXES""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 2
+                    Console.Write(Convert.ToString(mc(b)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 1)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 2)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 3)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 4)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 5)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 6)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 7)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 8)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 9)) + " ")
+
+                    Console.WriteLine()
+                    dtCLA_read.Rows.Add(mc(b), mc(b + 1))
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""COLUMN INSERTION POINT""") Then
+                temp = words(a).Remove(2, ("""COLUMN INSERTION POINT""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 8
+                    Console.Write(Convert.ToString(mc(b)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 1)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 2)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 3)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 4)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 5)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 6)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 7)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 8)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 9)) + " ")
+
+                    Console.WriteLine()
+                    dtCIP_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), mc(b + 5), mc(b + 6), mc(b + 7))
+
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""WALL PROPERTY ASSIGNMENTS""") Then
+                temp = words(a).Remove(2, ("""WALL PROPERTY ASSIGNMENTS""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 2
+                    Console.Write(Convert.ToString(mc(b)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 1)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 2)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 3)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 4)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 5)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 6)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 7)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 8)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 9)) + " ")
+
+                    Console.WriteLine()
+                    dtWPA_read.Rows.Add(mc(b), mc(b + 1))
+
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+
+            If words(a).Contains("""POINT RESTRAINT ASSIGNMENTS""") Then
+                temp = words(a).Remove(2, ("""POINT RESTRAINT ASSIGNMENTS""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 7
+                    Console.Write(Convert.ToString(mc(b)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 1)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 2)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 3)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 4)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 5)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 6)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 7)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 8)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 9)) + " ")
+
+                    Console.WriteLine()
+                    dtPRA_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), mc(b + 5), mc(b + 6))
+
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+            If words(a).Contains("""LOAD ASSIGNMENTS - SURFACE LOADS""") Then
+                temp = words(a).Remove(2, ("""LOAD ASSIGNMENTS - SURFACE LOADS""").Length)
+                Dim mc As MatchCollection = Regex.Matches(temp, "((?<==)[\w\.-_+.]+)|("".*"")")
+                For b = 0 To mc.Count - 1 Step 7
+                    Console.Write(Convert.ToString(mc(b)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 1)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 2)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 3)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 4)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 5)) + " ")
+                    Console.Write(Convert.ToString(mc(b + 6)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 7)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 8)) + " ")
+                    'Console.Write(Convert.ToString(mc(b + 9)) + " ")
+
+                    Console.WriteLine()
+                    dtLASL_read.Rows.Add(mc(b), mc(b + 1), mc(b + 2), mc(b + 3), mc(b + 4), mc(b + 5), mc(b + 6))
+
+                Next
+            End If
+            '''''''''''''''''''''''''''''''''''''''''''''''''''
+
+        Next
+
+
+        Console.ReadKey()
+        FileClose(2)
+    End Sub
+
+    Function writeNodes(ByVal s As Integer, ByVal str As String, ByVal patt As String)
+        Dim text As String = str
+        Dim pattern As String = patt '"\bCurrUnits=(.*)MergeTol\b"
+        ' Instantiate the regular expression object.
+        Dim r As Regex = New Regex(pattern, RegexOptions.IgnoreCase)
+        Dim m As Match = r.Match(text)
+        Dim g As Group = m.Groups(1)
+        If m.Success Then
+            ' Dim words() As String = g.ToString().Split(New Char() {","c}) ' else use direct split
+            Console.WriteLine(text)
+            PrintLine(s, text)
+        End If
+    End Function
+    Function PRINTSTARTLINES(ByVal s As Integer)
+        Dim da As String = String.Format("{0:yyyy/M/d}", DateTime.Now)
+        Dim da2 As String = ";  Date : " + da
+        'Console.WriteLine(da2)
+        'Inputs in file
+        PrintLine(s, ";---------------------------------------------------------------------------")
+        PrintLine(s, ";  midas Gen Text(MGT) File.")
+        PrintLine(s, da2)
+        PrintLine(s, ";---------------------------------------------------------------------------")
+        PrintLine(s, "")
+        PrintLine(s, "*VERSION")
+        PrintLine(s, "   8.6.0")
+        PrintLine(s, "")
+        PrintLine(s, "*UNIT    ; Unit System")
+        PrintLine(s, "; FORCE, LENGTH, HEAT, TEMPER")
+
+
+        '  Console.ReadKey()
+    End Function
+    Function writeUnits(ByVal s As Integer, ByVal str As String, ByVal patt As String)
+        Dim text As String = str
+        Dim pattern As String = patt '"\bCurrUnits=(.*)MergeTol\b"
+        ' Instantiate the regular expression object.
+        Dim r As Regex = New Regex(pattern, RegexOptions.IgnoreCase)
+        Dim m As Match = r.Match(text)
+        Dim g As Group = m.Groups(1)
+        If m.Success Then
+            Dim words() As String = g.ToString().Split(New Char() {","c})
+            text = words(0) + "," + words(1) + "," + " BTU" + "," + words(2)
+            PrintLine(s, text)
+            PrintLine(s)
+        End If
+    End Function
+End Module
