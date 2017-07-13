@@ -142,7 +142,7 @@ cout << " (" ; // want to print brackets
 //infinite loop
 for(;;){};
 
-// Strucure
+// String
     string mystr ;
     cout << "Enter title: ";
 	getline(cin, pmovie->title);

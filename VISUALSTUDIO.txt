@@ -7,8 +7,8 @@ Shift + 8      		Comment by selecting text
 Ctrl + shift + B  	Build
 
 Shift + f9			Add Watch Quick during BREAK
-Ctrl + F11			Move one step inner and forword while BREAK		 ?
-Ctrl + F10			Move one step forword Not inner while BREAK		 ?
+Ctrl + F11			Move one step inner and forword while in BREAK	STATE	 ?
+Ctrl + F10			Move one step forword Not inner while in BREAK	STATE	 ?
 
 Ctrl + M + O        Collaps  // Minimize
 Ctrl + M + P		Expand   // Maximize
@@ -21,6 +21,8 @@ Ctrl + K + u        Uncomment   //select line and Uncomment
 Ctrl + G            Goto anyline
 
 Ctrl + W + S        Solution View
+
+
 Ctrl + \ + Ctrl + M Team Explorer
 Ctrl + W,X          Tool Box
 
@@ -35,3 +37,17 @@ F12 				Go to Defination  'Goes to Define Function
 Ctrl +				Code Map    'Show call in Boxes
 
 Pause				To Know Where the Program is !
+
+
+
+// DEBUGGING
+Debug -> windows -> meamory -> meamory 1 or 2
+
+F10 		//step OVER
+F11 		//step INTO
+SHIFT + F11 //step out
+
+Hover move to variable to show its value // Even we can change values then and there and check program running out put for our change value
+come out of loop keep break point out of loop just below loop and run f5 :p
+
+watch in watch click and type any variable name and 

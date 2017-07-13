@@ -1,8 +1,10 @@
 // MFC: MICROSOFT FOUNDATION CLASS LIBRABY
 // book :: Essential Concepts for Building Interactive Graphics Applications  ??
 An MFC DLL is a binary file,shared library of functions that can be used simultaneously by multiple applications
-MFC Creates
+
+//MFC Creates
 Resource.h, Myname.cpp, Myname.h 
+
 .rc file all gui things will find
 resource.h All ID will be there
 
@@ -15,7 +17,7 @@ resource.h All ID will be there
 3 WIN32 AND THEN ADD DLL AND .CPP
 	-> C++ -> WIN32 PROJ -> MTPROJ ->  PROPERTY -> MFC DLL -> NEW ITEM -> C++ ADD   -> CWINAPP/CFrameWnd
 	->Rt PROJECT -> ADD -> RESOURCE -> DIALOG
-			// MFC WIZAD  C++ -> MFC -> CHECK DIALOG BASED
+// MFC WIZAD  C++ -> MFC -> CHECK DIALOG BASED
 			
 			
 			
@@ -76,7 +78,12 @@ To add Variable by rt clicking to "text box" change text box ID: other than ID_S
 
 
 // TEXT BOX WRITING
-m_EchoText.Format((_T("%d"), m_OkCount))  // m_EchoText defined in ADD Variable
+ m_EchoText.Format((_T("%d"), m_OkCount))  // m_EchoText defined in ADD Variable
+ wdStr.Format(_T("EQ Sub(A,v,req) = \\F(Sub(V,s) Sub(b,w) S ,Sub(f,yt)) = %s%s"), FormatNum(Data.dAvReq), m_Unit.strArea); // ENGINE
+ wdStr.Format(_T("EQ %s \\F(Sub(M,cr), Sub(M,SUS)) %s Sub(I,g) + "), L_PAREN, R_PAREN3);// ENGINE
+ wdStr.Format(_T("EQ %s%s"), FormatNum(Deflection.dDead), m_Unit.strLength); // ENGINE
+  wdStr.Format(_T("%s_max$ = 0.000431"), SYM_MU ); // ENGINE
+
 
 
 // UpdateDat () // to show the update things in gui  //IF NOT IT WILL NOT SHOW UP DATE IN GUI
