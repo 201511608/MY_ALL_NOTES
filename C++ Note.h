@@ -130,11 +130,26 @@ a->b	Member b of object pointed to by a	(*a).b
 
 
 
+//vector  vectors
+#include <vector>
+
+vector<double>v1(100);
+vector<int> first;
+first.assign(7,100); // Assign   || Assigning 7 ints with a value of 100
+first.begin() // 
+first.end()   
+first.size()
 
 
-
+//ITERATOR
+Returns an iterator pointing to the first element in the vector.
+vector<double>::iterator it;  // Returns pointer !!
+it = v1.begin();
+cout << *it ;
+it = v1.end()-1;
+cout << *it << endl;
  
- 
+
 // Techniques,.........................................................................................
 cout << " (" ; // want to print brackets
 
@@ -150,3 +165,13 @@ for(;;){};
 	cout << "Enter year :";
 	getline(cin, mystr);
 (stringstream)mystr >> pmovie->year;  // string to number   //year is int;
+
+
+//vector  vectors
+#include <vector>
+	vector<double>v1;
+	v1.assign(100, 1);
+	vector<double>v1(100);
+	vector<double>::iterator it;
+	it = v1.begin();
+	it = v1.end();

@@ -320,4 +320,20 @@ void CMFCApplication11Dlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrol
 	
 }
 
-//
+
+//pause
+system("PAUSE")
+
+
+// Making DLL File  // watch vdo c++ tutorial create a dll in vc++
+// To create dll   new -> win32 app -> next -> DLL -> finish // to create dll file
+// To call dll   new -> win32 app -> next -> dll or console -> finish 
+
+// to call header file copy .h .dll .lib file to the new program location  
+// rt project -> properties -> configuration properties -> Linker -> Input -> Additional dependencies  (Add anyfile.dll)
+
+static __declspec(dllexport) void Crap(); //void Crap() is a function defined
+
+
+
+
