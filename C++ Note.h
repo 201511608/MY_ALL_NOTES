@@ -136,6 +136,15 @@ a->b	Member b of object pointed to by a	(*a).b
 vector<double>v1(100);
 vector<int> first;
 first.assign(7,100); // Assign   || Assigning 7 ints with a value of 100
+
+//push_back
+vector<double>v1
+v1.push_back(value)//v1.push_back(10)  
+
+//Ex  std::vector<int> myvector;
+  for (int i=1; i<=5; i++) myvector.push_back(i);
+
+vector<int> first;
 first.begin() // 
 first.end()   
 first.size()

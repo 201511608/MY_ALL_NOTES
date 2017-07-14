@@ -15,7 +15,7 @@ resource.h All ID will be there
 2 WIZARD OF MFC AUTOMATICLLAY WILL INCLUDE EVERY THING
 	-> C++ -> MT PROJECT -> SETTING PROPERTY -> MFC DLL -> PROPERTY -> NEW ITEM -> C++ ADD
 3 WIN32 AND THEN ADD DLL AND .CPP
-	-> C++ -> WIN32 PROJ -> MTPROJ ->  PROPERTY -> MFC DLL -> NEW ITEM -> C++ ADD   -> CWINAPP/CFrameWnd
+	-> C++ -> WIN32 PROJ -> MTPROJ ->  PROPERTY -> MFC DLL -> NEW ITEM -> C++ ADD   -> CWINAPP/CFrameWnd(function add in C++)
 	->Rt PROJECT -> ADD -> RESOURCE -> DIALOG
 // MFC WIZAD  C++ -> MFC -> CHECK DIALOG BASED
 			
@@ -241,7 +241,7 @@ class CExample : public CWinApp {
 
 CExample theApp;   // CALL FOR OBJECT
 
-
+///////////////////
 // DIALOG BOX
 #include <afxwin.h>
 #include "resource.h"
@@ -274,7 +274,7 @@ BOOL CExample::InitInstance() {
    return TRUE;
 }
 CExample MyApp;
-
+///////////////////////
 
 // slider program example two bars
 
