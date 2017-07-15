@@ -57,3 +57,10 @@ touch .gitignore  // create and put any file name it will ignore that to add and
 // Notes
 // fetch will download any changes from the remote* branch, updating your repository data, but leaving your local* branch unchanged.
 // pull will perform a fetch and additionally merge the changes into your local branch.
+
+
+//Techniques / //// / / / / // / / / // / 
+git init
+git commit -m "first commit"
+git remote add origin https://github.com/201511608/IS_DEVELOPMENT.git
+git push -u origin master
