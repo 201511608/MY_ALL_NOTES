@@ -130,7 +130,7 @@ a->b	Member b of object pointed to by a	(*a).b
 
 
 
-//vector  vectors
+//vector  vectors ..............................................................................................
 #include <vector>
 
 vector<double>v1(100);
@@ -149,6 +149,17 @@ first.begin() //
 first.end()   
 first.size()
 
+//Techniques  vector  vectors................................
+#include <vector>
+	vector<double>v1;
+	v1.assign(100, 1);
+	vector<double>v1(100);
+	vector<double>::iterator it;
+	it = v1.begin();
+	it = v1.end();
+// .. .. .. . . ./..........................................................................
+std::vector<int> myvector;
+  for (int i=1; i<=5; i++) myvector.push_back(i);
 
 //ITERATOR
 Returns an iterator pointing to the first element in the vector.
@@ -159,7 +170,9 @@ it = v1.end()-1;
 cout << *it << endl;
  
 
-// Techniques,.........................................................................................
+// Techniques,.....................................................................................................................................
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
 cout << " (" ; // want to print brackets
 
 
@@ -176,11 +189,21 @@ for(;;){};
 (stringstream)mystr >> pmovie->year;  // string to number   //year is int;
 
 
-//vector  vectors
-#include <vector>
-	vector<double>v1;
-	v1.assign(100, 1);
-	vector<double>v1(100);
-	vector<double>::iterator it;
-	it = v1.begin();
-	it = v1.end();
+//Difference i++ and ++i  // i++ = i=i+1  //Retrun old value		// ++i=i+1   //Returns new increment value
+i++ -> Assign -> increment
+++i -> increment -> Assign
+
+	int i = 1;
+	int j = ++i; //  i returns increase value
+	cout<< endl<< "i:" << i << "  j:" << j;  // i:2  j:2
+	i = 1;
+	j = i++; // i returns old value and then increments // dosent returns new increment value
+	cout << endl << "i:" << i << "  j:" << j;// i:2  j:1
+	i = 1;
+	i++;
+	j = 1;
+	++j;
+	cout << endl << "i:" << i << "  j:" << j;// i:2  j:2
+	i = 1; i = i++;
+	j = 1; j = ++j;
+	cout << endl << "i:" << i << "  j:" << j;// i:2  j:2
