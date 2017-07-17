@@ -132,15 +132,20 @@ a->b	Member b of object pointed to by a	(*a).b
 
 //vector  vectors ..............................................................................................
 #include <vector>
-
+vector<int> matrix1d(5, 0); // 5 row and value=0
+vector<vector<int>> matirx2d(5, vector<int>(6, 0));  // 5 row  and 10 column and value =0
+vector<vector<vector<int> > > vec (M,vector<vector<int> >(N,vector <int>(P,x)));
+//row column inside inside
 vector<double>v1(100);
 vector<int> first;
 first.assign(7,100); // Assign   || Assigning 7 ints with a value of 100
+
 
 //push_back
 vector<double>v1
 v1.push_back(value)//v1.push_back(10)  
 
+v[1][0].push_back(13);
 //Ex  std::vector<int> myvector;
   for (int i=1; i<=5; i++) myvector.push_back(i);
 
@@ -148,6 +153,13 @@ vector<int> first;
 first.begin() // 
 first.end()   
 first.size()
+
+vector<vector<int>> v2d;  // 2D vector
+// VECTOR 2D 3D 4D
+	vector<int> matrix1d(5, 0);  // 1D
+	vector<vector<int>> matirx2d(5, vector<int>(6, 0));   // 2D    matrix2d[0][1] = 13;
+	vector<vector<vector<int>>> matrix3d(3, vector<vector<int>>(6,vector<int>(10,0)));  // 3D  matrix3d[0][0][1] = 13;
+	vector<vector<vector<vector<int>>>> matrix4d(3, vector<vector<vector<int>>>(6, vector<vector<int>> (10, vector<int>(20, 0)))); // 4D
 
 //Techniques  vector  vectors................................
 #include <vector>
@@ -157,6 +169,20 @@ first.size()
 	vector<double>::iterator it;
 	it = v1.begin();
 	it = v1.end();
+	
+//2D vectorint no_of_cols = 5;
+int no_of_rows = 10;
+int initial_value = 0;
+
+std::vector<std::vector<int>> matrix;
+matrix.resize(no_of_rows, std::vector<int>(no_of_cols, initial_value));
+
+// Read from matrix.
+int value = matrix[1][2];
+
+// Save to matrix.
+matrix[3][1] = 5;
+
 // .. .. .. . . ./..........................................................................
 std::vector<int> myvector;
   for (int i=1; i<=5; i++) myvector.push_back(i);
@@ -169,7 +195,43 @@ cout << *it ;
 it = v1.end()-1;
 cout << *it << endl;
  
+// vector resize
+    vector <vector<int>> v;
+    v.resize(col,vector<int>(row)); // Default value to  zero
+	 v.resize(col,vector<int>(row,intial_value));
+	 
+	 //SIZE()
+	 vector<vector<int>> matirx2d(3, vector<int>(6, 0)); 
+	 matrix2d.size() // show row size  i.e 3
+	 matrix2d[0].size() // show column size  i.e 6
+	 
 
+	
+	vector<vector<vector<int>>> matrix3d(3, vector<vector<int>>(6, vector<int>(10, 0)));
+	std::cout << "0. size: " << matrix3d.size() << '\n';   // 3
+	std::cout << "0. size: " << matrix3d[0].size() << '\n'; // 6
+	std::cout << "0. size: " << matrix3d[0][0].size() << '\n';  // 10
+	 
+	 // EMPTY
+	 myvector.empty() // CHECK EMPTY OR NOT RETURN TRUE OR FALSE
+	 // CLEAR  // Removes all elements from the vector (which are destroyed), leaving the container with a size of 0.
+myvector.clear();
+
+	 // INSERT
+
+	myints.insert(myints.end(), 20, 100); // MUST DEFINE ADDRESS   NEW 20 ELEMENT  myints.insert(myints.end()-5, 20, 100)
+	std::cout << "2. size: " << myints.size() << '\n';
+
+	
+
+	 // POP_BACK()   // REMOVE ONE FROM BACK
+	 myints.pop_back();
+	std::cout << "3. size: " << myints.size() << '\n';
+	 // SIZE()    
+	std::vector<int> myints;
+	std::cout << "0. size: " << myints.size() << '\n';
+
+	
 // Techniques,.....................................................................................................................................
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -207,3 +269,79 @@ i++ -> Assign -> increment
 	i = 1; i = i++;
 	j = 1; j = ++j;
 	cout << endl << "i:" << i << "  j:" << j;// i:2  j:2
+	
+	
+// Iterator 
+vector<double>::iterator it;
+vector<double>v1;
+	for (it = v1.begin(); it != v1.end(); ++it)
+	{
+		cout << "V1 is the Value: " << *it << endl;
+	}
+
+	// 3D MATRIX IN TERMS OF MATLAB 3D SHOW AS LAYERS PROGRAM + Diff shows ............... 
+	
+	vector<int> matrix1d(5, 0);
+	vector<vector<int>> matirx2d(3, vector<int>(6, 0));
+	vector<vector<vector<int>>> matrix3d(3, vector<vector<int>>(6,vector<int>(10,0)));
+	vector<vector<vector<vector<int>>>> matrix4d(3, vector<vector<vector<int>>>(6, vector<vector<int>> (10, vector<int>(20, 0))));
+	matirx2d[2][3] = 6;
+	for (int i= 1; i <= 10; i++)
+	{
+		matrix3d[0][0][i-1] = i;
+		matrix3d[2][5][i - 1] = i*10;
+	}
+
+	for (int k = 0; k < 10; k++)
+	{
+		cout << endl;
+		for (int i = 0; i < 3; i++)
+		{
+			cout << endl;
+			for (int j = 0; j < 6; j++)
+				{
+					cout <<" " <<matrix3d[i][j][k];
+				}
+		}
+	}
+
+	cout << endl << endl;
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 6; j++)
+			{
+				cout << endl;
+				for (int k = 0; k < 10; k++)
+				{
+				cout << " " << matrix3d[i][j][k];
+			}
+		}
+	}
+
+		cout << endl << endl;
+			cout << "{";
+
+		for (int i = 0; i < 3; i++){
+			cout << "{";
+			for (int j = 0; j < 6; j++)
+			{
+				cout << endl<<"{";
+				for (int k = 0; k < 10; k++)
+				{
+					cout << " " << matrix3d[i][j][k];
+				}
+				cout << "}";
+			}
+			cout << "}";
+		}
+
+				cout << "}";
+
+	
+// ............................... 
+// vector function takes vector address
+nline int& set_elem(vector<int>& m_, size_t i_, size_t j_, size_t k_)
+{
+    // you could check indexes here e.g.: assert in debug mode
+    return m_[i_*N*P + j_*P + k_];
+}
