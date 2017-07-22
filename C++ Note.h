@@ -16,6 +16,12 @@ char c[10] = "Muzafar"; 	    	// It asignes single by single a[0] ='m' .....
 c[10] = "Muzafar";		  	// Error it can't assign // assign by a[0] ='m' .. then valid
 
 
+CONVERT CONVERTION
+//Float to Intlfloat f = 12.345;
+float f = 12.345;
+int i = (int)f;
+
+
 
 TYPEDEF
 // alias is a different name by which a type can be identified 
@@ -183,6 +189,10 @@ int value = matrix[1][2];
 // Save to matrix.
 matrix[3][1] = 5;
 
+//push 2d
+vector<vector<int>> matirx2d;
+matirx2d.push_back({2,2,5,6});   // push in 2d or any row and size a   ex  push(2,3) push(2,3,4)
+
 // .. .. .. . . ./..........................................................................
 std::vector<int> myvector;
   for (int i=1; i<=5; i++) myvector.push_back(i);
@@ -232,7 +242,10 @@ myvector.clear();
 	std::cout << "0. size: " << myints.size() << '\n';
 
 	
-// Techniques,.....................................................................................................................................
+	// QUEUE  :FIFO context (first-in first-out)
+	queue<int> myqueue;
+	
+// Techniques All,.....................................................................................................................................
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 cout << " (" ; // want to print brackets
