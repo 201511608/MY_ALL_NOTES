@@ -1,6 +1,6 @@
 C++...............................
 
-
+In c++ function or Class writing above or Below Matters a lot ! heriarchy matteres :: Above functin cannot call below function !!
 CString is from MFC
 string is from c++
 
@@ -55,6 +55,72 @@ ENUM   Enumerated types (enum) //types that are defined with a set of custom ide
 enum colors {black,red,green}; // black =0 ;red =1 ....
 enum colors {black,red,green=101}; // 0 1 101  //can define value in between
 enum colors {black=100,red,green}; // 100 101 102  // starting value gets on increse
+
+
+// Class
+// This constructor function is declared just like a regular member function,
+// but with a name that matches the class name and without any return type; not even void.
+class Rectangle {
+    int width, height;   // This value must Declare through constrictor  or function !
+  public:
+    Rectangle (int,int);    			// NO need of even Voide
+	Rectangle();  // Cross check this function !
+}
+Rectangle::Rectangle (int a, int b) {   // NO need of even Voide
+  width = a;
+  height = b;
+}
+// over load function
+Rectangle::Rectangle () {   // NO need of even Voide
+  width = 10;
+  height = 20;
+}
+// Call
+Rectangle rect (3,4);
+Rectangle rectb (5,6);
+Rectangle rectc;      // Default constructor called  !!!!!!!!!!!!!!!!!
+
+Rectangle rectb;   // ok, default constructor called   Rectangle();
+Rectangle rectc(); // oops, default constructor NOT called    ????
+
+Rectangle rectb;   // default constructor called  i,e 
+Rectangle rectc(); // function declaration (default constructor NOT called)  // I gues function declared in class but not defined ??? // not to use
+Rectangle rectd{}; // default constructor called 
+
+//2 constructors can also be called with other syntaxes:
+class Circle {
+    double radius;
+public:
+    Circle(double r) { radius = r; }
+};
+int main () {
+  Circle foo (10.0);   // functional form
+  Circle bar = 20.0;   // assignment init
+  Circle baz {30.0};   // uniform init
+  Circle qux = {40.0}; // POD-like
+}
+
+//3
+class Circle
+{
+	double radius;
+	double width, height;
+public:
+	Circle(double d, double y);
+	Circle(double r) { radius = r; cout << endl << "Circle(double r)"; }
+	Circle() { radius = 1000; cout << endl << "Circle()"; }
+};
+//Class pointer
+	Circle *C11;
+	C11 = new Circle(); // Calls default circle() function
+	class Circle() // defines the circle funtion // Dosent call default Circle()
+	Class c1; // Calls default  Circle() function
+
+//Definig of Constructors
+Circle::Circle(double x, double y) {width =x;heigth =y;};   // Defining Same Constructor type 1
+Circle::Circle(double x, double y) : width(x){heigth =y;};  // Defining Same Constructor type 2
+Circle::Circle(double x,double y) :width(x*y),height(y) {}; // Defining Same Constructor type 3
+
 
 
 
@@ -364,3 +430,25 @@ nline int& set_elem(vector<int>& m_, size_t i_, size_t j_, size_t k_)
     // you could check indexes here e.g.: assert in debug mode
     return m_[i_*N*P + j_*P + k_];
 }
+
+// Class cauling other class and calling functionsclass Circle
+{
+	double radius;
+	double width, height;
+public:
+	Circle(double d, double y);
+	Circle(double r) { radius = r; cout << endl << "Circle(double r)"; }
+	Circle() { radius = 1000; cout << endl << "Circle()"; }
+};
+
+Circle::Circle(double x,double y) :width(x*y),height(y) {};
+
+
+class rectangle {
+	double height;
+	Circle Cir1;
+public:
+	rectangle(double r, double h) :Cir1(h), height(h) { };
+};
+
+
