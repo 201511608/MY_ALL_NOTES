@@ -1,6 +1,6 @@
 C++...............................
 
-In c++ function or Class writing above or Below Matters a lot ! heriarchy matteres :: Above functin cannot call below function !!
+In c++ function or Class writing above or Below Matters a lot ! heriarchy matteres :: Above function cannot call below function !!
 CString is from MFC
 string is from c++
 
@@ -51,22 +51,22 @@ using pChar = char *;
 
 
 
-ENUM   Enumerated types (enum) //types that are defined with a set of custom identifiers
-enum colors {black,red,green}; // black =0 ;red =1 ....
-enum colors {black,red,green=101}; // 0 1 101  //can define value in between
-enum colors {black=100,red,green}; // 100 101 102  // starting value gets on increse
+ENUM   Enumerated types (enum) 		//types that are defined with a set of custom identifiers
+enum colors {black,red,green}; 		// black =0 ;red =1 ....
+enum colors {black,red,green=101};  // 0 1 101  //can define value in between
+enum colors {black=100,red,green};  // 100 101 102  // starting value gets on increse
 
 
 // Class
 // This constructor function is declared just like a regular member function,
 // but with a name that matches the class name and without any return type; not even void.
 class Rectangle {
-    int width, height;   // This value must Declare through constrictor  or function !
+    int width, height;   // This value must Declare through constrictor  or function !  // Default Private
   public:
     Rectangle (int,int);    			// NO need of even Voide
 	Rectangle();  // Cross check this function !
 }
-Rectangle::Rectangle (int a, int b) {   // NO need of even Voide
+Rectangle::Rectangle (int a, int b) {   // NO need of even Voide  /Constructor
   width = a;
   height = b;
 }
@@ -75,6 +75,7 @@ Rectangle::Rectangle () {   // NO need of even Voide
   width = 10;
   height = 20;
 }
+
 // Call
 Rectangle rect (3,4);
 Rectangle rectb (5,6);
@@ -124,6 +125,7 @@ Circle::Circle(double x,double y) :width(x*y),height(y) {}; // Defining Same Con
 
 
 
+
 VIRTUAL FUNCTION
 // Virtual functions allow us to create a list of base class pointers and call methods of 
 // any of the DERIVED CLASSES without even knowing kind of derived class object. 
@@ -155,7 +157,8 @@ int main(void)
  
  
  
- STUCUTRES
+ // STUCUTRES
+ // structures are used for grouping together elements with dissimilar data types !!!
  struct anyname {
  datatype name;
  datatyep name[3]={1, 2, 3};
@@ -164,16 +167,18 @@ int main(void)
  datatype name = 2; // can define value too
  };
  
- // string of structures
+// string of structures
  struct movie {
 	string title;
 	int year;
 }movie1[3];  
+
  //Defineg and calling
  struct anyname anyname1,anyname2...;
  anyname anyname1,anyname2...; // c++ no need of string name
+ 
  // sturct wth no name must define at end only one sturct can define
-  struct  {
+ struct  {
  char name1[10]; // ARray can define
  datatype name = 2; // can define value too
  } A1, A2 ;   // but in c only one A1 no A2
@@ -205,10 +210,11 @@ a->b	Member b of object pointed to by a	(*a).b
 //vector  vectors ..............................................................................................
 #include <vector>
 vector<int> matrix1d(5, 0); // 5 row and value=0
-vector<vector<int>> matirx2d(5, vector<int>(6, 0));  // 5 row  and 10 column and value =0
+vector<vector<int>> matirx2d(5, vector<int>(6, 0));  // 5 row  and 6 column and value =0
 vector<vector<vector<int> > > vec (M,vector<vector<int> >(N,vector <int>(P,x)));
 //row column inside inside
 vector<double>v1(100);
+
 vector<int> first;
 first.assign(7,100); // Assign   || Assigning 7 ints with a value of 100
 
@@ -246,8 +252,10 @@ vector<vector<int>> v2d;  // 2D vector
 int no_of_rows = 10;
 int initial_value = 0;
 
+// Vector Method of initializing
 std::vector<std::vector<int>> matrix;
 matrix.resize(no_of_rows, std::vector<int>(no_of_cols, initial_value));
+
 
 // Read from matrix.
 int value = matrix[1][2];
@@ -263,8 +271,9 @@ matirx2d.push_back({2,2,5,6});   // push in 2d or any row and size a   ex  push(
 std::vector<int> myvector;
   for (int i=1; i<=5; i++) myvector.push_back(i);
 
-//ITERATOR
-Returns an iterator pointing to the first element in the vector.
+// ITERATOR
+// Returns an iterator pointing to the first element in the vector.
+
 vector<double>::iterator it;  // Returns pointer !!
 it = v1.begin();
 cout << *it ;
@@ -274,11 +283,11 @@ cout << *it << endl;
 // vector resize
     vector <vector<int>> v;
     v.resize(col,vector<int>(row)); // Default value to  zero
-	 v.resize(col,vector<int>(row,intial_value));
+	v.resize(col,vector<int>(row,intial_value));
 	 
-	 //SIZE()
+//SIZE()
 	 vector<vector<int>> matirx2d(3, vector<int>(6, 0)); 
-	 matrix2d.size() // show row size  i.e 3
+	 matrix2d.size() 	// show row size  i.e 3
 	 matrix2d[0].size() // show column size  i.e 6
 	 
 
@@ -290,8 +299,9 @@ cout << *it << endl;
 	 
 	 // EMPTY
 	 myvector.empty() // CHECK EMPTY OR NOT RETURN TRUE OR FALSE
-	 // CLEAR  // Removes all elements from the vector (which are destroyed), leaving the container with a size of 0.
-myvector.clear();
+	 
+	 // CLEAR  
+myvector.clear();  // Removes all elements from the vector (which are destroyed), leaving the container with a size of 0.
 
 	 // INSERT
 
@@ -300,21 +310,23 @@ myvector.clear();
 
 	
 
-	 // POP_BACK()   // REMOVE ONE FROM BACK
+// POP_BACK()   // REMOVE ONE FROM BACK
 	 myints.pop_back();
 	std::cout << "3. size: " << myints.size() << '\n';
-	 // SIZE()    
+	
+// SIZE()    
 	std::vector<int> myints;
 	std::cout << "0. size: " << myints.size() << '\n';
 
 	
-	// QUEUE  :FIFO context (first-in first-out)
+// QUEUE  :FIFO context (first-in first-out)
 	queue<int> myqueue;
 	
 	
 	
-	// Math
-	// Pow
+// Math
+
+// Pow
 	pow(a,2)  // a square
 	
 // Techniques All,.....................................................................................................................................
@@ -329,28 +341,34 @@ for(;;){};
 // String
     string mystr ;
     cout << "Enter title: ";
-	getline(cin, pmovie->title);
+	getline(cin, pmovie->title);  // Pointer Base !
+	
 	string mystr;
 	cout << "Enter year :";
 	getline(cin, mystr);
 (stringstream)mystr >> pmovie->year;  // string to number   //year is int;
 
 
-//Difference i++ and ++i  // i++ = i=i+1  //Retrun old value		// ++i=i+1   //Returns new increment value
+//Difference i++ and ++i  
+// i++ = i=i+1  //Retrun old value		
+// ++i=i+1   //Returns new increment value
 i++ -> Assign -> increment
 ++i -> increment -> Assign
 
 	int i = 1;
 	int j = ++i; //  i returns increase value
 	cout<< endl<< "i:" << i << "  j:" << j;  // i:2  j:2
+	
 	i = 1;
 	j = i++; // i returns old value and then increments // dosent returns new increment value
 	cout << endl << "i:" << i << "  j:" << j;// i:2  j:1
+	
 	i = 1;
 	i++;
 	j = 1;
 	++j;
 	cout << endl << "i:" << i << "  j:" << j;// i:2  j:2
+	
 	i = 1; i = i++;
 	j = 1; j = ++j;
 	cout << endl << "i:" << i << "  j:" << j;// i:2  j:2
@@ -364,8 +382,8 @@ vector<double>v1;
 		cout << "V1 is the Value: " << *it << endl;
 	}
 
-	// 3D MATRIX IN TERMS OF MATLAB 3D SHOW AS LAYERS PROGRAM + Diff shows ............... 
 	
+// 3D MATRIX IN TERMS OF MATLAB 3D SHOW AS LAYERS PROGRAM + Diff shows ............... 
 	vector<int> matrix1d(5, 0);
 	vector<vector<int>> matirx2d(3, vector<int>(6, 0));
 	vector<vector<vector<int>>> matrix3d(3, vector<vector<int>>(6,vector<int>(10,0)));
@@ -404,7 +422,7 @@ vector<double>v1;
 	}
 
 		cout << endl << endl;
-			cout << "{";
+		cout << "{";
 
 		for (int i = 0; i < 3; i++){
 			cout << "{";
@@ -420,7 +438,7 @@ vector<double>v1;
 			cout << "}";
 		}
 
-				cout << "}";
+		cout << "}";
 
 	
 // ............................... 
@@ -431,7 +449,9 @@ nline int& set_elem(vector<int>& m_, size_t i_, size_t j_, size_t k_)
     return m_[i_*N*P + j_*P + k_];
 }
 
+
 // Class cauling other class and calling functionsclass Circle
+class circle
 {
 	double radius;
 	double width, height;
@@ -452,3 +472,125 @@ public:
 };
 
 
+//
+
+<< insertion operator
+>> extraction operator 
+
+cin >>> number1 >> number2;  // Left to Right assigned
+
+int m =10;
+cout << ::m // Call global m ,not localecon
+setw(5) // Provide spaces p.no 50
+
+
+
+
+// Friend Class 
+// A friend class in C++ can access the private and protected members of the class in which it is declared as a friend.
+// Friendship is not inherited
+// Friendship is not mutual. If a class A is friend of B, then B doesn’t become friend of A automatically.
+// Example
+// 1 B wanna access A private Data
+// 2 put B as friend class in A  :: so that it can access A data
+// 3 call data of a using ADDRESS operator  (ex void function(A &x) | object x | x.a)
+#include <iostream>
+class A 
+{
+private:
+	int a;
+public:
+	A() { a=0; }
+	friend class B;	  // Friend Class 				// 2
+};
+
+class B 											// 1
+{  
+private:
+	int b;
+public:
+	void showA(A& x)  								// 3
+	{    // For Class Address varible  SYNTAX  !!!
+		// Since B is friend of A, it can access
+		// private members of A
+		std::cout << "A::a=" << x.a;
+	}
+};
+
+int main() {
+A a;
+B b;
+b.showA(a);
+return 0;
+}
+//FRIEND FUNCTION OF FUNCTION IE GLOBALO FUNCTION
+//Friend Function Like friend class, a friend function can be given special grant
+// to access private and protected members.
+//Example 2 GLOBAL FRIEND      A global function
+#include <iostream>
+using namespace std;
+
+class B;
+
+class A
+{
+public:
+int a =100;
+friend void show(A& x) ;   							// 2    
+};
+
+void show(A& x) 									// 1   //3
+{
+	std::cout<< " show : "<< x.a;
+}  	
+
+
+int main()
+{
+	A a;
+	// Since showA() is a friend, it can access
+    // private members of A
+	// Global function .. Function calling the class data.. so call direct function !!
+	// friend function accessed the data of class A; 
+		show(a); 
+	return 0;
+}
+//FRIEND FUNCTION  OF CLASS
+//Example 3 		FRIEND    A method of another class
+#include <iostream>
+using namespace std;
+
+class B;
+class A        
+{
+    public:
+    void showB(B& x);
+};
+
+
+class B
+{
+    int b;
+    public:
+    B(){b=0;}
+    friend void A::showB(B& x); // 2 AFunction FriendFunctionin B i:e AFunction  access B data
+};
+
+void A::showB(B& x)         // 1 Wanna access B data   // 3 Call Using Address
+{
+    std::cout<<"B::b  : " <<x.b;
+};
+
+int main()
+{
+	A a;
+B b;
+a.showB(b);
+	return 0;
+}
+
+
+//Address of the Variable
+int myvar = 25;
+int *foo = &myvar;      // Store Address of myvar
+int bar = myvar;		// Store Value   of myvar
