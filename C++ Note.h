@@ -1,19 +1,24 @@
 C++...............................
 
-In c++ function or Class writing above or Below Matters a lot ! heriarchy matteres :: Above function cannot call below function !!
+In c++ function or Class writing above or Below Matters a lot !
+Heriarchy matteres :: Above function cannot call below function !!
 CString is from MFC
-string is from c++
+String is from C++
 
+// NULL 	// NULL is a pointer    // 0 // NULL is ASKII ?? // int x = NULL            output : 0
+// nullptr  // nullptr is a pointer // nullptr is a keyword  // int *ptr = nullptr;		output : 0
 
 using namespace std;
 #include <iostream>   // for cout cin
-#include <string>    // for using string
-#include <sstream>  // to print sting in cout!!  // getline(cin, yours.title);
+#include <string>     // for using string
+#include <sstream>    // to print string in cout!!  // getline(cin, yours.title);
 
 
+// ??
+nullptr_t x ,y;  // x and y equal to  nullptr
 CHAR
 char c[10] = "Muzafar"; 	    	// It asignes single by single a[0] ='m' .....
-c[10] = "Muzafar";		  	// Error it can't assign // assign by a[0] ='m' .. then valid
+c[10] = "Muzafar";		  		    // Error it can't assign // assign by a[0] ='m' .. then valid
 
 
 CONVERT CONVERTION
@@ -127,7 +132,7 @@ Circle::Circle(double x,double y) :width(x*y),height(y) {}; // Defining Same Con
 
 
 VIRTUAL FUNCTION
-// Virtual functions allow us to create a list of base class pointers and call methods of 
+// Virtual functions allow us to create a LIST of base class pointers and call methods of 
 // any of the DERIVED CLASSES without even knowing kind of derived class object. 
 // Method
 
@@ -329,6 +334,143 @@ myvector.clear();  // Removes all elements from the vector (which are destroyed)
 // Pow
 	pow(a,2)  // a square
 	
+	
+	
+	
+	
+	
+// this
+// Access the constructor Variable value  (this -> variable)
+	
+//Ex
+#include<iostream>
+using namespace std;
+class Test
+{
+	int a;
+public:
+	Test() { a = 100; }
+
+	// Local parameter ‘a’ hides object’s member
+	// ‘a’, but we can access it using this.
+	void func(int a) { cout << this->a << " " << a; }  
+};
+
+int main(void)
+{
+    
+Test obj;
+obj.func(999);
+
+return 0;
+}
+// output
+// 100 " " 999
+	
+	
+	
+	
+	
+// ::
+// scope resolution operator :: 
+//We can access the Global variable (::Variable)
+// And also to define funcition out side a Class  Ex    void A::fun(){};
+// :: can be used to access static
+// Multiple Inheritance	
+http://www.geeksforgeeks.org/scope-resolution-operator-in-c/
+
+
+//Ex   Global access
+#include<iostream> 
+using namespace std;
+
+// Global x
+int x=100; 
+//
+int main()
+{
+int x = 10; // Local x
+cout << "Value of global x is " << ::x;
+cout << "\nValue of local x is " << x; 
+cout << endl<< a;
+return 0;
+}
+	
+	
+	
+//Ex   static access 	
+#include<iostream>
+using namespace std;
+class Test
+{
+    static int x;  
+public:
+    static int y;   
+ 
+    // Local parameter 'a' hides class member
+    // 'a', but we can access it using ::
+    void func(int x)  
+    { 
+       // We can access class's static variable
+       // even if there is a local variable
+       cout << "Value of static x is " << Test::x;
+       cout << "\nValue of local x is " << x;  
+    }
+};
+
+int Test::x = 1; // In C++, static members must be explicitly defined  // like this
+int Test::y = 2; // Even it is private or public   // if private we can't access from out side, we can just define;
+  
+int main()
+{
+    Test obj;
+    int x = 3 ;
+    obj.func(x);
+    cout << "\nTest::y = " << Test::y;
+    return 0;
+}
+	
+	
+	
+//Ex     Multiple inheritance.
+#include<iostream>
+using namespace std;
+class A
+{
+protected:
+    int x;
+public:
+    A() { x = 10; }
+};
+class B
+{
+protected:
+    int x;
+public:
+    B() { x = 20; }
+};
+class C: public A, public B
+{
+public:
+   void fun()
+   {
+      cout << "A's x is " << A::x;       // Access of Class A x
+      cout << "\nB's x is " << B::x;	 // Access of Class B x
+   }
+};
+int main()
+{
+    C c;
+    c.fun();
+    return 0;
+}
+
+
+	
+	
+	
+	
+	
 // Techniques All,.....................................................................................................................................
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -490,6 +632,7 @@ setw(5) // Provide spaces p.no 50
 // A friend class in C++ can access the private and protected members of the class in which it is declared as a friend.
 // Friendship is not inherited
 // Friendship is not mutual. If a class A is friend of B, then B doesn’t become friend of A automatically.
+
 // Example
 // 1 B wanna access A private Data
 // 2 put B as friend class in A  :: so that it can access A data
@@ -510,7 +653,7 @@ private:
 	int b;
 public:
 	void showA(A& x)  								// 3
-	{    // For Class Address varible  SYNTAX  !!!
+	{   // For Class Address varible  SYNTAX  !!!
 		// Since B is friend of A, it can access
 		// private members of A
 		std::cout << "A::a=" << x.a;
@@ -523,15 +666,18 @@ B b;
 b.showA(a);
 return 0;
 }
-//FRIEND FUNCTION OF FUNCTION IE GLOBALO FUNCTION
+
+//FRUEBD FUNCTION
+//FRIEND FUNCTION OF FUNCTION IE GLOBAL FUNCTION
 //Friend Function Like friend class, a friend function can be given special grant
 // to access private and protected members.
-//Example 2 GLOBAL FRIEND      A global function
+
+//Example 2 	GLOBAL FRIEND      A global function
+// Function access to class  ???  ->  Such that i can call function directly {that get access to calss}
 #include <iostream>
 using namespace std;
 
 class B;
-
 class A
 {
 public:
@@ -555,8 +701,10 @@ int main()
 		show(a); 
 	return 0;
 }
+
 //FRIEND FUNCTION  OF CLASS
 //Example 3 		FRIEND    A method of another class
+// Function accessing to other class function
 #include <iostream>
 using namespace std;
 
@@ -576,7 +724,7 @@ class B
     friend void A::showB(B& x); // 2 AFunction FriendFunctionin B i:e AFunction  access B data
 };
 
-void A::showB(B& x)         // 1 Wanna access B data   // 3 Call Using Address
+void A::showB(B& x)         // 1 Wanna access B data   // 3 Call  Using Address
 {
     std::cout<<"B::b  : " <<x.b;
 };
@@ -594,3 +742,93 @@ a.showB(b);
 int myvar = 25;
 int *foo = &myvar;      // Store Address of myvar
 int bar = myvar;		// Store Value   of myvar
+
+
+
+
+//////////////
+//Swapping Program
+
+using namespace std;
+int main()
+{
+	// Declaring first vector
+	vector<int> v1;
+	int i;
+
+	for (i = 0; i < 10; ++i) {
+		v1.push_back(i);
+	}
+	// v1 contains 0 1 2 3 4 5 6 7 8 9
+
+	vector<int>::iterator i1, i2;
+
+	i1 = v1.begin();
+	i2 = v1.end() - 1;
+
+	// Performing swap between first and last element
+	// of vector
+	for (i=1;i<=v1.size()/2 -1 ; i++)
+	{
+			std::iter_swap(i1++, i2--);
+	}
+
+
+	// Displaying v1 after swapping
+	for (i = 0; i < 10; ++i) {
+		cout << v1[i] << " ";
+	}
+
+	return 0;
+}
+
+
+/////////////////
+// Static  . Same variable for all OBJECTS of that same class [ check example]
+// Member of a class as static it means no matter how many objects of the class are created,
+// there is only one copy of the static member.
+// A static member is shared by all objects of the class
+// Static int 
+https://www.tutorialspoint.com/cplusplus/cpp_static_members.htm
+
+#include <iostream>
+using namespace std;
+class Box {
+   public:
+      static int objectCount;
+      
+      // Constructor definition
+      Box(double l = 2.0, double b = 2.0, double h = 2.0) {
+         cout <<"Constructor called." << endl;
+         length = l;
+         breadth = b;
+         height = h;
+         
+         // Increase every time object is created
+         objectCount++;
+      }
+      double Volume() {
+         return length * breadth * height;
+      }
+      
+   private:
+      double length;     // Length of a box
+      double breadth;    // Breadth of a box
+      double height;     // Height of a box
+};
+
+// Initialize static member of class Box
+int Box::objectCount = 0;
+
+int main(void) {
+   Box Box1(3.3, 1.2, 1.5);    // Declare box1
+   Box Box2(8.5, 6.0, 2.0);    // Declare box2
+   Box Box3(8.5, 6.0, 2.0);    // Declare box2
+
+   // Print total number of objects.
+   cout << "Total objects: " << Box::objectCount << endl;
+
+   return 0;
+}
+// output 
+// Total objects: 3
