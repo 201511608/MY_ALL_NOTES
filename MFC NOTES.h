@@ -112,7 +112,7 @@ m_wndToolBar.LoadToolBar(IDR_TOOLBAR2);
 // CGridCtrl  class[self_Made class] - > CTabCtrl
 m_Grid.EnableDragAndDrop(TRUE);   // CGridCtrl m_Grid; in header file
 m_Grid.AutoSize();
-//LISTCONTROL   //CListCtrl m_listCtrl;
+//LIST CONTROL   //CListCtrl m_listCtrl; // https://www.tutorialspoint.com/mfc/mfc_list_control.htm
 //CListCtrl m_listCtrl;  - > GUI ListEditor handler //  https://www.tutorialspoint.com/mfc/mfc_list_control.htm
 m_listCtrl.InsertColumn(order of item,Caption,Relative position,Width)  //  EX : m_listCtrl.InsertColumn(1, L"Name", LVCFMT_CENTER, 80);
 m_listCtrl.InsertItem(0, L"100") // INSERT AND ENTER(MOVE NEXT LINE)
@@ -203,6 +203,23 @@ int iSeconds = CurrentTime.GetSecond();
 GetDlgItemText(IDC_DATETIMEPICKER1,m_StrValue3); // m_StrValue3 // static text variable // ID IDC_DATETIMEPICKER1
 UpdateData(FALSE);
 
+ //
+ // SLIDER CONTROL   //  https://www.tutorialspoint.com/mfc/mfc_slider_controls.htm
+// In properties Vertical or Horizontal can be set
+// Rt -> Add VARIABLE ->Category to Control->Variable Name to "m_VSliderBar"->Variable Type to CSliderCtrl
+// Click Form -> beside property click Message button -> WM_VSCROLL -> ADD         // CAUTION THIS IS FORM NOT DIRECTLY VERTILABAR
+m_VSliderBar.SetRange(0,100,TRUE); // m_VSliderBar=verticla bar varibale set   // keep in oninitdialog
+m_VSliderBar.SetPos(0);
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
 // Cstring use
  CString sDriver = L"MICROSOFT ACCESS DRIVER (*.mdb)";
 // Cstring to int converstion  // https://stackoverflow.com/questions/992757/convert-mfc-cstring-to-integer
@@ -210,7 +227,6 @@ CString str2;
 int x=_wtoi(str2);
  
  
-
 //MessageBox
 MessageBox(L"File > New menu option");
 
