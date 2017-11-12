@@ -193,18 +193,21 @@ m_spinCtrl.SetPos(100);
 // CWnd::SetTimer()
 // Add  WM_Timer
 SetTimer(0,1000,NULL);  // Set at the time of Initialising Data
+ KillTimer(0); 	 // ?????
 CTime CurrentTime= CTime::GetCurrentTime();
 int iHours = CurrentTime.GetHour();
 int	iMinutes = CurrentTime.GetMinute();
 int iSeconds = CurrentTime.GetSecond();
+sStatusMsg.Format(L"Running: %d", currValue);  // CString sStatusMsg;
+
 //
 //Date and time // GUI -> TOOLBOX -> ADD DATE TIME PICKER
 // https://www.tutorialspoint.com/mfc/mfc_date_time_picker.htm
 GetDlgItemText(IDC_DATETIMEPICKER1,m_StrValue3); // m_StrValue3 // static text variable // ID IDC_DATETIMEPICKER1
 UpdateData(FALSE);
 
- //
- // SLIDER CONTROL   //  https://www.tutorialspoint.com/mfc/mfc_slider_controls.htm
+//
+// SLIDER CONTROL   //  https://www.tutorialspoint.com/mfc/mfc_slider_controls.htm
 // In properties Vertical or Horizontal can be set
 // Rt -> Add VARIABLE ->Category to Control->Variable Name to "m_VSliderBar"->Variable Type to CSliderCtrl
 // Click Form -> beside property click Message button -> WM_VSCROLL -> ADD         // CAUTION THIS IS FORM NOT DIRECTLY VERTILABAR
@@ -212,23 +215,199 @@ m_VSliderBar.SetRange(0,100,TRUE); // m_VSliderBar=verticla bar varibale set   /
 m_VSliderBar.SetPos(0);
  
  
+ // DRAWING
+ // CDC CLASS  // CDC *pDC
+ // MFC GDI  		//  https://www.tutorialspoint.com/mfc/mfc_gdi.htm
+ // DRAW :MFC provides graphic-object classes equivalent to the drawing tools
+ // CDC is the most fundamental class
+ // In void CMFCGDIDemoView::OnDraw(CDC* pDC)  // OnDraw
+ //New point or new line point starting MoveTo()
+   pDC->MoveTo(95, 125); // move from origin to this point // set the starting position of a line
+   pDC->LineTo(230, 125); // Draw line from origin or moveto() to lintto();
+  
+ // Polylines  :: lines are stored in an array of POINT or CPoint values
+ pDC->Polyline(Pt, 2);  // 
+ // EX ::
+ CPoint Pt[7];
+	Pt[0] = CPoint(20, 150);
+	Pt[1] = CPoint(180, 150);
+	Pt[2] = CPoint(180, 20);
+	pDC->Polyline(Pt, 3);  // 
  
+ //  RECTANGLE
+ pDC->Rectangle(5, 15, 250, 160);
+ //  SQUARE
+ pDC->Rectangle(15, 15, 250, 250);  // :P USING RECTANGEL
  
+ //PIES :: A pie is a fraction of an ellipse
+ // CDC::Pie()
+ // BOOL Pie(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4); 
+ // x1 y1 x2 y2 rectangle and x3 y3 point in ellips and x4 y4 other point in ellips
+  pDC->Pie(40, 20, 226, 144, 155, 32, 202, 115);
+   
+  //Arcs
+  //CDC::Arc() 
+  //BOOL Arc(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4);
+  // x1 y1 x2 y2 rectangle and x3 y3 point in Arc and x4 y4 other point in Arc
+  // int SetArcDirection(int nArcDirection) // ARc direction CLOCKWISE OR ANTI CLOCKWISE
+ // EX::
+ 	pDC->SetArcDirection(AD_COUNTERCLOCKWISE);	
+	pDC->Arc(20, 20, 226, 144, 202, 115, 105, 32);
+	
+ // Chords
+    pDC->SetArcDirection(AD_CLOCKWISE);
+    pDC->Chord(20, 20, 226, 144, 202, 115, 105, 32);
+ //
+ //Text   // 
+ pDC->TextOut(100, y, m_msgArray.GetAt(i));
  
- 
- 
- 
- 
+ //
+ //Color
+ // Color   BRUSH   // CONSIST OF 8 brush  /// https://www.tutorialspoint.com/mfc/mfc_gdi.htm
+ // brush is a drawing tool used to fill out closed shaped or the interior of lines.
+ // class CBrush
+  CBrush brush(RGB(200, 150, 200));
+  CBrush *pBrush = pDC->SelectObject(&brush);
+ // Ex::
+  CBrush brush(RGB(200, 150, 200));
+  CBrush *pBrush = pDC->SelectObject(&brush);
+	pDC->Rectangle(25, 35, 250, 125);
+	pDC->SelectObject(pBrush);
+//
+// Internet Server - Client
+// MFC - Internet Programming          //https://www.tutorialspoint.com/mfc/mfc_internet_programming.htm
+// APIs for programming both client and server applications.
+// Class CSocket 
+	// Server
+	CServerSocket m_serverSocket;  //CServerSocket: CSocket
+	m_serverSocket.Create(6666);
+	m_serverSocket.Listen();
+	// Client
+	CServerSocket m_clientSocket;  //CServerSocket: CSocket
+	m_clientSocket.Create();
+	m_clientSocket.Connect(m_ip_val, m_port_val);
+	
+//	
+// Multithreading     // https://www.tutorialspoint.com/mfc/mfc_multithreading.htm
+// A thread is a path of execution within a process.
+// CWinThread objects
+// all the framework helper function AfxBeginThread,
+// which creates the CWinThread object for you.
+//
+//EX::
+UINT MyThreadProc(LPVOID Param) {
+	while (!stopNow && (currValue < maxValue)) {
+		currValue++;
+		Sleep(50);     // would do some work here
+	}
+	return TRUE;
+}
+ AfxBeginThread(MyThreadProc, 0); // <<== START THE THREAD
 
-// Cstring use
+//
+//  https://www.tutorialspoint.com/mfc/mfc_serialization.htm
+// CHECK MFCApplication9
+// Serialization is the process of writing or reading an object to or
+// from a persistent storage medium such as a disk file
+// maintain the state of structured data (such as C++ classes or structures) 
+// Serialize() member function
+// CObject class     // CEmployee : public CObject
+void Serialize(CArchive& ar);
+employee.Serialize(ar);
+ar.IsStoring()
+DECLARE_SERIAL(CEmployee);
+IMPLEMENT_SERIAL(CEmployee, CObject, 0)
+ar << empID << empName << age;    // Storing
+  ar >> empID >> empName >> age;  // Opening
+// EX
+// stoirng in  CEmployee : public CObject
+   employee.empID = m_id;
+   employee.empName = m_strName;
+   employee.age = m_age;
+   employee.Serialize(ar);
+   
+   
+//
+// File
+// File Processing  // can handle the reading and writing of Unicode text files
+// CStdioFile 
+CStdioFile();
+CStdioFile(CAtlTransactionManager* pTM);
+CStdioFile(FILE* pOpenStream);
+CStdioFile(LPCTSTR lpszFileName, UINT nOpenFlags);
+CStdioFile(LPCTSTR lpszFileName, UINT nOpenFlags, CAtlTransactionManager* pTM);
+// 
+//OPEN
+CStdioFile file;
+file.Open(L"D:\\MFCDirectoryDEMO\\test.txt", CFile::modeRead | CFile::typeText);
+file.ReadString(m_strEditCtrl);
+file.Close();
+//
+//SAVE
+file.Open(L"D:\\MFCDirectoryDEMO\\test.txt", CFile::modeCreate | CFile::modeWrite | CFile::typeText);
+file.WriteString(m_strEditCtrl);
+file.Close();
+
+
+
+// File    //  https://www.tutorialspoint.com/mfc/mfc_file_system.htm
+GetLogicalDrives() //  http://www.tenouk.com/cpluscodesnippet/getlogicaldrives.html
+//
+// File  
+// File  open and save    // https://www.tutorialspoint.com/mfc/mfc_serialization.htm
+//Open
+CFile file;
+file.Open(L"EmployeeInfo.hse", CFile::modeRead);
+CArchive ar(&file, CArchive::load);
+Employee employee;
+//Save
+CFile file;
+file.Open(L"EmployeeInfo.hse", CFile::modeCreate | CFile::modeWrite);
+CArchive ar(&file, CArchive::store);
+//
+// Directories       		//https://www.tutorialspoint.com/mfc/mfc_file_system.htm
+// A directory is a file
+// Directory is a physical location
+// CreateDirectory() 
+CreateDirectory(L"D:\\MFCDirectoryDEMO", &saPermissions);
+CreateDirectory(L"D:\\MFCDirectoryDEMO\\Dir1", NULL);
+RemoveDirectory();
+RemoveDirectory(L"D:\\MFCDirectoryDEMO\\Dir1")
+MoveFile(L"D:\\MFCDirectoryDEMO\\Dir1", L"D:\\MFCDirectory\\Dir1")
+
+
+
+
+// SDI
+// Single Document Interface or SDI
+// one view to the user
+// application cannot display more than one document at a time
+
+// MDI
+// Multiple Document Interface or MDI
+// user can open more than one document in the application without closing it
+// the application provides a parent frame that acts as the main frame.
+
+//
+// Cstring 
  CString sDriver = L"MICROSOFT ACCESS DRIVER (*.mdb)";
 // Cstring to int converstion  // https://stackoverflow.com/questions/992757/convert-mfc-cstring-to-integer
 CString str2;
 int x=_wtoi(str2);
+
+//
+// CString Array || CStringArray
+ CStringArray class
+ CStringArray m_msgArray;
+ m_msgArray.Add(message);  //  CString messge  //
+ m_msgArray.Add(L"hi there");
  
  
+ 
+//
 //MessageBox
 MessageBox(L"File > New menu option");
+AfxMessageBox(L"Data Received");
 
 //  COMBO BOX  
 //  http://www.functionx.com/visualc/controls/combobox.htm
@@ -247,15 +426,21 @@ Majors->Create(WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST,CRect(10, 10, 140, 150),
 
 
 
+
 //WINDOWS STYLE
 WS_CAPTION 
 WS_CHILDWINDOW
 check more in  MFC file ...
 
 //  	https://www.tutorialspoint.com/mfc/mfc_quick_guide.htm
-
+// CPoint
 CPoint(); 
 CPoint(int X, int Y); 
+// EX
+ CPoint Pt[7];
+	Pt[0] = CPoint(20, 150);
+	Pt[1] = CPoint(180, 150);
+	Pt[2] = CPoint(180, 20);
 
 CSize(); 
 CSize(int initCX, int initCY); 		// More
@@ -719,3 +904,18 @@ void CMainFrame::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags) {
          MessageBox(L"Whatever");
    }
 }
+
+//
+// LOOP BUTTON TECHNIQUES
+while (!stopNow)    // Bool stopNow    // Button on : stopNow =1 // Button Off : stopNow =0
+{
+	// DO CALCULATINO
+}
+
+
+// Check this syntax
+DWORD uDriveMask ;
+TCHAR szDrive[] = _T(" A:");
+
+// Get Length
+m_strEditCtrl.GetLength();

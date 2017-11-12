@@ -5,6 +5,13 @@ Heriarchy matteres :: Above function cannot call below function !!
 CString is from MFC
 String is from C++
 
+//Inline
+// Inline member functions (C++ only) ... 
+ A member function that is defined inside its class member
+  list is called an inline member function.
+ The inline functions are a C++ enhancement feature 
+to increase the execution time of a program.
+
 // NULL 	// NULL is a pointer    // 0 // NULL is ASKII ?? // int x = NULL            output : 0
 // nullptr  // nullptr is a pointer // nullptr is a keyword  // int *ptr = nullptr;		output : 0
 
