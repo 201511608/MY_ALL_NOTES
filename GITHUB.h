@@ -32,7 +32,7 @@ git pull // switch branch or restore working tree files
 git branch branchanyname   // To create branch
 git checkout branchanyname   // To get in to branch
 git checkout master  // default master branch
-git merge loginbranchtomaster // add two branches
+git merge loginbranch frommaster // add two branches [we are in login branch    then merge, it merge to login branch
 
 git remote // show internet access routs
 git remote add origin https://github.com/201511608/Sample-app-for-tutorial.git // origin :: can name any thing 
