@@ -388,6 +388,14 @@ MoveFile(L"D:\\MFCDirectoryDEMO\\Dir1", L"D:\\MFCDirectory\\Dir1")
 // user can open more than one document in the application without closing it
 // the application provides a parent frame that acts as the main frame.
 
+
+
+
+
+
+
+
+
 //
 // Cstring 
  CString sDriver = L"MICROSOFT ACCESS DRIVER (*.mdb)";
