@@ -393,15 +393,34 @@ MoveFile(L"D:\\MFCDirectoryDEMO\\Dir1", L"D:\\MFCDirectory\\Dir1")
 
 
 
+// char    // Genereal
+char word[] = "Hello, World";
+char word[12] = { 'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '\0' };
 
-
-
-//
-// Cstring 
- CString sDriver = L"MICROSOFT ACCESS DRIVER (*.mdb)";
-// Cstring to int converstion  // https://stackoverflow.com/questions/992757/convert-mfc-cstring-to-integer
-CString str2;
-int x=_wtoi(str2);
+// 
+// String   
+// bjects that represent sequences of characters
+// terminated by a null character '\0'
+// Cstring 				// https://www.tutorialspoint.com/mfc/mfc_strings.htm
+// A class to manipulate string 
+   CString string1 = _T("This is a string1"); 				// Method_1
+   CString string2("This is a string2");					// Method_2
+   CString string3 = L"MICROSOFT ACCESS DRIVER (*.mdb)";    // Method_3
+	// Append 
+	   m_strText.Append(string1 + L"\n");
+       m_strText.Append(string2);
+	// Empty
+	   string2.IsEmpty();  // Bool
+	// Concatenation
+	   string3 += _T("hi there concatenation");
+	   CString string4 = L"\n " +string3 + string2;
+ 
+ 
+ 
+ 
+// Convert ||  conversion
+// Cstring to int conversion  // https://stackoverflow.com/questions/992757/convert-mfc-cstring-to-integer
+int x=_wtoi(str2); CString str2;
 
 //
 // CString Array || CStringArray
