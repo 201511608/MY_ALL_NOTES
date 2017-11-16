@@ -414,10 +414,71 @@ char word[12] = { 'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '\0' };
 	// Concatenation
 	   string3 += _T("hi there concatenation");
 	   CString string4 = L"\n " +string3 + string2;
- 
- 
- 
- 
+	   CString m_strText = L"message: " + message;
+			// TECHNIQUES
+				m_string_value = "string1 and string1 are same\n";
+				m_string_value += "string3 and string4 are same";  // CONTINEOUS ADD
+
+   if (string3 == string4)
+      m_strText += "string3 and string4 are same";
+	// String Length
+	   int length = string1.GetLength();   // CString string1 = _T("This is string 1");
+			// strLen.Format(L"Length is : %d ",len);  // m_string_value = strLen; updatedata(FALSE);
+	// String Comparison   ==
+		string1 == string2  // 	  CString string1 = _T("Hello"); CString string2 = _T("World");
+		
+		
+		
+// CArray					https://www.tutorialspoint.com/mfc/mfc_carray.htm
+	//dynamically shrink and grow as necessary
+	//Array indexes always start at position 0
+	CArray<CString, CString>strArray;
+		//Add items
+			strArray.Add(L"Ali");
+			strArray.Add(L"Ahmed");
+		// Retrieve Items
+			strArray.GetAt(1);
+		// Add Items in the Middle
+			strArray.InsertAt(1, L"Allan");  //(index, item)
+		// Update Item Value
+			strArray.SetAt(2, L"Salman");	 // updates the actual value
+		// Size
+			 strArray.GetSize()
+	// Copy Array   // copy the entire array into another
+			strArray2.Copy(strArray); // CArray<CString, CString>strArray2;
+		// Remove Items
+			strArray2.RemoveAt(1);  // index
+			
+// Linked Lists   			https://www.tutorialspoint.com/mfc/mfc_linked_lists.htm
+	//  is a linear data structure 
+	//  each element is a separate object
+	//CList
+		CList<double, double>m_list;
+			// Add items
+				m_list.AddTail(100.75);
+				m_list.AddTail(85.26);
+			// Retrieve Items
+				m_list.GetNext(pos);  // POSITION pos = m_list.GetHeadPosition(); //Imp
+			//  Add Items in the Middle
+				POSITION position = m_list.Find(85.26);
+				m_list.InsertBefore(position, 200.0);
+				m_list.InsertAfter(position, 300.0);
+			// Update Item Value
+				   position = m_list.Find(300.00);
+				   m_list.SetAt(position, 400.00);
+			// Remove Items
+				   position = m_list.Find(95.78);
+				   m_list.RemoveAt(position);
+				   
+// Database
+	//  CDatabase      // https://www.tutorialspoint.com/mfc/mfc_database_classes.htm
+		CDatabase database;    //#include "odbcinst.h"  //#include "afxdb.h"
+			sDsn.Format(L"ODBC;DRIVER={%s};DSN='';DBQ=%s", sDriver, sFile);
+			database.Open(NULL,false,false,sDsn);
+		SqlString = "INSERT INTO Employees (ID,Name,age) VALUES (5,'Sanjay',69)";
+			database.ExecuteSQL(SqlString);
+			database.Close();
+			
 // Convert ||  conversion
 // Cstring to int conversion  // https://stackoverflow.com/questions/992757/convert-mfc-cstring-to-integer
 int x=_wtoi(str2); CString str2;
