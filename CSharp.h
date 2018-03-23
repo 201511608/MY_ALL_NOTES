@@ -61,7 +61,9 @@ radioButton1.Enabled = false;  radioButton1.Enabled = true;   // false true
 e
 The EventArgs object that contains the event data. 
 
-
+// DLL
+	// DYNAMIC LINK LIBRARY FOR CSHARP
+	// PROJECT -> C# -> CLASSLIBRARY  [WRITE PROGRAM AND BUILD]
 
 //Techniques............................................................................
 

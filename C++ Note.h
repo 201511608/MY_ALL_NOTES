@@ -1,4 +1,7 @@
 C++...............................
+//
+//Online Compiler
+// https://www.jdoodle.com/online-compiler-c++
 
 In c++ function or Class writing above or Below Matters a lot !
 Heriarchy matteres :: Above function cannot call below function !!
@@ -19,8 +22,50 @@ using namespace std;
 #include <iostream>   // for cout cin
 #include <string>     // for using string
 #include <sstream>    // to print string in cout!!  // getline(cin, yours.title);
+//////////////////
+
+// MACROS
+// http://www.geeksforgeeks.org/cc-preprocessors/
+//
+
+    PREPROCESSORS                  COMPILER                     LINKER
+ FIEL.C -> EXPANDED SOURCECODE[FILE.I] -> OBJECTS CODE[PROGRAM.OBJ]->EXECUTABLE FILE [PROGRAM.EXE]
+
+PREPROCESSOR DIRECTIVES
+	MACROS
+	FILE INCLUSION
+	CONDITIONAL
+	OTHER
+// no semi-colon(‘;’) at the end of macro definition
+# define LIMIT 10
+# define AREA(L,B) (L*B)
+#define __AREA(l,b) (l*b)
+#define AREA2(L,B) (L-B)
+// The ‘<‘ and ‘>’ brackets tells the compiler to look for the file in standard directory.
+#include< file_name > // STANDARD DIRECTORY
+#include"filename"		// ANY DIRECTORY AS PER WE DEFINE
+// compile a specific portion of the program or to skip compilation of some specific part of the program based on some conditions
+#ifdef macro_name
+    statement1;
+    statement2;
+	.
+#endif
 
 
+// #pragma  Directive: This directive is a special purpose directive and is used to turn on or off some features.
+#pragma 
+#pragma startup   //  void __attribute__((constructor)) func1();
+#pragma exit      // void __attribute__((destructor)) func2();
+#pragma once     // current source file to be included only once in a single compilation
+#pragma region 
+#pragma endregion
+
+// ‘ is defined then the block of statements will execute normally but if it is not defined, the compiler will simply skip
+#ifdef
+#ifndef
+#endif
+
+///////////////////
 // ??
 nullptr_t x ,y;  // x and y equal to  nullptr
 CHAR
@@ -33,6 +78,7 @@ CONVERT CONVERTION
 float f = 12.345;
 int i = (int)f;
 
+  D:\Design+_GUI\src\DPLUS_EC\DPLUS_ECRes.h(709):#define IDR_GURGW_MENU_SUB              17032
 
 
 TYPEDEF
@@ -839,3 +885,206 @@ int main(void) {
 }
 // output 
 // Total objects: 3
+
+
+// Class Example
+
+#include <iostream>
+using namespace std;
+
+class Base //1
+{
+public:
+ virtual void show() { cout<<" In Base \n"; }
+ virtual void show_new() {cout << "show_new_Base Class \n";}
+};
+
+class Derived: public Base  //2
+{
+public:
+	virtual void show() { cout<<"In Derived \n"; }
+	 virtual void show_new() {cout << "show_new_Derrived Class \n";}
+};
+
+class Derived2 : public Derived
+{
+public:
+virtual void show() { cout<< "In Derived2 \n";}
+
+};
+
+int main(void)
+{
+	Derived *bp = new Derived2;
+	bp->show(); // RUN-TIME POLYMORPHISM
+	bp->show_new();
+	
+	return 0;
+}
+
+// Class up down Base Derived call Examples
+#include <iostream>
+using namespace std;
+
+class Base //1
+{
+public:
+ virtual void show() { cout<<" In Base \n"; }
+ virtual void show_new() {cout << "show_new_Base Class \n";}
+};
+
+class Base2 //1
+{
+public:
+ virtual void show() { cout<<" In Base2 \n"; }
+ virtual void show_new() {cout << "show_new_Base2 Class \n";}
+};
+
+
+class Derived: public Base  //2
+{
+public:
+	virtual void show() { cout<<"In Derived \n"; }
+	 virtual void show_new() {cout << "show_new_Derrived Class \n";}
+};
+
+
+class Derived2 : public Derived
+{
+public:
+virtual void show() { cout<< "In Derived2 \n";}
+void show_Derived2(){cout<< "derived2 show function";}
+};
+
+class Derived3 : public Base, public Base2
+{
+    public:
+    void show(){ cout<< "Derived3 class\n";}
+};
+int main(void)
+{
+	Derived *bp = new Derived2;
+	Derived2 D2;
+//	bp->show_Derived2();  // Error cause no show_derived2 function in Derived class
+	bp->Base::show();
+	bp->Derived::show();
+	D2.Base::show_new();
+	D2.Derived::show_new();
+	D2.Derived2::show();
+	bp->show(); // RUN-TIME POLYMORPHISM
+	bp->show_new();
+	
+	Derived3 D3;
+	D3.show();
+	D3.Base2::show();
+	return 0;
+}
+
+/// 
+
+// STATIC    eX TO COUNT CLASS CALL COUNT JUST SIMPLE EXAMPLE
+// https://www.tutorialspoint.com/cplusplus/cpp_static_members.htm
+//
+#include <iostream>
+ 
+using namespace std;
+
+class Box {
+   public:
+      static int objectCount;
+      
+      // Constructor definition
+      Box(double l = 2.0, double b = 2.0, double h = 2.0) {
+         cout <<"Constructor called." << endl;
+         length = l;
+         breadth = b;
+         height = h;
+         
+         // Increase every time object is created
+         objectCount++;
+      }
+      double Volume() {
+         return length * breadth * height;
+      }
+      
+   private:
+      double length;     // Length of a box
+      double breadth;    // Breadth of a box
+      double height;     // Height of a box
+};
+
+// Initialize static member of class Box
+int Box::objectCount = 0;
+
+int main(void) {
+   Box Box1(3.3, 1.2, 1.5);    // Declare box1
+   Box Box2(8.5, 6.0, 2.0);    // Declare box2
+
+   // Print total number of objects.
+   cout << "Total objects: " << Box::objectCount << endl;
+
+   return 0;
+}
+
+
+//
+// STATIC FUNCTION
+// https://www.tutorialspoint.com/cplusplus/cpp_static_members.htm
+// static functions are accessed using only the class name and the scope resolution operator ::. //   Box::getCount()   // Class Box !
+// do not have access to the this pointer of the class.
+#include <iostream>
+ 
+using namespace std;
+
+class Box {
+   public:
+      static int objectCount;
+      static int a;
+      
+      // Constructor definition
+      Box(double l = 2.0, double b = 2.0, double h = 2.0) {
+         cout <<"Constructor called." << endl;
+         length = l;
+         breadth = b;
+         height = h;
+
+         // Increase every time object is created
+         objectCount++;
+         a = 10;
+      }
+      double Volume() {
+         return length * breadth * height;
+      }
+      static int getCount() {
+          a= 11;
+         return objectCount;
+      }
+      
+   private:
+      double length;     // Length of a box
+      double breadth;    // Breadth of a box
+      double height;     // Height of a box
+};
+
+// Initialize static member of class Box
+int Box::objectCount = 0;
+int Box::a=0;
+
+int main(void) {
+   // Print total number of objects before creating object.
+   cout << "Inital Stage Count: " << Box::getCount() << endl;
+
+   Box Box1(3.3, 1.2, 1.5);    // Declare box1
+   Box Box2(8.5, 6.0, 2.0);    // Declare box2
+
+   // Print total number of objects after creating object.
+   cout << "Final Stage Count: " << Box::getCount() << endl;
+
+   return 0;
+}
+
+d:\design+_gui\dgnlib\ec_calc_reportlib\ec_ec2_beam_struct.h
+
+//
+// IsEmpty()
+csCodeSRC.IsEmpty()

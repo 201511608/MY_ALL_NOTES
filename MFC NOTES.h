@@ -946,3 +946,28 @@ TCHAR szDrive[] = _T(" A:");
 
 // Get Length
 m_strEditCtrl.GetLength();
+
+
+
+// MFC LIBRARY  https://www.tutorialspoint.com/mfc/mfc_libraries.htm
+	STATIC LIBRARY	   // FILE.H , FILE.LIB
+	DYNAMIC LIBRARY    // FILE.DLL, FILE.LIB
+	
+// Runtime
+// CRuntimeClass
+// CRuntimeClass provides runtime class information (such as pointer to the object)
+//  DECLARE_DYNAMIC and IMPLEMENT_DYNAMIC macros
+// http://www.ucancode.net/faq/MFC%20RUNTIME_CLASS-IsKindOf.htm
+// 
+// 	
+Error	1	error C2664: 'CIRBESModeSectDlg::CIRBESModeSectDlg(CISRBESModeDlg *)' : cannot convert parameter 1 from 'CIRBESModeDlg *const ' to 'CISRBESModeDlg *'	d:\design+_gui\src\dplus_is\irbesmodedlg.cpp	715
+
+
+//   Cool technique
+// If same data exist global 
+#ifndef EC_EC2_COL_STRUCT__
+#define EC_EC2_COL_STRUCT__
+// All data here//
+//
+//////
+#endif

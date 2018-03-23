@@ -1,5 +1,16 @@
 VISUAL STUDIO
 
+//SHORT CUT FOR EVERY THING
+// MENU -> tOOLS -> oPTIONS ->oPTIONS ->Environment ->[select what you want and apply shortcut key]
+// https://abhijitjana.net/2010/11/08/use-shortcut-or-context-menu-for-open-containing-folder-in-visual-studio/
+
+
+
+Ctrl + Shift + G  			//Open File Loacation directly
+
+
+
+
 //GUI NUMBERING AS PER ORDER
  Ctrl + D //In gui show numbers
 
