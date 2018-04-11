@@ -191,6 +191,41 @@ http://www.computerhope.com/unix/ugrep.htm
 
 
 
+91. Metacharacters
+* to match 0 or more characters, a question mark (?) matches with a single character
+
+
+
+
+
+
+///
+//
+Mkdir Riyaz Riyaz_copy Riyaz_tar Riyaz_Rename
+cd Riyaz 
+touch a.txt b.txt c.txt d.txt
+cd ..
+
+
+i=1
+for file in Riyaz/*                            */
+do 
+echo $file					 # Print
+cp -r $file Riyaz_copy/ ;  	 # copy
+ls -l $file;  				 # encript
+# tar -cvf $file Riyaz_tar/; # Compress
+mv $file Riyaz_Rename/$i ;   # move->Rename
+i=$i+1;
+done 
+//
+///
+
+
+
+
+
+
+
 ////////////////////////////////////////////////////////
 //  WEB
 // AMEZON WEB DOPOSIT
@@ -226,3 +261,5 @@ Vi vim
 
 Touch *    //to update all files in server !!
 ///////////////////////////////////////////////////////////////////////////
+
+
