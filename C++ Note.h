@@ -1,4 +1,58 @@
 C++...............................
+// CONTENT
+1  // C++  Naming Conventions
+2  // DEEP COPY VS SHALLOW COPY
+3  //
+4  //
+5  //
+6  //
+
+// :: 1
+///////////////////////////////////////////////////////
+// C++  Naming Conventions
+
+1> CamelCase  :WordPerfect
+-> cryptic Example : Dog d  Lion l
+-> Descriptive    :  Dog myPetDog   Lion escaped Lion
+
+-> Class Names  [Start with Upper case, Upper latter as saperator, No underscores '_']
+	->class OdeSolver
+	->class ParamerFile
+	->class FluidOz          NOT FluidOZ
+	->class NetworkAbcKey    NOT NetworkABCKey
+
+-> Method and Function Names
+	->Get()
+	->Set()
+	->HasHitRetryLimit()
+	->HandleError()
+	->Max(), ReturnMax()
+
+-> Pointer Variables  [ prepend with 'p'  Place the * close to variable name]
+	-> String *pName = New String;
+	-> String *pName, name, address  // Note only pName is pointer
+
+-> Class Attribute Names
+	-> Private  [prepend with m]
+		-> private:
+				int mCleanHouse;
+				int mErrorNumber;
+				String *mpName;    // Note  pName  -> mpName  //Private
+
+->Reference Variables  and Function Returning References   [ prepended with 'r' ] // Modifiable Object
+	->StatusInfo& rStatus  // if Private  -> mrStatus  
+	->Void  TestConveyorStart(StatusInfo& rStatus);
+	
+->Global Constants [in cpas  and '_' saperators]
+	->const double TWO_PI = 6.143
+
+->Static Variables [prepended with 's']
+	->static sStatus;
+	
+// 2
+/////////////////////////////////////////////////////////////////////////////
+// DEEP COPY VS SHALLOW COPY
+
 //
 //Online Compiler
 // https://www.jdoodle.com/online-compiler-c++
@@ -1088,3 +1142,56 @@ d:\design+_gui\dgnlib\ec_calc_reportlib\ec_ec2_beam_struct.h
 //
 // IsEmpty()
 csCodeSRC.IsEmpty()
+
+
+//
+// NEW     
+  // https://www.geeksforgeeks.org/new-and-delete-operators-in-cpp-for-dynamic-memory/
+  // http://www.cplusplus.com/doc/tutorial/dynamic/
+// New operator Initializes the memory and returns the address of the newly allocated and 
+// Initialized Memory to the pointer variable
+// For dynamically allocated memory like “int *p = new int[10]”,
+// it is programmers responsibility to deallocate memory when no longer needed.
+int *p = NULL;  // Pointer initialized with NULL
+p = new int;    // Then request memory for the variable
+
+float *p = NULL;   
+p = new float;     
+
+int * foo;
+foo = new int [5];
+OR
+int *p = new int;    
+int *p = new int(25);      	//pointer-variable = new data-type(value);
+float *q = new float(75.25);
+int *p = new int[10]  // new operator is also used to allocate a block(an array) of memory of type data-type
+
+
+// DELETE
+// Responsibility to deallocate dynamically allocated memory, programmers.
+delete pointer-variable;  
+delete p;
+
+delete[] pointer-variable;   // It will free the entire array
+delete[] p; 
+
+
+
+//Reference  //https://www.geeksforgeeks.org/references-in-c/
+Reference is Alternative name for an existing variable
+variable can be declared as reference by putting ‘&’
+
+int x = 10;      -> 10
+int& ref =x;     -> 10
+ref = 100 ;      -> ref =100,  x =100
+int& ref2 =x;    -> ref2 = 100
+ref2 =999;       -> ref2=999  ref =999,  x =999
+
+
+
+
+
+
+
+	
+	

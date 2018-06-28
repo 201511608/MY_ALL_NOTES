@@ -1,9 +1,9 @@
 // MFC: MICROSOFT FOUNDATION CLASS LIBRABY
-// MFC:: library provides a set of functions, constants, data types, and classes 
+// MFC:: library provides a set of functions, constants, data types, and classes.
 // to simplify creating applications for the Microsoft Windows operating systems.
 // Book :: Essential Concepts for Building Interactive Graphics Applications  ??
 // AFX  :: Application FrameWork   // LIke ActiveX DirectX... AFX
-An MFC DLL is a binary file,shared library of functions that can be used simultaneously by multiple applications
+An MFC DLL is a binary file,shared library of functions that can be used simultaneously by multiple applications.
 
 ATL :: Active Template Library     // https://msdn.microsoft.com/en-us/library/3ax346b7.aspx
 // the operating system is constantly asked to perform some assignments.
