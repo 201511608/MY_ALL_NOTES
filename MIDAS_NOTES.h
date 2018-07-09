@@ -35,10 +35,17 @@
 	// MEMBRAIN IN PLANE FORCES
 	// SHELL IN MIX OF BOTH MEMBRAIN AND PLATE ELEMENT
 	// In Elements Shell Inplane and outplane :: Plate element resists Bending in in-plane and outplane direction. [Resist Forces Bm sf torsion reaction]
+				// In Software Gen/Civil
+						// -> In plane thickness only  act as Membrain Element.
+						// -> Out Plane thickness only act as Plate Element.
+						// -> In Plane and Out Plane thickness act as Both Element
+						
 	// In Elements WallElement: Wall beam and column Modified way.  
     // Cable and Beam
 	//? Beam element can bend but bar element not. This is like membrane element and plate element. Plate element can bend but membrane element not.
 	//? Membranes are flexible sheets like rubber where in plane tension is through transverse loads where plates resist these types of loads by moments and shear forces
+	
+	// As Per sindhu Different shell/Plate in Design Consider or axial and not consider of axial.
 	
 // 4
 // DESIGN+ Language change
@@ -64,7 +71,7 @@
 // Coordinate system
 	// Global coordinate system (GCS)
 	// User Coordinate System   (UCS)
-	//Element
+	// Element
 		//Element Coordinate System (ECS)
 	//Node
 		//Node local Coordinate System (NCS)
@@ -75,6 +82,7 @@
 	//In structural engineering, a diaphragm is a structural element that transmits lateral loads
 	// to the vertical resisting elements of a structure (such as shear walls or frames). Diaphragms are typically 
 	// horizontal, but can be sloped such as in a gable roof on a wood structure or concrete ramp in a parking garage.//
+	// Plane
 
 //9
 //Line, Grillage, Cross beam.
@@ -92,3 +100,9 @@
 // The deformations of master and slave nodes of a rigid link are not exactly same
 //The rotations of slave node must be the same as master node. But, the translational displacements of slave node
 //Maternode as referal  //if rotates it rotates related to master Mode !!!???!!!
+
+
+// 10
+// Elements Types in Gen/Civil
+// Truss, Tension Only, Hook, Cable, Compression Only, Gap, General Beam, Tapered Beam, Plate-Thick, Plate-Thin,
+// Plane Stress, Solid, Wall Membrane, Wall Plate,Plane Strain, Axisymmetric
