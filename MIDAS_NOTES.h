@@ -1,17 +1,25 @@
 // Content ::
-//1  :: OFFSET
-//2  :: General Software NOTES
-//3  :: Plate Membrain shell wall Elements  ? 
-//4  :: DESIGN+ Language change
-//5  :: Change Element local axis 
-//6  :: Elastic link
-//7  :: Coordinate system
-//8  :: Diaphragm
-//9  :: 
-//10  :: 
+//1   :: OFFSET
+//2   :: General Software NOTES
+//3   :: Plate Membrain shell wall Elements  ? 
+//4   :: DESIGN+ Language change
+//5   :: Change Element local axis 
+//6   :: Elastic link
+//7   :: Coordinate system
+//8   :: Diaphragm
+//9   :: Rigid link
+//10  :: Elements Types
 //11  :: 
+//12  :: 
+//13  :: 
+//14  :: 
+//15  :: 
 
+Help Civil
+http://manual.midasuser.com/EN_Common/civil/870/index.htm
 
+Help Gen
+http://manual.midasuser.com/EN_Common/Gen/870/index.htm
 
 // MIDAS GEN
 //1
@@ -47,13 +55,13 @@
 	
 	// As Per sindhu Different shell/Plate in Design Consider or axial and not consider of axial.
 	
-// 4
+//4
 // DESIGN+ Language change
 	LANGUAGE ENGLISH 
 		->PRODUCT.INFO    (OPEN AND CHANGE TO ENGLISH)
 			->LOCATION    DESIGN+ -> BIN -> DEBUG -> X86 -> (PASTE PRODUCH.INFO/IF AVALILABE CHANGE TO ENGLISH)
 			
-// 5
+//5
 // Change Element Local Axis
 	// Change local axis from : NODE/ELEMENT -> CHANGE PARAMETERS -> REVERCE LOCAL AXIS		
 	//Element Local axis as per Element Node Connectivity
@@ -102,7 +110,8 @@
 //Maternode as referal  //if rotates it rotates related to master Mode !!!???!!!
 
 
-// 10
-// Elements Types in Gen/Civil
+//10
+// Elements Types
+// in Gen/Civil
 // Truss, Tension Only, Hook, Cable, Compression Only, Gap, General Beam, Tapered Beam, Plate-Thick, Plate-Thin,
 // Plane Stress, Solid, Wall Membrane, Wall Plate,Plane Strain, Axisymmetric

@@ -1,5 +1,26 @@
 
- //Csharp 
+//C# 
+
+/////////////////////////////
+/////// CONTENT
+// 1    // String
+// 2    
+// 3    
+// 4    
+// 5
+// 6
+// 7
+// 8
+// 9
+// 10
+// 11
+// 12
+// 13
+
+
+
+
+
  //string
  string msg = string.Empty; 
  string concreteMatName = "Concrete";
@@ -66,7 +87,14 @@ The EventArgs object that contains the event data.
 	// PROJECT -> C# -> CLASSLIBRARY  [WRITE PROGRAM AND BUILD]
 
 //Techniques............................................................................
-
+  foreach (string i in Dd_Tablelist)
+            {
+                foreach (DataColumn column in table.Columns)
+                {
+                    // ... Write value of first field as integer.
+                    MessageBox.Show(column.ColumnName);
+                }
+            }
 
 
 // Mouse click Code
@@ -93,5 +121,21 @@ The EventArgs object that contains the event data.
 //Call
 LeftMouseClick(500, 500);   // x y positions
 
+//var
+//  var can be declared without giving an explicit type
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/implicitly-typed-local-variables
 
 
+// SQL CONNECTION
+OleDbConnection myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=aStuDB1.accdb;Persist Security Info=False;");
+myConn.Open();
+
+// Dictonary
+Dictionary<int, string> dict = new Dictionary<int, string>()
+                                            {
+                                                {1,"One"},
+                                                {2, "Two"},
+                                                {3,"Three"}
+                                            };
+dict.Keys.ElementAt(i), 
+dict[ dict.Keys.ElementAt(i)]);
