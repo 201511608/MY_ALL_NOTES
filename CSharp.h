@@ -11,9 +11,9 @@
 // 6
 // 7
 // 8
-// 9
-// 10
-// 11
+// 9   Table  For
+// 10  Label
+// 11  Form
 // 12
 // 13
 
@@ -51,6 +51,12 @@ Console.ReadLine();
 textBox1.Text		// Taking string
 Convert.ToInt32( textBox1.Text);  // Taking numeric vavlue
 
+//Autotext           
+this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+this.textBox1.AutoCompleteCustomSource.AddRange( textbox1_branch.ToArray()); // takes array  // list to array
+
+
 // Combo box like drop down menu
 comboBox1.Text
 Convert.ToInt32(comboBox1.Text)   // Taking input
@@ -87,15 +93,6 @@ The EventArgs object that contains the event data.
 	// PROJECT -> C# -> CLASSLIBRARY  [WRITE PROGRAM AND BUILD]
 
 //Techniques............................................................................
-  foreach (string i in Dd_Tablelist)
-            {
-                foreach (DataColumn column in table.Columns)
-                {
-                    // ... Write value of first field as integer.
-                    MessageBox.Show(column.ColumnName);
-                }
-            }
-
 
 // Mouse click Code
 
@@ -139,3 +136,65 @@ Dictionary<int, string> dict = new Dictionary<int, string>()
                                             };
 dict.Keys.ElementAt(i), 
 dict[ dict.Keys.ElementAt(i)]);
+
+
+
+// 9
+// 
+// Table Row Column Read  :: For
+https://stackoverflow.com/questions/9022118/access-cell-value-of-datatable
+
+  // table column
+  foreach (string i in Dd_Tablelist)
+            {
+                foreach (DataColumn column in table.Columns)
+                {
+                    // ... Write value of first field as integer.
+                    MessageBox.Show(column.ColumnName);
+                }
+            }
+
+  for (int r = 0; r < TotSems.Rows.Count; r++)
+           {
+			   {
+				   
+			   }
+		   }			   
+// Read write row and Column in Datatable
+rGrid.CurrentWorksheet[r, c] = TotSems.Rows[r].ItemArray[c].ToString();
+rGrid.CurrentWorksheet[r, c] = TotSems.Columns[r].ColumnName;
+
+foreach (DataColumn column in table.Columns)
+
+
+// 10
+// lable
+Label StuName = new Label();
+StuName.Location = new Point(13, 13);
+StuName.Text = "Student Name";
+this.Controls.Add(StuName);
+
+
+// 11
+// Form
+AddSujPart_Form1 objUI = new AddSujPart_Form1();
+objUI.ShowDialog();
+
+
+// 12
+// Combobox
+ComboBox comboBox1 = new ComboBox();
+comboBox1.Items.Add("Tokyo"); 
+comboBox1_Tables.SelectedIndex = 0; 
+  //Autotext
+https://www.codeproject.com/Tips/789705/Create-combobox-with-search-and-suggest-list
+
+// 13
+// Global Name
+public static OleDbConnection cnn;
+public static IDictionary<string, List<string>> TabColNam;
+
+ 
+// 14
+// Tab in gui to Select sepecic box
+TabIndex// in Formview initialization
