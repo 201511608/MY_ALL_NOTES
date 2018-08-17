@@ -1,10 +1,9 @@
-
 //C# 
 
 /////////////////////////////
 /////// CONTENT
-// 1    // String
-// 2    
+// 1   String
+// 2   Random
 // 3    
 // 4    
 // 5
@@ -16,7 +15,11 @@
 // 11  Form
 // 12
 // 13
-
+// 14 TAB INDEXING IN GUI
+// 15 LIST
+// 16 Try Catch
+// 17 If in array
+// 18 On key down // enter
 
 
 
@@ -198,3 +201,34 @@ public static IDictionary<string, List<string>> TabColNam;
 // 14
 // Tab in gui to Select sepecic box
 TabIndex// in Formview initialization
+
+// 15 
+// List        
+List<string> textbox1_branch = new List<string>(); 
+
+// 16
+   try
+{
+// Program to be executed
+}
+	catch (Exception ex)
+{
+	// Popups Error Messagee
+	MessageBox.Show(ex.ToString());
+}
+
+
+// 17 
+// If in array
+   if (array.Contains(value)){}
+   
+// 18
+// On Key Down
+
+ private void textBox1_KeyDown(object sender, KeyEventArgs e)
+	{
+		if (e.KeyCode == Keys.Enter)
+		{
+
+		}
+	}

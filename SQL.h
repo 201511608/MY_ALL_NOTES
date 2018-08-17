@@ -14,6 +14,10 @@
 
 
 
+// C# SQL
+// http://csharp.net-informations.com/dataadapter/insertcommand-oledb.htm
+
+
 // 1
 // BASIC
 //SQL :: Structured Query Language 
@@ -267,7 +271,7 @@ INSERT INTO first_table_name [(column1, column2, ... columnN)]
    FROM second_table_name
    [WHERE condition];
    
-
+ 
 // SELECT Query
 https://www.tutorialspoint.com/sql/sql-select-query.htm
 	SELECT statement is used to fetch the data from a database table
@@ -421,3 +425,9 @@ https://www.tutorialspoint.com/sql/sql-sorting-results.htm
    
    
 //  Constraints
+
+
+
+// Join
+https://www.tutorialspoint.com/sql/sql-using-joins.htm
+The SQL Joins clause is used to combine records from two or more tables in a database.
