@@ -8,8 +8,17 @@ VISUAL STUDIO
 
 Ctrl + Shift + G  			//Open File Loacation directly
 
+// End or start of Curle brackets 
+CTRL + ] //  {  }
 
+// Select with in brackets
+Alt + [ + ] // {   }  //if or else or for  - {}
 
+// Copy line  //  While Cursor on the line 
+Ctrl + C   then  Ctrl + V
+
+// Ignore while Debug popup
+ Alt + I
 
 //GUI NUMBERING AS PER ORDER
  Ctrl + D //In gui show numbers
@@ -144,10 +153,12 @@ double clik change a name
 
 code snippet
 
-// Indentation ????   
+// Indentation ????    // Arrang Prperly
 ctr a             // OR  ctrl + k + f
     k
     f
+	Or
+Ctrl + K + I  or Ctrl + K + f
 
 ctrl s productivity power tools   	/// ????
 

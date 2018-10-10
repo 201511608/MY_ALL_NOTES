@@ -1,25 +1,93 @@
 // MFC: MICROSOFT FOUNDATION CLASS LIBRABY
+// C++
+/////////////////////////////
+/////// CONTENT
+// 1 // MFC  Basic, Al/_GUI, Drawing
+// 2 // Internet Server  - Client
+// 3 // Multithreading
+// 4 // Serialization   :: Storing
+// 5 // File // Directories 
+// 6 // char  // String // Convertion 
+// 7 // MessageBox,  WINDOWS STYLE, Add dialog
+// 8 // ICON  
+// 9 // MFC TECHNIQUES
+// 10// Civil Check 
+// 11  
+// 12
+// 13
+// 14  
+// 15  
+// 16  
+// 17  
+// 18  
+// 19
+
+
+
+// 1 
+// MFC Basic
+// MFC: MICROSOFT FOUNDATION CLASS LIBRABY
 // MFC:: library provides a set of functions, constants, data types, and classes.
 // to simplify creating applications for the Microsoft Windows operating systems.
 // Book :: Essential Concepts for Building Interactive Graphics Applications  ??
 // AFX  :: Application FrameWork   // LIke ActiveX DirectX... AFX
 An MFC DLL is a binary file,shared library of functions that can be used simultaneously by multiple applications.
 
+
+// 1.0
+// Techniques !
+	// Toggle grid // on it and arrange GUI
+		// Button // Add event and perform event   || can also add variable and change Button stuff
+		CButton m_buttonStart;  // CButton class and m_buttonStart is control variable
+
+	//
+	// Command Button  //Special Button  // Cool Button Use this buton
+		// Add GUI CommandButton -> Add Event Handiler ->
+
+	//
+	// Client Edge True!
+		// GUI text button property -> apperance -> client -> Edge to True it creats like box
+
+	//  Pause
+		system("PAUSE")   //TO STOP PROGRAM FOR SPECIFIC TIME !!!   OR USE BREAK POINT
+	
+	// # def  Cool technique
+		// If same data exist global 
+		#ifndef EC_EC2_COL_STRUCT__
+		#define EC_EC2_COL_STRUCT__
+		// All data here//
+		//
+		//////
+		#endif
+
+	// While
+	// LOOP BUTTON TECHNIQUES
+			while (!stopNow)    // Bool stopNow    // Button on : stopNow =1 // Button Off : stopNow =0
+		{
+			// DO CALCULATINO
+		}
+
+
+
+
+// 1.1
 ATL :: Active Template Library     // https://msdn.microsoft.com/en-us/library/3ax346b7.aspx
 // the operating system is constantly asked to perform some assignments.
 // WM_ =  Window Message
 
+// 1.2
 //https://www.tutorialspoint.com/mfc/mfc_activex_control.htm
 ActiveX control container  is a parent program that supplies the environment for an ActiveX (formerly OLE) control to run.
 // ActiveX is not a programming language, but rather a set of rules for how applications should share information.
 
-
+// 1.3
 // Parent Window  // https://www.tutorialspoint.com/mfc/mfc_windows_fundamentals.htm
 // If the Window you are creating is dependent of another, you can specify that it has a parent.
 //  This is done with the pParentWnd argument of the CFrameWnd::Create() method.
 //If the Window does not have a parent, pass the argument with a NULL value.
 
 
+// 1.4
 // Map of Messages  // DECLARE_MESSAGE_MAP()  //  https://www.tutorialspoint.com/mfc/mfc_messages_events.htm
 // Message Handeling // Windows is a message-oriented operating system
 // Each time an event such as a KEYSTROKE or MOUSE click occurs, a message is sent to the application.
@@ -33,14 +101,12 @@ ActiveX control container  is a parent program that supplies the environment for
 				END_MESSAGE_MAP()
 		  
 
-// Toggle grid // on it and arrange GUI
 
+// 1.5
 //
    .h 	   .cpp     // Generally for application
 Dgn.h 	Dgn.cpp		// Generally for Frame/Dialog
 //
-
-
 //MFC Important Files 
 Resource.h    	-> ID
 Myname.cpp 	  	-> Definition
@@ -48,7 +114,7 @@ Myname.h 		-> Declaration
 Myname_Dgn.rc   -> GUI   		 // Can View in Resource_view  // Can also open using Text
 
 
-
+// 1.6
 // MFC APPLICATION CAN ME MAKE BY 3 METHODS // Ways to create MFC
 1 WIZARD_ OF MFC AUTOMATICLLAY WILL INCLUDE EVERY THING
 	-> C++ -> MFC WIZAD
@@ -60,7 +126,8 @@ Myname_Dgn.rc   -> GUI   		 // Can View in Resource_view  // Can also open using
 // MFC WIZAD  C++ -> MFC -> CHECK DIALOG BASED
 			
 			
-			
+		
+// 1.7		
 Any application has two main sections: 
  Class
  Frame or Window 
@@ -98,6 +165,7 @@ CFrameWnd::Create()  // pParentWnd argument of the CFrameWnd::Create()
 			Create(NULL, _T("MFC Application Tutorial"), WS_SYSMENU,CRect(90, 120, 550, 480), NULL);
 
 
+// 1.8	
 // LIBRARY FUNCTIONS
 GetStyle()			  // slider  return Bool
 .GetPos()			  // Get Slider Position 
@@ -165,87 +233,115 @@ CButton m_buttonStart;  // CButton class and m_buttonStart is control variable
 // Command Button  //Special Button  // Cool Button Use this buton
 // Add GUI CommandButton -> Add Event Handiler ->
 //
-//Combobox  ::Like arrow drop list //https://www.tutorialspoint.com/mfc/mfc_combo_boxes.htm
-CComboBox m_comboBoxCtrl; // class CComboBox ; //  m_comboBoxCtrl Control Variable
-m_comboBoxCtrl.AddString(str); //CString str = _T("");     // str.Format(_T("Item"))
-m_comboBoxCtrl.GetLBText(m_comboBoxCtrl.GetCurSel(), m_strTextCtrl); // get text from m_comboBoxCtrl and save in  m_strTextCtrl
+//  COMBO BOX  
+	//Combobox  ::Like arrow drop list //https://www.tutorialspoint.com/mfc/mfc_combo_boxes.htm
+	CComboBox m_comboBoxCtrl; // class CComboBox ; //  m_comboBoxCtrl Control Variable
+	m_comboBoxCtrl.AddString(str); //CString str = _T("");     // str.Format(_T("Item"))
+	m_comboBoxCtrl.GetLBText(m_comboBoxCtrl.GetCurSel(), m_strTextCtrl); // get text from m_comboBoxCtrl and save in  m_strTextCtrl
+
+	//  http://www.functionx.com/visualc/controls/combobox.htm
+	//  https://www.tutorialspoint.com/mfc/mfc_combo_boxes.htm
+	CComboBox BOX1_CONTROL_R; // In Header file !
+	DDX_Control(pDX, IDC_COMBO1, BOX1_CONTROL_R); // In DoDataExchange()
+	BOX1_CONTROL_R.AddString(str);  // BOX1_CONTROL_R     =   GUI_COMBO_BOX -> ADD -> EVENTHANDELER -> MCONTROL
+	// EX:
+	// TODO: Add extra initialization here  
+	CComboBox *Majors = new CComboBox;  // ADD THIS LINES IN INITINSTANCE();
+	Majors->Create(WS_CHILD | WS_VISIBLE,CRect(10, 50, 100, 150), this, 0x1448);
+	// EX2
+	CComboBox *Majors = new CComboBox;
+	Majors->Create(WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST,CRect(10, 10, 140, 150), this, 0x1448);
+
+
+
 //
 //Radio Button 
-// Gui -> Add radio button -> Add event Handeler and perform activity
+	// Gui -> Add radio button -> Add event Handeler and perform activity
 //
 //Checkbox  //  set or change the value of an item as true or false.  //https://www.tutorialspoint.com/mfc/mfc_checkboxes.htm
-Cbutton m_enableDisableCheck_Ctrl //For checkbox, the CButton variable type is selected by default.
-m_enableDisableValue = 1;UpdateData(FALSE); // WILL PUT TRUE IN GUI  // BOOL m_enableDisableValue; //ADDED varibale value m_enableDisableValue
+	Cbutton m_enableDisableCheck_Ctrl //For checkbox, the CButton variable type is selected by default.
+	m_enableDisableValue = 1;UpdateData(FALSE); // WILL PUT TRUE IN GUI  // BOOL m_enableDisableValue; //ADDED varibale value m_enableDisableValue
 //
 // Image List   // CImageList class.
-// New Project -> Add C++ -> MFC APPLICATION -> [SINGLE APPLICATION MFC]
-// https://www.tutorialspoint.com/mfc/mfc_image_lists.htm
+	// New Project -> Add C++ -> MFC APPLICATION -> [SINGLE APPLICATION MFC]
+	// https://www.tutorialspoint.com/mfc/mfc_image_lists.htm
 // 
-//RichEdit  // user can enter and edit text //https://www.tutorialspoint.com/mfc/mfc_rich_edit.htm
+//RichEdit 
+	// user can enter and edit text //https://www.tutorialspoint.com/mfc/mfc_rich_edit.htm
 //
 //Spin Button  //CSpinButtonCtrl class  // Is a pair of arrow buttons
-//https://www.tutorialspoint.com/mfc/mfc_spin_button.htm   // https://www.tutorialspoint.com/mfc/mfc_managing_updown_control.htm
-spinButton -> Prop-> Auto Buddy -> True  and Set Buddy Integer  True  // This enable neibhour to change it contents
-m_spinCtrl.SetRange(0,10000);  // CSpinButtonCtrl m_spinCtrl;
-m_spinCtrl.SetPos(100);
+	//https://www.tutorialspoint.com/mfc/mfc_spin_button.htm   // https://www.tutorialspoint.com/mfc/mfc_managing_updown_control.htm
+	spinButton -> Prop-> Auto Buddy -> True  and Set Buddy Integer  True  // This enable neibhour to change it contents
+	m_spinCtrl.SetRange(0,10000);  // CSpinButtonCtrl m_spinCtrl;
+	m_spinCtrl.SetPos(100);
 // 
 // Timer //To work, every lapse of period, // https://www.tutorialspoint.com/mfc/mfc_timer.htm
-// CWnd::SetTimer()
-// Add  WM_Timer
-SetTimer(0,1000,NULL);  // Set at the time of Initialising Data
- KillTimer(0); 	 // ?????
-CTime CurrentTime= CTime::GetCurrentTime();
-int iHours = CurrentTime.GetHour();
-int	iMinutes = CurrentTime.GetMinute();
-int iSeconds = CurrentTime.GetSecond();
-sStatusMsg.Format(L"Running: %d", currValue);  // CString sStatusMsg;
+	// CWnd::SetTimer()
+	// Add  WM_Timer
+	SetTimer(0,1000,NULL);  // Set at the time of Initialising Data
+	KillTimer(0); 	 // ?????
+	CTime CurrentTime= CTime::GetCurrentTime();
+	int iHours = CurrentTime.GetHour();
+	int	iMinutes = CurrentTime.GetMinute();
+	int iSeconds = CurrentTime.GetSecond();
+	sStatusMsg.Format(L"Running: %d", currValue);  // CString sStatusMsg;
 
 //
 //Date and time // GUI -> TOOLBOX -> ADD DATE TIME PICKER
-// https://www.tutorialspoint.com/mfc/mfc_date_time_picker.htm
-GetDlgItemText(IDC_DATETIMEPICKER1,m_StrValue3); // m_StrValue3 // static text variable // ID IDC_DATETIMEPICKER1
-UpdateData(FALSE);
+	// https://www.tutorialspoint.com/mfc/mfc_date_time_picker.htm
+	GetDlgItemText(IDC_DATETIMEPICKER1,m_StrValue3); // m_StrValue3 // static text variable // ID IDC_DATETIMEPICKER1
+	UpdateData(FALSE);
 
 //
 // SLIDER CONTROL   //  https://www.tutorialspoint.com/mfc/mfc_slider_controls.htm
-// In properties Vertical or Horizontal can be set
-// Rt -> Add VARIABLE ->Category to Control->Variable Name to "m_VSliderBar"->Variable Type to CSliderCtrl
-// Click Form -> beside property click Message button -> WM_VSCROLL -> ADD         // CAUTION THIS IS FORM NOT DIRECTLY VERTILABAR
-m_VSliderBar.SetRange(0,100,TRUE); // m_VSliderBar=verticla bar varibale set   // keep in oninitdialog
-m_VSliderBar.SetPos(0);
+	// In properties Vertical or Horizontal can be set
+	// Rt -> Add VARIABLE ->Category to Control->Variable Name to "m_VSliderBar"->Variable Type to CSliderCtrl
+	// Click Form -> beside property click Message button -> WM_VSCROLL -> ADD         // CAUTION THIS IS FORM NOT DIRECTLY VERTILABAR
+	m_VSliderBar.SetRange(0,100,TRUE); // m_VSliderBar=verticla bar varibale set   // keep in oninitdialog
+	m_VSliderBar.SetPos(0);
+
+
+	// SLIDER
+	// In properties Vertical or Horizontal can be set
+	Rt -> Add VARIABLE ->Category to Control->Variable Name to "m_VSliderBar"->Variable Type to CSliderCtrl
+	Click Form -> beside property click Message button -> WM_VSCROLL -> ADD         // CAUTION THIS IS FORM NOT DIRECTLY VERTILABAR
+	m_VSliderBar.SetRange(0,100,TRUE); // m_VSliderBar=verticla bar varibale set   // keep in oninitdialog
+	m_VSliderBar.SetPos(0);
+	int value = m_VSliderBar.GetPos();
+	 
  
- 
+ // 1.8
  // DRAWING
- // CDC CLASS  // CDC *pDC
- // MFC GDI  		//  https://www.tutorialspoint.com/mfc/mfc_gdi.htm
- // DRAW :MFC provides graphic-object classes equivalent to the drawing tools
- // CDC is the most fundamental class
- // In void CMFCGDIDemoView::OnDraw(CDC* pDC)  // OnDraw
+	 // CDC CLASS  // CDC *pDC
+	 // MFC GDI  		//  https://www.tutorialspoint.com/mfc/mfc_gdi.htm
+	 // DRAW :MFC provides graphic-object classes equivalent to the drawing tools
+	 // CDC is the most fundamental class
+	 // In void CMFCGDIDemoView::OnDraw(CDC* pDC)  // OnDraw
  //New point or new line point starting MoveTo()
    pDC->MoveTo(95, 125); // move from origin to this point // set the starting position of a line
    pDC->LineTo(230, 125); // Draw line from origin or moveto() to lintto();
   
  // Polylines  :: lines are stored in an array of POINT or CPoint values
- pDC->Polyline(Pt, 2);  // 
+	pDC->Polyline(Pt, 2);  // 
  // EX ::
- CPoint Pt[7];
+	CPoint Pt[7];
 	Pt[0] = CPoint(20, 150);
 	Pt[1] = CPoint(180, 150);
 	Pt[2] = CPoint(180, 20);
 	pDC->Polyline(Pt, 3);  // 
  
  //  RECTANGLE
- pDC->Rectangle(5, 15, 250, 160);
+	pDC->Rectangle(5, 15, 250, 160);
  //  SQUARE
- pDC->Rectangle(15, 15, 250, 250);  // :P USING RECTANGEL
+	pDC->Rectangle(15, 15, 250, 250);  // :P USING RECTANGEL
  
  //PIES :: A pie is a fraction of an ellipse
- // CDC::Pie()
- // BOOL Pie(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4); 
- // x1 y1 x2 y2 rectangle and x3 y3 point in ellips and x4 y4 other point in ellips
-  pDC->Pie(40, 20, 226, 144, 155, 32, 202, 115);
+	 // CDC::Pie()
+	 // BOOL Pie(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4); 
+	 // x1 y1 x2 y2 rectangle and x3 y3 point in ellips and x4 y4 other point in ellips
+	pDC->Pie(40, 20, 226, 144, 155, 32, 202, 115);
    
-  //Arcs
+//Arcs
   //CDC::Arc() 
   //BOOL Arc(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4);
   // x1 y1 x2 y2 rectangle and x3 y3 point in Arc and x4 y4 other point in Arc
@@ -254,26 +350,47 @@ m_VSliderBar.SetPos(0);
  	pDC->SetArcDirection(AD_COUNTERCLOCKWISE);	
 	pDC->Arc(20, 20, 226, 144, 202, 115, 105, 32);
 	
- // Chords
+// Chords
     pDC->SetArcDirection(AD_CLOCKWISE);
     pDC->Chord(20, 20, 226, 144, 202, 115, 105, 32);
  //
- //Text   // 
- pDC->TextOut(100, y, m_msgArray.GetAt(i));
- 
- //
- //Color
- // Color   BRUSH   // CONSIST OF 8 brush  /// https://www.tutorialspoint.com/mfc/mfc_gdi.htm
- // brush is a drawing tool used to fill out closed shaped or the interior of lines.
- // class CBrush
-  CBrush brush(RGB(200, 150, 200));
-  CBrush *pBrush = pDC->SelectObject(&brush);
- // Ex::
-  CBrush brush(RGB(200, 150, 200));
-  CBrush *pBrush = pDC->SelectObject(&brush);
+//Text   // 
+   pDC->TextOut(100, y, m_msgArray.GetAt(i));
+ // Text
+	To add Variable by rt clicking to "text box" change text box ID: other than ID_STATIC
+	// ID:  After changing ID save it to work !
+	// DDX: Do Data Exchange
+
+
+// TEXT BOX WRITING
+	 m_EchoText.Format((_T("%d"), m_OkCount))  // m_EchoText defined in ADD Variable
+	 wdStr.Format(_T("EQ Sub(A,v,req) = \\F(Sub(V,s) Sub(b,w) S ,Sub(f,yt)) = %s%s"), FormatNum(Data.dAvReq), m_Unit.strArea); // ENGINE
+	 wdStr.Format(_T("EQ %s \\F(Sub(M,cr), Sub(M,SUS)) %s Sub(I,g) + "), L_PAREN, R_PAREN3);// ENGINE
+	 wdStr.Format(_T("EQ %s%s"), FormatNum(Deflection.dDead), m_Unit.strLength); // ENGINE
+	 wdStr.Format(_T("%s_max$ = 0.000431"), SYM_MU ); // ENGINE
+
+
+
+// UpdateDat () // to show the update things in gui  //IF NOT IT WILL NOT SHOW UP DATE IN GUI
+	UpdateData(FALSE);
+
+
+
+//
+//Color
+	// Color   BRUSH   // CONSIST OF 8 brush  /// https://www.tutorialspoint.com/mfc/mfc_gdi.htm
+	// brush is a drawing tool used to fill out closed shaped or the interior of lines.
+	// class CBrush
+	CBrush brush(RGB(200, 150, 200));
+	CBrush *pBrush = pDC->SelectObject(&brush);
+	// Ex::
+	CBrush brush(RGB(200, 150, 200));
+	CBrush *pBrush = pDC->SelectObject(&brush);
 	pDC->Rectangle(25, 35, 250, 125);
 	pDC->SelectObject(pBrush);
-//
+	
+	
+// 2
 // Internet Server - Client
 // MFC - Internet Programming          //https://www.tutorialspoint.com/mfc/mfc_internet_programming.htm
 // APIs for programming both client and server applications.
@@ -287,404 +404,352 @@ m_VSliderBar.SetPos(0);
 	m_clientSocket.Create();
 	m_clientSocket.Connect(m_ip_val, m_port_val);
 	
-//	
+	
+// 3	
 // Multithreading     // https://www.tutorialspoint.com/mfc/mfc_multithreading.htm
-// A thread is a path of execution within a process.
-// CWinThread objects
-// all the framework helper function AfxBeginThread,
-// which creates the CWinThread object for you.
-//
-//EX::
-UINT MyThreadProc(LPVOID Param) {
-	while (!stopNow && (currValue < maxValue)) {
-		currValue++;
-		Sleep(50);     // would do some work here
+	// A thread is a path of execution within a process.
+	// CWinThread objects
+	// all the framework helper function AfxBeginThread,
+	// which creates the CWinThread object for you.
+	//
+	//EX::
+	UINT MyThreadProc(LPVOID Param) {
+		while (!stopNow && (currValue < maxValue)) {
+			currValue++;
+			Sleep(50);     // would do some work here
+		}
+		return TRUE;
 	}
-	return TRUE;
-}
- AfxBeginThread(MyThreadProc, 0); // <<== START THE THREAD
+	 AfxBeginThread(MyThreadProc, 0); // <<== START THE THREAD
 
-//
-//  https://www.tutorialspoint.com/mfc/mfc_serialization.htm
-// CHECK MFCApplication9
-// Serialization is the process of writing or reading an object to or
-// from a persistent storage medium such as a disk file
-// maintain the state of structured data (such as C++ classes or structures) 
-// Serialize() member function
-// CObject class     // CEmployee : public CObject
-void Serialize(CArchive& ar);
-employee.Serialize(ar);
-ar.IsStoring()
-DECLARE_SERIAL(CEmployee);
-IMPLEMENT_SERIAL(CEmployee, CObject, 0)
-ar << empID << empName << age;    // Storing
-  ar >> empID >> empName >> age;  // Opening
-// EX
-// stoirng in  CEmployee : public CObject
-   employee.empID = m_id;
-   employee.empName = m_strName;
-   employee.age = m_age;
-   employee.Serialize(ar);
+// 4
+// Serialization   :: Storing
+	//  https://www.tutorialspoint.com/mfc/mfc_serialization.htm
+	// CHECK MFCApplication9
+	// Serialization is the process of writing or reading an object to or
+	// from a persistent storage medium such as a disk file
+	// maintain the state of structured data (such as C++ classes or structures) 
+	// Serialize() member function
+	// CObject class     // CEmployee : public CObject
+	void Serialize(CArchive& ar);
+	employee.Serialize(ar);
+	ar.IsStoring()
+	DECLARE_SERIAL(CEmployee);
+	IMPLEMENT_SERIAL(CEmployee, CObject, 0)
+	ar << empID << empName << age;    // Storing
+	  ar >> empID >> empName >> age;  // Opening
+	// EX
+	// stoirng in  CEmployee : public CObject
+	   employee.empID = m_id;
+	   employee.empName = m_strName;
+	   employee.age = m_age;
+	   employee.Serialize(ar);
+	   
    
-   
-//
+// 5
 // File
-// File Processing  // can handle the reading and writing of Unicode text files
-// CStdioFile 
-CStdioFile();
-CStdioFile(CAtlTransactionManager* pTM);
-CStdioFile(FILE* pOpenStream);
-CStdioFile(LPCTSTR lpszFileName, UINT nOpenFlags);
-CStdioFile(LPCTSTR lpszFileName, UINT nOpenFlags, CAtlTransactionManager* pTM);
-// 
-//OPEN
-CStdioFile file;
-file.Open(L"D:\\MFCDirectoryDEMO\\test.txt", CFile::modeRead | CFile::typeText);
-file.ReadString(m_strEditCtrl);
-file.Close();
-//
-//SAVE
-file.Open(L"D:\\MFCDirectoryDEMO\\test.txt", CFile::modeCreate | CFile::modeWrite | CFile::typeText);
-file.WriteString(m_strEditCtrl);
-file.Close();
+	// File Processing  // can handle the reading and writing of Unicode text files
+	// CStdioFile 
+	CStdioFile();
+	CStdioFile(CAtlTransactionManager* pTM);
+	CStdioFile(FILE* pOpenStream);
+	CStdioFile(LPCTSTR lpszFileName, UINT nOpenFlags);
+	CStdioFile(LPCTSTR lpszFileName, UINT nOpenFlags, CAtlTransactionManager* pTM);
+	// 
+	//OPEN
+	CStdioFile file;
+	file.Open(L"D:\\MFCDirectoryDEMO\\test.txt", CFile::modeRead | CFile::typeText);
+	file.ReadString(m_strEditCtrl);
+	file.Close();
+	//
+	//SAVE
+	file.Open(L"D:\\MFCDirectoryDEMO\\test.txt", CFile::modeCreate | CFile::modeWrite | CFile::typeText);
+	file.WriteString(m_strEditCtrl);
+	file.Close();
 
 
 
-// File    //  https://www.tutorialspoint.com/mfc/mfc_file_system.htm
-GetLogicalDrives() //  http://www.tenouk.com/cpluscodesnippet/getlogicaldrives.html
-//
-// File  
-// File  open and save    // https://www.tutorialspoint.com/mfc/mfc_serialization.htm
-//Open
-CFile file;
-file.Open(L"EmployeeInfo.hse", CFile::modeRead);
-CArchive ar(&file, CArchive::load);
-Employee employee;
-//Save
-CFile file;
-file.Open(L"EmployeeInfo.hse", CFile::modeCreate | CFile::modeWrite);
-CArchive ar(&file, CArchive::store);
+	// File    //  https://www.tutorialspoint.com/mfc/mfc_file_system.htm
+	GetLogicalDrives() //  http://www.tenouk.com/cpluscodesnippet/getlogicaldrives.html
+	//
+	// File  
+	// File  open and save    // https://www.tutorialspoint.com/mfc/mfc_serialization.htm
+	//Open
+	CFile file;
+	file.Open(L"EmployeeInfo.hse", CFile::modeRead);
+	CArchive ar(&file, CArchive::load);
+	Employee employee;
+	//Save
+	CFile file;
+	file.Open(L"EmployeeInfo.hse", CFile::modeCreate | CFile::modeWrite);
+	CArchive ar(&file, CArchive::store);
+
 //
 // Directories       		//https://www.tutorialspoint.com/mfc/mfc_file_system.htm
-// A directory is a file
-// Directory is a physical location
-// CreateDirectory() 
-CreateDirectory(L"D:\\MFCDirectoryDEMO", &saPermissions);
-CreateDirectory(L"D:\\MFCDirectoryDEMO\\Dir1", NULL);
-RemoveDirectory();
-RemoveDirectory(L"D:\\MFCDirectoryDEMO\\Dir1")
-MoveFile(L"D:\\MFCDirectoryDEMO\\Dir1", L"D:\\MFCDirectory\\Dir1")
+	// A directory is a file
+	// Directory is a physical location
+	// CreateDirectory() 
+	CreateDirectory(L"D:\\MFCDirectoryDEMO", &saPermissions);
+	CreateDirectory(L"D:\\MFCDirectoryDEMO\\Dir1", NULL);
+	RemoveDirectory();
+	RemoveDirectory(L"D:\\MFCDirectoryDEMO\\Dir1")
+	MoveFile(L"D:\\MFCDirectoryDEMO\\Dir1", L"D:\\MFCDirectory\\Dir1")
 
 
 
 
 // SDI
-// Single Document Interface or SDI
-// one view to the user
-// application cannot display more than one document at a time
+	// Single Document Interface or SDI
+	// one view to the user
+	// application cannot display more than one document at a time
 
 // MDI
-// Multiple Document Interface or MDI
-// user can open more than one document in the application without closing it
-// the application provides a parent frame that acts as the main frame.
+	// Multiple Document Interface or MDI
+	// user can open more than one document in the application without closing it
+	// the application provides a parent frame that acts as the main frame.
 
 
 
 
 
-
+// 6
 // char    // Genereal
-char word[] = "Hello, World";
-char word[12] = { 'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '\0' };
-
+	char word[] = "Hello, World";
+	char word[12] = { 'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '\0' };
 // 
 // String   
-// bjects that represent sequences of characters
-// terminated by a null character '\0'
-// Cstring 				// https://www.tutorialspoint.com/mfc/mfc_strings.htm
-// A class to manipulate string 
-   CString string1 = _T("This is a string1"); 				// Method_1
-   CString string2("This is a string2");					// Method_2
-   CString string3 = L"MICROSOFT ACCESS DRIVER (*.mdb)";    // Method_3
-	// Append 
-	   m_strText.Append(string1 + L"\n");
-       m_strText.Append(string2);
-	// Empty
-	   string2.IsEmpty();  // Bool
-	// Concatenation
-	   string3 += _T("hi there concatenation");
-	   CString string4 = L"\n " +string3 + string2;
- 
+	// bjects that represent sequences of characters
+	// terminated by a null character '\0'
+	// Cstring 				// https://www.tutorialspoint.com/mfc/mfc_strings.htm
+	// A class to manipulate string 
+	   CString string1 = _T("This is a string1"); 				// Method_1
+	   CString string2("This is a string2");					// Method_2
+	   CString string3 = L"MICROSOFT ACCESS DRIVER (*.mdb)";    // Method_3
+		// Append 
+		   m_strText.Append(string1 + L"\n");
+		   m_strText.Append(string2);
+		// Empty
+		   string2.IsEmpty();  // Bool
+		// Concatenation
+		   string3 += _T("hi there concatenation");
+		   CString string4 = L"\n " +string3 + string2;
+	 
  
  
  
 // Convert ||  conversion
-// Cstring to int conversion  // https://stackoverflow.com/questions/992757/convert-mfc-cstring-to-integer
-int x=_wtoi(str2); CString str2;
+	// Cstring to int conversion  // https://stackoverflow.com/questions/992757/convert-mfc-cstring-to-integer
+	int x=_wtoi(str2); CString str2;
 
-//
-// CString Array || CStringArray
- CStringArray class
- CStringArray m_msgArray;
- m_msgArray.Add(message);  //  CString messge  //
- m_msgArray.Add(L"hi there");
+	//
+	// CString Array || CStringArray
+	 CStringArray class
+	 CStringArray m_msgArray;
+	 m_msgArray.Add(message);  //  CString messge  //
+	 m_msgArray.Add(L"hi there");
+	 
+	 
  
  
  
-//
+// 7
 //MessageBox
-MessageBox(L"File > New menu option");
-AfxMessageBox(L"Data Received");
+	MessageBox(L"File > New menu option");
+	AfxMessageBox(L"Data Received");
 
-//  COMBO BOX  
-//  http://www.functionx.com/visualc/controls/combobox.htm
-//  https://www.tutorialspoint.com/mfc/mfc_combo_boxes.htm
-CComboBox BOX1_CONTROL_R; // In Header file !
-DDX_Control(pDX, IDC_COMBO1, BOX1_CONTROL_R); // In DoDataExchange()
-BOX1_CONTROL_R.AddString(str);  // BOX1_CONTROL_R     =   GUI_COMBO_BOX -> ADD -> EVENTHANDELER -> MCONTROL
-// EX:
-// TODO: Add extra initialization here  
-CComboBox *Majors = new CComboBox;  // ADD THIS LINES IN INITINSTANCE();
-Majors->Create(WS_CHILD | WS_VISIBLE,CRect(10, 50, 100, 150), this, 0x1448);
-// EX2
-CComboBox *Majors = new CComboBox;
-Majors->Create(WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST,CRect(10, 10, 140, 150), this, 0x1448);
-
-
-
-
-
+	
 //WINDOWS STYLE
-WS_CAPTION 
-WS_CHILDWINDOW
-check more in  MFC file ...
+	WS_CAPTION 
+	WS_CHILDWINDOW
+	check more in  MFC file ...
 
-//  	https://www.tutorialspoint.com/mfc/mfc_quick_guide.htm
-// CPoint
-CPoint(); 
-CPoint(int X, int Y); 
-// EX
- CPoint Pt[7];
-	Pt[0] = CPoint(20, 150);
-	Pt[1] = CPoint(180, 150);
-	Pt[2] = CPoint(180, 20);
+	//  	https://www.tutorialspoint.com/mfc/mfc_quick_guide.htm
+	// CPoint
+	CPoint(); 
+	CPoint(int X, int Y); 
+	// EX
+	 CPoint Pt[7];
+		Pt[0] = CPoint(20, 150);
+		Pt[1] = CPoint(180, 150);
+		Pt[2] = CPoint(180, 20);
 
-CSize(); 
-CSize(int initCX, int initCY); 		// More
+	CSize(); 
+	CSize(int initCX, int initCY); 		// More
 
-CRect(); 
-CRect(int l, int t, int r, int b);  // More   		|| Left   Top	 Right	 Bottom   // x1 y1   // x2 y2
- 
+	CRect(); 
+	CRect(int l, int t, int r, int b);  // More   		|| Left   Top	 Right	 Bottom   // x1 y1   // x2 y2
+	 
 
 
+// Add dialog
+	// Add dialog  :: It creates file in Resource Files 
+	// Class :: CDialog
+	Rt PROJECT -> ADD -> RESOURCE
+		//Properties :: Change position of dialog box location where to be x and y !
+			xpos
+			ypos	
+	CDialog();
+	CDialog(UINT nIDTemplate, CWnd* pParentWnd = NULL);
+	CDialog(LPCTSTR lpszTemplateName, CWnd* pParentWnd = NULL);
 
-// Add dialog  :: It creates file in Resource Files 
-// Class :: CDialog
-Rt PROJECT -> ADD -> RESOURCE
-	//Properties :: Change position of dialog box location where to be x and y !
-		xpos
-		ypos	
-CDialog();
-CDialog(UINT nIDTemplate, CWnd* pParentWnd = NULL);
-CDialog(LPCTSTR lpszTemplateName, CWnd* pParentWnd = NULL);
+	/////
+	class CExampleDlg : public CDialog {
+	public:
+		enum { IDD = IDD_EXAMPLE_DLG };
 
+		CExampleDlg();  // constructon
+		~CExampleDlg(); // distructor
+	};
+
+	CExampleDlg::CExampleDlg():CDialog(CExampleDlg::IDD) {
+
+	}
+
+	CExampleDlg::~CExampleDlg() {
+
+	}
 /////
-class CExampleDlg : public CDialog {
-public:
-	enum { IDD = IDD_EXAMPLE_DLG };
 
-	CExampleDlg();  // constructon
-	~CExampleDlg(); // distructor
-};
-
-CExampleDlg::CExampleDlg():CDialog(CExampleDlg::IDD) {
-
-}
-
-CExampleDlg::~CExampleDlg() {
-
-}
-/////
-
-
+// 8
 // ICON   :: Top left corner of window -> Resource file wil find icon files
-// Create our own
-
-Rt Project -> ADD -> Resource -> Icons
-m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);  //Stores icon in m_hIcon  // Locaion: In App dialog constructor
-
-
-
-// Client Edge True!
-// GUI text button property -> apperance -> client -> Edge to True it creats like box
-
-// Text
-To add Variable by rt clicking to "text box" change text box ID: other than ID_STATIC
-
-// ID:  After changing ID save it to work !
-// DDX: Do Data Exchange
-
-
-// TEXT BOX WRITING
- m_EchoText.Format((_T("%d"), m_OkCount))  // m_EchoText defined in ADD Variable
- wdStr.Format(_T("EQ Sub(A,v,req) = \\F(Sub(V,s) Sub(b,w) S ,Sub(f,yt)) = %s%s"), FormatNum(Data.dAvReq), m_Unit.strArea); // ENGINE
- wdStr.Format(_T("EQ %s \\F(Sub(M,cr), Sub(M,SUS)) %s Sub(I,g) + "), L_PAREN, R_PAREN3);// ENGINE
- wdStr.Format(_T("EQ %s%s"), FormatNum(Deflection.dDead), m_Unit.strLength); // ENGINE
- wdStr.Format(_T("%s_max$ = 0.000431"), SYM_MU ); // ENGINE
-
-
-
-// UpdateDat () // to show the update things in gui  //IF NOT IT WILL NOT SHOW UP DATE IN GUI
-UpdateData(FALSE);
+	// Create our own
+	Rt Project -> ADD -> Resource -> Icons
+	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);  //Stores icon in m_hIcon  // Locaion: In App dialog constructor
 
 
 
 
-// SLIDER
-// In properties Vertical or Horizontal can be set
-Rt -> Add VARIABLE ->Category to Control->Variable Name to "m_VSliderBar"->Variable Type to CSliderCtrl
-Click Form -> beside property click Message button -> WM_VSCROLL -> ADD         // CAUTION THIS IS FORM NOT DIRECTLY VERTILABAR
+	
+//.....................................................................................................
 
-m_VSliderBar.SetRange(0,100,TRUE); // m_VSliderBar=verticla bar varibale set   // keep in oninitdialog
-m_VSliderBar.SetPos(0);
-
-int value = m_VSliderBar.GetPos();
-
+//9
+// MFC TECHNIQUES..................................................................................................
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ // MFC separates member variables and functions based on their use, not by the type of access allowed.
+// MFC TECHNIQUES..................................................................................................
+  
 // LECTURE .......................................................................................................
-// Upper class work first then below class in MFC
+// Upper class Work first then below class in MFC
 // RESOURCE.h  WILL FIND ALL IDS   !!!
 
 
 //  APPLICATION   from  CWinApp   ::    //To create an APPLICATION we need to derive a class from the MFC's CWINAPP
-class CExample : public CWinApp 
-{ 
- BOOL InitInstance() 
- { 
-  return TRUE; 
- } 
-};
+	class CExample : public CWinApp 
+	{ 
+	 BOOL InitInstance() 
+	 { 
+	  return TRUE; 
+	 } 
+	};
 
 // FRAME/WINDOW                 		//  Need a FRAME/WINDOW to show the content MFC's CFRAMEWND .
-class CMyFrame : public CFrameWnd 
-{ 
-public: 
- CMyFrame() 
- { 
-  Create(NULL, _T("MFC Application Tutorial")); 
-  // Create(NULL, _T("MFC Application Tutorial"), WS_SYSMENU,CRect(90, 120, 550, 480), NULL);
- } 
-}; 
+	class CMyFrame : public CFrameWnd 
+	{ 
+	public: 
+	 CMyFrame() 
+	 { 
+	  Create(NULL, _T("MFC Application Tutorial")); 
+	  // Create(NULL, _T("MFC Application Tutorial"), WS_SYSMENU,CRect(90, 120, 550, 480), NULL);
+	 } 
+	}; 
 
 
 
 
 
 // TOTAL PROGRAM EXAMPLE
-#include <afxwin.h> 
- 
-class CMyFrame : public CFrameWnd 
-{ 
-public: 
- CMyFrame() 
- { 
-  Create(NULL, _T("MFC Application Tutorial")); 
- } 
-}; 
-							// applicaion :: the action of putting something into operation.
-class CExample : public CWinApp 
-{ 
-	BOOL InitInstance()                         // Bool function imp
-		{ 
-			CMyFrame *Frame = new CMyFrame(); 
-			m_pMainWnd = Frame; 
-			Frame->ShowWindow(SW_NORMAL); 
-			Frame->UpdateWindow(); 
-			return TRUE; 
-		} 
-}; 
- 
-CExample theApp; // call program
-//.....................................................................................................
+	#include <afxwin.h> 
+	 
+	class CMyFrame : public CFrameWnd 
+	{ 
+	public: 
+	 CMyFrame() 
+	 { 
+	  Create(NULL, _T("MFC Application Tutorial")); 
+	 } 
+	}; 
+								// applicaion :: the action of putting something into operation.
+	class CExample : public CWinApp 
+	{ 
+		BOOL InitInstance()                         // Bool function imp
+			{ 
+				CMyFrame *Frame = new CMyFrame(); 
+				m_pMainWnd = Frame; 
+				Frame->ShowWindow(SW_NORMAL); 
+				Frame->UpdateWindow(); 
+				return TRUE; 
+			} 
+	}; 
+	 
+	CExample theApp; // call program
+
 
 //  RESOURCE
-A resource is a text file that allows the compiler to manage objects such as
-pictures, sounds, mouse cursors, dialog boxes, etc.
+	A resource is a text file that allows the compiler to manage objects such as
+	pictures, sounds, mouse cursors, dialog boxes, etc.
 
-ID identifier [constant integer whose name usually starts with ID]
-virtual function to use different function with same name , pointer defining class must have virtual function
-in pure virtual it must be equal to zero =0  class become abstract class  it cannot create instiate as object
-abstract calls which have pure virtual function;
-abstract child call will be pure virtual function if pure virtual function function not define in child class
-virtual function is a member function in base class that you expect to redefine in derived classes.
+	ID identifier [constant integer whose name usually starts with ID]
+	virtual function to use different function with same name , pointer defining class must have virtual function
+	in pure virtual it must be equal to zero =0  class become abstract class  it cannot create instiate as object
+	abstract calls which have pure virtual function;
+	abstract child call will be pure virtual function if pure virtual function function not define in child class
+	virtual function is a member function in base class that you expect to redefine in derived classes.
 
 
 
 
 
 // Extern
-extern is used to declare a global variable or function in another file.
-When you have multiple files and you define a global variable or function, which will be used in other files 
-The extern modifier is most commonly used when there are two or more files sharing the same global variables or functions
-extern CMFCApplication5App theApp;	
-// EX
-    // main.cpp
-#include <iostream>
-int count ;
-extern void write_extern();
-main() 
-{
-   count = 5;
-   write_extern();
-}
-     // support.cpp
-#include <iostream>
-extern int count;
-void write_extern(void) {
-   std::cout << "Count is " << count << std::endl;
-}
-
-
-
-
-
-
+	extern is used to declare a global variable or function in another file.
+	When you have multiple files and you define a global variable or function, which will be used in other files 
+	The extern modifier is most commonly used when there are two or more files sharing the same global variables or functions
+	extern CMFCApplication5App theApp;	
+	// EX
+		// main.cpp
+	#include <iostream>
+	int count ;
+	extern void write_extern();
+	main() 
+	{
+	   count = 5;
+	   write_extern();
+	}
+		 // support.cpp
+	#include <iostream>
+	extern int count;
+	void write_extern(void) {
+	   std::cout << "Count is " << count << std::endl;
+	}
 
 
 //  DoDataExchange
 // -> Consist of Gui ID to Variable link     Link [ID  -  Variable]
---Example
-ID 		 = IDC_ECHO_AREA  
-Variable = IDC_ECHO_AREA_TEXTBOX
-->
-void CMFCApplication14Dlg::DoDataExchange(CDataExchange* pDX)
-{
-	CDialogEx::DoDataExchange(pDX);
-	DDX_Text(pDX, IDC_ECHO_AREA, IDC_ECHO_AREA_TEXTBOX_0);
-	DDX_Text(pDX, IDC_ECHO_AREA2, ECHO_AREA2_TEXTBOX);
-}
-
-
-
-// MFC MICROSOFT NOTES
-// MFC separates member variables and functions based on their use, not by the type of access allowed.
+	--Example
+	ID 		 = IDC_ECHO_AREA  
+	Variable = IDC_ECHO_AREA_TEXTBOX
+	->
+	void CMFCApplication14Dlg::DoDataExchange(CDataExchange* pDX)
+	{
+		CDialogEx::DoDataExchange(pDX);
+		DDX_Text(pDX, IDC_ECHO_AREA, IDC_ECHO_AREA_TEXTBOX_0);
+		DDX_Text(pDX, IDC_ECHO_AREA2, ECHO_AREA2_TEXTBOX);
+	}
 
 
 
 
 
-// MFC TECHNIQUES..................................................................................................
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // MFC FROM C++ TO FRAME WORK CALL :: FRAME
-#include <afxwin.h>
+	#include <afxwin.h>
 
-class CMyFrame : public CFrameWnd {
-   public:
-      CMyFrame() {
-         Create(NULL, _T("MFC Application Tutorial"));
-		 // Create(NULL, _T("MFC Application Tutorial"), WS_SYSMENU, CRect(90, 120, 900, 480));
-      }
-};
+	class CMyFrame : public CFrameWnd {
+	   public:
+		  CMyFrame() {
+			 Create(NULL, _T("MFC Application Tutorial"));
+			 // Create(NULL, _T("MFC Application Tutorial"), WS_SYSMENU, CRect(90, 120, 900, 480));
+		  }
+	};
 
 class CExample : public CWinApp {
    BOOL InitInstance() {
@@ -702,89 +767,89 @@ CExample theApp;   // CALL FOR OBJECT
 
 ///////////////////
 // DIALOG BOX
-#include <afxwin.h>
-#include "resource.h"
+	#include <afxwin.h>
+	#include "resource.h"
 
-class CExample : public CWinApp {
-   public:
-      BOOL InitInstance();
-};
-   
-class CExampleDlg : public CDialog {
-   public:
-      enum { IDD = IDD_EXAMPLE_DLG };
-   
-      CExampleDlg();
-     ~CExampleDlg();
-};
+	class CExample : public CWinApp {
+	   public:
+		  BOOL InitInstance();
+	};
+	   
+	class CExampleDlg : public CDialog {
+	   public:
+		  enum { IDD = IDD_EXAMPLE_DLG };
+	   
+		  CExampleDlg();
+		 ~CExampleDlg();
+	};
 
-CExampleDlg::CExampleDlg():CDialog(CExampleDlg::IDD) {
+	CExampleDlg::CExampleDlg():CDialog(CExampleDlg::IDD) {
 
-}
+	}
 
-CExampleDlg::~CExampleDlg() {
+	CExampleDlg::~CExampleDlg() {
 
-}
+	}
 
-BOOL CExample::InitInstance() {
-   CExampleDlg myDlg;
-   m_pMainWnd = &myDlg; 
-   myDlg.DoModal();			// Open Tab
-   return TRUE;
-}
+	BOOL CExample::InitInstance() {
+	   CExampleDlg myDlg;
+	   m_pMainWnd = &myDlg; 
+	   myDlg.DoModal();			// Open Tab
+	   return TRUE;
+	}
 CExample MyApp;
 ///////////////////////
 
 // slider program example two bars
 
-		// Vertical scroll
-void CMFCApplication11Dlg::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
-{
-	// TODO: Add your message handler code here and/or call default
-
-	if(pScrollBar == (CScrollBar*)&m_VSliderBar)
+// Vertical scroll
+	void CMFCApplication11Dlg::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 	{
-		int value = m_VSliderBar.GetPos();
-			m_VSliderEcho.Format(_T("%d"),value);
+		// TODO: Add your message handler code here and/or call default
+
+		if(pScrollBar == (CScrollBar*)&m_VSliderBar)
+		{
+			int value = m_VSliderBar.GetPos();
+				m_VSliderEcho.Format(_T("%d"),value);
+				UpdateData(FALSE);
+
+				
+		}
+		else if((pScrollBar == (CScrollBar*)&m_VSliderBar2))
+		{
+			int value2 = m_VSliderBar2.GetPos();
+			m_VSliderEcho1.Format(_T("%d"),value2);
 			UpdateData(FALSE);
-
-			
+		}
+		
+		else
+		{
+			CDialogEx::OnVScroll(nSBCode, nPos, pScrollBar);
+		}
+		
 	}
-	else if((pScrollBar == (CScrollBar*)&m_VSliderBar2))
+// horizontal scroll
+	void CMFCApplication11Dlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 	{
-		int value2 = m_VSliderBar2.GetPos();
-		m_VSliderEcho1.Format(_T("%d"),value2);
-		UpdateData(FALSE);
+		// TODO: Add your message handler code here and/or call default
+		if(pScrollBar == (CScrollBar*)&m_HSliderBar)
+		{
+			int value = m_HSliderBar.GetPos();
+			m_VSliderEcho3.Format(_T("%d"), value);
+			UpdateData(FALSE);
+		}
+		else{
+			CDialogEx::OnHScroll(nSBCode, nPos, pScrollBar);
+		}
+		
 	}
-	
-	else
-	{
-		CDialogEx::OnVScroll(nSBCode, nPos, pScrollBar);
-	}
-	
-}
-		// horizontal scroll
-void CMFCApplication11Dlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
-{
-	// TODO: Add your message handler code here and/or call default
-	if(pScrollBar == (CScrollBar*)&m_HSliderBar)
-	{
-		int value = m_HSliderBar.GetPos();
-		m_VSliderEcho3.Format(_T("%d"), value);
-		UpdateData(FALSE);
-	}
-	else{
-		CDialogEx::OnHScroll(nSBCode, nPos, pScrollBar);
-	}
-	
-}
 
 
 
 
 
 //  Pause
-system("PAUSE")   //TO STOP PROGRAM FOR SPECIFIC TIME !!!   OR USE BREAK POINT
+	system("PAUSE")   //TO STOP PROGRAM FOR SPECIFIC TIME !!!   OR USE BREAK POINT
 
 
 
@@ -792,10 +857,9 @@ system("PAUSE")   //TO STOP PROGRAM FOR SPECIFIC TIME !!!   OR USE BREAK POINT
 
 // DLL    
 // Dynamic Link library
-// Making DLL File  		// watch vdo c++ tutorial create a dll in vc++
+// Making DLL File  		// watch vdo C++ tutorial Create a dll in vc++
 // To create dll   new -> win32 app -> next -> DLL -> finish // to create dll file
-// To call dll   new -> win32 app -> next -> dll or console -> finish 
-
+// To call dll     new -> win32 app -> next -> dll or console -> finish 
 // to call header file copy .h .dll .lib file to the new program location  
 // rt project -> properties -> configuration properties -> Linker -> Input -> Additional dependencies  (Add anyfile.dll)
 
@@ -809,15 +873,15 @@ static __declspec(dllexport) void Crap(); //void Crap() is a function defined
 // DoDataExchange            GUI_ID  =  VARIABLE_ID
 // Consist of Gui to varable link !!
 //EX
-void CRcsBeamInputDlg::DoDataExchange(CDataExchange* pDX)
-{
-	CDGN_FormViewInDlg::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CRcsBeamInputDlg)
-						// GUI							// VARIABLE
-	DDX_Control(pDX, IDC_GURBE_NAME,                   m_EditMemberName);
-	DDX_Control(pDX, IDC_GURBE_COMBO_USE_TYPE,         m_ComboMemberUseType);
+	void CRcsBeamInputDlg::DoDataExchange(CDataExchange* pDX)
+	{
+		CDGN_FormViewInDlg::DoDataExchange(pDX);
+		//{{AFX_DATA_MAP(CRcsBeamInputDlg)
+							// GUI							// VARIABLE
+		DDX_Control(pDX, IDC_GURBE_NAME,                   m_EditMemberName);
+		DDX_Control(pDX, IDC_GURBE_COMBO_USE_TYPE,         m_ComboMemberUseType);
 
-}
+	}
 
 
 
@@ -826,63 +890,63 @@ void CRcsBeamInputDlg::DoDataExchange(CDataExchange* pDX)
 
 // afx_msg
 //EX	:
-// Type modifier for message handlers
-#ifndef afx_msg
-#define afx_msg         // intentional placeholder
-#endif
-// it is, or might have been, a help for the wizards to recognize the code.   // It doesn't do anything else
-//The code will compile and work the same with or without afx_msg, but it is used by convention as an indicator 
-//that the function is a message handler, and is required if using the class wizard
-// per TN006: Message Maps:
+	// Type modifier for message handlers
+	#ifndef afx_msg
+	#define afx_msg         // intentional placeholder
+	#endif
+	// it is, or might have been, a help for the wizards to recognize the code.   // It doesn't do anything else
+	//The code will compile and work the same with or without afx_msg, but it is used by convention as an indicator 
+	//that the function is a message handler, and is required if using the class wizard
+	// per TN006: Message Maps:
 
 
 
 // EX HOW MFC RUNS...................................................................................[
 //    https://www.tutorialspoint.com/mfc/mfc_messages_events.htm
-#include <afxwin.h>
-// 1 Frame
-class CMY_Frame: public CFrameWnd
-{
-public:
-	CMY_Frame();
-protected:
-	DECLARE_MESSAGE_MAP()
+	#include <afxwin.h>
+	// 1 Frame
+	class CMY_Frame: public CFrameWnd
+	{
+	public:
+		CMY_Frame();
+	protected:
+		DECLARE_MESSAGE_MAP()
 
-};
+	};
 
-CMY_Frame::CMY_Frame()
-{ // 2 FRAME CREATE
-	// Create window frame
-	Create(NULL,L"MFC MESSAGE MUZAFAR", WS_OVERLAPPEDWINDOW,CRect(12,100,1000,1000));
-}
+	CMY_Frame::CMY_Frame()
+	{ // 2 FRAME CREATE
+		// Create window frame
+		Create(NULL,L"MFC MESSAGE MUZAFAR", WS_OVERLAPPEDWINDOW,CRect(12,100,1000,1000));
+	}
 
 
 
-class CMY_Application : public CWinApp
-{
-	// 3 APPLICATION
-public:
-	BOOL InitInstance();
-	
-};
-// Must be out side program
-BEGIN_MESSAGE_MAP(CMY_Frame,CFrameWnd)   //4 SHOW MESSAGE HANDELING AND EVENTS
-END_MESSAGE_MAP()
+	class CMY_Application : public CWinApp
+	{
+		// 3 APPLICATION
+	public:
+		BOOL InitInstance();
+		
+	};
+	// Must be out side program
+	BEGIN_MESSAGE_MAP(CMY_Frame,CFrameWnd)   //4 SHOW MESSAGE HANDELING AND EVENTS
+	END_MESSAGE_MAP()
 
-BOOL CMY_Application :: InitInstance()
-{
-	//4 
-	CMY_Frame *Frame = new CMY_Frame(); // FRAME CALL AND SHOW IN INITIALICE INSTANCE
-	m_pMainWnd=Frame;
-	m_pMainWnd->ShowWindow(SW_SHOW);
-	m_pMainWnd->UpdateWindow();
-	return TRUE;
-};
+	BOOL CMY_Application :: InitInstance()
+	{
+		//4 
+		CMY_Frame *Frame = new CMY_Frame(); // FRAME CALL AND SHOW IN INITIALICE INSTANCE
+		m_pMainWnd=Frame;
+		m_pMainWnd->ShowWindow(SW_SHOW);
+		m_pMainWnd->UpdateWindow();
+		return TRUE;
+	};
 
-CMY_Application Start; // 5 CALL OBJECT TO RUN
+	CMY_Application Start; // 5 CALL OBJECT TO RUN
 
 //
-SetCoveredCellsRowCol // function for grid check it !
+	SetCoveredCellsRowCol // function for grid check it !
 //.................................................................................................................]
 
 
@@ -892,60 +956,60 @@ SetCoveredCellsRowCol // function for grid check it !
  * 0x40 : unassigned
  * VK_A - VK_Z are the same as ASCII 'A' - 'Z' (0x41 - 0x5A)
  */
-WinUser.h   // File !! consist of all define values !! to recoginse the keywords
-#define VK_HOME           0x24
-#define VK_LEFT           0x25
-#define VK_UP             0x26
-#define VK_RIGHT          0x27
-#define VK_DOWN           0x28
-#define VK_SELECT         0x29
-#define VK_PRINT          0x2A
-#define VK_EXECUTE        0x2B
+	WinUser.h   // File !! consist of all define values !! to recoginse the keywords
+	#define VK_HOME           0x24
+	#define VK_LEFT           0x25
+	#define VK_UP             0x26
+	#define VK_RIGHT          0x27
+	#define VK_DOWN           0x28
+	#define VK_SELECT         0x29
+	#define VK_PRINT          0x2A
+	#define VK_EXECUTE        0x2B
 
 // TRIGGER ON CLICKING THE BUTTON   // https://www.tutorialspoint.com/mfc/mfc_messages_events.htm
 // :: EX ::
 
-afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
 
-BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
-   ON_WM_CREATE()
-   ON_WM_KEYDOWN()
-END_MESSAGE_MAP()
+	BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
+	   ON_WM_CREATE()
+	   ON_WM_KEYDOWN()
+	END_MESSAGE_MAP()
 
-void CMainFrame::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags) {
-   switch (nChar) {
+	void CMainFrame::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags) {
+	   switch (nChar) {
 
-      case VK_RETURN:
-         MessageBox(L"You pressed Enter");
-         break;
-      case VK_F1:
-         MessageBox(L"Help is not available at the moment");
-         break;
-	  case 0x39: 												// Triggered using Ask key Important !!!
-		MessageBox(L"Entered 9");
-		break;
-      case VK_DELETE:
-         MessageBox(L"Can't Delete This");
-         break;
-      default:
-         MessageBox(L"Whatever");
-   }
-}
+		  case VK_RETURN:
+			 MessageBox(L"You pressed Enter");
+			 break;
+		  case VK_F1:
+			 MessageBox(L"Help is not available at the moment");
+			 break;
+		  case 0x39: 												// Triggered using Ask key Important !!!
+			MessageBox(L"Entered 9");
+			break;
+		  case VK_DELETE:
+			 MessageBox(L"Can't Delete This");
+			 break;
+		  default:
+			 MessageBox(L"Whatever");
+	   }
+	}
 
-//
-// LOOP BUTTON TECHNIQUES
-while (!stopNow)    // Bool stopNow    // Button on : stopNow =1 // Button Off : stopNow =0
-{
-	// DO CALCULATINO
-}
+// While
+	// LOOP BUTTON TECHNIQUES
+		while (!stopNow)    // Bool stopNow    // Button on : stopNow =1 // Button Off : stopNow =0
+	{
+		// DO CALCULATINO
+	}
 
 
 // Check this syntax
-DWORD uDriveMask ;
-TCHAR szDrive[] = _T(" A:");
+	DWORD uDriveMask ;
+	TCHAR szDrive[] = _T(" A:");
 
 // Get Length
-m_strEditCtrl.GetLength();
+	m_strEditCtrl.GetLength();
 
 
 
@@ -960,14 +1024,26 @@ m_strEditCtrl.GetLength();
 // http://www.ucancode.net/faq/MFC%20RUNTIME_CLASS-IsKindOf.htm
 // 
 // 	
-Error	1	error C2664: 'CIRBESModeSectDlg::CIRBESModeSectDlg(CISRBESModeDlg *)' : cannot convert parameter 1 from 'CIRBESModeDlg *const ' to 'CISRBESModeDlg *'	d:\design+_gui\src\dplus_is\irbesmodedlg.cpp	715
+	Error	1	error C2664: 'CIRBESModeSectDlg::CIRBESModeSectDlg(CISRBESModeDlg *)' : cannot convert parameter 1 from 'CIRBESModeDlg *const ' to 'CISRBESModeDlg *'	d:\design+_gui\src\dplus_is\irbesmodedlg.cpp	715
 
 
+	
+// # dif
 //   Cool technique
 // If same data exist global 
-#ifndef EC_EC2_COL_STRUCT__
-#define EC_EC2_COL_STRUCT__
-// All data here//
-//
-//////
-#endif
+		#ifndef EC_EC2_COL_STRUCT__
+		#define EC_EC2_COL_STRUCT__
+		// All data here//
+		//
+		//////
+		#endif
+
+
+
+
+// 10
+// Civil Check 
+// from gui to Program
+ 	BOOL m_bSeisChk;  // Initiate in S
+  DDX_Check(pDX, IDC_DGN_CON_M_SEIS_CHECK, m_bSeisChk);
+   m_bSeisChk=FALSE;// On init
