@@ -1,11 +1,12 @@
 // Angular
-
+	// Single Page Application (JavaScript Fraemwork)
 ///////////////////////////////////
 /////////////////////////////
 ////////// CONTENT
-// 1  :: Installation  // Initiation  // Console
+// 0  :: Basic
+// 1  :: Installation  // Create Project // Initiation  // Console
 // 2  :: Files
-// 3    
+// 3  :: Generate components  
 // 4  :: Variable,structures, Console
 // 5  :: for loop 
 // 6
@@ -17,16 +18,45 @@
 // 12
 // 13
 
+//0
+// Basic
+	// Angular Git
+	https://github.com/angular/angular-cli/wiki
+	// Angular Site
+	https://angular.io/guide/quickstart
+	
+	// Angular Cannot connect to DATABASE 
+	// Angular can connect to Server
+	
+	
+// TypeScript  ( programming language )
+	// https://www.tutorialspoint.com/typescript/
+	// TypeScript (SuperScript of Java Script)
+	// Sting input to string input not integer
+	// Type Script Compiles to JavaScript
+
 
 //1
 // Installation
 	https://github.com/angular/angular-cli/wiki
 
+// Create Project
+	// In Shell CMD (Bash) or Visual Studion Code [ Ctrl + ` ]
+		ng new my-first-app-anyname
+		cd my-first-app-anyname 
+		ng serve
+	// In Browser
+		http://localhost:4200/
+		Ctrl + U 
+	
+	
 	Start : "ng serve"
 	Build : "ng build"
 	test  : "ng test"
 	lint  : "ng lint"
 	e2e   : "ng e2e"
+	
+
 
 	Navigate to 
 	http://localhost:4200/
@@ -34,8 +64,9 @@
 	To create
 	src->app.componentName.ts
 
-// Console
+// Console  // In Chrome
 	In browser F12 for Console.
+	View Page Source (Ctrl + u)
 
 
 //2
@@ -53,12 +84,19 @@
 // 4
 wirtecode
 // VARIABLE
-	variable = "MIDAS" ; // DIRECT ASSIGNING
+	variable = "MIDAS" ; // DIRECT ASSIGNING  // in app.component.ts
 	{{variable}}
 	
 	variable:string = "MIDAD";
 	age:number;
 	variable:any   //string or number cabe define
+	
+// Box for Input
+`	<input type="text" >
+
+// Directive  // Listion and save in virable	
+	[(ngModel)]="VariavelName"  
+	<input type="text" [(ngModel)]="name"> // EX
 
 // Array	
 	hobbies:any[];     // Numbers or/and strings
@@ -84,7 +122,7 @@ wirtecode
 		// Interface 
 		// To defiene any thing outside class and then ass inside class like function and strutures
 	
-			address2:address;  //  withh in class
+			address2:address;     //  withh in class
 			
 			interface address{    // Outside class
 			street:string,
@@ -101,5 +139,8 @@ wirtecode
   <li *ngFor= "let hobby of hobbies; let i = index">{{i}}: {{hobby}}</li>
 
 
-
+// Type Script Feature
+		import { FormsModule } from '@angular/forms';  // In app.module.ts
+		
+		
 

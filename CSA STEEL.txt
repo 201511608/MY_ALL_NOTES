@@ -214,7 +214,7 @@ DgnDataCtrl.cpp
 
 
 else if(iMembType==D_MBTP_BRACE)	// Brace.
-eles                                // Unbraced ?
+else                                // Unbraced ?
 if(m_dFxx < 0.0)  					// COMPRESION CONDITION
 else     		  					// TENSION
 (bSingleCurve ? "-. 				// Single Curvature Bending." :

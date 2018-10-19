@@ -1,4 +1,5 @@
 // Content ::
+//0   :: Basic
 //1   :: OFFSET
 //2   :: General Software NOTES
 //3   :: Plate Membrain shell wall Elements  ? 
@@ -15,11 +16,21 @@
 //14  :: 
 //15  :: 
 
+
+// 0
+// BASICS
+
 Help Civil
 http://manual.midasuser.com/EN_Common/civil/870/index.htm
 
 Help Gen
 http://manual.midasuser.com/EN_Common/Gen/870/index.htm
+
+
+F4          // Node Query
+Ctrl + F4   // Element Query
+
+
 
 // MIDAS GEN
 //1
