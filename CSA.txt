@@ -1,0 +1,97 @@
+mct -> Gen/Civil
+
+If variable is added 4 things to be considered
+->add struct	
+->Old file version compatibility
+->mct compatibility
+->not to be used in other places(except its own use)
+
+variable 
+m_anything global
+anything local
+
+
+CSA_S6_14_RC=180
+CSA_S6_00=154
+
+
+
+
+if(strCodeName == "CSA-A23.3-94")
+	  GetDlgItem(IDC_DGN_CON_M_PHIM )->EnableWindow(TRUE);
+	  
+	  IDC_DGN_CON_M_PHIC
+	  
+//
+IDC_DGN_CON_M_FRAME10
+IDC_DGN_CON_M_SEIS_CHECK
+//
+
+
+IDD_DGN_CON_PHI_DLG // CHI  // RUS(LONG)  // ENG
+
+m_mSeisChk(FALSE)
+
+
+DDX_Control(pDX, IDC_DGN_CON_M_SEIS_CHECK, m_enableSeischeck);
+DDX_Check(pDX, IDC_DGN_CON_M_SEIS_CHECK, m_mSeisChk);
+BOOL m_mSeisChk;  // CSA-S614
+CButton m_enableSeischeck;
+
+
+bNTCFlag// for column check !!!
+bSpecialSeismic // Seismic check default for both
+
+
+  else if(iStatus==6)	          rData.nClass = m_iEqCategory;
+  else if(iStatus==7)	          rData.nClass = m_iEqCategory;
+  else if(iStatus==8)	          rData.nClass = m_iEqCategory;
+  else if(iStatus==19)	          rData.nClass = m_iEqCategory;
+
+int iCode = m_pDB->m_iDgnCode;
+if (iCode==CSA_S6_14_RC)
+
+UpdateData(TRUE);
+
+// Update in csa s6 00   *Update fc to fcr
+// Coding
+		else if(iCode == CSA_S6_00)
+		{
+			if(iopt == 0)
+			{
+				Calc_Page(1);
+				fout<<"           -. Vf < 0.2*phic*fc'*bv*dv  --->  Not required shear reinforcement."<<endl;
+			}
+			else
+			{
+				Calc_Page(2);
+				if(iopt == 1)	      fout<<"           -. 0.2*phic*fc'*bv*dv < Vf < Vc  --->  Required minimum shear reinforcement."<<endl;
+				else								fout<<"           -. Vf > Vc  --->  Required shear reinforcement."<<endl;
+				fout<<"           -.                 smax   = MIN[ smax, Av/(0.15*fc'*bv/fys) ] ="<<strSmax<<m_strLengUnit<<endl;
+			}
+		}
+		
+	
+
+  BOOL bIsEqOK	 = (m_bEqSpecial ? TRUE : FALSE);	
+
+	// for Design Code
+class __MY_EXT_CLASS__ CRCSC_DataBase : public CDgnForceCtrl
+iCode = m_pDB->m_iDgnCode;
+CRCSC_DataBase* m_pDB;
+
+
+
+rData.bSpecialSeismic      > T_DCON_D
+m_pDB->m_bEqSpecial        > CDgnForceCtrl (m_bEqSpecial)
+m_pMyDB->m_strDgnCode = DconData.DesignCode;          > class CRCSC_CodeCheck 
+
+AFX_EXT_CLASS -> To Make as Dll
+ 
+
+ #define D_DGN_CONC_CODE_CSA_S6_00         19
+
+ 
+ CSA_S6_14_RC   VS   CSA_S6_14
+ 
+ 

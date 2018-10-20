@@ -1,0 +1,255 @@
+// 
+
+// Books
+http://globalsupport.midasuser.com/helpdesk/File/Get/8965959
+https://www2.gov.bc.ca/assets/gov/driving-and-transportation/transportation-infrastructure/engineering-standards-and-guidelines/bridge/volume-1/2016/section-10.pdf
+https://www2.gov.bc.ca/gov/content/transportation/transportation-infrastructure/engineering-standards-guidelines/structural/standards-procedures/volume-1
+
+// CSA-S16-01   // Finlally check and remove all CSA-S16-01  comments
+// "CSA-S16-01"  check and all places "CSA-S6-14"
+// CSA_S16_01    check and all places CSA_S6_14_ST
+// "IS:800-2007" check and all places CSA_S6_14_ST
+CSA_S6_14_ST = 73  // DgnStruct     // ADDED
+"CSA-S6-14"
+STLCODE_CSA_S6_14  _T("CSA-S6-14")
+
+////
+GUI START
+DBCodeCtrl  -> Gen/Civil DropDown
+DnDataCtrl  -> on click steel design
+////
+
+ 
+/////////////
+ ///////////////////////////
+ 
+ACS_CSA_S16_01Print  -> File
+ACSCode_CSA_S16_01
+ACS_DesignManager
+ACS_1Page_Out
+ACS_Checking 
+ACS_DataBase 
+ACSPrint
+LoadCombCtrl
+DBDoc
+LoadDgnCodeCheck
+DBCodeCtrl
+DBCodeDef
+DBLib
+DgnConPhiDlg
+DgnCodeCtrl
+DgnStlPhiDlg
+WgenDoc
+DesignCategoryIGen
+MgtCmdDgn
+UMDC_STL_CodeCheck
+ODSPrint
+RCSDataBase
+UMDA_CodeCheck
+
+
+//
+CSA-S16-01
+
+//
+if (strCode==_T("KCI-USD07"))             return bCivil ? KCI_USD07_CVL : KCI_USD07;
+
+//
+AddPanel_MODS()  // All pannel Items
+//
+DesignCategoryCivil
+
+//
+ if(strCodeName=="JTG D62-04" )
+ 
+// 
+DBDoc
+	GetDesignTitleStl
+	getDesignParamNa
+
+/////  DATABASE
+// CACSDataBase
+
+CACSCode_CSA_S16_01                 // ACSCode_CSA_S6_14   // CACSCode_CSA_S6_14           // Main Calculation
+	CACS_CSA_S16_01Print            // ACS_CSA_S6_14Print  // CACS_CSA_S6_14Print		   // Print
+		CACSPrint     				// COMMON TO ALL  // NO Need of new account
+	CACS_LRFDChecking 				// Common
+		CACSChecking  				// Common
+	
+	
+	
+m_pCSA_S6_14
+
+ACS_LRFDResultDlg 
+// ACI Design Options
+	!bTapered	// Regular Section.
+		(ShapeNo==0 || ShapeNo==3)		 // L,T.
+		(ShapeNo==31) 					 // Inverted T.
+		(ShapeNo==1 || ShapeNo==2) 		 // C,H.
+		(ShapeNo==4)  					 // B.
+		(ShapeNo==5)  					 // P.
+		(ShapeNo==6)  					 // SR.
+		(ShapeNo==7)  					 // SB.
+		(ShapeNo==8 || ShapeNo==9 || ShapeNo==17) // 2L,2C,CL.
+		(ShapeNo==44) 					 // 4L.
+		(ShapeNo==10) 					 // CC.
+		(ShapeNo==33) 					 // Z-Shape.
+		(ShapeNo==23) 					 // CB.
+		(ShapeNo==41) 					 // HT.
+		(ShapeNo==42) 					 // TT.
+		(ShapeNo==43) 					 // H2T.
+		(ShapeNo==45) 					 // HC.
+
+	bTapered	// Tapered Section.
+		ShapeNo==23 			 // CB-Section.
+		ShapeNo==33 			 // Z-Shape.
+		ShapeNo==10 			 // CC-Section.
+		ShapeNo==8 || ShapeNo==9 // 2L,2C-Section.
+		ShapeNo==7				 // SB-Section.
+		ShapeNo==6				 // SR-Section.
+		ShapeNo==5				 // P-Section.
+		ShapeNo==4				 // B-Section.
+		ShapeNo==1 || ShapeNo==2 // C,H-Section.
+		ShapeNo==0 || ShapeNo==3 // L,T-Section.
+
+	
+
+//   Detail Report
+ACSPrint
+
+// Design Option in CSA
+(m_iType==0)	// L.
+(m_iType==1)	// C.
+(m_iType==2)	// H.
+(m_iType==3)	// T.
+(m_iType==4)	// B.
+	// Flanges.
+	// Web.
+(m_iType==5)	// P.
+(m_iType==6)	// SR.
+(m_iType==7)	// SB.
+(m_iType==8)	// 2L.
+(m_iType==9)	// 2C.
+
+
+
+Calc_CSA_EffectSect(1);	// Compression + Bending.
+Calc_CSA_EffectSect(2);	// Compression.
+
+
+//
+Check_Section()  // function
+
+// Compression or tension   ++ or -- force Local axis
+if(m_dFxx < 0.0)	m_dRatA = CSA_AXIAL_COM(dLambda_z);
+	else							m_dRatA = CSA_AXIAL_TEN();
+	
+
+// Section
+enum EN_ACS_SECT_SHAPE
+{
+	EN_ACS_SECT_SHAPE_REG_L    =  0,
+	EN_ACS_SECT_SHAPE_REG_C    =  1,
+	EN_ACS_SECT_SHAPE_REG_H    =  2,
+	EN_ACS_SECT_SHAPE_REG_T    =  3,
+	EN_ACS_SECT_SHAPE_REG_B    =  4,
+	EN_ACS_SECT_SHAPE_REG_P    =  5,
+	EN_ACS_SECT_SHAPE_REG_SR   =  6,
+	EN_ACS_SECT_SHAPE_REG_SB   =  7,
+	EN_ACS_SECT_SHAPE_REG_2L   =  8,
+	EN_ACS_SECT_SHAPE_REG_2C   =  9,
+	EN_ACS_SECT_SHAPE_REG_CC   = 10,
+	EN_ACS_SECT_SHAPE_REG_CL   = 17,
+	EN_ACS_SECT_SHAPE_REG_GEN  = 21,
+	EN_ACS_SECT_SHAPE_REG_CB   = 23,
+	EN_ACS_SECT_SHAPE_REG_UDT  = 31,
+	EN_ACS_SECT_SHAPE_REG_UP   = 32,
+	EN_ACS_SECT_SHAPE_REG_Z    = 33,// [2015.11.27. KHD0811] Add Z-Shape (AISI-CFSD08)
+	EN_ACS_SECT_SHAPE_COMA_HT  = 41,
+	EN_ACS_SECT_SHAPE_COMA_2T1 = 42,
+	EN_ACS_SECT_SHAPE_COMA_H2T = 43,
+	EN_ACS_SECT_SHAPE_COMB_4L  = 44,// PMS:2933 star-battened 4L, by Seungjun, 20141124
+	EN_ACS_SECT_SHAPE_COMA_HC1 = 45,// Pinakin IS800:2007 Plated I Section design
+};
+m_dTLMT
+
+    CACSDataBase* pDB
+	CACSDataBase*	m_pMyDB;
+	
+////	
+	  m_CLMT = 200.0;
+	  m_TLMT = 300.0;
+//	  T_LTSR_D rData;	  
+	  rData.CLMT      = m_CLMT;
+      rData.TLMT      = m_TLMT;
+	  Design data control
+	  
+void CACSCodeCheck::SetLtsrToAcsDB(T_ELEM_K ElemK, CACSDataBase* pDB)
+		T_LTSR_D LtsrD;
+		pDB->m_dCLMT	     = LtsrD.CLMT;
+		pDB->m_dTLMT	     = LtsrD.TLMT;
+	  
+
+DgnDataCtrl.cpp
+
+
+
+// Class definition !
+// bending + compression
+// compression 
+(m_iType==0)	// L.  // Angle
+(m_iType==1)	// C.  // Channel
+(m_iType==2)	// H.  // I section
+(m_iType==3)	// T.  // TSection
+(m_iType==4)	// B.  // Box
+	// Flanges.
+	// Web.
+(m_iType==5)	// P.  // Pipe
+(m_iType==6)	// SR. // Solid Round ??
+(m_iType==7)	// SB. // Solid Box   ??
+(m_iType==8)	// 2L. // Double Angle
+(m_iType==9)	// 2C. // Double Channel
+
+
+
+
+else if(iMembType==D_MBTP_BRACE)	// Brace.
+else                                // Unbraced ?
+if(m_dFxx < 0.0)  					// COMPRESION CONDITION
+else     		  					// TENSION
+(bSingleCurve ? "-. 				// Single Curvature Bending." :
+else            "-. 				// Reverse Curvature Bending.");
+if(m_dLu <= 0.0)					// Laterally supported member.
+else                				// Laterally Unsupported Member
+(pDB->m_iCantilever > 0 ? TRUE      // Cantilever Yes
+: FALSE); 							// Cantilever Not
+Is_SinglySym()                      // MonoSymmetric
+Is_DoublySym()						// Double Symmetric
+Is_MajorSym()                       // MajorAxis Symmetric
+Is_MinorSym()						// MinorAxis Symmetric
+
+CSA_S6_14_CSG   // Steel Composit                                     
+                                     
+SRC   ||   CSG	
+ 
+wg_db
+	PLATEgIRDERdESIGN.H  
+	
+	
+dM1	 = fabs(pDB->Get_EndMy1G(0));
+dM2	 = fabs(pDB->Get_EndMy2G(0));
+dM04 = pDB->Get_EndMyeG(0,0);
+dM14 = pDB->Get_EndMyeG(0,1);
+dM24 = pDB->Get_EndMyeG(0,2);
+dM34 = pDB->Get_EndMyeG(0,3);
+dM44 = pDB->Get_EndMyeG(0,4);
+
+// All Moment are Same Sign.
+bSingleCurve = pDB->IsSingleCurve(dM04,dM14,dM24,dM34,dM44);
+
+
+
+#define LT_TVSF_CMD     12211
+
+
+				

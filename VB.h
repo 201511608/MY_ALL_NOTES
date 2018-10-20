@@ -1,10 +1,35 @@
-VISUAL BASIC
+// VISUAL BASIC
+/////////////////////////////
+/////// CONTENT
+// 1   // TECHNIQUES
+// 2   // REGEX 
+// 3   // SUB MAIN 
+// 4   // Class
+// 5
+// 6
+// 7
+// 8
+// 9
+// 10
+// 11
+// 12
+// 13
+
+////////////////////////////////
+
+
+// 1
+// TECHNIQUES
 // Write two or more commands in same line using :
- 
+
+
+
+// 2
+// REGEX 
 // Libraries
 	Imports System.Text.RegularExpressions   // Regex :: Regex class is used for representing a regular expression.
 
-// REGEX 
+
 		// Matches
 	Dim mc As MatchCollection = Regex.Matches(text, expr)  // Creates an array // check in techiques
 		// Replaces
@@ -70,6 +95,13 @@ VISUAL BASIC
 	 (?(A) A\d{2}\b | \b\d{3}\b)   // (?( name )yes | no )
 	 //  (?<==)(.?\w+){1,}"?
  
+ 
+ 
+ 
+ 
+ 
+ 
+//3
 //SUB MAIN 
 //Sub Main indicates the entry point of VB.Net program. 
 	Sub Main() 
@@ -77,11 +109,16 @@ VISUAL BASIC
 	End Sub
 
 
-//Class Declearation
+	
+	
+//4
+// Class 
+    // Declearation
 	Public Class Rectangle
 		// write class data
 	End Class
 	
+	// Class Call
 	Dim r As New Rectangle() // Class Call
 	// with in the class we can call and run the class from SUBMAIN() End Sub
 	Class Box

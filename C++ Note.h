@@ -6,6 +6,12 @@ C++...............................
 4  //
 5  //
 6  //
+7  //
+8  //
+9  //
+10 // Local Global
+11 //
+
 
 // :: 1
 ///////////////////////////////////////////////////////
@@ -1190,8 +1196,29 @@ ref2 =999;       -> ref2=999  ref =999,  x =999
 
 
 
+// 10
+// Local Global variable
+https://www.geeksforgeeks.org/scope-of-variables-in-c/
 
 
 
-	
-	
+// 11
+// Access variable from base class i.e from child class
+// C++ program to demonstrate implementation
+// of Inheritance
+
+		obj1.Parent::id_c = 7;  // Parent Class
+		obj1.id_c = 91;    // Child Class
+
+// 12
+// Struct
+struct Point
+{
+   int x, y, z;
+};
+struct Point p1 = {.y = 0, .z = 1, .x = 2};
+
+struct Point p1 = {1, 2};
+struct Point *p2 = &p1;
+printf("%d %d", p2->x, p2->y);
+ 

@@ -1,0 +1,265 @@
+double dM1	= fabs(pDB->Get_EndMy1(1));
+double dM2	= fabs(pDB->Get_EndMy2(1));
+double dM04 = pDB->Get_EndMye(1,0);
+double dM14 = pDB->Get_EndMye(1,1);
+double dM24 = pDB->Get_EndMye(1,2);
+double dM34 = pDB->Get_EndMye(1,3);
+double dM44 = pDB->Get_EndMye(1,4);
+// Change by ZINU.('02.9.18).
+if(bNewEq)	// Kirby and Nethercot (1979).
+{
+if(bCantilever)	{dCb=1.0; bExclude=TRUE;}	// See AISC-LRFD2K Chapter F (F1-3). p.16.1-32.
+else	// See AISC-LRFD2K Commentary Chapter F (Eq.C-F1-3). p.206~208.
+{
+double dMa = fabs(dM14);
+double dMb = fabs(dM24);
+double dMc = fabs(dM34);
+double dMmaxEnd = dM2;
+double dMmaxMid = max(max(dMa,dMc),dMb);
+double dMmax = max(dMmaxEnd, dMmaxMid);
+if(dMmax==0.0)	{dCb=1.0; bExclude=TRUE;}
+
+
+
+if(dMmax==0.0)	{dCb=1.0; bExclude=TRUE;}
+	else
+		{
+		}
+		
+-. Cb   = 12.5*Mmax / (2.5*Mmax + 3*MA + 4*MB + 3*MC) ="<<strCb<<endl; 
+
+if(bSingleCurve)	dCmz = 0.6 + 0.4*(dM1/dM2);
+else							dCmz = 0.6 - 0.4*(dM1/dM2); 
+
+pDB->m_dCb   
+
+Print_CSA_EffectSect(m_iType,dHe,dBe1,m_dtw,m_dtf1,dTempBe2,m_dtf2,
+					 m_dArea,m_dAsy,m_dAsz,m_dYbar,m_dZbar,
+					 m_dRyy,m_dRzz,m_dRyz,m_dSyy,m_dSzz,m_dZyy,m_dZzz);
+					 
+double  m_dFlen; // in   -> User selection unit
+double  m_dFln2; // in^2 -> User selection unit
+double  m_dFln3; // in^3 -> User selection unit
+double  m_dFln4; // in^4 -> User selection unit
+double  m_dFfor; // kips      -> User selection unit
+double  m_dFmot; // kips*in   -> User selection unit
+double  m_dFstr; // kips/in^2 -> User selection unit
+
+m_dHe		= dHe;	
+m_dBe1	= dBe1;
+m_dBe2	= dBe2;
+m_dArea	= EffSectData.dAeff;
+m_dAsy	= EffSectData.dAsy;
+m_dAsz	= EffSectData.dAsz;
+m_dYbar	= EffSectData.dYbar;
+m_dZbar	= EffSectData.dZbar;
+m_dRyy	= EffSectData.dRyy;
+m_dRzz	= EffSectData.dRzz;
+// m_dTanA is not changed.
+m_dRyz	= EffSectData.dRyz;
+m_dSyy	= EffSectData.dSyy;
+m_dSzz	= EffSectData.dSzz;
+m_dZyy	= EffSectData.dZyy;
+m_dZzz	= EffSectData.dZzz;
+
+// For Combined Section.
+
+	m_dH4			= pDB->m_D41[iPosiNo];
+	m_dB4			= pDB->m_D42[iPosiNo];
+	m_dtw4		= pDB->m_D43[iPosiNo];
+	m_dtf4		= pDB->m_D44[iPosiNo];
+	// Change from Analysis Area to Design Area('00.3.5).
+	m_dArea	= pDB->m_Area[iPosiNo];
+	m_dAsy  = pDB->Get_AsForShear(TRUE,  pDB->m_iType, pDB->m_Asy[iPosiNo]);	// y.
+	m_dAsz  = pDB->Get_AsForShear(FALSE, pDB->m_iType, pDB->m_Asz[iPosiNo]);	// z.
+	m_dRxx  = pDB->m_Rxx[iPosiNo];	// Only LSD.
+	m_dRyy  = pDB->m_Ryy[iPosiNo];
+	m_dRzz  = pDB->m_Rzz[iPosiNo];
+	m_dTanA	= pDB->m_TanA[iPosiNo];
+	m_dRyz  = pDB->m_Ryz[iPosiNo];
+	m_dYbar = pDB->m_Ybar[iPosiNo];
+	m_dZbar = pDB->m_Zbar[iPosiNo];
+	m_dQyb  = pDB->m_Qyb[iPosiNo];
+	m_dQzb  = pDB->m_Qzb[iPosiNo];
+	m_dSyy  = pDB->m_Syy[iPosiNo];
+	m_dSzz  = pDB->m_Szz[iPosiNo];
+	m_dZyy  = pDB->m_Zyy[iPosiNo];	// Only LSD.
+	m_dZzz  = pDB->m_Zzz[iPosiNo];	// Only LSD.
+	m_dRoy  = pDB->m_Roy[iPosiNo];
+	m_dRoz  = pDB->m_Roz[iPosiNo];
+	m_dRop  = pDB->m_Rop[iPosiNo];
+	m_Cyp   = pDB->m_Cyp[iPosiNo];
+	m_Cym   = pDB->m_Cym[iPosiNo];
+	m_Czp   = pDB->m_Czp[iPosiNo];
+	m_Czm   = pDB->m_Czm[iPosiNo];
+	m_dy1   = pDB->m_y1[iPosiNo];
+	m_dz1   = pDB->m_z1[iPosiNo];
+	m_dy2   = pDB->m_y2[iPosiNo];
+	m_dz2   = pDB->m_z2[iPosiNo];
+	m_dy3   = pDB->m_y3[iPosiNo];
+	m_dz3   = pDB->m_z3[iPosiNo];
+	m_dy4   = pDB->m_y4[iPosiNo];
+	m_dz4   = pDB->m_z4[iPosiNo];
+	m_dYbp  = pDB->m_Ybp[iPosiNo];
+	m_dZbp  = pDB->m_Zbp[iPosiNo]; 
+	m_dArea_eff = pDB->m_Area_eff[iPosiNo];
+	m_dRyy_eff  = pDB->m_Ryy_eff[iPosiNo] ;
+	m_dRzz_eff  = pDB->m_Rzz_eff[iPosiNo] ;
+	m_dy1_eff   = pDB->m_y1_eff[iPosiNo]  ;
+	m_dy2_eff   = pDB->m_y2_eff[iPosiNo]  ;
+	m_dy3_eff   = pDB->m_y3_eff[iPosiNo]  ;
+	m_dy4_eff   = pDB->m_y4_eff[iPosiNo]  ;
+	m_dz1_eff   = pDB->m_z1_eff[iPosiNo]  ;
+	m_dz2_eff   = pDB->m_z2_eff[iPosiNo]  ;
+	m_dz3_eff   = pDB->m_z3_eff[iPosiNo]  ;
+	m_dz4_eff   = pDB->m_z4_eff[iPosiNo]  ;
+	m_dRoy_eff  = pDB->m_Roy_eff[iPosiNo] ;  
+
+  
+	m_dH			= pDB->m_D1[iPosiNo];
+	m_dB1			= pDB->m_D2[iPosiNo];
+	m_dtw			= pDB->m_D3[iPosiNo];
+	m_dtf1		= pDB->m_D4[iPosiNo];
+	m_dB2			= pDB->m_D5[iPosiNo];
+	m_dtf2		= pDB->m_D6[iPosiNo];
+	m_dFillet = pDB->m_D7[iPosiNo];
+	m_dBL     = pDB->m_D8[iPosiNo];
+	m_dBR     = pDB->m_D9[iPosiNo];
+	
+	
+	
+	dMu = 202346988.42043316 // D
+	dMu = 202195398.74588439 // S
+	
+	dMu = 35744720358.544853
+
+	Run Plate Girder Design !
+
+
+
+
+///////////////////////////////////////	
+struct DGN_SECT_STIFFNESS
+{
+  double dArea;
+  double dYBar;
+  double dZBar;
+  double dIyy;
+  double dIzz;
+  double dRoy;
+  double dRoz;
+  // Add, Jaeoh(08.09.29)
+  double dAsy;
+  double dAsz;
+  double dIxx;
+  double dCyp;
+  double dCym;
+  double dCzp;
+  double dCzm;
+  double dQyb;
+  double dQzb;  
+  double dWArea;
+  double dx1, dx2, dx3, dx4;
+  double dy1, dy2, dy3, dy4;  
+  // Add, Parkhj(10.09.30)
+  double dRop;
+  double dSyy;
+  double dSzz;
+  double dZyy;
+  double dZzz;
+  double dPeriOut;
+  double dPeriIn;
+  double dTanA;
+  double dCwp;
+  double dZyp;
+  double dZym;
+  double dZzp;
+  double dZzm;
+  double dIyz; // ´Ü¸é »ó½Â ¸ð¸àÆ®, LÇü¸¸ »ç¿ë. 
+  
+  
+  // In Engine
+   dJ   = GirStiff.dIxx;
+   J = St. Venant torsional constant, mm4
+   
+   dB1 = -0.0012198543290457536
+   dB2 = 1.6493824482165402
+   
+   dMu = 202346988.42043316
+   dMu = 202195398.74588439
+   dMu = 37935200.645085312  dMu = 202195398.74588439
+   
+   
+   
+	ForD[5]; // I, 1/4, M, 3/4, J  
+	m_dMa   = m_pMembInD->aUlmFor[0].ForD[1].ForNC.dForce[4];
+	m_dMb   = m_pMembInD->aUlmFor[0].ForD[2].ForNC.dForce[4];
+	m_dMc   = m_pMembInD->aUlmFor[0].ForD[3].ForNC.dForce[4];
+	
+	
+   
+   		fout<<endl
+				<<"      ( ). Calculate bending resistance at laterally unsupported member (Mry)."<<endl
+				<<"           [ CSA-S6-14 10.10.2.3 (a) for channel ]"<<endl
+				<<"           : In case of Mu > 0.67*My."<<endl
+				<<"           -. Resistance factor for structural steel  :  phi ="<<strPhi<<endl
+				<<"           -. Mry    =  1.15*phi*My*(1-0.28*My/Mu)  ="<<strMr<<m_strMomUnit<<endl;
+	}
+	else
+	{
+		fout<<endl
+				<<"      ( ). Calculate bending resistance at laterally unsupported member (Mry)."<<endl
+				<<"           [ CSA-S6-14 10.10.2.3 (a) for channel ]"<<endl
+				<<"           : In case of Mu < 0.67*My."<<endl
+				<<"           -. Resistance factor for structural steel  :  phi ="<<strPhi<<endl
+				<<"           -. Mry    =  phi*Mu  ="<<strMr<<m_strMomUnit<<endl;
+	}
+  
+  
+  
+
+  CSG_MEMB_RES_KSCE_LSD12_D_FLEX Detail_ConsF[2];  // 0:positive 1:nNegative  
+  
+  
+  struct _UMD_RC_COLUMN_REQ_RBAR_RATIO_UNIT
+{
+  double dAs;
+  double dPr;
+  double dMry;
+  double dMrz;
+  double dRatio;
+  BOOL   bChk;
+
+  void Initialize()
+  {
+    dAs     = 0.0;
+    dPr     = 0.0;
+    dMry    = 0.0;
+    dMrz    = 0.0;
+    dRatio  = 0.0;
+    bChk    = FALSE;
+  }
+};
+
+
+// Pi Function
+double CACSPrint::Get_Pi()
+{
+	return 4.0*atan(1.0);	// 3.141592653
+}
+  
+  
+
+//
+BOOL CDgnCsgCSA_S6_14::Get_DesignParamChecking4Shear(int nShapeType, CSG_MEMB_POSD_KSCE_LSD &MembIn, CSG_MEMB_RES_CSA_S6_D &MembR)
+{
+CSG_MEMB_GIRDER_RES_D &Gir = MembR.Memb.GIRDER;
+double dFy    = Gir.dFy;
+double dPhi_s = MembR.Memb.dPhi_s_Shear;
+int nPosi = MembR.Memb.nPosi;
+double da = MembIn.Memb.PosD[nPosi].Trst.dPitchWeb;
+
+    dPitchWeb         = rData.dPitchWeb; 
+	
+	https://www.tripsavvy.com/sanjay-gandhi-national-park-in-mumbai-1539867
+  

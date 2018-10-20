@@ -22,6 +22,7 @@
 	Injectable
 	USERS
 	
+	Use save all every time to update web page  // Ctrl + K, S
 	e2e // End to end testing
 		
 	//Files in Angular
@@ -56,7 +57,9 @@
 // Visual Studio Code 
 	Ctrl + ` // Opens Command shell
 	File->Preferance->Setting // Change Default settings
-
+    
+	Saveall // Ctrl + K, S
+	
 // 5
 // ng commands
 // Chech this is file /Pakage.json
@@ -65,3 +68,8 @@
 	"test": "ng test",
 	"lint": "ng lint",
 	"e2e": "ng e2e"
+	
+	
+	//GENERATE COMPONENTS  // AFTER Ctrl + `
+	ng g component Components/user  // MAKE DEFAULT COMPONENTS
+	
