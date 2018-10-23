@@ -17,6 +17,8 @@
 // 13
 
 
+// 0 
+//Basic Pharases
 	It’s not true.
 	It’s not my fault.
 	I’m not the one to blame.

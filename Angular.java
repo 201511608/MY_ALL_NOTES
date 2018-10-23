@@ -10,9 +10,9 @@
 // 4  :: Variable,structures, Console
 // 5  :: for loop 
 // 6  :: Visual Studio Code 
-// 7  :: ng commands
-// 8
-// 9    
+// 7  :: ng commands  // 7.1 CLI commands
+// 8  :: HTML/BootStrap
+// 9  :: Chapter 2
 // 10 
 // 11  
 // 12
@@ -36,10 +36,10 @@
 	
 	
 	// TypeScript  ( programming language )
-		// https://www.tutorialspoint.com/typescript/
-		// TypeScript (SuperScript of Java Script)
-		// Sting input to string input not integer
-		// Type Script Compiles to JavaScript
+		https://www.tutorialspoint.com/typescript/
+		 TypeScript (SuperScript of Java Script)
+		 Sting input to string input not integer
+		 Type Script Compiles to JavaScript
 		
 	// Basic+
 		Angular is Frontend/Clint Framework.  // FrontEnd
@@ -57,6 +57,9 @@
 		Use save all every time to update web page  // Ctrl + K, S
 		e2e // End to end testing
 			
+		// Plugins
+			emmet
+			
 		//Files in Angular
 			.components.css
 			.components.html
@@ -73,7 +76,13 @@
 		Git bash
 		
 	
-
+    // Styles 
+		Add filelocatoion in Angular.json file   // Then Reload ngserve
+		Ex:
+			"styles": [
+				  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+				  "src/styles.css"
+				      ]
 
 //1
 // Installation
@@ -119,8 +128,10 @@
 
 //2
 	//Files
-	.ts  -> typescript  //Main
-	spec.ts -> Testing // Debug?test
+	.html   // Write pages
+	.css    // Style
+	.ts  -> typescript  // Main
+	.spec.ts -> Testing // Debug?test
 
 
 //3 Generate components  
@@ -130,56 +141,56 @@
 
 
 // 4
-wirtecode
 // VARIABLE
-	variable = "MIDAS" ; // DIRECT ASSIGNING  // in app.component.ts
-	{{variable}}
-	
-	variable:string = "MIDAD";
-	age:number;
-	variable:any   //string or number cabe define
-	
-// Box for Input
-`	<input type="text" >
-
-// Directive  // Listion and save in virable	
-	[(ngModel)]="VariavelName"  
-	<input type="text" [(ngModel)]="name"> // EX
-
-// Array	
-	hobbies:any[];     // Numbers or/and strings
-	hobbies:string[];  // Array
-	hobbies:numbers[];
-	hobbies.push('hobbies Push Added in Array')// Adds at Last    // hobbies=['wirtecode','playgames']
-	hobbies.ushift('hobbies Push Added in Array');
-	
-//Structres
-		address:{
-		street:string,
-		city:string,
-		state:string
-		}
-
-		this.address= {
-		  street: 'Vashi',
-		  city: 'Navi Mumbai',
-		  state:  'maharashtra "so you think you can catch me" '
-		}
-		address.street  // Call in Html
+	// Variables
+		variable = "MIDAS" ; // DIRECT ASSIGNING  // in app.component.ts
+		{{variable}}
 		
-		// Interface 
-		// To defiene any thing outside class and then ass inside class like function and strutures
-	
-			address2:address;     //  withh in class
-			
-			interface address{    // Outside class
+		variable:string = "MIDAD";
+		age:number;
+		variable:any   //string or number cabe define
+		
+	// Box for Input
+	`	<input type="text" >
+
+	// Directive  // Listion and save in virable	
+		[(ngModel)]="VariavelName"  
+		<input type="text" [(ngModel)]="name"> // EX
+
+	// Array	
+		hobbies:any[];     // Numbers or/and strings
+		hobbies:string[];  // Array
+		hobbies:numbers[];
+		hobbies.push('hobbies Push Added in Array')// Adds at Last    // hobbies=['wirtecode','playgames']
+		hobbies.ushift('hobbies Push Added in Array');
+		
+	//Structres
+			address:{
 			street:string,
 			city:string,
 			state:string
 			}
-	
-//CONSOLE	
-	console.log('constructor ran..');   // console in browser press (F12 for console)
+
+			this.address= {
+			  street: 'Vashi',
+			  city: 'Navi Mumbai',
+			  state:  'maharashtra "so you think you can catch me" '
+			}
+			address.street  // Call in Html
+			
+			// Interface 
+			// To defiene any thing outside class and then ass inside class like function and strutures
+		
+				address2:address;     //  withh in class
+				
+				interface address{    // Outside class
+				street:string,
+				city:string,
+				state:string
+				}
+		
+	//CONSOLE	
+		console.log('constructor ran..');   // console in browser press (F12 for console)
 
 // 5
 // for loop
@@ -203,14 +214,129 @@ wirtecode
 	
 // 7
 // ng commands
-// Chech this is file /Pakage.json
-	"start": "ng serve",
-	"build": "ng build",
-	"test": "ng test",
-	"lint": "ng lint",
-	"e2e": "ng e2e"
+	// Check this is file /Pakage.json
+		"start": "ng serve",
+		"build": "ng build",
+		"test": "ng test",
+		"lint": "ng lint",
+		"e2e": "ng e2e"
+		
+		
+		//GENERATE COMPONENTS  // AFTER Ctrl + `
+			ng g component Components/user  // MAKE DEFAULT COMPONENTS
+		
+	// Node package Manager NPM
+		// Install BootStrap   
+			// Install Logally not Globally
+			npm install -- save bootstrap@3  
+			// Then Must addin Stles under angular.json file   // Then Reload ngserve
+		
+// 7.1
+https://www.tutorialspoint.com/angular4/angular4_examples.htm
+// CLI Commands
+	//To Create New Componets Directly
+	ng g c NameFolder  // g or generate || c or component
+	
+// 8
+// HTML
+
+// Input Box
+	<input type="text" [(ngModel)]="name" >
+	<p>{{name}}</p>
+// Horizontal Line seperator
+<hr>	
+// Paragraf headings
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<h4></h4>
+<h5></h5>
+
+// Styles bootstraps
+	// Shortcut .container and enter. -> it assign as <div class="container">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+        </div>
+    </div>
+</div>
+    
+
+	
+// 9 
+// Chapter 2
+Index.htmle  //Is the single page file !
+	// Title name can be changed i.e tab name 
+	  <app-root></app-root> where app files get loaded
+	
+main.ts // This the filst file get exucated
+.ts typescript  //file
+
+//App Start Flow
+main.ts->app.module.ts->app.components.ts/spec.ts/html/css->index.html  ||-> via <app-root>Load..<app-root>
+Angular in the end is javascript framework, changes DOM(html) at runtime!
+
+// components
+	// Each componets is one HTML  
+    // Like boxex in html page
+	// Component is just a typescript class
+			export class ServerComponent{ }   // Typescript class
+	// Decerator Enhanses Class Decerator.
+			@Component({})
+			@Component({
+						selector: 'app-server',					// Selector  for html <app-server><app-server>
+						templateUrl: './server.component.html'
+					  })
+	//  Decerator Enhanses Class to implement is we should have to Use decerator. So import it !
+			import { Component } from '@angular/core';  // Core functionality of Components
 	
 	
-	//GENERATE COMPONENTS  // AFTER Ctrl + `
-	ng g component Components/user  // MAKE DEFAULT COMPONENTS
+
+	// Good Practice Folder Name equal to Component Name  // All in Small letters
+		//Sub file name is    FolderName.component.ts   // Camel case names // capital at beggining of letter
+		
+
+// App Module 
+	app.module.ts
+	Bundles all components to gether !
 	
+	//New component class to be add in app.module.ts
+		import { ServerComponent} from './server/server.component';
+		@NgModule({
+					declarations: [
+					ServerComponent
+					]
+				 })
+
+	
+
+// in app.component.ts Under @Component
+	// Use '' or `` Write code in between '' or ``
+	templateURL: 'file.html'
+	or
+	templet:  '<p> direct code No html ear</p>'
+	
+
+//Styles
+	//app.component.css
+		//h3 h2 p 
+		h3{   // In app.component.css
+			color: blue;
+		  }
+	//app.compoents.ts
+		 styleUrls: ['./app.component.css']:
+		0r
+		 styles:['h3{color: dodgerblue;}', 'h3{color: dodgerblue;}']
+		 
+//Selector
+	// In app.components.ts
+		selector: 'app-server'   // <app-server></app-server> Must use like this	   || As Elements
+			or
+		selector: '.app-server' // <div class="app-server"></div> Must use like this   || As Class
+			or
+		selector: '[app-server]' // <div app-server></div>							   || As Attribute
+			
+			
+		
+		  
