@@ -136,7 +136,9 @@
 
 //3 Generate components  
 //Creates css, html,spec.ts,ts
-	ng g component filelocation  // g =generate ->  components  // Terminal within visual studio code
+	ng g c fileName // g =generate ->  component  // Terminal within visual 
+	ng generate component fileName  
+	studio code  // filename/location ??
 
 
 
@@ -193,22 +195,22 @@
 		console.log('constructor ran..');   // console in browser press (F12 for console)
 
 // 5
-// for loop
-  <li *ngFor= "let i of hobbies">{{i}}</li>  // hobbies=[playgames,listionstories]
-  <li *ngFor= "let hobby of hobbies; let i = index">{{i}}: {{hobby}}</li>
+	// for loop
+	  <li *ngFor= "let i of hobbies">{{i}}</li>  // hobbies=[playgames,listionstories]
+	  <li *ngFor= "let hobby of hobbies; let i = index">{{i}}: {{hobby}}</li>
 
 
-// Type Script Feature
-		import { FormsModule } from '@angular/forms';  // In app.module.ts
+	// Type Script Feature
+			import { FormsModule } from '@angular/forms';  // In app.module.ts
+			
+			
+
+	// 6
+	// Visual Studio Code 
+		Ctrl + ` // Opens Command shell
+		File->Preferance->Setting // Change Default settings
 		
-		
-
-// 6
-// Visual Studio Code 
-	Ctrl + ` // Opens Command shell
-	File->Preferance->Setting // Change Default settings
-    
-	Saveall // Ctrl + K, S
+		Saveall // Ctrl + K, S
 
 	
 	
@@ -232,111 +234,139 @@
 			// Then Must addin Stles under angular.json file   // Then Reload ngserve
 		
 // 7.1
-https://www.tutorialspoint.com/angular4/angular4_examples.htm
-// CLI Commands
-	//To Create New Componets Directly
-	ng g c NameFolder  // g or generate || c or component
-	
+	https://www.tutorialspoint.com/angular4/angular4_examples.htm
+	// CLI Commands
+		//To Create New Componets Directly
+		ng g c NameFolder  // g or generate || c or component
+		
 // 8
 // HTML
 
-// Input Box
-	<input type="text" [(ngModel)]="name" >
-	<p>{{name}}</p>
-// Horizontal Line seperator
-<hr>	
-// Paragraf headings
-<h1></h1>
-<h2></h2>
-<h3></h3>
-<h4></h4>
-<h5></h5>
+	// Input Box
+		<input type="text" [(ngModel)]="name" >
+		<p>{{name}}</p>
+		
+	// Horizontal Line seperator
+	<hr>	
+	
+	// Paragraf headings
+	<h1></h1>
+	<h2></h2>
+	<h3></h3>
+	<h4></h4>
+	<h5></h5>
 
-// Styles bootstraps
-	// Shortcut .container and enter. -> it assign as <div class="container">
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
+	// Line
+	<li></li>
+	
+	// Paragraf
+	<p></p>
+	
+	// Numbering
+	 <ol>
+		<li></li>   //->1 line
+		<li></li>   //->2  line
+	 </ol>
 
-        </div>
-    </div>
-</div>
-    
+	// Styles bootstraps
+		// Shortcut .container and enter. -> it assign as <div class="container">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+
+			</div>
+		</div>
+	</div>
+		
 
 	
 // 9 
 // Chapter 2
-Index.htmle  //Is the single page file !
-	// Title name can be changed i.e tab name 
-	  <app-root></app-root> where app files get loaded
-	
-main.ts // This the filst file get exucated
-.ts typescript  //file
+	Index.html  //Is the single page file !
+		// Title name can be changed i.e tab name | Which appears when we open the file.
+		  <app-root></app-root> // where app files get loaded
+								// We can even change <app-root> Name to any thing
+		
+	main.ts // This the first file get exucated
+	.ts typescript  //file
 
-//App Start Flow
-main.ts->app.module.ts->app.components.ts/spec.ts/html/css->index.html  ||-> via <app-root>Load..<app-root>
-Angular in the end is javascript framework, changes DOM(html) at runtime!
-
-// components
-	// Each componets is one HTML  
-    // Like boxex in html page
-	// Component is just a typescript class
-			export class ServerComponent{ }   // Typescript class
-	// Decerator Enhanses Class Decerator.
-			@Component({})
-			@Component({
-						selector: 'app-server',					// Selector  for html <app-server><app-server>
-						templateUrl: './server.component.html'
-					  })
-	//  Decerator Enhanses Class to implement is we should have to Use decerator. So import it !
-			import { Component } from '@angular/core';  // Core functionality of Components
+	//App Start Flow
+	main.ts->app.module.ts->app.components.ts/spec.ts/html/css->index.html  ||-> via <app-root>Load..<app-root>
 	
-	
+	//Angular in the end is javascript framework, changes DOM(html) at runtime!
 
-	// Good Practice Folder Name equal to Component Name  // All in Small letters
-		//Sub file name is    FolderName.component.ts   // Camel case names // capital at beggining of letter
+	// components
+		// Each componets is one HTML  
+		// Like boxes in html page
+		// Component is just a typescript class
+				export class ServerComponent{ }   // Typescript class
+		// Decerator Enhanses Class Decerator.
+				@Component({})
+				@Component({
+							selector: 'app-server',		// Selector  for html <app-server><app-server>
+							templateUrl: './server.component.html'
+						  })
+		//  Decerator Enhanses Class to implement is we should have to Use decerator. So import it !
+				import { Component } from '@angular/core';  // Core functionality of Components
+		
+		
+		// Naming
+			// File/Folders Class
+			// Good Practice Folder/SubFold/file/Subfile Name equal to Component Name  // All in Small letters
+			
+			// Class name is    FolderNameComponent   // Camel case names 
+			// capital at beggining of EachWordletter
+				
+
+	// App Module 
+		app.module.ts
+		Bundles all components to gether !
+		
+		//New component class to be add in app.module.ts
+			import { ServerComponent} from './server/server.component';
+			@NgModule({
+						declarations: [
+						              ServerComponent
+									  ]
+					 })
+
 		
 
-// App Module 
-	app.module.ts
-	Bundles all components to gether !
+	// in app.component.ts Under @Component
+		// Use '' or `` Write code in between '' or ``
 	
-	//New component class to be add in app.module.ts
-		import { ServerComponent} from './server/server.component';
-		@NgModule({
-					declarations: [
-					ServerComponent
-					]
-				 })
+	// template	
+		templateURL: 'file.html'
+		or
+		templet:  '<p> direct code No html ear</p>'
+		
 
-	
-
-// in app.component.ts Under @Component
-	// Use '' or `` Write code in between '' or ``
-	templateURL: 'file.html'
-	or
-	templet:  '<p> direct code No html ear</p>'
-	
-
-//Styles
-	//app.component.css
-		//h3 h2 p 
-		h3{   // In app.component.css
-			color: blue;
-		  }
-	//app.compoents.ts
-		 styleUrls: ['./app.component.css']:
-		0r
-		 styles:['h3{color: dodgerblue;}', 'h3{color: dodgerblue;}']
-		 
-//Selector
-	// In app.components.ts
-		selector: 'app-server'   // <app-server></app-server> Must use like this	   || As Elements
-			or
-		selector: '.app-server' // <div class="app-server"></div> Must use like this   || As Class
-			or
-		selector: '[app-server]' // <div app-server></div>							   || As Attribute
-			
-			
+	// Styles
+		//app.compoents.ts
+			 // In app.component.css -> h3 {   color: blue;} //Ex in: h3 h2 p 
+			 styleUrls: ['./app.component.css']:  // h3 {   color: blue;} //Ex in: h3 h2 p 
+			0r
+			 styles:['h3{color: dodgerblue;}', 'h3{color: dodgerblue;}']
+					 EX:       styles: [
+									 `p{ color: green;
+										padding: 20 px;
+										background-color: rose;
+										border: 1px solid red;}`
+										]
+										 
+	//Selector
+		// In app.components.ts
+			selector: 'app-server'   // -> <app-server></app-server> Must use like this	   || As Elements
+				or
+			selector: '.app-server'  // -> <div class="app-server"></div> Must use like this   || As Class
+				or
+			selector: '[app-server]' // -> <div>app-server></div>	
+									 //  As Attribute
+				
+	// Assignment 1
+		1- Create two new components
+		2- Output beneath each other
+		3- Output as warging or success message in the components
+		4- style the components red or blue
 		
 		  
