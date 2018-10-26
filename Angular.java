@@ -13,7 +13,7 @@
 // 7  :: ng commands  // 7.1 CLI commands
 // 8  :: HTML/BootStrap
 // 9  :: Chapter 2
-// 10 
+// 10 :: Timer
 // 11  
 // 12
 // 13
@@ -33,7 +33,8 @@
 	// Angular Cannot connect to DATABASE 
 	// Angular can connect to Server
 	
-	
+	// BootStrap
+		https://www.w3schools.com/bootstrap/
 	
 	// TypeScript  ( programming language )
 		https://www.tutorialspoint.com/typescript/
@@ -211,6 +212,7 @@
 		File->Preferance->Setting // Change Default settings
 		
 		Saveall // Ctrl + K, S
+		Indentation // Ctrl + K + F
 
 	
 	
@@ -240,7 +242,19 @@
 		ng g c NameFolder  // g or generate || c or component
 		
 // 8
-// HTML
+// HTML  
+// BootStrap
+		// BootStrap
+		https://www.w3schools.com/bootstrap/
+	
+
+	//Button
+		https://www.w3schools.com/bootstrap/bootstrap_buttons.asp
+		<button>AnyName</button>
+		<button class="btn btn-primary">AnyName</button>
+		
+			//https://www.w3schools.com/jsref/event_onclick.asp
+		<button onclick="onCreateServer()">Click me</button>
 
 	// Input Box
 		<input type="text" [(ngModel)]="name" >
@@ -299,7 +313,11 @@
 		// Each componets is one HTML  
 		// Like boxes in html page
 		// Component is just a typescript class
-				export class ServerComponent{ }   // Typescript class
+			Ex1:	export class ServerComponent{ }   // Typescript class
+			Ex2:	export class ServersComponent implements OnInit    {
+														constructor()  {}
+														   ngOnInit()  {}
+																        }
 		// Decerator Enhanses Class Decerator.
 				@Component({})
 				@Component({
@@ -369,4 +387,113 @@
 		3- Output as warging or success message in the components
 		4- style the components red or blue
 		
-		  
+	// Databinding
+			TypeScriptCode(BLogic)      <->  Template(HTML)
+			DataBase->DataProcess       <->  Show/Take Input
+			
+			// OneWay databinding
+				//OutPut Typescript -> Templet(Html)
+				String Interpolation ( {{ data}} )
+				Property Binding     ( [property]="data" )
+				
+				//Input // Templet(Html) -> OutPut Typescript 
+				Event Binding ( (event) ="expression")
+				
+			// Twoway databinding
+			// Typescript <-> Templet(Html)
+				Two-Way-Binding ( [(ngModle)] = "data" )
+				
+				
+		// String Interpolation ( {{ data}} )	
+						//Where  data = Must be String  
+						//or anynumber/.. finally convert to string
+			
+			Server =10;
+			Server: number = 10;
+			
+			ServerStatud = 'offline';
+			ServerStatus: string = 'offline';
+          
+				<p>Server ID {{ ServerId }}  is {{ServerStatus}} </p>
+				<p>{{'Server ID'}} {{ ServerId }}  is {{ServerStatus}} </p>
+				
+			//Funcion Methon in Class of name.component.ts
+				getServerStatus(){
+					return this.ServerStatus;  // ServerStatus: string = 'offline';
+									}			
+			
+		
+		// Property Binding     ( [property]="data" )
+							// [] Dynamiclly bind some property of with is brackets[]!
+							// [property] to be show or not ex:
+			EX:	    allowNewServer = false;  // in .ts file
+			        <button class="btn btn-success btn-block"
+                     [disabled]="!allowNewServer"> Add Server
+					</button>
+					 <p>{{allowNewServer}}</p>  // To Cross Check
+					
+			// InnerText            
+				// [InnerText] :  =  <p> InnerText </p>  // Similar to this !
+				<p>{{allowNewServer}}</p>
+				<p [innerText]="allowNewServer"></p> //same as above
+				 
+					 
+					 
+		// Event Binding ( (event) ="expression")
+			//Input // Templet(Html) -> OutPut Typescript 	
+						// On Button Click Call function which changes test
+						
+						Ex: (click)
+						serverCreationStatus = 'No Server was Created !'
+						onCreateServer(){this.serverCreationStatus = 'Server was Created!';}
+			            <button class="btn btn-success btn-block"
+								[disabled]="!allowNewServer"
+								(click) ="onCreateServer()">Add Server</button>
+						<p>{{serverCreationStatus}}</p>
+						
+						EX2: (input)
+						serverName=''
+						<input type="text"
+						class = "form-control"
+						(input)="onUpdateServerName($event)">
+						<p>{{serverName}}</p>
+							  onUpdateServerName(event: Event)
+								  {
+									 this.serverName=(<HTMLInputElement>event.target).value;
+								  }
+
+										
+		
+	
+		
+		// Console
+			console.log()
+			 onUpdateServerName(event: any)
+				  {
+					  console.log(event);
+				  }
+			onUpdateServerName($event) // Function call in Html
+				
+		
+		
+		(=> (click)).
+        OUR_ELEMENT properties  or YOUR_ELEMENT events		
+						
+// 10			
+// Timer
+	 setTimeout( ()=>{}, 2000 ); // es6 Arrow funciton  // 2000 = 2 seconds
+Ex:  setTimeout( (Argument)=>{FunctionBody}, 2000 ); // es6 Arrow funciton
+EX2: setTimeout( ()=> {
+                        this.allowNewServer=true;
+                      }, 2000 
+			   );
+
+
+// 11			   
+// Console
+			console.log()
+			 onUpdateServerName(event: any)
+				  {
+					  console.log(event);
+				  }
+			onUpdateServerName($event) // Function call in Html			
