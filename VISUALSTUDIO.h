@@ -5,10 +5,35 @@ VISUAL STUDIO
 // https://abhijitjana.net/2010/11/08/use-shortcut-or-context-menu-for-open-containing-folder-in-visual-studio/
 
 
+// Multiple Line Type
+Alt + Shift + Down  // Then type Multiple line
+
+// Select 
+Shift + Ctrl + Left/Right // 
+Ctrl + W // Select Current Word 
+Shift + End // Select till end of line
+
+
+// Go to previous Cursor Point   // Generally after F12
+Ctrl + -
+Ctrl + +
+
+// Add Line Above Current line or Below Current Line
+Ctrl + Enter  //Add line Above Current line
+Ctrl + Enter + Shift
+Ctrl + End  // Start of page
+Ctrl + Home // End of page
+
+//Scroll Up and down using KeyBoard
+Ctrl + UpArrow
+Ctrl + DownArrow
+
+// Move Word to Word while Programming
+Ctrl + ->   // Left Right Down Up
 
 Ctrl + Shift + G  			//Open File Loacation directly
 
-// End or start of Curle brackets 
+// End or start of Curle brackets  or Between Start and End " "
 CTRL + ] //  {  }
 
 // Select with in brackets

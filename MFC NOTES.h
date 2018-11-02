@@ -2,6 +2,7 @@
 // C++
 /////////////////////////////
 /////// CONTENT
+// 0 // Basic
 // 1 // MFC  Basic, Al/_GUI, Drawing
 // 2 // Internet Server  - Client
 // 3 // Multithreading
@@ -11,7 +12,7 @@
 // 7 // MessageBox,  WINDOWS STYLE, Add dialog
 // 8 // ICON  
 // 9 // MFC TECHNIQUES
-// 10// Civil Check 
+// 10// Civil/Gen Functions
 // 11  
 // 12
 // 13
@@ -22,7 +23,11 @@
 // 18  
 // 19
 
+// 0 
+// Basic
 
+//MFC Gui(Pushbutton/AnyGui)  to Move OutSide Window.
+Alt + select Pushbutton/AnyGui : Drag out side or any Postion 
 
 // 1 
 // MFC Basic
@@ -1042,8 +1047,16 @@ static __declspec(dllexport) void Crap(); //void Crap() is a function defined
 
 
 // 10
+// Civil/Gen Functions
 // Civil Check 
 // from gui to Program
- 	BOOL m_bSeisChk;  // Initiate in S
-  DDX_Check(pDX, IDC_DGN_CON_M_SEIS_CHECK, m_bSeisChk);
-   m_bSeisChk=FALSE;// On init
+	BOOL m_bSeisChk;  // Initiate in S
+	DDX_Check(pDX, IDC_DGN_CON_M_SEIS_CHECK, m_bSeisChk);
+	m_bSeisChk=FALSE;// On init
+
+// Show Hide by ID   
+// Direct Show Hide by ID
+this->GetDlgItem(IDC_CMD_GUSTF_TITLE)->ShowWindow(SW_HIDE);  // SW_SHOW
+
+// Enable Disable in Civil 
+CDlgUtil::CtrlEnableDisable(this,IDC_CMD_GUSTF_RD2,TRUE); // Just will not allow to do any thing // But will Appear in windows

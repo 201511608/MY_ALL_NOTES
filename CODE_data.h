@@ -1,5 +1,17 @@
-// 
+// BASIC CODE STUFF
+// C++ Civil Gen Code
+/////////////////////////////
+/////// CONTENT
+// 0 :: Steel CSA_S6_14
+// 1 :: Rcc   CSA_S6_14
+// 2 :: WINDGust IS875_2015 Gui
+// 3 ::
+// 4 ::
+// 5 :: 
 
+// 0
+// Steel CSA_S6_14
+////////////////////////
 // Books
 http://globalsupport.midasuser.com/helpdesk/File/Get/8965959
 https://www2.gov.bc.ca/assets/gov/driving-and-transportation/transportation-infrastructure/engineering-standards-and-guidelines/bridge/volume-1/2016/section-10.pdf
@@ -250,6 +262,175 @@ bSingleCurve = pDB->IsSingleCurve(dM04,dM14,dM24,dM34,dM44);
 
 
 #define LT_TVSF_CMD     12211
+//////////////////////////////////////////////
 
 
+
+// 1
+// Rcc CSA_S6_14
+///////////////
+mct -> Gen/Civil
+
+If variable is added 4 things to be considered
+->add struct	
+->Old file version compatibility
+->mct compatibility
+->not to be used in other places(except its own use)
+
+variable 
+m_anything global
+anything local
+
+
+CSA_S6_14_RC=180
+CSA_S6_00=154
+
+
+
+
+if(strCodeName == "CSA-A23.3-94")
+	  GetDlgItem(IDC_DGN_CON_M_PHIM )->EnableWindow(TRUE);
+	  
+	  IDC_DGN_CON_M_PHIC
+	  
+//
+IDC_DGN_CON_M_FRAME10
+IDC_DGN_CON_M_SEIS_CHECK
+//
+
+
+IDD_DGN_CON_PHI_DLG // CHI  // RUS(LONG)  // ENG
+
+m_mSeisChk(FALSE)
+
+
+DDX_Control(pDX, IDC_DGN_CON_M_SEIS_CHECK, m_enableSeischeck);
+DDX_Check(pDX, IDC_DGN_CON_M_SEIS_CHECK, m_mSeisChk);
+BOOL m_mSeisChk;  // CSA-S614
+CButton m_enableSeischeck;
+
+
+bNTCFlag// for column check !!!
+bSpecialSeismic // Seismic check default for both
+
+
+  else if(iStatus==6)	          rData.nClass = m_iEqCategory;
+  else if(iStatus==7)	          rData.nClass = m_iEqCategory;
+  else if(iStatus==8)	          rData.nClass = m_iEqCategory;
+  else if(iStatus==19)	          rData.nClass = m_iEqCategory;
+
+int iCode = m_pDB->m_iDgnCode;
+if (iCode==CSA_S6_14_RC)
+
+UpdateData(TRUE);
+
+// Update in csa s6 00   *Update fc to fcr
+// Coding
+		else if(iCode == CSA_S6_00)
+		{
+			if(iopt == 0)
+			{
+				Calc_Page(1);
+				fout<<"           -. Vf < 0.2*phic*fc'*bv*dv  --->  Not required shear reinforcement."<<endl;
+			}
+			else
+			{
+				Calc_Page(2);
+				if(iopt == 1)	      fout<<"           -. 0.2*phic*fc'*bv*dv < Vf < Vc  --->  Required minimum shear reinforcement."<<endl;
+				else								fout<<"           -. Vf > Vc  --->  Required shear reinforcement."<<endl;
+				fout<<"           -.                 smax   = MIN[ smax, Av/(0.15*fc'*bv/fys) ] ="<<strSmax<<m_strLengUnit<<endl;
+			}
+		}
+		
+	
+
+  BOOL bIsEqOK	 = (m_bEqSpecial ? TRUE : FALSE);	
+
+	// for Design Code
+class __MY_EXT_CLASS__ CRCSC_DataBase : public CDgnForceCtrl
+iCode = m_pDB->m_iDgnCode;
+CRCSC_DataBase* m_pDB;
+
+
+
+rData.bSpecialSeismic      > T_DCON_D
+m_pDB->m_bEqSpecial        > CDgnForceCtrl (m_bEqSpecial)
+m_pMyDB->m_strDgnCode = DconData.DesignCode;          > class CRCSC_CodeCheck 
+
+AFX_EXT_CLASS -> To Make as Dll
+ 
+
+ #define D_DGN_CONC_CODE_CSA_S6_00         19
+
+ 
+ CSA_S6_14_RC   VS   CSA_S6_14
+
+////////////////////////
+
+
+
+// 2
+// WINDGust IS875_2015 Gui
+//////////////////////////////
+
+CSA-S6-14 STEEL and RCC Code Newly added in Civil
+
+
+Adding
+// Page
+IDD_ETC_WIND_ITEM_IS875_2016
+	> m_aCtrlGustFactor
+
+IDC_CMD_CATEGORY_TITLE
+	IDC_CMD_GUSTF_TITLE
+	IDC_CMD_FCOEF_EDIT   m_editGustFactor
+	
+
+DDX_Control(pDX, IDC_CMD_BCLASS_COMBO, m_cobxBuildingClass); -> ComboBox
+
+// Radio
+IDC_CMD_GUSTF_RD2 // Gust Factor !
+
+// Enable Disable in Civil 
+CDlgUtil::CtrlEnableDisable(this,IDC_CMD_GUSTF_RD2,TRUE); // Just will not allow to do any thing
+
+// 
+CDlgUtil::CtrlShowHide(this, m_aCtrlGustFactor, nMethod == 1); // nMethod show or hide
+
+Id.ShowWindow(SW_HIDE);
+pWnd->ShowWindow(SW_HIDE);
+pParent->GetDlgItem(aCtrlID[i]);
+
+// Direct Show Hide by ID
+this->GetDlgItem(IDC_CMD_GUSTF_TITLE)->ShowWindow(SW_HIDE);
+
+
+this->GetDlgItem(IDC_CMD_ANAL_FCOEF_TITLE2)->ShowWindow(SW_HIDE);
+this->GetDlgItem(IDC_CMD_WINDDIRFACT_KD_EDIT2)->ShowWindow(SW_HIDE);
+this->GetDlgItem(IDC_CMD_ANAL_COMBFACT_TITLE3)->ShowWindow(SW_HIDE);
+this->GetDlgItem(IDC_CMD_COMBFACT_Kc_EDIT3)->ShowWindow(SW_HIDE);
+
+-------------
+IDD_ETC_WIND_ITEM_NEW   // Main Wind Window
+	CWindAddLoadKBC2015Dlg      // Class that call box
+		IDD_ETC_WIND_SITEM_KBC2015  // Box
+			IDC_CMD_STORY_BTN    // ButtonUnder it
+
+
+IDD_CMD_WINDPF        //WindLoad Profile
+	IDC_WINDPF_TABLE  //WindDiff
+
+// TABLE	
+CGXGridWnd m_WindPfGrid;
+
+//
+IDC_CMD_ANAL_GUST_BUTTON
+IDD_ETC_WIND_GUST_KBC2009_DLG  // RT NOW WORKING
+IDD_ETC_WIND_GUST_IS875_2015_DLG
+
+// Show Window
+		?? Just Initiate Class
+CWindSeisAddLoadDlg dlg;
+	dlg.SetMode((void*)this, nullptr, nullptr);
+	dlg.DoModal();	
 				

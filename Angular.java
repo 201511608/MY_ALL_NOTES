@@ -461,11 +461,7 @@
 								  {
 									 this.serverName=(<HTMLInputElement>event.target).value;
 								  }
-
-										
-		
 	
-		
 		// Console
 			console.log()
 			 onUpdateServerName(event: any)
@@ -476,8 +472,7 @@
 				
 		
 		
-		(=> (click)).
-        OUR_ELEMENT properties  or YOUR_ELEMENT events		
+			
 						
 // 10			
 // Timer
