@@ -5,7 +5,7 @@
 // 0 :: Steel CSA_S6_14
 // 1 :: Rcc   CSA_S6_14
 // 2 :: WINDGust IS875_2015 Gui
-// 3 ::
+// 3 ::  
 // 4 ::
 // 5 :: 
 
@@ -62,6 +62,21 @@ UMDA_CodeCheck
 
 //
 CSA-S16-01
+
+// Element Type 
+#define TRUSS_EL        1
+#define BEAM_EL         2
+#define PLSTRS_EL       3
+#define PLATE_EL        4
+#define PLSTRN_EL       6
+
+// Member 
+// Member type
+#define DT_MBTP_COLUMN  1
+#define DT_MBTP_BEAM    2
+#define DT_MBTP_BRACE   3
+#define DT_MBTP_WALL    4
+
 
 //
 if (strCode==_T("KCI-USD07"))             return bCivil ? KCI_USD07_CVL : KCI_USD07;
@@ -433,4 +448,38 @@ IDD_ETC_WIND_GUST_IS875_2015_DLG
 CWindSeisAddLoadDlg dlg;
 	dlg.SetMode((void*)this, nullptr, nullptr);
 	dlg.DoModal();	
+	
+
+// Optimal Design 
+		// Constant Algrithem
+			//ID
+			IDD_ODS_MAIN_CONTROL
+		
+	
+IDD_ODS_MAIN_CONTROL_DLG DIALOGEX DISCARDABLE  0, 0, 425, 299
+STYLE DS_SETFONT  | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Optimal Design of Steel Section"
+FONT 9, "±¼¸²"
+BEGIN
+    CONTROL         "Custom1",IDC_ODS_ORIGIN_SECT_VIEW,"GXWND",WS_BORDER | 
+                    WS_VSCROLL | WS_HSCROLL | WS_TABSTOP,7,22,411,190
+    PUSHBUTTON      "Analysis Option",IDC_ODS_ANAL_OPTION_BTN,7,240,120,16
+    PUSHBUTTON      "Design && Analysis",IDC_ODS_AUTO_ANAL_BTN,288,240,130,
+                    34
+    PUSHBUTTON      "Close",IDC_ODS_MAIN_DLG_CLOSE,359,276,59,16
+    LTEXT           "Unit :",IDC_WG_ODS_STATIC0,359,7,18,8
+    LTEXT           "kgf",IDC_ODS_FORCE_STATIC,380,7,12,8,NOT WS_GROUP
+    LTEXT           "mm",IDC_ODS_LENGTH_STATIC,406,7,12,8,NOT WS_GROUP
+    LTEXT           ",",IDC_WG_ODS_STATIC1,395,7,8,8,NOT WS_GROUP
+    PUSHBUTTON      "User-Defined Section DB",IDC_ODS_USER_DEF_SECT_BTN,129,
+                    258,120,16
+    PUSHBUTTON      "Select All",IDC_ODS_ORIGIN_SEL_ALL_BTN,7,216,59,16
+    PUSHBUTTON      "Unselect All",IDC_ODS_ORIGIN_UNSEL_ALL_BTN,68,216,59,16
+    PUSHBUTTON      "Plate Thickness Data",IDC_ODS_PLATE_THK_BTN,129,240,120,
+                    16
+    PUSHBUTTON      "Column Design",IDC_ODS_BUILT_COL_OPTION_BTN,7,258,120,
+                    16
+    LTEXT           "CODE",IDC_CODENAME_STATIC,7,7,82,8
+END
+
 				

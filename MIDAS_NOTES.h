@@ -10,7 +10,7 @@
 //8   :: Diaphragm
 //9   :: Rigid link
 //10  :: Elements Types
-//11  :: 
+//11  :: Element VS Memnber
 //12  :: 
 //13  :: 
 //14  :: 
@@ -126,3 +126,24 @@ Ctrl + F4   // Element Query
 // in Gen/Civil
 // Truss, Tension Only, Hook, Cable, Compression Only, Gap, General Beam, Tapered Beam, Plate-Thick, Plate-Thin,
 // Plane Stress, Solid, Wall Membrane, Wall Plate,Plane Strain, Axisymmetric
+
+
+//11
+// Element Type VS Member Type
+	// Element Type Assigning
+		// Element Works in Preprocessing
+			// Dose Effect Analysis
+			// Use while Modelling
+
+		// Member Works in PostProcessing 
+			// Dosent Effect Analysis
+			// Use while Desiging
+	
+	// In Code
+	// Element Type 
+	#define TRUSS_EL        1 #define BEAM_EL         2 #define PLSTRS_EL       3 #define PLATE_EL        4
+	#define PLSTRN_EL       6
+	// Member 
+	// Member type
+	#define DT_MBTP_COLUMN  1 #define DT_MBTP_BEAM    2 #define DT_MBTP_BRACE   3
+	#define DT_MBTP_WALL    4
