@@ -2,8 +2,9 @@
 ////
 //
 // 0  ::  Hair Straighitning
-// 1  ::  
-// 2  ::
+// 1  ::  Scuba Diving 
+// 2  ::  Laptops
+// 3  ::  Electronic Market
 
 
 
@@ -40,3 +41,41 @@ https://en.wikipedia.org/wiki/Divemaster  // Levels ?
 		Rescue Diverse Course - 40 dives Min			   		-500 $
 	DiveMaster  ( Duration: OneMonth+ Around )			   		-2000$
 	Instructor  ( Min 100 Dives, theory Exam Duration: 2 weeks) -2300$
+
+	
+// Goa Diving with Certificates 
+	// 1
+	http://goadiving.com/prices/
+	// 2
+	https://divegoa.com/
+
+	
+
+// 2  
+// Laptops
+https://store.hp.com/us/en/pdp/omen-by-hp-15-dc0052nr
+OMEN by HP - 15-dc0052nr   1,599.99
+
+
+
+The headset also has smartphone-like technical specs. Its screen 
+is a 5.5-inch display with a 2560 x 1440 resolution (1280 x 1440 per eye)
+All VR headsets are noticeably grainy and blinkered, and the Oculus Go 
+
+ps vr
+Resolution	2160 × 1200 (1080 × 1200 per eye)
+Refresh rate	90hz	90Hz, 120Hz (cinema mode)
+
+Oculus Rift and HTC Vive
+1,080 x 1,200-pixe  
+final resolution to 2,160 x 1,200, with 90Hz refresh rates, 
+
+
+// 3
+// Electronic Market
+Mumbai Location :: lamington road  //  For electronic Near  Grand Road
+					//Gala Electronic
+
+					
+// 4
+// Phd Proposal
