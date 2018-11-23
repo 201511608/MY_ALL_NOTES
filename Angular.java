@@ -255,6 +255,8 @@
 		
 			//https://www.w3schools.com/jsref/event_onclick.asp
 		<button onclick="onCreateServer()">Click me</button>
+		or 
+		<button>(click) ="onCreateServer()">Add Server</button>
 
 	// Input Box
 		<input type="text" [(ngModel)]="name" >
@@ -386,7 +388,8 @@
 		2- Output beneath each other
 		3- Output as warging or success message in the components
 		4- style the components red or blue
-		
+	
+	
 	// Databinding
 			TypeScriptCode(BLogic)      <->  Template(HTML)
 			DataBase->DataProcess       <->  Show/Take Input
@@ -431,6 +434,13 @@
                      [disabled]="!allowNewServer"> Add Server
 					</button>
 					 <p>{{allowNewServer}}</p>  // To Cross Check
+			
+					// Button with Postion
+					CheckUserName=True  // Assignment 2
+					<button class="btn btn-success btn-block" style="position:relative; left:50%; margin-left:-20px; margin-bottom:-27px"
+					(click)="Reseat()"
+					[disabled] = "!CheckUserName"
+					>ButtonClick</button>
 					
 			// InnerText            
 				// [InnerText] :  =  <p> InnerText </p>  // Similar to this !
@@ -447,7 +457,7 @@
 						serverCreationStatus = 'No Server was Created !'
 						onCreateServer(){this.serverCreationStatus = 'Server was Created!';}
 			            <button class="btn btn-success btn-block"
-								[disabled]="!allowNewServer"
+								[disabled]="!allowNewServer"    // [disabled]="UserVariable===''" // Check condition  // <button class="btn btn-primary" [disabled]="userName.length < 1" (click)="reset()">Add User</button>
 								(click) ="onCreateServer()">Add Server</button>
 						<p>{{serverCreationStatus}}</p>
 						
@@ -462,16 +472,15 @@
 									 this.serverName=(<HTMLInputElement>event.target).value;
 								  }
 	
-		// Console
-			console.log()
-			 onUpdateServerName(event: any)
-				  {
-					  console.log(event);
-				  }
-			onUpdateServerName($event) // Function call in Html
-				
+	
+		// TwoWay Binding
+		// Typescript <-> Templet(Html)
+		// Like Live Update 
+		 Two-Way-Binding ([(ngModle)]  = "dataVariableName" )  // ngModle is directive !
 		
 		
+		<input type="text" class="form-control" (input)="onUpdateServerName($event)"> // OnWay
+		<input type="text" class="form-control" [(ngModel)]="serverName"> // Two way   // serverName =""
 			
 						
 // 10			
@@ -491,4 +500,66 @@ EX2: setTimeout( ()=> {
 				  {
 					  console.log(event);
 				  }
-			onUpdateServerName($event) // Function call in Html			
+			onUpdateServerName($event) // Function call in Html	
+
+
+// 12
+// Directives			
+	// Instructions in the DOM!
+	// ngif is Structural Directive
+	ngif is  Directive
+	*  forstructural directive
+		// IF condition
+			*ngif
+			<p *ngIf="serverCreate">Directive DOM</p>  
+			<p *ngIf="!serverCreate">ELSE JUST NOT CONTDION TO IF</p>
+			
+		// If and Else
+			<p *ngIf="serverCreate ; else noServerElse">If True Impelemnt This Server Created ! Directive DOM</p>
+					<ng-template #noServerElse>
+						<p>Else This is Implemented !</p>
+					</ng-template>
+					
+	// 	Attributes 		
+		ngStyle  // Dynamically Updates the style
+				 // [] property Binder  // ngStyle Directive
+		<p [ngStyle]="{backgroundColor: getColor()}">This is in app-server and the Status is with ngstyle :: {{ServerStatus}}</p>
+		getColor()
+				{
+					return this.ServerStatus === 'online' ? 'green' : 'red';
+				}
+					
+			
+		
+		// ngClass
+		// Dynamically add or change CSS 
+
+		<p [ngStyle]="{backgroundColor: getColor()}"
+           [ngClass]="{online:ServerStatus==='online'}">This is in app-server and the Status is with ngstyle :: {{ServerStatus}}</p>
+
+								@Component({
+											selector: 'app-server',templateUrl: './server.component.html',
+											styles: [`
+											.online{               // Define Class in style
+											color: white;}
+													`]
+		
+		
+// 13 ng-template 
+// Can Create Function like Paragraf call using CONITIONAL operators
+<ng-template #noServerElse>
+    <p>Else NoServer Created !</p>
+</ng-template>	
+			// Can Call Like Else !
+			<p *ngIf="serverCreate ; else noServerElse">Server Created ! Directive DOM</p>
+			
+	
+// Class in Style
+@Component({
+			selector: 'app-server',
+			templateUrl: './server.component.html',
+			styles: [`
+			.online{               // Define Class in style
+			color: white;}
+					`]
+	  
