@@ -15,8 +15,15 @@
 // 9  :: Chapter 2
 // 10 :: Timer
 // 11 :: Console
-// 12
-// 13
+// 12 :: Directives	
+// 13 :: ng-template, Class in Style
+// 14 :: Date
+// 15 :: Chapter 3
+// 16 ::
+// 17 ::
+// 18 ::
+// END :: Techniques
+
 
 //0
 // Basic
@@ -35,6 +42,7 @@
 	
 	// BootStrap
 		https://www.w3schools.com/bootstrap/
+		
 	
 	// TypeScript  ( programming language )
 		https://www.tutorialspoint.com/typescript/
@@ -70,6 +78,7 @@
 			
 		//After any change Save it to update in WEB page
 		
+		
 	// Requirment
 		Nodejs  // https://nodejs.org/en/
 		npm (Node packet manager)  // https://www.npmjs.com/get-npm
@@ -84,6 +93,10 @@
 				  "node_modules/bootstrap/dist/css/bootstrap.min.css",
 				  "src/styles.css"
 				      ]
+					  
+	// In Angular Programming	
+			// [] Propert Binding
+			// {} Java Script				
 
 //1
 // Installation
@@ -153,6 +166,7 @@
 		age:number;
 		variable:any   //string or number cabe define
 		
+		
 	// Box for Input
 	`	<input type="text" >
 
@@ -168,7 +182,8 @@
 		hobbies.ushift('hobbies Push Added in Array');
 		
 	//Structres
-			address:{
+			address:
+			{
 			street:string,
 			city:string,
 			state:string
@@ -197,10 +212,18 @@
 
 // 5
 	// for loop
+	// in HTML
+			//  https://coryrylan.com/blog/angular-ng-for-syntax
+			//  https://stackoverflow.com/questions/36535629/repeat-html-element-multiple-times-using-ngfor-based-on-a-number
 	  <li *ngFor= "let i of hobbies">{{i}}</li>  // hobbies=[playgames,listionstories]
 	  <li *ngFor= "let hobby of hobbies; let i = index">{{i}}: {{hobby}}</li>
+		in
+	// for repeats n Timestamp
+	<ng-container *ngFor="let item of ' '.repeat(Number_Any).split(''), let i = index ">
+    p {{i}}
+    </ng-container>
 
-
+	
 	// Type Script Feature
 			import { FormsModule } from '@angular/forms';  // In app.module.ts
 			
@@ -231,10 +254,14 @@
 		
 	// Node package Manager NPM
 		// Install BootStrap   
-			// Install Logally not Globally
+			// Install Logcally not Globally
 			npm install -- save bootstrap@3  
-			// Then Must addin Stles under angular.json file   // Then Reload ngserve
-		
+			// Then Must adding Styles under 'angular.json' file   // Then Reload ngserve
+					//EX::
+						 "styles": [
+									  "src/styles.css",
+									  "node_modules/bootstrap/dist/css/bootstrap.min.css"
+									]							
 // 7.1
 	https://www.tutorialspoint.com/angular4/angular4_examples.htm
 	// CLI Commands
@@ -246,6 +273,9 @@
 // BootStrap
 		// BootStrap
 		https://www.w3schools.com/bootstrap/
+		
+		// Install Logcally not Globally
+			npm install -- save bootstrap@3  
 	
 
 	//Button
@@ -504,7 +534,8 @@ EX2: setTimeout( ()=> {
 
 
 // 12
-// Directives			
+// Directives		
+	// In HTML
 	// Instructions in the DOM!
 	// ngif is Structural Directive
 	ngif is  Directive
@@ -519,8 +550,34 @@ EX2: setTimeout( ()=> {
 					<ng-template #noServerElse>
 						<p>Else This is Implemented !</p>
 					</ng-template>
-					
+	
+	
+	//If and else 
+	//In Components //i.e TypeScript Language
+		// If and else 
+			// in Components  // from typeScript
+		ButtonCheck=true;ButtonClickCount=0;
+		onButton()
+		  {
+			if (this.ButtonCheck==true)
+			{
+			  this.ButtonCheck=false;
+			}
+			else
+			{
+			  this.ButtonCheck=true;
+			}
+		  this.ButtonClickCount=this.ButtonClickCount+1;
+		  }
+		  // or
+		  onButton(){ // Replacement of if and else condition
+		  this.ButtonCheck=!this.ButtonCheck;
+		  }
+		  
+		  
 	// 	Attributes 		
+		// ngStyle
+		 // Dynamically add or change Styles (Colour text font size ....) 
 		ngStyle  // Dynamically Updates the style
 				 // [] property Binder  // ngStyle Directive
 		<p [ngStyle]="{backgroundColor: getColor()}">This is in app-server and the Status is with ngstyle :: {{ServerStatus}}</p>
@@ -540,26 +597,98 @@ EX2: setTimeout( ()=> {
 								@Component({
 											selector: 'app-server',templateUrl: './server.component.html',
 											styles: [`
-											.online{               // Define Class in style
-											color: white;}
+											        .online{               // Define Class in style
+											             color: white;
+														   }
 													`]
 		
-		
-// 13 ng-template 
-// Can Create Function like Paragraf call using CONITIONAL operators
-<ng-template #noServerElse>
-    <p>Else NoServer Created !</p>
-</ng-template>	
-			// Can Call Like Else !
-			<p *ngIf="serverCreate ; else noServerElse">Server Created ! Directive DOM</p>
+		// ngFor  
+			Syntax
+		  *ngFor = "let anyname of existArray"
+		// * Structural directive
+			// Ex::
+				<p *ngFor = "let server of servers">{{server}}</p> // paragraf print for n times as fpr lop
 			
+			ButtonClickCount=10
+			<ng-container *ngFor="let item of ' '.repeat(ButtonClickCount).split(''), let i = index ">
+			p {{i}}
+			</ng-container>
+		
+// 13 
+	// ng-template  
+	// Can Create Function like Paragraf call using CONITIONAL operators
+	<ng-template #noServerElse>
+		<p>Else NoServer Created !</p>
+	</ng-template>	
+				// Can Call Like Else !
+				<p *ngIf="serverCreate ; else noServerElse">Server Created ! Directive DOM</p>
+				
+		
+	// Class in Style
+	 // Dynamically add or change CSS 
+		// [] Propert Binding
+		// {} Java Script
+	@Component({
+				selector: 'app-server',
+				templateUrl: './server.component.html',
+				styles: [`
+							.online {             // Key and Value  // Define Class in style
+									 color: white;
+									}
+						`]
+						
+							EX:
+							<p [ngStyle]="{backgroundColor: getColor()}"
+							   [ngClass]="{online:ServerStatus==='online'}">This is in app-server and the Status is with ngstyle :: {{ServerStatus}}</p>
+								// in ngClass Key and Value
+	C:\Users\midas\Desktop\Angular\my-first-app\src\app\server\server.component.html
 	
-// Class in Style
-@Component({
-			selector: 'app-server',
-			templateUrl: './server.component.html',
-			styles: [`
-			.online{               // Define Class in style
-			color: white;}
-					`]
-	  
+//14
+// Date
+	// in components.ts  // typescript
+new Date()
+	
+	
+	
+//15
+//Chapter 3
+
+
+	
+	
+	
+	
+	
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+////////////////////////////////////////////////////////////////////////////	
+// END
+// Techniques
+// If and thenfor 
+	// html together
+	<ng-container *ngIf="CountCheck" >
+	 <p
+	 *ngFor = "let element of ButtonArray">
+	  Button count {{element}}
+	 </p>
+	</ng-container>
+	
+	// for and then if
+		<template *ngFor="let nav_link of defaultLinks"  >
+			<li *ngIf="nav_link.visible">
+				.....
+			</li>
+		</template>
+		
+// if 
+// in html ngif  // Equal to  condition
+<li *ngIf ="i===2">
+	Button Count{{i}} {{element}}
+</li>
+ //
+<li *ngIf ="i<=5">
+	Button Count{{i}} {{element-1}}
+</li>
+//
+<li *ngIf ="i>5">
+  Button Count{{i}} {{element-1}}
+</li>

@@ -10,7 +10,7 @@
 //8   :: Diaphragm
 //9   :: Rigid link
 //10  :: Elements Types
-//11  :: Element VS Memnber
+//11  :: Element VS Member
 //12  :: 
 //13  :: 
 //14  :: 
