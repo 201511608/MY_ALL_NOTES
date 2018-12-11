@@ -3,7 +3,7 @@
 ///////////////////////////////////
 /////////////////////////////
 ////////// CONTENT
-// 0  :: Basic
+// 0  :: Basic         // Angular  // CSS   // BootStrap   // Html
 // 1  :: Installation  // Create Project // Initiation  // Console
 // 2  :: Files
 // 3  :: Generate components  
@@ -19,7 +19,7 @@
 // 13 :: ng-template, Class in Style
 // 14 :: Date
 // 15 :: Chapter 3
-// 16 ::
+// 16 :: Links : Grid, 
 // 17 ::
 // 18 ::
 // END :: Techniques
@@ -38,17 +38,21 @@
 	
 	
 	// Angular Cannot connect to DATABASE 
-	// Angular can connect to Server
+	// But Angular can connect to Server
 	
+	// HTML
+	    https://www.w3schools.com/html/html_examples.asp
+		https://www.w3schools.com/html/
 	// BootStrap
+		https://www.w3schools.com/bootstrap/bootstrap_examples.asp
 		https://www.w3schools.com/bootstrap/
-		
-	
+	// CSS
+		https://www.w3schools.com/css/css_examples.asp
 	// TypeScript  ( programming language )
 		https://www.tutorialspoint.com/typescript/
-		 TypeScript (SuperScript of Java Script)
-		 Sting input to string input not integer
-		 Type Script Compiles to JavaScript
+			 TypeScript (SuperScript of Java Script)
+			 Sting input to string input not integer
+			 Type Script Compiles to JavaScript
 		
 	// Basic+
 		Angular is Frontend/Clint Framework.  // FrontEnd
@@ -72,8 +76,8 @@
 		//Files in Angular
 			.components.css
 			.components.html
-			.components.spec.ts // -Testing file
-			.components.ts  // Main
+			.components.spec.ts // Testing file
+			.components.ts      // Main
 			.module.ts
 			
 		//After any change Save it to update in WEB page
@@ -82,7 +86,8 @@
 	// Requirment
 		Nodejs  // https://nodejs.org/en/
 		npm (Node packet manager)  // https://www.npmjs.com/get-npm
-		Visual Studio code
+		Visual Studio Code // Ctrl + K  +  Ctrl + K [All shortCuts]
+		Git bash
 		Git bash
 		
 	
@@ -108,7 +113,9 @@
 	cd my-app  			// Serve the application 
 	ng serve --open     // Serve the application 
    
-	http://localhost:4200/  //In Web Browser
+	http://localhost:4200/  //In Web Browser  
+				//Change Localhost
+ // ng serve --host 0.0.0.0 --port 4201
 	file->src->app->app.module.ts
 
 // Create Project
@@ -165,6 +172,8 @@
 		variable:string = "MIDAD";
 		age:number;
 		variable:any   //string or number cabe define
+		
+		public name: string; // Can access from outside
 		
 		
 	// Box for Input
@@ -251,6 +260,8 @@
 		
 		//GENERATE COMPONENTS  // AFTER Ctrl + `
 			ng g component Components/user  // MAKE DEFAULT COMPONENTS
+			ng g c MentionNameAny/Anyname
+			ng g c MentionNameAny --spec false  // Debug file [name.spec.ts] will not be created !
 		
 	// Node package Manager NPM
 		// Install BootStrap   
@@ -261,7 +272,8 @@
 						 "styles": [
 									  "src/styles.css",
 									  "node_modules/bootstrap/dist/css/bootstrap.min.css"
-									]							
+									]		
+		// When BootStrap is added in 'angular.json' then automatically/default html takes bootstrap styles !									
 // 7.1
 	https://www.tutorialspoint.com/angular4/angular4_examples.htm
 	// CLI Commands
@@ -398,10 +410,11 @@
 			0r
 			 styles:['h3{color: dodgerblue;}', 'h3{color: dodgerblue;}']
 					 EX:       styles: [
-									 `p{ color: green;
+									 `p{color: green;
 										padding: 20 px;
 										background-color: rose;
-										border: 1px solid red;}`
+										border: 1px solid red;
+									   }`
 										]
 										 
 	//Selector
@@ -547,10 +560,10 @@ EX2: setTimeout( ()=> {
 			
 		// If and Else
 			<p *ngIf="serverCreate ; else noServerElse">If True Impelemnt This Server Created ! Directive DOM</p>
-					<ng-template #noServerElse>
-						<p>Else This is Implemented !</p>
-					</ng-template>
-	
+							<ng-template #noServerElse>
+								<p>Else This is Implemented !</p>
+							</ng-template>
+			
 	
 	//If and else 
 	//In Components //i.e TypeScript Language
@@ -581,10 +594,10 @@ EX2: setTimeout( ()=> {
 		ngStyle  // Dynamically Updates the style
 				 // [] property Binder  // ngStyle Directive
 		<p [ngStyle]="{backgroundColor: getColor()}">This is in app-server and the Status is with ngstyle :: {{ServerStatus}}</p>
-		getColor()
-				{
-					return this.ServerStatus === 'online' ? 'green' : 'red';
-				}
+										getColor()
+												{
+													return this.ServerStatus === 'online' ? 'green' : 'red';
+												}
 					
 			
 		
@@ -650,9 +663,16 @@ new Date()
 	
 	
 	
-//15
-//Chapter 3
+// 15
+// Chapter 3
+// Project::
 
+// 16
+// Links
+
+// Grid Container
+	// Creates Box grid like table
+	https://www.w3schools.com/css/css_grid_container.asp
 
 	
 	
@@ -692,3 +712,47 @@ new Date()
 <li *ngIf ="i>5">
   Button Count{{i}} {{element-1}}
 </li>
+
+
+
+// Techinques of Variabel assigning
+src="{{recipe.imagePath}}"  //  String + Attribute
+[src]="recipe.imagePath"  //  Source Property Base
+
+
+// Class as DataStructure
+		// Class with Constructor : as Datatype/Structure !
+			// Learn this
+		export class Recipe{
+			public name: string;
+			public description: string;
+			public imagePath: string; // url for Images
+
+			constructor(name: string, desc: string, imagePath: string){
+				this.name=name;
+				this.description=desc;
+				this.imagePath=imagePath;
+			}
+		}
+			// Using
+			  recipes: Recipe[] = [
+				new Recipe('A Test Recipe', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg'),
+				new Recipe('A Test Recipe', 'This is simply a test','https://c.pxhere.com/photos/8b/0f/food_meat_recipe_power_pork_dishes-604134.jpg!d')
+			  ];
+			  
+			  
+		// Type Script Class methods
+		//    1 Method  
+		public name: string;
+		public amount: number;
+		constructor(name: string,amount: number)
+		{
+		this.name=name;
+		this.amount=amount;
+		}
+
+
+		// 2 Method (Similor to above)
+
+		constructor(public name: string,public amount: number)
+		{}

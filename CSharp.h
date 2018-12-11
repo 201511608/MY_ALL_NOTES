@@ -2,6 +2,7 @@
 
 /////////////////////////////
 /////// CONTENT
+// 0   Basic
 // 1   String
 // 2   Random
 // 3    
@@ -15,15 +16,131 @@
 // 11  Form
 // 12
 // 13
-// 14 TAB INDEXING IN GUI
-// 15 LIST
-// 16 Try Catch
-// 17 If in array
-// 18 On key down // enter
+// 14  TAB INDEXING IN GUI
+// 15  LIST
+// 16  Try Catch
+// 17  If in array
+// 18  On key down // enter
+
+
+// 0 
+	// Basic
+		C# is part of .Net framework
+		.Net framework applications are multi-platform applications.
+		// C# ::  https://www.tutorialspoint.com/csharp/csharp_program_structure.htm
+		  
+		  Ex::
+		 
+		  using System;  
+		  // using keyword is used to include the System namespace 
+		  
+			namespace HelloWorldApplication {
+			//  namespace is a collection of classes // https://www.tutorialspoint.com/csharp/csharp_namespaces.htm
+			   class HelloWorld {
+			   // class declaration
+				  static void Main(string[] args) {
+				  // Main Method entry point for all C# programs
+				  // program execution starts at the Main method.
+					 /* my first program in C# */
+					 Console.WriteLine("Hello World");
+					 Console.ReadKey();
+				  }
+			   }
+			}
+		  
+		  // Execute via Command Line
+		  csc filename.csc
+		  Then type ClassName[HelloWorld] to execute the Program.
+		 
+		 
+		 
+		 // Object type 
+			// Object type is Reference Type
+			// built-in reference types are: object, dynamic, and string.
+		 
+			// Boxing
+				//When a value type is converted to object type, it is called boxing
+				//object type is converted to a value type, it is called unboxing
+		 
+				object obj;
+				obj = 100 ; // this is boxing
+				dynamic d = 20;  // dynamic
+				String str = "Tutorials Point";  // String
+		 
+		// Coonvertion
+			//https://www.tutorialspoint.com/csharp/csharp_type_conversion.htm
+			
+			//double to int
+				i = (int)d;  // double d = 5673.74; 
+			//int/float to string
+				i.ToString() // 
+			
+
+		// if
+			// https://www.tutorialspoint.com/csharp/csharp_decision_making.htm
+			Exp1 ? Exp2 : Exp3;	
+			
+			if() 
+			{}
+
+		// Switch
+			switch(expression) {
+			   case constant-expression  :
+				  statement(s);
+				  break; /* optional */
+			   case constant-expression  :
+				  statement(s);
+				  break; /* optional */
+			  
+			   /* you can have any number of case statements */
+			   default : /* Optional */
+			   statement(s);
+			}
+
+		// Loop
+		  for (; ; ) 
+				 {
+				   // Infinite Loop
+				 }
+			
+		  while(condition)
+			  {
+		   statement(s);
+			  }
+		 
+		  do {
+			statement(s);
+			 } 
+		  while( condition );
+		  
+		// Break 
+			Terminates the loop or switch statement
+		// Continue
+			Causes the loop to skip the remainder of its body 
+			
+
+		// Encapsulation 
+		   // is defined 'as the process of enclosing one or more items within a physical or logical package'.
+			https://www.tutorialspoint.com/csharp/csharp_encapsulation.htm
+			Public ,Private,rotected,Internal,Protected internal
+			
+			
+		// referance
+			// ref keyword
+			public void swap(ref int x, ref int y)
+			
+		// File Handaling
+		https://www.tutorialspoint.com/csharp/csharp_file_io.htm
 
 
 
 
+
+
+
+	
+ // 1
+ 
  //string
  string msg = string.Empty; 
  string concreteMatName = "Concrete";

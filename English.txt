@@ -2,8 +2,8 @@
 ///////////////////////////////////
 /////////////////////////////
 ////////// CONTENT
-// 0  ::  Basic Pharases
-// 1  ::  
+// 0  ::  Meaning
+// 1  ::  Basic Pharases
 // 2  ::  
 // 3  ::  
 // 5  ::  
@@ -18,7 +18,17 @@
 
 
 // 0 
-//Basic Pharases
+//  Meaning 
+
+	-Exalted 
+		// Of a person or their rank or status) at a high or powerful level.
+		// In a state of extreme happiness.
+    
+	-transgress
+		// go beyond the limits of (what is morally, socially, or legally acceptable).
+		
+// 1
+//  Basic Pharases
 	It’s not true.
 	It’s not my fault.
 	I’m not the one to blame.
@@ -136,9 +146,12 @@
 	 
 
 	 
-	 
 //  Lesson 1
 	This is Just my Openian But
 	This is Just my Suggestion But
+	
+
+
+	
 
 	 
