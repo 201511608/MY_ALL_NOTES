@@ -44,6 +44,10 @@ Ctrl D    Duplicates the selected object
 	InInspector Layer> AddLayer
 	// For Light 
 			InInspector > Light > CullingMask >Check/UnCheck Layer
+			
+// BlackBackGround
+Windows> Lighting>Environment(None)
+MainCamera [ Inspector > camera > Background Black ;
 // Toggle Axis
 Hold V // Via Axis change the axis
 // Debugging
@@ -204,21 +208,36 @@ Ctrl+Shift+N
 	    Debug.Log("Anything");
 		
 		
-// Load Scean
-Application.LoadLevel (Application.loadedLevel); // Application.loadedLevel is current Loaded scean
-
 
 
 //Input Keys
 Input.GetKeyDown(KeyCode.R) //R or any key
+Input.GetButton("Fire1") // Fire button // Check in Edit>ProjectSetting>Input !
+ // Touch Screen
+ Coordinate starts from (Botton Left) in MobilePhones ???  [ botton Left (0,0)]
 
+ 
+ // Touch Keys
+	 Input.touchCount > 0
+	 Touch touch = Input.GetTouch(0);
+	 
+	 
 
 // Quit Application
   Application.Quit();
-  
- // Touch Screen
- Sense from (botton Left) in MobilePhones ???  [ botton Left (0,0)]
 
+// Restart Current Application/Scean ?
+ Application.LoadLevel(Application.loadedLevel);
+  
+  // Load Scean
+Application.LoadLevel (Application.loadedLevel); // Application.loadedLevel is current Loaded scean
+
+
+
+
+ 
+ 
+ 
 //////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////		
 // Functions
