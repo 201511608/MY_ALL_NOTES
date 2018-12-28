@@ -138,7 +138,7 @@ Ctrl+Shift+N
 	  Mathf.Clamp(rb.positionCheck.x, boundry.xMin, boundry.xMax)
 			// Return Between Min and Max
 	
-// Wait Pause Hold 
+// Wait Pause Hold delay
 // for a Second
 	yield return new WaitForSeconds(startWait);  // In Program
 	
@@ -152,7 +152,9 @@ Ctrl+Shift+N
 		yield return new  WaitForSeconds(time);
 			// To function
 			StartCoroutine(function()); // function() consist of -> yield return new  WaitForSeconds(time);
-		
+	
+	// Time
+     Time.deltaTime	 // The Time Between the Current and Previous Frame
 
 // Destroy 
 	// Objects
