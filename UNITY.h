@@ -235,10 +235,15 @@ Input.GetButton("Fire1") // Fire button // Check in Edit>ProjectSetting>Input !
 Application.LoadLevel (Application.loadedLevel); // Application.loadedLevel is current Loaded scean
 
 
+// Trail
+private TrailRenderer trail;
+trail = GetComponent<TrailRenderer>();
+trail.startColor = Color.red;
+trail.endWidth = 3;
 
-
- 
- 
+// Mouse Hovering
+Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+transform.position = pos; // Camera
  
 //////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////		
@@ -276,6 +281,9 @@ Application.LoadLevel (Application.loadedLevel); // Application.loadedLevel is c
 	// Quaternion	
 		// Rotation tilt Controle
 		rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x * -tilt);
+		
+		// Rotation Inputs for rotation
+			Quaternion target = Quaternion.Euler(10, 0, 0);
 	
 	// OnTriggerExit()
 		// Destroy everything that leaves the trigger
