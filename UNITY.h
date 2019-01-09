@@ -18,7 +18,13 @@
 
 
 // 0 
+ 
 
+
+ // Python dll
+	// For Nural nets Test !
+	https://www.originlab.com/doc/OriginC/guide/Access-Python-via-External-DLL
+	
 // Debug 
 // In Android Phone.
 Developer Option > Debugger ON
@@ -37,7 +43,7 @@ Ctrl D    Duplicates the selected object
 	Hold F and Rt Click Move Mouse Up Down Left Right
 	
 	// ROTATE AROUND OBJECT
-	Alt + Shuft + MOuseLeftClice Move
+	Alt + Shift + MouseLeftClick Move
 	
 	
 // Layers
@@ -153,10 +159,46 @@ Ctrl+Shift+N
 			// To function
 			StartCoroutine(function()); // function() consist of -> yield return new  WaitForSeconds(time);
 	
-	// Time
-     Time.deltaTime	 // The Time Between the Current and Previous Frame
-
+// Time	
+	// Time.time
+		// The time at the beginning of this frame (Read Only).
+		// This is the time in seconds since the start of the game.
+		// Time.time starts once all Awake functions have finished
+		// Returns the same value if called multiple times in a single frame.
+		
+	// Time.deltaTime
+	    // https://docs.unity3d.com/ScriptReference/Time-deltaTime.html
+		// return time difference between relative frame
+		// This property provides the time between the current and previous frame.
+        //  Do not rely on Time.deltaTime inside MonoBehaviour.OnGUI. Unity can call OnGUI multiple times per frame.
+		//  The application use the same deltaTime value per call.
+    	//  The timer adds deltaTime each frame.
+		Time.deltaTime	 // The Time Between the Current and Previous Frame
+	 
+		
+		
+	// Time.timeScale
+		// Example
+				Time.deltaScale = 0; // Make the game Pass/Stops
+				Time.deltaScale = 1; // Normally (Runs for each Update)
+				
+				Time.deltaScale = 1 * speed;// Increase the Game speed
+				Time.deltaScale = 1- speed/speedmax; // Decrease the Game Speed
+	
+				// Use this in Push buttons for Pausing the game
+				
+	// Time.fixedDeltaTime
+        // https://docs.unity3d.com/ScriptReference/Time-fixedDeltaTime.html	
+	
+	
 // Destroy 
+// if obj is a GameObject it will destroy the GameObject, 
+// all its components and all transform children of the GameObject.
+https://docs.unity3d.com/ScriptReference/Object.Destroy.html
+
+// GameObject  // Check all destroys!
+// https://docs.unity3d.com/ScriptReference/GameObject.html
+
 	// Objects
 			// By TriggerBoundry Box Exit
 			// By Contact Trigger Box
@@ -165,7 +207,8 @@ Ctrl+Shift+N
 	// Destroy by time   
 	public float lifetime;
 			Destroy(gameObject,lifetime); // Generally in void Start(){};
- 
+	// Just Destroy on trigger
+			Destroy(gameObject); // Destroy instently
  
 
  
@@ -189,26 +232,46 @@ Ctrl+Shift+N
 // GUI Text
 	// To Keep text on screen
 	https://docs.unity3d.com/ScriptReference/GUIText.html?_ga=2.13564215.1894978109.1545021849-1837931122.1544416243
-   Inspector > Add Component > Rendering > GUI Text
+    Inspector > Add Component > Rendering > GUI Text
 
    //In Programming
 		public GUIText VarName;
 			// scoreText.text = "Score: " + score;
  
  
-// Instance 
-	GameObject.FindWithTag("GameController");
+// Find
+	 // GameObject  // Find all finds functions
+	 // https://docs.unity3d.com/ScriptReference/GameObject.html 
+	// Find ::
+		// Finds a GameObject by name and returns it.
+		https://docs.unity3d.com/ScriptReference/GameObject.Find.html
+		
+		//Diff Between   "name"  "/name" 
+		
+			hand = GameObject.Find("Hand");
+			
+			// Hand must not have a parent in the Hierarchy view.
+			hand = GameObject.Find("/Hand");
+			
+		
+	// FindWithTag::
+		// Finds a GameObject by tag and returns it.
+		// Returns null if no GameObject was found.
+	GameObject.FindWithTag("GameController"); // Finds with Tag // With in Enabled Objects
 	
         //Point to Specifc Instance of Specific Class
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");	
-			// Call its Specific class instance
+			//class instance:: Call its Specific class instance
 			GameController gameController = gameControllerObject.GetComponent<GameController>();
 			
-//Print
-	// Using Debug.log()
-	  Debug.Log(Time.time);
-	    Debug.Log("Anything");
+	
+	// FindGameObjectsWithTag:: 
+	    //Returns a list of active GameObjects tagged tag. Returns empty array if no GameObject was found.
 		
+		
+		
+	// GameObject.transform	
+		// Then fine  Search with in that instance.    //Verify ??
 		
 
 
@@ -224,7 +287,7 @@ Input.GetButton("Fire1") // Fire button // Check in Edit>ProjectSetting>Input !
 	 Touch touch = Input.GetTouch(0);
 	 
 	 
-
+// Quit
 // Quit Application
   Application.Quit();
 
@@ -245,6 +308,120 @@ trail.endWidth = 3;
 Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 transform.position = pos; // Camera
  
+ 
+ 
+// System Include 
+	using UnityEngine;
+	using System.Collections;
+	using UnityEngine.UI;
+	
+	// Use of Macros
+	#if UNITY_EDITOR
+	using UnityEditor;
+	#endif
+	
+	
+// UI tools
+https://unity3d.com/learn/tutorials/modules/beginner/live-training-archive/using-the-ui-tools
+ 
+ 
+// onGUI()
+https://docs.unity3d.com/Manual/GUIScriptingGuide.html // All gui guide
+https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnGUI.html
+
+	// Example
+	    void OnGUI()
+		{
+			if (GUI.Button(new Rect(10, 10, 150, 100), "I am a button"))
+			{
+				print("You clicked the button!");
+			}
+		}
+
+		
+// Print
+	print("You clicked the button!");
+
+//Debug
+	// Can Use as Print
+	// Using Debug.log()
+	  Debug.Log(Time.time);
+	  Debug.Log("Anything");
+	 
+	// Debug DrawRay
+	  Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+
+// Transform
+
+	// Translate
+		// move // shift position
+		   gameObject.transform.Translate(1, 1, 1);
+		
+	// Rotate
+		Quaternion.identity
+		Quaternion target = Quaternion.Euler(10, 0, 0);
+
+	// Scaling
+		transform.localScale += new Vector3(0.1F, 0, 0);
+		
+	// transform.Translate	
+		// translate in any Direction !  // With respective to Local direction
+		// https://docs.unity3d.com/ScriptReference/Transform.Translate.html
+	 gameObject.transform.Translate(Vector3.right * moveWall/2, gameObject.transform);
+	 
+	 
+	 
+// Create 
+	// Plane Sphere Cube
+	// Programmitacly
+	
+	// Creates a game object with a primitive mesh renderer and appropriate collider.
+		// Plane
+		GameObject plane  = GameObject.CreatePrimitive(PrimitiveType.Plane);
+		// Quad
+		GameObject plane  = GameObject.CreatePrimitive(PrimitiveType.Plane);
+		// Cube
+		GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+		cube.transform.position = new Vector3(0, 0.5f, 0);
+		// Sphere
+		GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+		sphere.transform.position = new Vector3(0, 1.5f, 0);
+		// capsule
+		GameObject capsule = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+		capsule.transform.position = new Vector3(2, 1, 0);
+		// cylinder
+		GameObject cylinder = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+		cylinder.transform.position = new Vector3(-2, 1, 0);
+		
+
+// Coordinates Transformation
+	// World to Local  ||   Local to World			
+	// Vectors to Local and World Coordinates	 Verify??		
+	
+	// World  Coordinates
+		 var worldP = obj.transform.TransformPoint(Vertexmeshfilter);
+		 
+	// Local Coordinates
+		// convert to camera's local coordinates:
+		var localP = transform.InverseTransformPoint(worldP);
+		
+	
+// Mesh
+		// https://docs.unity3d.com/Manual/PrimitiveObjects.html
+	// Making Mesh from triangles !!
+	https://docs.unity3d.com/Manual/Example-CreatingaBillboardPlane.html
+
+
+// RayCast  
+RaycastHit hit;
+Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask)
+
+// SphereCast 
+Physics.SphereCast(transform.position,1f,transform.forward,out hit,maxDist)
+
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////		
 // Functions
@@ -307,11 +484,14 @@ transform.position = pos; // Camera
 		//}	
 		
 	// Instantiate
+		// https://docs.unity3d.com/ScriptReference/Object.Instantiate.html
+		 Instantiate(Object original, Vector3 position, Quaternion rotation);
+		 
 		// Run any Effect : like bullet, Explostion
-	 Instantiate(explosion, transform.position, transform.rotation); // GameObject = explosion ! 
-	 Instantiate(PlayerExplosion, other.transform.position, other.transform.rotation);// Other Object transform data
+		 Instantiate(explosion, transform.position, transform.rotation); // GameObject = explosion ! 
+		 Instantiate(PlayerExplosion, other.transform.position, other.transform.rotation);// Other Object transform data
 		
-		
+	
 		
 	// Wait Pause Hold 
 		// for a Second
@@ -347,5 +527,61 @@ transform.position = pos; // Camera
 					spawnWait = spawnWait - spawnWait / 30; // Increase the Astroid after every wave
 				}
 			}
+			
+			
+// Mesh
+// Making Mesh from triangles !!
+
+		var vertices: Vector3[] = new Vector3[4];
+
+		vertices[0] = new Vector3(0, 0, 0);
+		vertices[1] = new Vector3(width, 0, 0);
+		vertices[2] = new Vector3(0, height, 0);
+		vertices[3] = new Vector3(width, height, 0);
+
+		mesh.vertices = vertices;
+
+		 Remembering the clockwise rule for ordering the corners,
+		 the lower left triangle will use 0, 2, 1 as its corner indices, 
+		 while the upper right one will use 2, 3, 1.
+		var tri: int[] = new int[6];
+
+		//  Lower left triangle.
+		tri[0] = 0;
+		tri[1] = 2;
+		tri[2] = 1;
+
+		//  Upper right triangle.   
+		tri[3] = 2;
+		tri[4] = 3;
+		tri[5] = 1;
+
+		mesh.triangles = tri;
+
+
+		light in the scene
+		to see the effect.
+
+		var normals: Vector3[] = new Vector3[4];
+
+		normals[0] = -Vector3.forward;
+		normals[1] = -Vector3.forward;
+		normals[2] = -Vector3.forward;
+		normals[3] = -Vector3.forward;
+
+		mesh.normals = normals;
+
+
+		UV values will all be 0 or 1, corresponding to the corners of the texture.
+
+		var uv: Vector2[] = new Vector2[4];
+
+		uv[0] = new Vector2(0, 0);
+		uv[1] = new Vector2(1, 0);
+		uv[2] = new Vector2(0, 1);
+		uv[3] = new Vector2(1, 1);
+
+		mesh.uv = uv;
+
 
 //////////////////////////////////////////////////////////////////////////////////////////
