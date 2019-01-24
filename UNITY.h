@@ -425,6 +425,31 @@ Physics.SphereCast(transform.position,1f,transform.forward,out hit,maxDist)
 	.FBX
 	.OBJ
 
+// NetworkManager
+	NetworkManager 	  // Add Script Instantiate Network
+	NetworkMangerHub  // Instantiate Network Gui For Connecting
+
+	NetworkIdentity // PreFab Must have Network identity as IDs
+
+	NetworkTransform  // Automatically transformin Server
+
+	using UnityEngine.Network
+	NetworkBehaviour  // Class
+	if (isLocalPlayer== true){}
+	if (isserver== true){}
+	NetworkServer.Span()//  To show on EveryOne Computer // Only Server Can Run
+
+	[Command]  // We are in Server.	// Commands the Server to Execute the code with in and all clients
+	function CmdFunctionName(){};    // Commands - which are called from the client and run on the server;
+
+	[ClientRpc]  // Remote Procedure Calls   // Server to Clients
+		     //  ClientRpc calls - which are called on the server and run on clients
+
+	Register Span Prefab // NetworkManager.Instantiate(); // Must be regester in Newtork Manager to Instantiate()
+
+
+	// Keys On Press Down
+	Input.GetKeyDown(KeyCode.Space)
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////		
