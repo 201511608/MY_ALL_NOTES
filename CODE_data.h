@@ -540,14 +540,247 @@ GetDesignTitleCon
 
 
 
+// LoadCombination
+//////////////////////////////////////////////////////////////
+// LoadCombination 
+// Civil
+ else if (m_nDesignType == 1) nType = CLoadDgnCodeChecker::eLCBConcrete;
+ m_nDesignType=1 // For Concrete
+ 
+ // Gen 
+ else if(m_nLcomType == D_LCOMTYPE_CONCRETE) m_nDesignType = EN_CONCRETE;
+	m_nLcomType=3,m_nDesignType=1 // For Concrete
+// DBCodeCtrl.Cpp
+	GetConLcomNameList_GEN() // function
+	GetConLcomNameList_CVL() // 
 
-   
-   
+		LoadCombCtrl
    
 
    
 ////////////////////////////////////////////////////////
 /////////
+//////
+
+
+// Gen
+	// Load Combination
+		CmdAutoLoadCombDlg.cpp
+			OnCodeSelchange()           // OnChangeCode  
+	
+	 // GenLcomDialog
+	 CmdAutoLoadCombDlg.h
+			 IDD_CMD_LCOMBDEFAULT_DLG
+			      IDC_CMD_LOADCOMB_CODE // Design Code	
+		
+// Civil
+	// Load Combination
+		CmdAutoLoadCombSelCvlDlg.cpp
+			OnSelchangeLoadcombCode()   // OnChangeCode
+						Index 32; strCodeName IS456:2000;
+			
+
+\src\wg_cmd\CmdAutoLoadCombCvlKSCEUSD10Dlg.h
+			IDD_CMD_LCOMBDEFAULT_KSCE_USD_10_DLG	/// A gui Module attach in Lcom
+			
+		
+		
+IDC_CMD_SCALEUP_LIST
+
+CmdAutoLoadCombCvlDlg.h  // All Gui Modifications
+	CmdAutoLoadCombCvlDlg.cpp
+LoadCombCtrl.h 
+	LoadCombCtrl.cpp  // All Load Combination Calcualtions !
+	LoadCombCtrl_Civil.cpp
+	LoadCombCtrl_Civil2.cpp
+
+	
+// Common Codes
+// Gen and Civil
+ACI318-02
+KCI-USD99
+KCI-USD12
+
+	
+Set_LoadComb(i,inputData, bSameLcom);   // Set LoadCdPSSombination Max
+
+
+//
+//// SET_LCOM();
+	arLcase
+	adFactor
+
+      else if(strCode=="IS456:2000"/*""*/  )  MakeRCComb_IS456_2000   (&cDL,&cLL,&cLR,&cWL,&cEL,&cSL,&cRL,&cIP,&cTL,&cSH,&cCR,&cWP,&cEP,&cFP,&cPS,&cESP,                    &cCSD,&cCSL, &cCSC,&cCSS);
+      else if(strCode=="ACI318-02" /*""*/   )  MakeRCComb_ACI318_02   (&cDL,&cLL,&cLR,&cWL,&cEL,&cSL,&cRL,&cIP,&cTL,&cSH,&cCR,&cWP,&cEP,&cFP,&cPS,&cESP, &cTP , &cTS, &cSUM,&cCSD,&cCSL, &cCSC,&cCSS);
+
+
+	CombBase cDL;  cDL.Set_Type("DL"); // Dead.
+	CombBase cLL;  cLL.Set_Type("LL"); // Live.
+	CombBase cLR;  cLR.Set_Type("LR"); // Roof Live.
+	CombBase cWL;  cWL.Set_Type("WL"); // Wind.	
+	CombBase cEL;  cEL.Set_Type("EL"); // Earthquake.
+	CombBase cSL;  cSL.Set_Type("SL"); // Snow.
+	CombBase cRL;  cRL.Set_Type("RL"); // Rain.
+	CombBase cIP;  cIP.Set_Type("IP"); // Ice Pressure.
+	CombBase cFP;  cFP.Set_Type("FP"); // Fluid Pressure.
+	CombBase cTL;  cTL.Set_Type("TL"); // Temperature.
+	CombBase cEP;  cEP.Set_Type("EP"); // Earth Pressure.
+	CombBase cWP;  cWP.Set_Type("WP"); // Ground water pressrue
+	CombBase cSH;  cSH.Set_Type("SH"); // Shrinkage.
+	CombBase cCR;  cCR.Set_Type("CR"); // Creep.
+  CombBase cSF;  cSF.Set_Type("SF"); // .
+	CombBase cESP; cESP.Set_Type("ESP");
+	CombBase cPS;	 cPS.Set_Type("PS");		// Prestress in RC, 2002.7.30 Hong,jiseon
+	CombBase cEVT; cEVT.Set_Type("EVT");	// Vertical Earthquake, Hong,js 02/10/21
+	CombBase cESV; cESV.Set_Type("ESV");	// Earthquake Spectrum Vertical, Hong,js 02/10/21
+	CombBase cLI;  cLI.Set_Type("LI");		// Live Load i for Chinese code.
+	CombBase cLJ;  cLJ.Set_Type("LJ");		// Live Load j for Chinese code.
+	// Add by ZINU.('02.12.18).	For Pre-stressed.
+	CombBase cTP;  cTP.Set_Type("TP");		// Tendon Primary.
+	CombBase cTS;  cTS.Set_Type("TS");		// Tendon Secondary.
+	CombBase cSUM; cSUM.Set_Type("SUM");	// Summation.
+	// Add by HJS.('03.06.25).	For Construction Dead, Live, Creep, Shrinkage
+	CombBase cCSD;  cCSD.Set_Type("cDL");	// Conctruction Dead Load
+	CombBase cCSL;  cCSL.Set_Type("cLL");	// Conctruction Live Load
+	CombBase cCSC;  cCSC.Set_Type("cCR");	// Conctruction Creep
+	CombBase cCSS;  cCSS.Set_Type("cSH");	// Conctruction Shrinkage
+  // Coded by Seungjun ('20070716) MNet:No.2864.
+  CombBase cIL;   cIL.Set_Type("IL");	// impact load
+  CombBase cCO;   cCO.Set_Type("CO"); // collision load(Ãæµ¹ÇÏÁß)
+  // Coded by Seungjun ('20071010) MNet:No.3020.
+  // Coded by Seungjun ('20070430) MNet:No.2778.
+  //CombBase cCN;   cCN.Set_Type("CN");    // Crane Load for China, Crane(CN).
+  CombBase cCN1;  cCN1.Set_Type("CN1");    // Crane Load for China, Crane(CN).
+  CombBase cCN2;  cCN2.Set_Type("CN2");    // Crane Load for China, Crane+Brk(CN).
+  // Coded by Seungjun ('20070827) MNet:No.2778.
+  CombBase cBRK; cBRK.Set_Type("BRK");  // braking load(Á¦µ¿ÇÏÁß)
+  // Coded by Seungjun ('20071210) MNet:No.3087.
+  CombBase cEPH; cEPH.Set_Type("EH");  // horizontal earth pressure load
+  CombBase cEPV; cEPV.Set_Type("EV");  // vertical earth pressure load
+  // MNET:3774-Seungjun-20081029
+  CombBase cER; cER.Set_Type("ER");  // Erection Load
+  // Add by GAY. PMS:4267. ('11.10.14).
+  CombBase cEX; cEX.Set_Type("EX");  // Explosion Load. (Æø¹ßÇÏÁß)
+////
+
+
+/////////
+// IS 456 LOAD COMBINATIONS
+	Set_LCB(nA, "1.5(DL + (LL+LR)) + PS",								1.5,cDL,1.5,cCSD,			 1.5,cLL,1.5,cCSL,		1.5,cLR,			 1.0,cPS						);
+		Set_LCB(nA, "1.2(DL + (LL+LR) + WL) + PS",					1.2,cDL,1.2,cCSD,			 1.2,cLL,1.2,cCSL,		1.2,cLR,			 1.2,cWL,  1.0,cPS	);
+		Set_LCB(nA, "1.2(DL + (LL+LR) - WL) + PS",					1.2,cDL,1.2,cCSD,			 1.2,cLL,1.2,cCSL,		1.2,cLR,			-1.2,cWL,  1.0,cPS	);
+		Set_LCB(nA, "1.5(DL + WL) + PS",										1.5,cDL,1.5,cCSD,																					 1.5,cWL,  1.0,cPS	);
+		Set_LCB(nA, "1.5(DL - WL) + PS",										1.5,cDL,1.5,cCSD,			 																		-1.5,cWL,  1.0,cPS	);
+		Set_LCB(nA, "0.9DL + 1.5WL + PS",										0.9,cDL,0.9,cCSD,			 																		 1.5,cWL,  1.0,cPS	);
+//		Set_LCB(nA, "0.9DL - 1.5WL + PS",										0.9,cDL,0.9,cCSD,			 																		-1.5,cWL,  1.0,cPS	);
+		Set_LCB(nA, "1.2(DL + (LL+LR) + EL) + PS",					1.2,cDL,1.2,cCSD,			 1.2,cLL,1.2,cCSL,		1.2,cLR,			 1.2,cEL,  1.0,cPS	);
+		Set_LCB(nA, "1.2(DL + (LL+LR) - EL) + PS",					1.2,cDL,1.2,cCSD,			 1.2,cLL,1.2,cCSL,		1.2,cLR,			-1.2,cEL,  1.0,cPS	);
+		Set_LCB(nA, "1.5(DL + EL) + PS",										1.5,cDL,1.5,cCSD,																					 1.5,cEL,  1.0,cPS	);
+		Set_LCB(nA, "1.5(DL - EL) + PS",										1.5,cDL,1.5,cCSD,			 																		-1.5,cEL,  1.0,cPS	);
+		Set_LCB(nA, "0.9DL + 1.5EL + PS",										0.9,cDL,0.9,cCSD,			 																		 1.5,cEL,  1.0,cPS	);
+		Set_LCB(nA, "0.9DL - 1.5EL + PS",										0.9,cDL,0.9,cCSD,			 																		-1.5,cEL,  1.0,cPS	);
+		Set_LCB(nA, "1.2(DL + (LL+LR) + (SUF)ESP) + PS",		1.2,cDL,1.2,cCSD,			 1.2,cLL,1.2,cCSL,		1.2,cLR,			 1.2,cESP,  1.0,cPS	);
+		Set_LCB(nA, "1.2(DL + (LL+LR) - (SUF)ESP) + PS",		1.2,cDL,1.2,cCSD,			 1.2,cLL,1.2,cCSL,		1.2,cLR,			-1.2,cESP,  1.0,cPS	);
+		Set_LCB(nA, "1.5(DL + (SUF)ESP) + PS",							1.5,cDL,1.5,cCSD,																					 1.5,cESP,  1.0,cPS	);
+		Set_LCB(nA, "1.5(DL - (SUF)ESP) + PS",							1.5,cDL,1.5,cCSD,			 																		-1.5,cESP,  1.0,cPS	);
+		Set_LCB(nA, "0.9DL + 1.5(SUF)ESP + PS",							0.9,cDL,0.9,cCSD,			 																		 1.5,cESP,  1.0,cPS	);
+		Set_LCB(nA, "0.9DL - 1.5(SUF)ESP + PS",							0.9,cDL,0.9,cCSD,			 																		-1.5,cESP,  1.0,cPS	);
+
+    // PMS:4108-Seungjun-20091217 SERVICEABILITY Loadcombination.
+    // For SERVICEABILITY
+    // 1.0(D+L)
+//    Set_LCB(nA+1, "DL + (LL+LR) + PS",						      1.0,cDL,1.0,cCSD,			 1.0, cLL,1.0, cCSL, 1.0,cLR,									 1.0,cPS);
+    // 1.0(D¡¾W)
+    Set_LCB(nA+1, "DL + WL + PS",     									1.0,cDL,1.0,cCSD,		                                 		   1.0,cWL,  1.0,cPS);
+		Set_LCB(nA+1, "DL - WL + PS",			      						1.0,cDL,1.0,cCSD,	                                        -1.0,cWL,  1.0,cPS);
+    // 1.0D+0.8L¡¾0.8W
+    Set_LCB(nA+1, "DL + 0.8(LL+LR) + 0.8WL + PS",				1.0,cDL,1.0,cCSD,			 0.8, cLL,0.8, cCSL, 0.8,cLR,		 		 0.8,cWL,	 1.0,cPS);
+		Set_LCB(nA+1, "DL + 0.8(LL+LR) - 0.8WL + PS",				1.0,cDL,1.0,cCSD,			 0.8, cLL,0.8, cCSL, 0.8,cLR,	      -0.8,cWL,  1.0,cPS);
+    // 1.0(D¡¾E)
+    Set_LCB(nA+1, "DL + EL + PS",					      				1.0,cDL,1.0,cCSD,	                                  		 	 1.0,cEL,  1.0,cPS);
+		Set_LCB(nA+1, "DL - EL + PS",								      	1.0,cDL,1.0,cCSD,	                                        -1.0,cEL,  1.0,cPS);
+    // 1.0D+0.8L¡¾0.8E
+    Set_LCB(nA+1, "DL + 0.8(LL+LR) + 0.8EL + PS",				1.0,cDL,1.0,cCSD,			 0.8, cLL,0.8, cCSL, 0.8,cLR,	 		   0.8,cEL,	 1.0,cPS);
+		Set_LCB(nA+1, "DL + 0.8(LL+LR) - 0.8EL + PS",				1.0,cDL,1.0,cCSD,			 0.8, cLL,0.8, cCSL, 0.8,cLR,	      -0.8,cEL,  1.0,cPS);
+    // 1.0(D¡¾ESP)
+    Set_LCB(nA+1, "DL + (SUF)ESP + PS",					      	1.0,cDL,1.0,cCSD,	                                  		 	 1.0,cESP, 1.0,cPS);
+		Set_LCB(nA+1, "DL - (SUF)ESP + PS",								  1.0,cDL,1.0,cCSD,	                                        -1.0,cESP, 1.0,cPS);
+    // 1.0D+0.8L¡¾0.8ESP
+    Set_LCB(nA+1, "DL + 0.8(LL+LR) + 0.8(SUF)ESP + PS",	1.0,cDL,1.0,cCSD,			 0.8, cLL,0.8, cCSL, 0.8,cLR,	 		   0.8,cESP, 1.0,cPS);
+		Set_LCB(nA+1, "DL + 0.8(LL+LR) - 0.8(SUF)ESP + PS",	1.0,cDL,1.0,cCSD,			 0.8, cLL,0.8, cCSL, 0.8,cLR,	      -0.8,cESP, 1.0,cPS);  
+
+
+
+
+
+else if(strCode=="IS456:2000")
+	{
+		if (m_nEspCount>0)
+		{
+			SetCvlIRC6_Seis_Incl_Therm(arDLoad, arDdLoad, arDwLoad,arEpLoad, arEsLoad, arElLoad,arEvLoad,
+				arCrLoad, arShLoad, arLeadingMLoad, arLsLoad, arLLoad, arLpLoad, arIlLoad,arErLoad,
+				arIlpLoad, arCfLoad, arBrkLoad, arBkLoad, arCrlLoad, arPsLoad, arWLoad, arWlLoad, arSmLoad,
+				arCSLoad,arRsLoad,arEspLoad_x,arEspLoad_y,arEspLoad_z,arMLoad, arThermal,arWprLoad,arBLoad,arWpLoad,arPsi1FactorMLoad1, arPsi1FactorMLoad2);
+			SetCvlIRC6_Seis_No_Wind(arDLoad, arDdLoad, arDwLoad,arEpLoad, arEsLoad, arElLoad,arEvLoad,
+				arCrLoad, arShLoad, arLeadingMLoad, arLsLoad, arLLoad, arLpLoad, arIlLoad,arErLoad,
+				arIlpLoad, arCfLoad, arBrkLoad, arBkLoad, arCrlLoad, arPsLoad, arWLoad, arWlLoad, arSmLoad,
+				arCSLoad,arRsLoad,arEspLoad_x,arEspLoad_y,arEspLoad_z,arMLoad,arWprLoad,arBLoad,arWpLoad, arPsi1FactorMLoad1, arPsi1FactorMLoad2);
+		}
+	}
+
+	
+
+
+
+
+
+
+
+
+
+//
+////
+
+The design load combinations are the various combinations of the prescribed
+load cases for which the structure needs to be checked. For the ACI 318-99
+code, if a structure is subjected to dead load (DL) and live load (LL) only, the
+stress check may need only one load combination, namely 1.4 DL + 1.7 LL
+(ACI 9.2.1). However, in addition to the dead and live loads, if the structure is
+subjected to wind (WL) and earthquake (EL) loads and considering that wind
+and earthquake forces are reversible, the following load combinations should
+be considered (ACI 9.2).
+1.4 DL
+1.4 DL + 1.7 LL 						(ACI 9.2.1)
+0.9 DL ± 1.3 WL
+0.75 (1.4 DL + 1.7 LL ± 1.7 WL) 		(ACI 9.2.2)
+0.9 DL ± 1.3 * 1.1 EL
+0.75 (1.4 DL + 1.7 LL ± 1.7 * 1.1 EL) 	(ACI 9.2.3)
+
+
+
+///////////////////////
+//////////////////////////////////////
+///////////////////////////////////////////////////////////////		
+		
+#define D_MOVE_CODE_NONE             0
+#define D_MOVE_CODE_AASHTO_STAN      1
+#define D_MOVE_CODE_AASHTO_LRFD      2
+#define D_MOVE_CODE_CHINA            3
+#define D_MOVE_CODE_TAIWAN           4
+#define D_MOVE_CODE_JAPAN            5
+#define D_MOVE_CODE_KOREA            6
+#define D_MOVE_CODE_INDIA            7
+#define D_MOVE_CODE_CANADA           8
+#define D_MOVE_CODE_PENDOT           9
+#define D_MOVE_CODE_BS               10
+#define D_MOVE_CODE_EURO_BS          11
+#define D_MOVE_CODE_RUSSIA           12
+#define D_MOVE_CODE_KOREA_LRFD_2011  13
+#define D_MOVE_CODE_AUSTRALIA        14
+#define D_MOVE_CODE_POLAND           15
+#define D_MOVE_CODE_SOUTH_AFRICA     16
+
+
 
 
 CRCS_BeamDesignResultDlg *pBeamDesignDlg = NULL;
@@ -585,4 +818,17 @@ CRCS_BeamDesignResultDlg *pBeamDesignDlg = NULL;
     else if(iSequence==28)	csWindowTitle = _LS(IDS_MAIN_RESULTVIEW_TB_COLUMN_SHEAR         );
     else if(iSequence==29)	csWindowTitle = _LS(IDS_MAIN_RESULTVIEW_TB_COLUMN_TENDON_CS     );
     else if(iSequence==30)	csWindowTitle = _LS(IDS_MAIN_RESULTVIEW_TB_COLUMN_CON_CS        );
-    else	ASSERT(0);			
+    else	ASSERT(0);	
+
+	
+	
+	LoadCombCtrl.m_dCSAWP[1] = m_pCSA->m_dCSAWPMin;
+	LoadCombCtrl.m_dCSAPS[0] = m_pCSA->m_dCSAPSMax;
+	LoadCombCtrl.m_dCSAPS[1] = m_pCSA->m_dCSAPSMin;
+
+	LoadCombCtrl.m_aStldEp1.Copy(m_pCSA->m_aStldEp1);  // 	CArray<T_STLD_K, T_STLD_K> m_aStldEp1;   // Copy willnot take address
+	LoadCombCtrl.m_aStldEp2.Copy(m_pCSA->m_aStldEp2);
+	LoadCombCtrl.m_aStldEp3.Copy(m_pCSA->m_aStldEp3);
+	
+	    CLoadCombCtrl LoadCombCtrl; // Gen
+		CLoadCombCtrl LoadCombCtrl; // Civil

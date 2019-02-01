@@ -1,4 +1,11 @@
 VISUAL STUDIO
+//////////////
+//////
+///
+
+
+
+// VISUAL STUDIO 2017 OR + Have   StepBack Debug
 
 //SHORT CUT FOR EVERY THING
 // MENU -> tOOLS -> oPTIONS ->oPTIONS ->Environment ->[select what you want and apply shortcut key]
