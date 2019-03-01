@@ -2,6 +2,7 @@
 // C++ Civil Gen Code
 /////////////////////////////
 /////// CONTENT
+// 0-:: Basic
 // 0 :: Steel CSA_S6_14
 // 1 :: Rcc   CSA_S6_14
 // 2 :: WINDGust IS875_2015 Gui
@@ -16,6 +17,16 @@
 	https://www2.gov.bc.ca/assets/gov/driving-and-transportation/transportation-infrastructure/engineering-standards-and-guidelines/bridge/volume-1/2016/section-10.pdf
 	https://www2.gov.bc.ca/gov/content/transportation/transportation-infrastructure/engineering-standards-guidelines/structural/standards-procedures/volume-1
 
+// 0-
+// Basic Of Midas Code
+
+// CWGen60App // Gen Class
+	class CWGen60App : public CAppMain	   // CWinApp   // Initialize Application
+
+// New and Open Button IDs	
+	MENUITEM "&New Project...",             ID_FILE_NEW
+	MENUITEM "&Open Project...",            ID_FILE_OPEN
+	
 	
 	
 // 0
