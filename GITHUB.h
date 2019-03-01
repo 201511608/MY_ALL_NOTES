@@ -8,7 +8,7 @@ git --help // open help options
 
 git log // show all commits and mergs and all other actions
 git show //
-git config-- global user.name 'ANYNAMEINISNGLE COATS'
+git config --global user.name 'ANYNAMEINISNGLE COATS'
 git config --global user.email 'ANYEMAIL'
 
 git diff   // show diff between commit and un commit differece
