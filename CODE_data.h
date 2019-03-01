@@ -5,8 +5,8 @@
 // 0 :: Steel CSA_S6_14
 // 1 :: Rcc   CSA_S6_14
 // 2 :: WINDGust IS875_2015 Gui
-// 3 :: IS456-2000
-// 4 :: 
+// 3 :: IS456-2000 Load Combiantion
+// 4 :: IS456-2000 Beam Column
 // 5 :: 
 
 
@@ -16,7 +16,22 @@
 	https://www2.gov.bc.ca/assets/gov/driving-and-transportation/transportation-infrastructure/engineering-standards-and-guidelines/bridge/volume-1/2016/section-10.pdf
 	https://www2.gov.bc.ca/gov/content/transportation/transportation-infrastructure/engineering-standards-guidelines/structural/standards-procedures/volume-1
 
-	
+// Basic Set Up .exe Path in Code
+	Right click on your dll project
+	Properties
+	Configuration Properties > Debugging. Here, in Command -> add path to your exe.
+
+
+// Lock
+	// DBCode  // LockControle at 544 Line
+	// DBCodeCtrl	
+
+// Civil Or Gen   -> PreProcessor
+#if defined(_CIVIL)
+		GetDlgItem(IDC_DGN_CON_F_PHIC1)->EnableWindow(FALSE);
+#else
+		GetDlgItem(IDC_DGN_CON_F_PHIC1)->EnableWindow(TRUE);
+#endif
 	
 // 0
 // Steel CSA_S6_14
@@ -501,45 +516,7 @@
 
 
 
-//2
-//IS456:2000
-/////////////////////////////////////////////////////////////////////////
-
-// Topics
-// IS456-2000
-	-> Beam Design			11
-	-> Beam Check
-	-> Column Design 	 	11
-	-> Column Check
-	-> Load Combination		3
-
-
-	// WorkDetails	
-		GUI-2//
-		DESIGN CODE-2/3//
-		CHECK CODE-1//
-		Report-2
-		ResultsDlg-2
-		Mct, Mcb-1
-		
-		
-
-//
-// GUI
-D:\SVN_Base\Civil\src\wg_main\MgtCmdDgn.cpp
-
-// GUI
-DgnConPhiDlg
-
-// GUI
-Seffix   _Dlg
-
-
-
-GetDesignTitleCon
-
-
-
+// 3
 // LoadCombination
 //////////////////////////////////////////////////////////////
 // LoadCombination 
@@ -600,10 +577,17 @@ LoadCombCtrl.h
 ACI318-02
 KCI-USD99
 KCI-USD12
-
+    
+	T_LCOM_D rData;
+	rData.Initialize();
+	LoadCaseNo=0; 
+	for(int	i=0; i<iDCount;	i++)	Set_StaticCase(arDLoad.GetAt(i), dDFactor, LoadCaseNo, rData);
 	
 Set_LoadComb(i,inputData, bSameLcom);   // Set LoadCdPSSombination Max
 
+
+cEL.m_arLd.RemoveAll();
+cEL.m_arLd.Add(StldK) ;
 
 //
 //// SET_LCOM();
@@ -622,15 +606,17 @@ Set_LoadComb(i,inputData, bSameLcom);   // Set LoadCdPSSombination Max
 	CombBase cSL;  cSL.Set_Type("SL"); // Snow.
 	CombBase cRL;  cRL.Set_Type("RL"); // Rain.
 	CombBase cIP;  cIP.Set_Type("IP"); // Ice Pressure.
-	CombBase cFP;  cFP.Set_Type("FP"); // Fluid Pressure.
-	CombBase cTL;  cTL.Set_Type("TL"); // Temperature.
-	CombBase cEP;  cEP.Set_Type("EP"); // Earth Pressure.
-	CombBase cWP;  cWP.Set_Type("WP"); // Ground water pressrue
-	CombBase cSH;  cSH.Set_Type("SH"); // Shrinkage.
+	CombBase cFP;  cFP.Set_Type("FP"); // Fluid Pressure.   
+	CombBase cTL;  cTL.Set_Type("TL"); // Temperature.   
+	CombBase cEP;  cEP.Set_Type("EP"); // Earth Pressure.   
+	CombBase cWP;  cWP.Set_Type("WP"); // Ground water pressrue    
+	CombBase cSH;  cSH.Set_Type("SH"); // Shrinkage.  
 	CombBase cCR;  cCR.Set_Type("CR"); // Creep.
+	
   CombBase cSF;  cSF.Set_Type("SF"); // .
-	CombBase cESP; cESP.Set_Type("ESP");
+	CombBase cESP; cESP.Set_Type("ESP");   // Reonse specturum LCom from gui ! MAK Commente
 	CombBase cPS;	 cPS.Set_Type("PS");		// Prestress in RC, 2002.7.30 Hong,jiseon
+	
 	CombBase cEVT; cEVT.Set_Type("EVT");	// Vertical Earthquake, Hong,js 02/10/21
 	CombBase cESV; cESV.Set_Type("ESV");	// Earthquake Spectrum Vertical, Hong,js 02/10/21
 	CombBase cLI;  cLI.Set_Type("LI");		// Live Load i for Chinese code.
@@ -666,19 +652,24 @@ Set_LoadComb(i,inputData, bSameLcom);   // Set LoadCdPSSombination Max
 
 /////////
 // IS 456 LOAD COMBINATIONS
-	Set_LCB(nA, "1.5(DL + (LL+LR)) + PS",								1.5,cDL,1.5,cCSD,			 1.5,cLL,1.5,cCSL,		1.5,cLR,			 1.0,cPS						);
+	    Set_LCB(nA, "1.5(DL + (LL+LR)) + PS",								1.5,cDL,1.5,cCSD,			 1.5,cLL,1.5,cCSL,		1.5,cLR,			 1.0,cPS						);
 		Set_LCB(nA, "1.2(DL + (LL+LR) + WL) + PS",					1.2,cDL,1.2,cCSD,			 1.2,cLL,1.2,cCSL,		1.2,cLR,			 1.2,cWL,  1.0,cPS	);
 		Set_LCB(nA, "1.2(DL + (LL+LR) - WL) + PS",					1.2,cDL,1.2,cCSD,			 1.2,cLL,1.2,cCSL,		1.2,cLR,			-1.2,cWL,  1.0,cPS	);
 		Set_LCB(nA, "1.5(DL + WL) + PS",										1.5,cDL,1.5,cCSD,																					 1.5,cWL,  1.0,cPS	);
 		Set_LCB(nA, "1.5(DL - WL) + PS",										1.5,cDL,1.5,cCSD,			 																		-1.5,cWL,  1.0,cPS	);
 		Set_LCB(nA, "0.9DL + 1.5WL + PS",										0.9,cDL,0.9,cCSD,			 																		 1.5,cWL,  1.0,cPS	);
-//		Set_LCB(nA, "0.9DL - 1.5WL + PS",										0.9,cDL,0.9,cCSD,			 																		-1.5,cWL,  1.0,cPS	);
+//		Set_LCB(nA, "0.9DL - 1.5WL + PS",		
+//								0.9,cDL,0.9,cCSD,			 																		-1.5,cWL,  1.0,cPS	);
+										  m_strLCNameX = DataToStr(1, LcoeBase);
+										  m_strLCNameY = DataToStr(2, LcoeBase);
+
 		Set_LCB(nA, "1.2(DL + (LL+LR) + EL) + PS",					1.2,cDL,1.2,cCSD,			 1.2,cLL,1.2,cCSL,		1.2,cLR,			 1.2,cEL,  1.0,cPS	);
 		Set_LCB(nA, "1.2(DL + (LL+LR) - EL) + PS",					1.2,cDL,1.2,cCSD,			 1.2,cLL,1.2,cCSL,		1.2,cLR,			-1.2,cEL,  1.0,cPS	);
 		Set_LCB(nA, "1.5(DL + EL) + PS",										1.5,cDL,1.5,cCSD,																					 1.5,cEL,  1.0,cPS	);
 		Set_LCB(nA, "1.5(DL - EL) + PS",										1.5,cDL,1.5,cCSD,			 																		-1.5,cEL,  1.0,cPS	);
 		Set_LCB(nA, "0.9DL + 1.5EL + PS",										0.9,cDL,0.9,cCSD,			 																		 1.5,cEL,  1.0,cPS	);
 		Set_LCB(nA, "0.9DL - 1.5EL + PS",										0.9,cDL,0.9,cCSD,			 																		-1.5,cEL,  1.0,cPS	);
+//
 		Set_LCB(nA, "1.2(DL + (LL+LR) + (SUF)ESP) + PS",		1.2,cDL,1.2,cCSD,			 1.2,cLL,1.2,cCSL,		1.2,cLR,			 1.2,cESP,  1.0,cPS	);
 		Set_LCB(nA, "1.2(DL + (LL+LR) - (SUF)ESP) + PS",		1.2,cDL,1.2,cCSD,			 1.2,cLL,1.2,cCSL,		1.2,cLR,			-1.2,cESP,  1.0,cPS	);
 		Set_LCB(nA, "1.5(DL + (SUF)ESP) + PS",							1.5,cDL,1.5,cCSD,																					 1.5,cESP,  1.0,cPS	);
@@ -832,3 +823,98 @@ CRCS_BeamDesignResultDlg *pBeamDesignDlg = NULL;
 	
 	    CLoadCombCtrl LoadCombCtrl; // Gen
 		CLoadCombCtrl LoadCombCtrl; // Civil
+		
+		
+BOOL bOrthogonal = (m_nOrthoType==0 ? TRUE : FALSE); (m_nOrthoType=1)
+
+GetDlgItem(IDC_CMD_DESIGN_OTHOLC_SET_BTN)->EnableWindow(m_wndOthoChk.GetCheck()?TRUE:FALSE);
+
+
+#define ArINT		CArray<int,int>
+ArINT m_arLd;
+ArUNT m_arLdu;
+
+
+#define T_STLD_K unsigned int
+CArray<T_STLD_K, T_STLD_K> arEccKeyList;
+
+Make_LCB_Makelcb_ESP(LoadCaseNo, LoadCaseNo2, strReport, fac, cLoad, arMakeData); // ESP Response Spectrum Load Cases
+
+
+int iCount = cLoad.m_arLdu.GetSize();
+	for(int j=0; j<iCount;j++){{}
+	
+	
+	CArray<CombBase,CombBase> arLcase;  == arLoadcase
+	 CombBase cLoad;
+		  cLoad = arLoadcase.GetAt(i);
+	 CombBase& cLoad
+	 CString strLcName =	Get_SpectrumLoadCaseName(cLoad.m_arLdu.GetAt(j));
+	 
+	 
+	 CString strLcName =	Get_SpectrumLoadCaseName(cLoad.m_arLdu.GetAt(j));
+	 if(cLoad.Get_Type()=="ESP") Get_RealLcaseName("ESP", strLcName, strTemp);
+	  Get_RealLcaseName("ESP", strLcName, strTemp);
+	 
+	 
+	 	CString   strPSorTS = bStageCS ? _T("TS") : _T("PS");
+		strDesc.Format("0.9(DL+EV) + 1.0EL + 1.0EH + (SFAC)%s", strPSorTS); 
+		
+
+		
+	
+// 4
+//IS456:2000 Beam Column Design
+/////////////////////////////////////////////////////////////////////////
+// // Common Codes
+// Gen and Civil
+ACI318-02
+KCI-USD99
+KCI-USD12		
+	
+
+
+// Topics
+// IS456-2000
+	-> Beam Design			11
+	-> Beam Check
+	-> Column Design 	 	11
+	-> Column Check
+	-> Load Combination		3
+
+
+	// WorkDetails	
+		GUI-2//
+		DESIGN CODE-2/3//
+		CHECK CODE-1//
+		Report-2
+		ResultsDlg-2
+		Mct, Mcb-1
+		
+		
+
+//
+// GUI
+	D:\SVN_Base\Civil\src\wg_main\MgtCmdDgn.cpp
+
+	// Concrete Phi dilogbox
+	DgnConPhiDlg
+
+	// GUI
+	Seffix   _Dlg
+
+	GetDesignTitleCon
+
+> CIVIL > RCS
+	
+//////
+//    Rcsc_BeamDesign.cpp
+//    Rcsc_DataBase.cpp
+//    Rcsc_Design.cpp
+//    Rcsc_CodeCheck
+
+
+		
+> ACI318-02 (Following this Code)
+
+> ACI318-02  <>   IS456:2000   =   Same GUI in CIVIL

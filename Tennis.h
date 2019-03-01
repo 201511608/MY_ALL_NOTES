@@ -13,6 +13,7 @@
 
 
 //0 
+// When Have a Chance Take it !  Perfectit !
 //Basic
 	Federer ForeHand Grip is modified Semi Eastern Grip 
 	Short cut to find this grip is to 
