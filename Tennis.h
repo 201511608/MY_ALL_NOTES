@@ -54,15 +54,26 @@ Fourth Fingure with Extension
 	Swing bat From up to down to Up  Line Sign Curve
 
   // Error
-	Keep bat and hand parallel when we take back  then do sign curv
+	Keep bat and hand parallel when we take back  then do sign curve
 
+// BackHand
+	RacketUp 
+	Step Forword
+	Rotate Back   
+	Swing bat From up to down to Up  Line Sign Curve
+
+  // Error
+	Keep bat and hand parallel when we take back  then do sign curve
  
 // 5
 // Serve
 	ShakeHand grip / Contintal gripe
 	Toss little font
-	Hit   [pronating while hitting (face on handrightHand facing left)]
+	Hit   [ >pronating while hitting (face on handrightHand facing left) > Watch to ball till hit]
 	Move Your body Forword [ Momentem forword ] // After hitting the ball we must fall farwords
 	
-
+	// Serve Types
+		> Flat    ->  Mid
+		> Slice   ->  9 to 3 OClock slice to ball
+		> Kick    ->  7 to 1 or 8 to 2 OClock slice to ball
 	

@@ -28,6 +28,8 @@ http://manual.midasuser.com/EN_Common/civil/870/index.htm
 Help Gen
 http://manual.midasuser.com/EN_Common/Gen/870/index.htm
 
+Knowledge Base
+http://globalsupport.midasuser.com
 
 F4          // Node Query
 Ctrl + F4   // Element Query
@@ -155,25 +157,128 @@ Weight Density = 0
 
 
 
+// 12.3 =13
+// Section Property Calculator
+	> SPC > .DXFs/SPC 
+	// For Tamper:: Must have same Nodes for all section
 
 
-
-// 12  
+//12  
 // 2-Span PSC Composit I Girder Bridge
 // https://www.youtube.com/watch?v=ix7FULkOiWQ&t=154s
+	> Units:: N MM
+
+	1 > Properties > Material
+				>M40
+				>M30
+				>diaphragm > M40
+				>dummy  > WeightDensity = 0 > {Weight already considered just for dummy purpose}
+				>Tendon >Fe460 IS
+
+	2 > Time Dependent Material  
+			>Creep and Shrinkage
+				> M40 C&S
+				> M30 C&S
+					>  IRC 112:2011 
+					>  28 days strength as per given Material > EX: 40, 30
+					>  Notional size = 1000 Random value  :: After Geomentry defined Autocalculates the value
+			>Compressive Strength
+				> M40 COMP
+				> M30 COMP
+					>IRC 112:2011
+					>Fck + delta_f = M40+10  or M30+10
+					>Normal cement  {Slow setting cement, Rapid Hardening Cement, Normal cement}
+	
+	3 > Material Link
+			> M40 +(M40 C&S + M40 Comp) // Material link to Creep Shrinkage and Compression
+			> M30 +(M30 C&S + M30 Comp) 
+			
+		
+	// Units:: kN m
+	4 > Section Properties Calculator (SPC)   {note: Autocad, Midas, SPC units must be same}
+		> Tools > SectionalProperty Calculator
+			
+		
+	
+// Section
+	5> Autocad    {Polyline}
+		>0,    0  
+		 0.45, 0
+		 0.175,0.35
+		 0.175,1.45
+		 0.45 ,1.60
+		 0.45 ,1.80
+		 0    ,1.80
+		 
+		 > Mirror It
+		 > Explode It
+		 
+		 
+		 
+	6 > Import in SPC(Section Property Calculator)
+		> SPC > .DXFs/SPC  // For Tamper:: Must have same Nodes 
+		
+		> Materials Add
+			> Models > Material > Add > M40 > 3.1622E7,0.2,23.6
+			> Models > Material > Add > M30 > 2.758E7,0.2,23.6
+			
+		> Generate Section
+			> Models > Section > CompositSection > Generate
+				>MID-SEC,2(parts),M40
+				>SUP-SEC,2(parts),M40
+				
+			> Models > Section > CompositSection > AddParts
+				>MID-SEC,1,GIRDER,PLANE  > (Select Girder)
+				>MID-SEC,2,SLAB,PLANE  > (Select Slab)
+				
+				>SUP-SEC,1,GIRDER,PLANE  > (Select Girder)
+				>SUP-SEC,2,SLAB,PLANE  >   (Select Slab)	
+
+		> Property >Calculate Composit Property 
+				> Mesh = 0.1
+				> Select anyone like slab !
+		
+	    > Export // SEC > files
+			> Models > Section > CompositSection > EXPORT
+				>NAME : MID-SEC (SELECT MID SECTION) > APPLY
+				>NAME : SUP-SEC (SELECT SUP SECTION) > APPLY
+				
+		
+	> IMPORT
+		>Properties > Section Property > Add > Composite > Section-Type= CompositGeneral > Import SEC Files
+			> Offeset = CenterTop
+			
+				
+		 
+	> IMPORT
+		>Properties > Section Property > Import > .mcb
+	> Tamber section	
+		>Properties > Section Property > Add > Tapered > Composit General section > Import SEC	
+			>SUP-MID
+		
+	> Pear > Section Property > Add > SolidTrack/Circle
+	
+	> End Diaphragm > Section Property > Add > SolidRectanular (H=2 B=0.5)
+				> Change Offset > Centroid[HorizontalOffset>to Extreme Fiber, VerticalOffset: User>I=-0.25]
+				// Diaphragm is below the slap :: thickness of slab in 0.25m .
+
+	> DUMMY >  Section Property > Add > Value > SolidRectangle >[h=0.25,b=1]
+			> Izz =0  // Do Not Considered Stiffness in the Longitutional  !
+					  // This is not material Porperty to keep material density as Zero.
 
 
 
-MATERIAL > TIMEDEPENDENT > SECTION (.SEC :: Section Files ) >  MODELLING >
+// Modelling
+	> Extrude > NodetoLine > {0.5, 24@1, 0.5}
+	  > {Sup-sec(1.5M)) :: sup-mid(1m) :: sup-sec(22m) :: mid-sup(1m) :: Mid-Sup(1.5m)}
 
-
-
-
-
-
-
-
-
+	> Translate Nodes > -1.5
+		// Dummy Members !
+	> Extrude > NodetoLine > {   }
+	
+	> Divide     |n Equal parts|
+	> Translate 
+	
 
 
 

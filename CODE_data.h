@@ -933,3 +933,26 @@ KCI-USD12
 > ACI318-02 (Following this Code)
 
 > ACI318-02  <>   IS456:2000   =   Same GUI in CIVIL
+
+
+// Changes to make
+Limiting Maximum Rebar ratio > Brace Design 
+Limiting Minimum Section Size > Limits !
+Serviceability Parameter > Modify Full!          // Done
+	> ID = IDD_DGN_CON_SERVICE_DLG
+	> DgnConServiceLimtDlg
+
+
+DBDoc.cpp
+	 ?>GetDesignTitleStl()
+	 
+if(ID==ID_DGN_STL_DALW || ID==ID_QUERY_DGN_STL_DALW)
+{// ID from #define IDs Wheather Specific ID is opened}
+
+
+// Main Gui 
+	> // Adding Beam>Coloum>DesignParameter>All Stuff !
+	DgnConDlg.cpp		
+	 > Serviceparamater DIalog initialize
+		>
+
