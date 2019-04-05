@@ -2,7 +2,7 @@ Android
 
 // Content ::
 //0   :: Basic
-//1   ::  
+//1   :: ISP (IN SYSTEM PROGRAMMING)
 //2   ::  
 //3   ::  
 //4   ::  
@@ -256,3 +256,11 @@ Android
 		>DOM
 		>SAX
 		>XMLPullParser 
+		
+		
+//1   
+// ISP (IN SYSTEM PROGRAMMING)
+// also called in-circuit serial programming (ICSP)
+// is the ability of some programmable logic devices, microcontrollers
+	// ARDUINO AS BURNER
+			https://www.instructables.com/id/ATmega8-As-Arduino-using-Internal-8Mhz-Crystal/

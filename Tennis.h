@@ -13,7 +13,8 @@
 
 
 //0 
-// When Have a Chance Take it !  Perfectit !
+// When Have a Chance Take it !  kl !
+// Antispate All the Time
 //Basic
 	Federer ForeHand Grip is modified Semi Eastern Grip 
 	Short cut to find this grip is to 

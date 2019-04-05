@@ -447,7 +447,7 @@
 
 	// Enable Disable in Civil 
 	CDlgUtil::CtrlEnableDisable(this,IDC_CMD_GUSTF_RD2,TRUE); // Just will not allow to do any thing
-
+									TRUE {enables us to do stuff}
 	// 
 	CDlgUtil::CtrlShowHide(this, m_aCtrlGustFactor, nMethod == 1); // nMethod show or hide
 
@@ -912,12 +912,22 @@ KCI-USD12
 // GUI
 	D:\SVN_Base\Civil\src\wg_main\MgtCmdDgn.cpp
 
+//wGenDoc.cpp // RC desing drop down ( on click )
 	// Concrete Phi dilogbox
-	DgnConPhiDlg
-
+		DgnConPhiDlg
+	// Limiting maximum rebar ratio
+		dgnconbarratiodlg  // file name
+			IDD_DGN_CON_BARR_DLG // IDD
+	// limiting minimum section size 
+		CDgnConBarMinSectSizeDlg
+		// ID_DGN_CON_DCON_MIN_SECT_LIMIT
+		
+		
+		
+		
+		
 	// GUI
 	Seffix   _Dlg
-
 	GetDesignTitleCon
 
 > CIVIL > RCS
@@ -931,14 +941,17 @@ KCI-USD12
 
 		
 > ACI318-02 (Following this Code)
-
 > ACI318-02  <>   IS456:2000   =   Same GUI in CIVIL
+	> ACI318-02 No ServiceLimit
 
 
 // Changes to make
-Limiting Maximum Rebar ratio > Brace Design 
-Limiting Minimum Section Size > Limits !
+Limiting Maximum Rebar ratio > Brace Design      // Done
+Limiting Minimum Section Size > Limits !         // Done
 Serviceability Parameter > Modify Full!          // Done
+
+
+
 	> ID = IDD_DGN_CON_SERVICE_DLG
 	> DgnConServiceLimtDlg
 
@@ -954,5 +967,56 @@ if(ID==ID_DGN_STL_DALW || ID==ID_QUERY_DGN_STL_DALW)
 	> // Adding Beam>Coloum>DesignParameter>All Stuff !
 	DgnConDlg.cpp		
 	 > Serviceparamater DIalog initialize
-		>
+		>CDgnConServiceLimtDlg
 
+// FOLLOWING EURO DONE !
+
+// FOLLOWING Eurocode2-2:05
+
+
+
+//Flow of CASES
+////////////////////////////////////////////////////////////////////////////////////////
+// There is no limiing maximum section sizee Euroooo
+int CRCSC_CodeCheck::Set_InputCode(CString strCode){}
+
+BOOL CRCSC_CodeCheck::Set_InputDataByCode()
+	else if(strCode=="ACI318-02"){iCode = ACI318-02  ; iUnitL = D_UNITSYS_LENGTH_INDEX_IN;  iUnitF = D_UNITSYS_FORCE_INDEX_LBF;}
+	else if(strCode=="Eurocode2-2:05")       {iCode = Eurocode2_2_05;         iUnitL = D_UNITSYS_LENGTH_INDEX_MM;  iUnitF = D_UNITSYS_FORCE_INDEX_N  ;}
+// BASIC UNITS MM N  // SUCH THAT FORMULLAS WILL BE SAME !!!
+	else if(strCode=="IS456:2000")       {iCode = IS456_2000;         iUnitL = D_UNITSYS_LENGTH_INDEX_MM;  iUnitF = D_UNITSYS_FORCE_INDEX_N  ;}
+	//
+	 else if(m_iDgnCode==IS456_2000)      bUseCubeCode = TRUE; // wHAT FOR 
+	//
+		else if(m_iDgnCode==IS456_2000) dCalcEc = 5000.0*sqrt(dFc);
+//
+	else if (iCode	= IS456_2000)
+	{
+	dBeta = 0.42*2; // See IS456:2000 38.1(c) p.69.
+	}
+//
+	else if (iCode =IS456_2000)
+	{
+		double dBeta		= Calc_Beta(dFc);
+		double dfcd			= Get_fc_Common_LSD(0, dFc);
+		double dGamma_m	= (dfcd==0.0 ? 1.0 : dFc/dfcd);		
+		dAlpha = 0.36*dGamma_m / dBeta; // See IS456:2000 38.1(c) p.69.
+
+	}
+//
+else if( m_pMyDB->m_iDgnCode ==IS456_2000)
+	{
+		// See IS456:2000 36.4.2.1 p.68.
+		double dGamma_m = Get_Gammac_IS();suman love
+		dfc = dFc / dGamma_m;
+		m_iPrintFc = 1;
+		m_dFactFc	 = dGamma_m;
+	}
+	// gen
+	// Strength Reduction Factor.
+	double m_dPhi[5];	
+	//civil
+		// Strength Reduction Factor.
+	double m_dPhi[6];	// 0:Bending, 1:Tension, 2:Comp Spiral, 3:Comp Tie, 4:Shear.
+	dGamma_m = 0 // Bending // Strength Reduction Factor.
+	

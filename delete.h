@@ -26,8 +26,14 @@ Keratin -> Protene in Hairs
 weekly twice shampoo only
 
 carcinogenic:: Having the potential to cause cancer.
-
 formaldehyde, methylene glycol, formalin, methylene oxide, paraform, formic aldehyde, methanal, oxomethane, oxymethylene or Chemical Abstract Service
+
+//////////
+// CYSTEINE
+PROTEIN KERA Cysteine Treatment   > NO FORMALDEHYDE
+PRESHAMPOO :: CLARIFYING SHAMPOO  (FOR DEEP CLEAN)  // I FEEL NORMAL SHAMPOO IS ENOUGH
+        // WASH WITH HOT WATER  (NO SHAMPOOT)  OPEN CUTICLE
+		// WASH WITH COOL WATER FOR RINSING  > HELPS CLOSE CUTICLE
 
 
 
@@ -144,3 +150,23 @@ Micro ->  250 2000       /// Need Unique id  Register Via  Site   /// 2000ft
 3	  ->  2000 25000
 4	  ->  2500 15000
 5	  ->  >15000
+
+
+// 7
+// Medicine colleges
+MCAT EXAM // mainly for Canada and Usa
+NEET EXAM  -> India Exam i guess
+AIIMS -> DIRECT ADDMITION 50% + MARKS IN ALL SUBJECT
+
+
+OSMANIA MEDICAL COLLEGE-[OMC], Hyderabad
+
+B.Sc. in Nutrition 
+
+Osmania University for Girls Hyderabad
+B.Sc Nutrition And Food Technology Botany Chemistry
+
+GITAM School of Science, Hyderabad // No avialabe Cross check
+// Courses
+B.Sc Food Science And Management Botany Chemistry 
+B.Sc Nutrition And Food Technology Botany Chemistry 

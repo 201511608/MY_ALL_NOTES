@@ -280,10 +280,42 @@ Weight Density = 0
 	> Translate 
 	
 
+	> //Dummy_slab 
+				> Is for xy action/tranform (stiffness)
 
 
-
-
+	> Translate > Nodes > -2.25[2+0.25 = dummysec],-0.1
+		Permenent support and temp support !
+		
+	> PearCap (LeftPear + PearMid + RigthPear) Lhs to Rhs
+	
+	> Pear [PearMid 1.5] 
+		Node [1.5 from pearcapmid 7 m Extrude Pear]
+		
+	> Dummy Member for Crash Barrier	[for superImpose lode]
+	
+// Groups
+	>BOUNDARY GROUP
+		> TEMP1, TEMP2, PERM, SUB
+	>RIGID LINK > (SUB)GROUP > PEAR TO PEARCAP
+		> Diaphram to Pear (Need Extra Nodes Just above the dampers as exact distance)
+		> Node to Node Rigid -> Node to Node Elastic Damper
+	>ELASTIC LINK(PERMENENT)
+		> SDx = SDy = SDz = 1E8 (GENERAL) (HIGH STIFFNESS RUBBERS)
+		> SDx = SDz = 1E8 ; SDy= 1000
+		> SDx = SDy = 1E8 ; SDz= 1000
+		> SDx = 1E8 ; SDy = SDz= 1000
+	> TempSup()
+		>mid::  RigidLink + ElasticRigid + Support roller Ry  free
+		>End::  RigidLink + ElasticRigid + Support roller Ry dx dy free
+	
+	> mirror
+	>Structure > Check duplicate elements > OnClick Remove all duplicates
+	
+	> Poroperties>Tapered Groups > to have perfect tapered section
+	> Longitutional Direction  
+	> Tranverse Direction
+	> Vertical Direction
 
 
 
