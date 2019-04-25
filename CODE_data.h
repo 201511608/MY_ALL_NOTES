@@ -922,7 +922,70 @@ KCI-USD12
 		CDgnConBarMinSectSizeDlg
 		// ID_DGN_CON_DCON_MIN_SECT_LIMIT
 		
-		
+	//
+	
+	T_DCON_D rData
+	
+	m_bTorsionDesign = FALSE;
+	m_bTorsionDesign = rData.bTorsionDesign;
+	rData.bTorsionDesign = m_bTorsionDesign;
+	
+	//CIVIL
+	CRCSC_DataBase* m_pMyDB;
+		rData.bTorsionDesign = m_bTorsionDesign;
+	
+	
+	//GEN
+	RCSDataBase :: DgnForceCtrl.
+	BOOL   m_bApplyTorsionDesign;
+	CRCSDataBase*  m_pMyDB;
+		m_pMyDB->m_bApplyTorsionDesign
+	// GUI
+	
+	DgnConCodeDlg.cpp
+	BOOL	  m_bTorsionDesign;
+	rData.bTorsionDesign = m_bTorsionDesign;
+		T_DCON_D rData;
+	IDC_DGN_RCCTRL_TORSION
+	
+	
+	CRCSDataBase            ===   		T_DCON_D   // Excanged through RCSCodeCheck  || RCSCCodeCheck
+	m_bApplyTorsionDesign	===	  		bTorsionDesign  // || m_bChkTorsionDesign
+	
+	m_pMyDB->m_bChkTorsionDesign =m_ConcData.bTorsionDesign;  // Civil 
+	
+	
+RCSCodeCheck.cpp // DateGetting Excgages
+  G:\Codes\Code\Engine_\Test_Civil_Gen_04_2019\src\wg_rcs\RCSCodeCheck.cpp(1317):	m_pMyDB->m_bApplyTorsionDesign = m_pMyDB->m_bChkTorsionDesign && CDBLib::IsConCodeForTorsionCheck(strCode)? TRUE : FALSE;
+  G:\Codes\Code\Engine_\Test_Civil_Gen_04_2019\src\wg_rcs\RCSCodeCheck.cpp(6880):	m_pMyDB->m_bApplyTorsionDesign = m_pMyDB->m_bChkTorsionDesign && CDBLib::IsConCodeForTorsionCheck(strCode)? TRUE : FALSE;
+  G:\Codes\Code\Engine_\Test_Civil_Gen_04_2019\src\wg_rcs\RCSCodeCheck.cpp(8835):	m_pMyDB->m_bApplyTorsionDesign = (m_pMyDB->m_bChkTorsionDesign && CDBLib::IsConCodeForTorsionCheck(strCode))? TRUE : FALSE; // Seungjun '151126 PMS.5165 ACI318-08, 11 º¸ ºñÆ²¸² ¼³°è Ãß°¡
+  G:\Codes\Code\Engine_\Test_Civil_Gen_04_2019\src\wg_rcs\RCSDataBase.cpp(188):	m_bApplyTorsionDesign = FALSE;
+	
+	// Other
+	m_dShearStrutAngle
+	
+	CRCSDataBase            ===   		T_DCON_D 
+	m_pMyDB->m_dShearStrutAngle = m_ConcData.dStrutAngle;
+	
+	
+	BOOL   m_bChkTorsionDesign;  
+	  m_pMyDB->m_bChkTorsionDesign   = DconD.bTorsionDesign;code
+	
+	// added	
+	BOOL m_bChkTorsionDesign;
+	
+	
+	if(m_pMyDB->b_T && (m_iCode==IS456_2000 ))
+	{
+	}
+	
+	 m_dPomax = (0.4*m_dfc)*(Get_Ag()-m_dAst) + 0.67*m_dfy*m_dAst;
+	
+	BOOL bSpecialSeismic;
+	rData.bSpecialSeismic = m_bSpecialEQ;
+	
+	//
+	
 		
 		
 		
@@ -933,12 +996,23 @@ KCI-USD12
 > CIVIL > RCS
 	
 //////
-//    Rcsc_BeamDesign.cpp
-//    Rcsc_DataBase.cpp
-//    Rcsc_Design.cpp
-//    Rcsc_CodeCheck
+  
+// Beam	
+RCSC_CodeCheck
+RCSC_DataBase.cpp
+
+RCSC_Design.cpp
+RCSC_BEAMDESIGN
+RCSC_BEAMDESIGNPRINT
 
 
+// Start of BeamDesign
+    if(m_pMyDB->IsBeamDgn())	m_pBeam->Execute_Dgn();
+
+// For code
+int iCode = m_pDB->m_iDgnCode; 
+m_pMyDB->m_iDgnCode==IS456_2000
+		
 		
 > ACI318-02 (Following this Code)
 > ACI318-02  <>   IS456:2000   =   Same GUI in CIVIL
@@ -972,6 +1046,22 @@ if(ID==ID_DGN_STL_DALW || ID==ID_QUERY_DGN_STL_DALW)
 // FOLLOWING EURO DONE !
 
 // FOLLOWING Eurocode2-2:05
+ >FUCTIONNAME_IS456 // FOLLOW THIS 
+
+
+
+// gen
+// Strength Reduction Factor.
+	double m_dPhi[5];	
+//civil
+// Strength Reduction Factor.
+	double m_dPhi[6];	// 0:Bending, 1:Tension, 2:Comp Spiral, 3:Comp Tie, 4:Shear.
+	dGamma_m = 0 // Bending // Strength Reduction Factor.
+	
+
+
+
+
 
 
 
@@ -1007,16 +1097,145 @@ BOOL CRCSC_CodeCheck::Set_InputDataByCode()
 else if( m_pMyDB->m_iDgnCode ==IS456_2000)
 	{
 		// See IS456:2000 36.4.2.1 p.68.
-		double dGamma_m = Get_Gammac_IS();suman love
+		double dGamma_m = Get_Gammac_IS();
 		dfc = dFc / dGamma_m;
 		m_iPrintFc = 1;
 		m_dFactFc	 = dGamma_m;
 	}
-	// gen
-	// Strength Reduction Factor.
-	double m_dPhi[5];	
-	//civil
-		// Strength Reduction Factor.
-	double m_dPhi[6];	// 0:Bending, 1:Tension, 2:Comp Spiral, 3:Comp Tie, 4:Shear.
-	dGamma_m = 0 // Bending // Strength Reduction Factor.
 	
+
+// Design Parameters
+	int iSectShp = m_pMyDB->m_iSectShp;
+	double dBc	 = Get_Bc(bTop);  // bTop=TRUE : negative Moment
+	double dFc   = m_pMyDB->m_dFc;
+	double dFyr  = m_pMyDB->Get_ReBarStrength();
+	double dfctm = Get_fctm(dFc);
+	double dDeff = Get_Deff(bTop);   // Get Effective Depth.
+	
+		double decu = Get_ecu();
+		double dBeta1  = dBeta1;
+		double dEc = m_pMyDB->m_dEc; // Concrete 
+		double dEs = m_pMyDB->m_dEss; // Steel
+		double dStrain = dFy/(1.15*dEc+0.002);
+		BOOL bTop = (Kopt==1)? TRUE : FALSE;  // Kopt==1:negativ
+		double dBc	 = Get_Bc(bTop)
+		
+			double dFc = m_pMyDB->m_dFc;
+	double dFy = m_pMyDB->m_dFyr;
+	double dft = Get_ft_LSD(Kopt);
+	double dfc = Get_fc_LSD(Kopt);
+	double dAlpha1 = Calc_Alpha();
+	double dBeta1  = Calc_Beta(dFc);  
+	double dfctm   = Get_fctm(dFc);
+	
+	int iSect	 = m_pMyDB->m_iSectNo;
+	
+	double dHc = m_pMyDB->m_dD[0];
+	
+	double As1 = dAs1*iBarNum;
+	double As2 = dAs2*iTopBarNum;
+	m_dAs[0] = As1;
+	m_dAs[1] = m_bDoubly ? m_dAsc : As2;
+	m_ddz[1] = dHc - Get_Deff(TRUE);
+	m_dAs[0] = Get_RbarAstChk(iSect, FALSE);
+	m_dAs[1] = Get_RbarAstChk(iSect, TRUE);
+	// iOpt : 1=Positive(Bot), 2=Negative(Top).
+	BOOL bTee = (m_iType==1 ? FALSE : TRUE);  // (m_iType==1)? SB : T 
+	double dAst = m_dAs[0];
+		//   if(bTee)	// Tee Section.
+		//   {
+		//     m_dAs[0] = (dAs1*iBarNum);  //(0=Tens, 1=Comp)
+		//     m_dAs[1] = 0.0;
+		// 
+		//   }
+		//   else	// Rectangle Section.
+		//   {
+		//     m_dAs[0] = dAs1*iBarNum;
+		//     m_dAs[1] = m_dAsReq2;
+			
+	if(m_bPrintFlag==FALSE)	return;
+	
+	double m_dAs[2], m_ddz[2];	// Rebar (0=Tens, 1=Comp).
+	
+	dAstCur = Get_RbarAstChk(iSect, bTop);
+	
+ dAsMax	= 0.04*Get_Ac(); // Get_Ac()= area ;
+ 
+ 	double dAv1	 = m_pMyDB->m_pDoc->m_pMatlDB->Get_RebarArea(m_strSubBarNa);
+		double dPhi	 = m_pMyDB->m_dPhi[4];	// Shear.
+		
+			int iCode		 = m_pMyDB->m_iDgnCode;
+	int iPosiNo  = m_pMyDB->m_iPosiNo;
+	int iSectShp = m_pMyDB->m_iSectShp;
+ 	iBarNum	= m_pMyDB->m_iBotbarNum[0] + m_pMyDB->m_iBotbarNum[1];
+	dAs1		= m_pMyDB->m_pDoc->m_pMatlDB->Get_RebarArea(m_pMyDB->m_iTbarSizeNo);
+		 
+ 
+ 	double dPhi_c = 0.0, dPhi_s = 0.0;
+	Get_MatResistFactor(dPhi_c, dPhi_s);
+	
+ // Deffective wieht respective M+ive and M-ive	
+	if(Kopt==1) // Positive Moment
+	{	
+		m_ddz[0] = Get_Deff(FALSE); //m_dHc - dBot_eff;
+		m_ddz[1] = dHc - Get_Deff(TRUE);
+		m_d1		 = m_ddz[0];
+		
+	}
+	else if(Kopt==2) // For Negative Moment
+	{
+		m_ddz[0] = Get_Deff(TRUE);
+		m_ddz[1] = dHc - Get_Deff(FALSE);
+		m_d1		 = m_ddz[0];
+	}
+	
+	
+	// Moment 
+		// Gen
+			// TENSION REINFORCEMENT ONLY
+				Print_RCB_LSD_007(ds,dM_Rd);
+				Print_RCB_LSD_016
+		  ds = Search_BEAM_s1_LSD(dfc,dft);
+		  dM_Rd = dAlpha1*dfc*ds*m_dBc*(m_d1-ds/2.0) / dGammaRE;
+			
+			fout<<endl
+				<<"      ( ). Compute ultimate moment of resistance."<<endl
+				<<"           -. a     = beta1 * X  ="<<strds<<m_strLengUnit<<endl
+				<<"           -. M_Rd  = alpha1*fcd*a*Bc*(d-a/2)  ="<<strdM_Rd<<m_strMomUnit<<endl;
+				
+			fout<<endl
+				<<"      ( ). Check ratio of positive moment resistance."<<endl
+				<<"           -. Rat_P = M/M_Rd ="<<strRat_P<<strSignP<<endl;
+				
+	// CIVIL
+		dPhiMn = dPhi*dMn;
+		m_BmPrinter.Print_RCB_BendingCapacity(0, dBeta1, dCenD, dCForce, dTForce, dPhiMn, dRatio, dPncc, dPnsc, dZbar, bTeePosive);
+		
+	//
+	eta  ==  alpha1
+	hc   ==  d
+		// Forces.
+	double m_dMuP, m_dMuN, m_dMuByML;
+	dMu =Mu + Mt ;;
+	if(m_pMyDB->IsRcsBeam())  bCalCompRebar = TRUE;
+	
+	//
+		dRatio = (dPhiMn == 0.0 ? 0.0 : fabs(dMu) / dPhiMn); // ForceAna/RSection
+		
+		double dHc = m_pMyDB->m_dD[0];
+		
+	
+// Shear
+	void CRCSC_BeamDesignPrint::Print_RCB_LSD_041_1(double dVu, double dfc, double dDeff, double b, double dK, double dAsl, double dRhol, double dDRdc, 
+    
+	void CRCS_BeamDesign::Print_RCB_LSD_051(double dVu, double b, double dv, double dAs_bvd, double dvc)
+	
+	
+	// TORSION
+		if(!bTorsion)  // Modify by GAY. MNET:3780. ('09.01.08). Don't Print Shear Header for Torsion Design.
+		{
+			if(m_iCode==IS456_2000)
+				Print_RCB_000(9);
+			else
+				Print_RCB_000(7);      
+		}

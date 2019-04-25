@@ -170,3 +170,8 @@ GITAM School of Science, Hyderabad // No avialabe Cross check
 // Courses
 B.Sc Food Science And Management Botany Chemistry 
 B.Sc Nutrition And Food Technology Botany Chemistry 
+
+
+// 8
+// CNC
+	Computer Numerical Controle

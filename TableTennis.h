@@ -12,8 +12,8 @@
 //8   :: 
 
 // 0
-// Basic
-	// Be Bent and watch the ball
+// Basic Important tips
+	// Be Bent and watch the ball  // https://www.youtube.com/watch?v=uaEyTn6J1DM
 	// Put your Racket in nutral postion
 	// Always Focus on ball till the match ends
 	

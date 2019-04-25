@@ -11,6 +11,16 @@ VISUAL STUDIO
 // MENU -> tOOLS -> oPTIONS ->oPTIONS ->Environment ->[select what you want and apply shortcut key]
 // https://abhijitjana.net/2010/11/08/use-shortcut-or-context-menu-for-open-containing-folder-in-visual-studio/
 
+// ID to varibale check 
+RIGHT_CLICK_GUI -> ADD VARIABLE -> CHECK_VARIABLE_TO_ID 
+
+//
+Lines(Number on) on 
+TOOLS -> OPTION -> TEXT EDITOR -> ALL LANGUAGES -> GENERAL->  LINE NUMBERS "CHECK IT"
+
+
+
+
 
 // Multiple Line Type
 Alt + Shift + Down  // Then type Multiple line
@@ -71,12 +81,6 @@ Ctrl + Alt + A
 			>cls						 // Clear Screen
 
 
-// ID to varibale check 
-RIGHT_CLICK_GUI -> ADD VARIABLE -> CHECK_VARIABLE_TO_ID 
-
-//
-Lines(Number on) on 
-TOOLS -> OPTION -> TEXT EDITOR -> ALL LANGUAGES -> GENERAL->  LINE NUMBERS "CHECK IT"
 
 // Full screen Important
 shift alt enter

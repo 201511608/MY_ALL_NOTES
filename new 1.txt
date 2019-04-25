@@ -1,0 +1,210 @@
+// gen IS 456 beam file
+------------------------------------------------------------------------------------------
+ midas Gen - RC-Beam Design     [ IS456:2000 ]                              Gen 2019
+==========================================================================================
+
+
+       +============================================================+
+       |  MIDAS(Modeling, Integrated Design & Analysis Software)    |
+       |  midas Gen - Design & checking system for windows          |
+       +============================================================+
+       |  RC-Member(Beam/Column/Brace/Wall) Analysis and Design     |
+       |  Based On  KCI-USD12, KCI-USD07, KCI-USD03, KCI-USD99,     |
+       |            KSCE-USD96, AIK-USD94, AIK-WSD2K, ACI318-14,    |
+       |            ACI318M-14, ACI318-11, ACI318-08, ACI318-05,    |
+       |            ACI318-02, ACI318-99, ACI318-95, ACI318-89,     |
+       |            GB50010-10, GB50010-02, BS8110-97,              |
+       |            Eurocode2:04, Eurocode2, NSR-10,                |
+       |            CSA-A23.3-94, AIJ-WSD99, IS456:2000,            |
+       |            TWN-USD100, TWN-USD92                           |
+       |                                             (c)SINCE 1989  |
+       +============================================================+
+       |  MIDAS Information Technology Co.,Ltd.         (MIDAS IT)  |
+       |  MIDAS IT Design Development Team                          |
+       +============================================================+
+       |            HomePage : www.MidasUser.com                    |
+       +============================================================+
+       |  Gen 2019                                                  |
+       +============================================================+
+
+
+    *. DEFINITION OF LOAD COMBINATIONS WITH SCALING UP FACTORS.
+--------------------------------------------------------------------------------------
+     LCB  C    Loadcase Name(Factor) + Loadcase Name(Factor) + Loadcase Name(Factor)
+--------------------------------------------------------------------------------------
+       1  1      Self-weight( 1.500) +     Live Load( 1.500)
+       2  1      Self-weight( 1.200) +     Live Load( 1.200) +     Wind load( 1.200)
+       3  1      Self-weight( 1.200) +     Live Load( 1.200) +     Wind load(-1.200)
+       4  1      Self-weight( 1.500) +     Wind load( 1.500)
+       5  1      Self-weight( 1.500) +     Wind load(-1.500)
+       6  1      Self-weight( 0.900) +     Wind load( 1.500)
+       7  1      Self-weight( 0.900) +     Wind load(-1.500)
+       8  1      Self-weight( 1.200) +     Live Load( 1.200) +    Earthquake( 1.200)
+       9  1      Self-weight( 1.200) +     Live Load( 1.200) +    Earthquake(-1.200)
+      10  1      Self-weight( 1.500) +    Earthquake( 1.500)
+      11  1      Self-weight( 1.500) +    Earthquake(-1.500)
+      12  1      Self-weight( 0.900) +    Earthquake( 1.500)
+      13  1      Self-weight( 0.900) +    Earthquake(-1.500)
+--------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+ midas Gen - RC-Beam Design     [ IS456:2000 ]                              Gen 2019
+==========================================================================================
+
+      *.midas Gen - RC-BEAM Analysis/Design Program.
+
+      *.PROJECT       : 
+      *.DESIGN CODE   : IS456:2000,     *.UNIT SYSTEM : kN, m
+        (Note. Nonhomogenous equation in the code are written in SI units in the report)
+      *.MEMBER        : Member Type = BEAM,   MEMB =    36
+
+      *.DESCRIPTION OF BEAM DATA (iSEC =     1) : Beam
+        Section Type : Rectangle (RECT)
+        Beam Length (Span)             =        12.000 m.
+        Section Depth (Hc)             =         0.500 m.
+        Section Width (Bc)             =         0.300 m.
+        Concrete Strength (fck)        =     30000.000 KPa.
+        Modulus of Elasticity (Ec)     =  27386127.875 KPa.
+        Main Rebar Strength (fy)       =    415000.000 KPa.
+        Stirrups Strength (fyv)        =    415000.000 KPa.
+        Modulus of Elasticity (Es)     = 200000000.000 KPa.
+
+      *.FORCES AND MOMENTS AT CHECK POINT <I> :
+        Positive Bending Moment    P-M =       23.94 kN-m.,  LCB =   3
+        Negative Bending Moment    N-M =      179.72 kN-m.,  LCB =   1
+        Shear Force                 V  =       87.91 kN.  ,  LCB =   1
+
+      *.REINFORCEMENT PATTERN : 
+        ---------------------------------------------------------
+           Location    i     di( m.)       Rebar    Asi( m^2.)
+        ---------------------------------------------------------
+           Top         1      0.040        4-P20      0.00126
+           Bottom      2      0.460        2-P20      0.00063
+        ---------------------------------------------------------
+           Stirrups : P12
+
+ ===============================================================================
+    [[[*]]]   ANALYZE POSITIVE BENDING MOMENT CAPACITY.
+ ===============================================================================
+
+      ( ). Compute design parameters.
+           -. alpha1 = 0.6429
+           -. beta1  = 0.8400
+           -. Gamma_m = 1.50  (for concrete).
+           -. fcd     = fck / Gamma_m =   20000.000 KPa.
+           -. Gamma_m = 1.15  (for reinforcement).
+           -. fyd     = fy / Gamma_m  =  360869.565 KPa.
+
+      ( ). Check area of tensile reinforcement (Rectangular-beam).
+           -. fy      = 415000.0000 KPa.
+           -. ecu     =     0.0035
+           -. est     = fy/1.15Es + 0.002 =     0.0038
+           -. As.max1 = (fck*Bc/fy)*(beta1*ecu*d/(est+ecu)) =     0.0040 m^2.
+           -. As.max2 = 0.04 * (Bc*Hc)                     =     0.0060 m^2.
+           -. As.max  = min[ As.max1, As.max2 ]             =     0.0040 m^2.
+           -. As.min  = 0.85*bt*d/fy                        =     0.0003 m^2.
+           -. As.prov =     0.0006 m^2.
+           -. As.min < As.prov < As.max  --->  O.K !
+
+------------------------------------------------------------------------------------------
+ midas Gen - RC-Beam Design     [ IS456:2000 ]                              Gen 2019
+==========================================================================================
+
+
+      ( ). Search for neutral axis......     Unit :  kN.,  m.
+           -------------------------------------------------------
+             Trial         X          Cc          Ts       Ratio
+           -------------------------------------------------------
+              1-st     0.230      745.20      226.74     -128.66
+              2-nd     0.115      372.60      226.74       35.67
+              3-rd     0.058      186.30      226.74       82.16
+              4-th     0.086      279.45      226.74       76.75
+              5-th     0.072      232.87      226.74       97.29
+              6-th     0.065      209.59      226.74       92.43
+              7-th     0.068      221.23      226.74       97.57
+              8-th     0.070      227.05      226.74       99.86
+              9-th     0.069      224.14      226.74       98.85
+             10-th     0.070      225.60      226.74       99.50
+           -------------------------------------------------------
+
+      ( ). Compute ultimate moment of resistance.
+           -. a     = beta1 * X  =    0.0585 m.
+           -. M_Rd  = alpha1*fcd*a*Bc*(d-a/2)  =      97.1775 kN-m.
+
+      ( ). Check ratio of positive moment resistance.
+           -. Rat_P = M/M_Rd =    0.246  <  1.000  --->  O.K.
+
+ ===============================================================================
+    [[[*]]]   ANALYZE NEGATIVE BENDING MOMENT CAPACITY.
+ ===============================================================================
+
+      ( ). Compute design parameters.
+           -. alpha1 = 0.6429
+           -. beta1  = 0.8400
+           -. Gamma_m = 1.50  (for concrete).
+           -. fcd     = fck / Gamma_m =   20000.000 KPa.
+           -. Gamma_m = 1.15  (for reinforcement).
+           -. fyd     = fy / Gamma_m  =  360869.565 KPa.
+
+      ( ). Check area of tensile reinforcement (Rectangular-beam).
+           -. fy      = 415000.0000 KPa.
+           -. ecu     =     0.0035
+           -. est     = fy/1.15Es + 0.002 =     0.0038
+           -. As.max1 = (fck*Bc/fy)*(beta1*ecu*d/(est+ecu)) =     0.0040 m^2.
+           -. As.max2 = 0.04 * (Bc*Hc)                     =     0.0060 m^2.
+           -. As.max  = min[ As.max1, As.max2 ]             =     0.0040 m^2.
+           -. As.min  = 0.85*bt*d/fy                        =     0.0003 m^2.
+           -. As.prov =     0.0013 m^2.
+           -. As.min < As.prov < As.max  --->  O.K !
+
+      ( ). Search for neutral axis......     Unit :  kN.,  m.
+           -------------------------------------------------------
+             Trial         X          Cc          Ts       Ratio
+           -------------------------------------------------------
+              1-st     0.230      745.20      453.48       35.67
+              2-nd     0.115      372.60      453.48       82.16
+              3-rd     0.172      558.90      453.48       76.75
+
+------------------------------------------------------------------------------------------
+ midas Gen - RC-Beam Design     [ IS456:2000 ]                              Gen 2019
+==========================================================================================
+
+              4-th     0.144      465.75      453.48       97.29
+              5-th     0.129      419.17      453.48       92.43
+              6-th     0.137      442.46      453.48       97.57
+              7-th     0.140      454.11      453.48       99.86
+              8-th     0.138      448.28      453.48       98.85
+              9-th     0.139      451.20      453.48       99.50
+           -------------------------------------------------------
+
+      ( ). Compute ultimate moment of resistance.
+           -. a     = beta1 * X  =    0.1170 m.
+           -. M_Rd  = alpha1*fcd*a*Bc*(d-a/2)  =     181.1602 kN-m.
+
+      ( ). Check ratio of negative moment resistance.
+           -. Rat_N = M/M_Rd =    0.992  <  1.000  --->  O.K.
+
+ ===============================================================================
+    [[[*]]]   ANALYZE SHEAR CAPACITY.
+ ===============================================================================
+           -. Gamma_m = 1.50  (for concrete).
+           -. fcd     = fck / Gamma_m =   20000.000 KPa.
+           -. Gamma_m = 1.15  (for reinforcement).
+           -. fyd     = fy / Gamma_m  =  360869.565 KPa.
+
+      ( ). Calculate shear strength of concrete.
+           -. V       =      87.907 kN.
+           -. b       =    0.300 m.
+           -. v       = V / (b*d)     =    637.0106 KPa.
+           -. As_bvd  = 100*As/(b*d)  =     0.91061  (Area of tensile reinforcement).
+           -. vc      =     424.007 KPa.  (Table 19).
+
+      ( ). Calculate required shear reinforcement. ( Asv1 =  0.00011 m^2. )
+           -. v_lim  =    3500.000 KPa.
+           -. Asv/s1 = bv*(v-vc) / (0.87*fyv)  =     0.00018 m^2/m.
+           -. Calculate spacing s1 =     1.27806 m.
+           -. Smax1  =     0.30000 m.
+           -. Smax2  = 0.75 * d    =     0.34500 m.
+           -. Applied spacing sv   = MIN[ s1, Smax1, Smax2 ] =     0.30000 m.
+           -. N_leg  =  2
+           -. Asv    = N_leg*Asv1 / sv =     0.00075 m^2/m.

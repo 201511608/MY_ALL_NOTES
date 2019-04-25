@@ -78,3 +78,4 @@ Fourth Fingure with Extension
 		> Slice   ->  9 to 3 OClock slice to ball
 		> Kick    ->  7 to 1 or 8 to 2 OClock slice to ball
 	
+->->-> KEEP HAND STRIGHT LIKE STRIGHTLINE WHILE TOSS AND HITTING THE BALL 

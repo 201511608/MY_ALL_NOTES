@@ -28,6 +28,9 @@
 		// go beyond the limits of (what is morally, socially, or legally acceptable).
 	- pious 
 		// paki (Nake admi/aurat)
+	
+	- itinerary
+		// a planned route or journey.
 		
 // 1
 //  Basic Pharases
