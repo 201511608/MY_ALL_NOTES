@@ -36,6 +36,11 @@
 -> Your are ther to get rid of darkness not to be part of it.
 -> Who is your Hero I Follow Him, My Hero is Mohammad(sws). // The Most Follower of whole Human History !
 
+
+// Motivation to Do
+-> Zikar -> Love (we rememver the love 'hard time' : we love Allah than anyone so we do zikar )
+
+
 // Motivation
 -> What starts here, Changes the world/Life.
 -> Stay Strong. Keep Going,  Don't Giveup..
@@ -66,4 +71,5 @@
 -> You Need to Get things Done.
 
 -> Get up early, stay up later. No Excuses, Excuses are for weaks
--> 
+
+

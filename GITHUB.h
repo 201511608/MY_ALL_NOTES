@@ -28,10 +28,12 @@ git commit    // save in loal repository show vim text editor  || vim  click i t
 git push   // push to mail sitegit
 git checkout // creats branch
 git branch //
+git branch -a // List all 
 git branch -D 'branch name'
 git push <remote_name> --delete <branch_name>   // Delete branch in github
 git branch -m oldname newname
-git pull // switch branch or restore working tree files
+git pull // switch branch or restore working tree files      // Pull execute “ Fetch and  Merge” both
+Git Rebase   // Similer to pull but different related to branch ! check it
 
 git branch branchanyname   // To create branch
 git checkout branchanyname   // To get in to branch

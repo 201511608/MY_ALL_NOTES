@@ -952,7 +952,9 @@ KCI-USD12
 	CRCSDataBase            ===   		T_DCON_D   // Excanged through RCSCodeCheck  || RCSCCodeCheck
 	m_bApplyTorsionDesign	===	  		bTorsionDesign  // || m_bChkTorsionDesign
 	
-	m_pMyDB->m_bChkTorsionDesign =m_ConcData.bTorsionDesign;  // Civil 
+	m_pMyDB->m_bChkTorsionDesign =m_C
+	
+	oncData.bTorsionDesign;  // Civil 
 	
 	
 RCSCodeCheck.cpp // DateGetting Excgages
@@ -1140,7 +1142,9 @@ else if( m_pMyDB->m_iDgnCode ==IS456_2000)
 	m_dAs[0] = Get_RbarAstChk(iSect, FALSE);
 	m_dAs[1] = Get_RbarAstChk(iSect, TRUE);
 	// iOpt : 1=Positive(Bot), 2=Negative(Top).
+	m_iType   = (m_pMyDB->m_iSectShp==7) ? 1 : 2;  // rect:1  T:2  // Section Shape
 	BOOL bTee = (m_iType==1 ? FALSE : TRUE);  // (m_iType==1)? SB : T 
+		
 	double dAst = m_dAs[0];
 		//   if(bTee)	// Tee Section.
 		//   {
@@ -1231,6 +1235,8 @@ else if( m_pMyDB->m_iDgnCode ==IS456_2000)
 	void CRCS_BeamDesign::Print_RCB_LSD_051(double dVu, double b, double dv, double dAs_bvd, double dvc)
 	
 	
+	
+	
 	// TORSION
 		if(!bTorsion)  // Modify by GAY. MNET:3780. ('09.01.08). Don't Print Shear Header for Torsion Design.
 		{
@@ -1239,3 +1245,90 @@ else if( m_pMyDB->m_iDgnCode ==IS456_2000)
 			else
 				Print_RCB_000(7);      
 		}
+		
+		
+
+// TORSION
+BOOL   m_bChkTorsionDesign;  
+m_pMyDB->m_bChkTorsionDesign   = DconD.bTorsionDesign;code
+
+// Gen
+		pDB->m_dTu      = m_arBchk[61][iPosiNo]; 
+		m_dTu   = pDB->m_dTu;  CRCSDataBase* pDB
+// cvl	
+     	CRCSC_DataBase* m_pDB;
+		
+		
+if(m_pDB->m_bChkTorsionDesign && (m_pDB->m_iDgnCode==IS456_2000 ))
+{
+
+
+}
+	CString strLc4=_T(""); strLc4.Format("%4s", LcomDesign.DesignLcomNa);
+	 _RCSC_BRES_SORT SortData;
+	double dTu = SortData.dTu[m_iPosi];
+			 
+			 
+else if(iOpt==10) fout<<"    "<<m_strMarkDt<<"   ANALYZE SHEAR AND TORSION CAPACITY."<<endl;
+
+
+// Gen
+	// All forces Input
+void CRCS_BeamDesign::Set_BeamInputDBdata(int iDgnKind, CRCSDataBase* pDB)
+{
+	pDB->Set_LcomDataForElem(pDB->m_iElemNo);
+	if(m_iON==1 && m_iLcomType==1)	// Design -> Strength Check.(exclude serviceability check)
+	{
+		//////////////////////////////////////////
+		m_UserSectNa = pDB->m_strUserSectNa;	// Add by ZINU.('00.4.14).
+		m_iElem	= pDB->m_iElemNo;
+		m_iProp	= pDB->m_iPropNo;
+		m_dMp		= pDB->m_dPMu;
+		m_dMm		= pDB->m_dNMu;
+		m_dVu		= pDB->m_dVu;    
+		m_dTuV  = pDB->m_dTuV;
+		m_dTu   = pDB->m_dTu;
+		m_dVuT  = pDB->m_dVuT;
+	}
+                                  "[[[*]]]"
+								  
+	// Add by GAY. MNET:3780. ('08.10.28). 
+	double m_dTu;  // Design torsion.  
+	double m_dTuV; // Design torsion corresponding to shear force. (for Transverse Reinforcement)
+	double m_dVuT; // Design shear force corresponding to torsion. (for Longitudinal Reinforcement)
+	
+	
+	Print_IS456_TOR_001(1, m_dTu, d_TauVe, dv_lim,dvc);
+	m_dTu   = pDB->m_dTu;  CRCSDataBase* pDB
+	
+	double dMuP = SortData.dMuP[m_iPosi];
+	double dMuN = SortData.dMuN[m_iPosi];
+	double dVu  = SortData.dVu[m_iPosi];
+	double dTu = SortData.dTu[m_iPosi];
+	
+	_RCSC_BRES_SORT SortData;
+	SortData.Initialize();
+	SortData = m_pDB->Get_MaxBeamResByElem(m_pDB->m_iElemNo);
+		double dMuP = SortData.dMuP[m_iPosi];
+		double dMuN = SortData.dMuN[m_iPosi];
+		double dVu  = SortData.dVu[m_iPosi];
+		double dTu = SortData.dTu[m_iPosi];
+	
+	
+		// Forces.
+	double m_dPu, m_dMu, m_dVu;
+	double m_dMuy, m_dMuz, m_dVuy, m_dVuz;
+	
+		m_pMyDB->GetMomByEqSpecial(m_pMyDB->m_iLcomType,m_dMuP,m_dMuN,m_dVu,m_nPosiMp,m_nPosiMm);
+
+
+	double m_dTu;
+
+// Civil
+DgnForceCtrl.cpp  // Moment in x direction is torsion
+// Torsion Force 
+// Add by GAY. MNET:3780. ('08.10.28). Save Maximum Torsion Moment : Maximum Value for All-Position.
+	dTu = max(max(fabs(m_BMx[0]), fabs(m_BMx[1])), max(m_BMx[2], m_BMx[3]));
+	dTu = max(dTu, fabs(m_BMx[4]));   // In Desing
+
+double dTu = SortData.dTu[m_iPosi]; // In print	

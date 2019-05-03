@@ -17,7 +17,7 @@
 
 
 // 0
-
+  //  https://www.programiz.com/python-programming/dictionary
 Dictonary
 dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
 print "dict['Name']: ", dict['Name']
