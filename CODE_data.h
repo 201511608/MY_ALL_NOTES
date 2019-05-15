@@ -11,6 +11,9 @@
 // 5 :: 
 
 
+// Conversion
+	1 kN/m2 = 1000 Pa.
+	1 kN/m2 = 1   kPa.
 
 // Books
 	http://globalsupport.midasuser.com/helpdesk/File/Get/8965959
@@ -973,6 +976,8 @@ RCSCodeCheck.cpp // DateGetting Excgages
 	BOOL   m_bChkTorsionDesign;  
 	  m_pMyDB->m_bChkTorsionDesign   = DconD.bTorsionDesign;code
 	
+	// Torsion in civil
+	m_dTu
 	// added	
 	BOOL m_bChkTorsionDesign;
 	
@@ -1237,7 +1242,7 @@ else if( m_pMyDB->m_iDgnCode ==IS456_2000)
 	
 	
 	
-	// TORSION
+// TORSION
 		if(!bTorsion)  // Modify by GAY. MNET:3780. ('09.01.08). Don't Print Shear Header for Torsion Design.
 		{
 			if(m_iCode==IS456_2000)
@@ -1245,31 +1250,36 @@ else if( m_pMyDB->m_iDgnCode ==IS456_2000)
 			else
 				Print_RCB_000(7);      
 		}
+				
+				
+
+		// TORSION
+		BOOL   m_bChkTorsionDesign;  
+		m_pMyDB->m_bChkTorsionDesign   = DconD.bTorsionDesign;code
+
+		// Gen
+				pDB->m_dTu      = m_arBchk[61][iPosiNo]; 
+				     m_dTu   = pDB->m_dTu;  CRCSDataBase* pDB
+													double m_dTuV;  // Torsion corresponding to shear force. (for Transverse Reinforcement)
+													double m_dAsvt; // (Shear+Torsion) Transverse Reinforcement.
+													double m_dVuT;  // Shear force corresponding to torsion. (for Longitudinal Reinforcement)
 		
 		
-
-// TORSION
-BOOL   m_bChkTorsionDesign;  
-m_pMyDB->m_bChkTorsionDesign   = DconD.bTorsionDesign;code
-
-// Gen
-		pDB->m_dTu      = m_arBchk[61][iPosiNo]; 
-		m_dTu   = pDB->m_dTu;  CRCSDataBase* pDB
-// cvl	
-     	CRCSC_DataBase* m_pDB;
-		
-		
-if(m_pDB->m_bChkTorsionDesign && (m_pDB->m_iDgnCode==IS456_2000 ))
-{
+		// cvl	
+				CRCSC_DataBase* m_pDB;
+				
+				
+		if(m_pDB->m_bChkTorsionDesign && (m_pDB->m_iDgnCode==IS456_2000 ))
+		{
 
 
-}
-	CString strLc4=_T(""); strLc4.Format("%4s", LcomDesign.DesignLcomNa);
-	 _RCSC_BRES_SORT SortData;
-	double dTu = SortData.dTu[m_iPosi];
-			 
-			 
-else if(iOpt==10) fout<<"    "<<m_strMarkDt<<"   ANALYZE SHEAR AND TORSION CAPACITY."<<endl;
+		}
+			CString strLc4=_T(""); strLc4.Format("%4s", LcomDesign.DesignLcomNa);
+			 _RCSC_BRES_SORT SortData;
+			double dTu = SortData.dTu[m_iPosi];
+					 
+					 
+		else if(iOpt==10) fout<<"    "<<m_strMarkDt<<"   ANALYZE SHEAR AND TORSION CAPACITY."<<endl;
 
 
 // Gen
@@ -1301,10 +1311,104 @@ void CRCS_BeamDesign::Set_BeamInputDBdata(int iDgnKind, CRCSDataBase* pDB)
 	Print_IS456_TOR_001(1, m_dTu, d_TauVe, dv_lim,dvc);
 	m_dTu   = pDB->m_dTu;  CRCSDataBase* pDB
 	
+	
+		_RCSC_BRES_SORT SortData;
+	SortData.Initialize();
+	SortData = m_pDB->Get_MaxBeamResByElem(m_pDB->m_iElemNo);
+	
 	double dMuP = SortData.dMuP[m_iPosi];
 	double dMuN = SortData.dMuN[m_iPosi];
 	double dVu  = SortData.dVu[m_iPosi];
 	double dTu = SortData.dTu[m_iPosi];
+	
+	
+	BOOL CDgnForceCtrl::GetForceKCI03(double& dMp, double& dMm, double& dVu)
+{
+	dMp = max(m_BMy[m_iPosiNo], 0.0);
+	dMm = min(m_BMy[m_iPosiNo], 0.0);
+	dVu = m_Fzz[m_iPosiNo];
+
+	return TRUE;
+}
+   Positive Bending Moment   P-Mu =       22.93 kN-m.,  LCB =   3
+   Negative Bending Moment   N-Mu =      181.03 kN-m.,  LCB =   1
+   
+dMp = 19283347.776778534   22927209.521764237[]  max()
+dMm = 181033496.02608228[]   129712788.29029213  max() // BTOP
+dVu = 88237.281267620274   68051.999270685468  max()
+dTu = 0;  7495713.6810437161
+
+												// Shear
+dMp = 102567944.04388440   33694206.415239163   90809961.799109936
+dMm = 14217343.224294294   0.00000000000000000  0.00000000000000000
+dVu = 19088.792616990835   7068.8018386338426   19088.792616990835
+dTu = 0 				   9063556.3054876104   7495713.6810437161
+
+		m_dTu	0.00000000000000000	double
+		m_dMuN	181027282.49894488	double
+		m_dMuP	0.00000000000000000	double
+
+		
+		
+
+// LoadCom Max
+	// For Detail (Beam)
+	int m_iLcomNoP, m_iLcomNoN; 
+	int m_iPosiNoP, m_iPosiNoN; 
+	// For Detail Shear
+	int m_iLcomNoV, m_iPosiNoV;
+	// For Detail Torsion
+	int m_nLcomNoT, m_nPosiNoT;
+	
+// BM
+if(bTop)
+{
+	Get_InputData(m_iLcomNoN, m_iPosiNoN);							
+}
+else
+{
+	Get_InputData(m_iLcomNoP, m_iPosiNoP);	
+}
+// SF	if(m_BmPrinter.m_bPrintFlag)  
+	{
+		Get_InputData(m_iLcomNoV, m_iPosiNoV);
+	}
+// Torsion
+	{
+		Get_InputData(m_nLcomNoT,  m_nPosiNoT);
+	}
+https://www.youtube.com/watch?v=RcOOMlJHRH0
+
+
+
+//ACUTAL MOMENTS ARE STORED IN m_bMpp & m_bMnn  & m_bTuu
+
+bReportCheck > Not Actual Check But 
+Print report in text
+Not to Print report in Text
+
+
+RCSC_BeamDgnResDlg.cpp
+// SET 
+_RCSC_BRES_SORT    ::   dTu
+
+
+
+_RCSC_BRES_SECT SectBResData;
+SectBResData.Initialize();
+m_pMyDB->m_arSectBResData.Lookup(iSect, SectBResData);
+
+
+
+rcsc_dgnprint.
+CRCSC_DataBase* m_pDB;
+SortData = m_pDB->Get_MaxBeamResByElem(m_pDB->m_iElemNo);    <   	_RCSC_BRES_SORT SortData;   <  SortData.Initialize();
+
+	double dMuP			= LcomBResData.PosData[i].dMuP;
+			SortMaxData.dMuP[k]		= PosiMaxBotData[k].dMuP;   < 	_RCSC_BRES_SORT SortMaxData;
+			SortMaxData.dMuN[k]		= PosiMaxTopData[k].dMuN;
+			SortMaxData.dVu[k]		= PosiMaxVData[k].dVu;
+CRCSC_BeamDesign::Reset_Variables()   ////
 	
 	_RCSC_BRES_SORT SortData;
 	SortData.Initialize();
@@ -1324,6 +1428,26 @@ void CRCS_BeamDesign::Set_BeamInputDBdata(int iDgnKind, CRCSDataBase* pDB)
 
 	double m_dTu;
 
+// IS CODE FOR TORSIONBOOL CRCSC_DataBase::Is_CodeForTorsion()   >   RCSC_DataBase.cpp
+{
+	switch (m_iDgnCode)
+	{
+	case AASHTO_LC07:
+	case AASHTO_LC12:
+	case AASHTO_LC16:
+	case SNiP_20503_84RC:
+	case SP_35_13330_11RC:
+	case SNiP_20503_84RC_MKS:
+	case SP_35_13330_11RC_MKS:
+	case IS456_2000:
+		return TRUE;
+	default:
+		return FALSE;
+	}
+	return FALSE;
+}
+
+
 // Civil
 DgnForceCtrl.cpp  // Moment in x direction is torsion
 // Torsion Force 
@@ -1332,3 +1456,94 @@ DgnForceCtrl.cpp  // Moment in x direction is torsion
 	dTu = max(dTu, fabs(m_BMx[4]));   // In Desing
 
 double dTu = SortData.dTu[m_iPosi]; // In print	
+
+
+
+
+// Section Shape
+//Regular
+#define D_SECT_SHAPE_REG_L          "L"     // Angle
+#define D_SECT_SHAPE_REG_C          "C"     // Channel
+#define D_SECT_SHAPE_REG_H          "H"     // H-Section
+#define D_SECT_SHAPE_REG_T          "T"     // T-Section
+#define D_SECT_SHAPE_REG_B          "B"     // Box
+#define D_SECT_SHAPE_REG_P          "P"     // Pipe
+#define D_SECT_SHAPE_REG_SB         "SB"    // Solid Rectangle
+#define D_SECT_SHAPE_REG_SR         "SR"    // Solide Round
+#define D_SECT_SHAPE_REG_2L         "2L"    // Double Angle
+#define D_SECT_SHAPE_REG_2C         "2C"    // Double Channel
+#define D_SECT_SHAPE_REG_CC         "CC"    // Cold Formed Channe
+
+
+
+if(sData.nStype==D_SECT_TYPE_REGULAR)
+{
+	CString strShp = sData.SectBefore.Shape;
+	if(strShp==        "L")	m_iSectShp =  0;
+	else if(strShp==   "C")	m_iSectShp =  1;
+	else if(strShp==   "H")	m_iSectShp =  2;
+	else if(strShp==   "T")	m_iSectShp =  3;
+	else if(strShp==   "B")	m_iSectShp =  4;
+	else if(strShp==   "P")	m_iSectShp =  5;
+	else if(strShp==  "SR")	m_iSectShp =  6;
+	else if(strShp==  "SB")	m_iSectShp =  7;
+	else if(strShp==  "2L")	m_iSectShp =  8;
+	else if(strShp==  "2C")	m_iSectShp =  9;
+	else if(strShp==  "CC")	m_iSectShp = 10;
+
+
+double dv			= m_dVu/(m_dBc*m_d1);
+
+
+int iSect			= m_pMyDB->m_iSectNo;
+m_iType   = (m_pMyDB->m_iSectShp==7) ? 1 : 2;  // rect:1 
+...........................................................
+    . dAv1 == strAv1  ==  dAshearTor
+ ( ). Compute required torsional transverse reinforcement. (Av1= "<<strAv1<<m_strAreaUnit<<")"<<endl
+ 
+ double dAshearTor=max(dAvShear,(dAvmin*min(min(dSmax1,dSmax2),dsmax3)));
+	dAvShear=
+	
+	
+	// Moment
+double dMu = (bTop ? m_dMuN : m_dMuP);
+
+// Shear
+m_pMyDB->Set_RbarDiaForShear(iElemNo, iPosiNo);
+
+
+iElemNo
+iPosiNo
+
+
+
+C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Xoreax\IncrediBuild;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Windows Kits\8.0\Windows Performance Toolkit\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin
+
+
+Calc_Page(3); // In Page (3)
+
+
+
+															CString strphiMn = Check_ValueForm(12, 2, dPhiMn/m_dFmot);
+		fout<<"           -. M_Rd  = C*(hc-a/2) + Cs*(hc-dc)  =  "<<strphiMn<<m_strMomUnit<<endl;
+
+
+	// Forces.
+	double m_dMuP, m_dMuN, m_dMuByML;
+			// Fatigue.
+			SerPosiData.dMuByML	= m_dMuByML;
+			
+			
+
+// Save Results.   >    // rcsc_database
+	CMap<int,int&,_RCSC_MATL,_RCSC_MATL&>						            m_arMatlResData;
+	CMap<int,int&,_RCSC_BRES_SECT,_RCSC_BRES_SECT&>	            m_arSectBResData;	// Beam.
+	CMap<int,int&,_RCSC_CRES_SECT,_RCSC_CRES_SECT&>	            m_arSectCResData;	// Column.
+	CMap<int,int&,_RCSC_CRES_SECT,_RCSC_CRES_SECT&>             m_arSectRResData;	// Brace.
+
+	CMap<int,int&,_RCSC_BRES_ELEM,_RCSC_BRES_ELEM&>	            m_arElemBResData;	// Beam.
+	CMap<int,int&,_RCSC_CRES_ELEM,_RCSC_CRES_ELEM&>	            m_arElemCResData;	// Column.
+	CMap<int,int&,_RCSC_CRES_ELEM,_RCSC_CRES_ELEM&>	            m_arElemRResData;	// Brace.
+	
+_RCSC_BRES_ELEM ElemBResData;
+_RCSC_BRES_LCOM LcomBResData;

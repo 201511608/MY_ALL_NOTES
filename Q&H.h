@@ -2,7 +2,7 @@
 ////
 //
 // 0  ::  
-// 1  ::   
+// 1  :: WHY WE FAST::
 // 2  ::   
 // 3  ::  
 // 4  ::   
@@ -22,8 +22,68 @@
 -> Allah Guides use in every steps of life via Quran
 -> Challenged anyone who doubts its authenticity.( Baqrah 2:23, 24 )
 -> Every thing will come and go..Except Allah.. Hold on to Allah
+-> NASEEHAT THO AAQAL MAND HI KHABOOL KARTE HI
+-> Agar saacha hi tho, Daleel pash karo...
+-> Hakikath may Allah kafi hi gavah k leya
 	// Aayas Imp
 		22:78
+		67:65 // JudgementDay
+		67:71 // Sigle handedly Created 
+		02:153
+		02:170
+		02:176
+		02:183
+		02:208
+		02:212
+		02:213
+		02:219  Alchol
+		02:220  Merriage with Kuffar
+		02:229,230 Taalaq and ask us toremember
+		02:254 Money to be Spend
+		02:255
+		02:256 NoCompulsion
+		02:257 Eeman as Friend of Allah
+		02:265 Money to be Spend
+		02:267 Don't take the bad stuff
+		02:275,276, 277 Sood: Interest 
+		02:282 // Note a record of Money
+		02:286 // DUVA
+		03:04  // QURAN SAPERATES TRUTH AND FALSE // AND OTHER BOOKS // WHICH OBEYS OTHER BOOKS AND SAPERATE TRUTH AND FALSE
+		03:10  // DUVA
+		03:20  // OUR DUTY JUST TO CONBVEY MESSAGE
+		03:26  REMEMBER THE AAYATH
+		03:30  // FriendShip
+		03:38  // jise che use be hisaab Risk ata ramata hi !!
+		03:47,49  // Allah wish say be it be, it will be it.
+		03:54,55 // Among the planner Allah is the Great Planner
+		03:66   // don't fight unknowledge fully !
+		03:101 // A path is Stright Path
+		03:111, 126,127  //Help from dusman
+		03:118,146  // Friends
+		03:154  // Naseeb of deathPlace
+		03:159  // Determination
+		03:192 // Khudarat par Garu aur fikar !! *****
+		03:194 // Duva
+		03:195 // Badlay for wrong happen by A
+		03:196 // do not get dhoka by non m happy
+
+		04:03 // Marriage Marriage one best and Bandhi !!!
+		04:07,11,12 // Son daughter and ristadaar Property distirute for childrens af death of parents
+		04:16  // Adulty : Uni,Homo
+		04:19  // Dont restrict Girls//Womens, // If wife no equalent// Allah will bring good.
+		04:23  // To whome can marriage
+		04:101 // Less Namz during safar //
+		04:115 // Path
+		04:118 // shirk
+		04:122 // Reward what we do !
+		04:145 // Friend -ask Aalim
+				
+				
+		
+		
+		
+
+
 
 // Other
 -> Be Blind for what Other People Do/Think
@@ -35,6 +95,21 @@
    Those People they don't know there own religion
 -> Your are ther to get rid of darkness not to be part of it.
 -> Who is your Hero I Follow Him, My Hero is Mohammad(sws). // The Most Follower of whole Human History !
+-> Jaahilo say na uljhooo !
+//// Phrases
+-> Damage done in the Name of religion, not just my own faith but all the worlds Major faith.
+-> Misrepresentation, misuse and manipulation of religion Scripture.
+-> Has influnce our social and Cultural Norms,Our laws, Our daily lifes
+
+-> By remaining Silent we allow for the Continue persecution and abuse all Religious People world wide.
+-> Insult, Threat.. Not for use. for society
+-> Distorted Religious Messages.Its not easy to change.
+
+
+-> Khatija(r.a) Was a Financiar. :Influntic Womens Islam....!!
+-> The best of you is those, is the best to there famalies.
+
+
 
 
 // Motivation to Do
@@ -73,3 +148,15 @@
 -> Get up early, stay up later. No Excuses, Excuses are for weaks
 
 
+
+// 1
+// WHY WE FAST::
+ ->SELFCONTROLE :
+   -DUNYA
+	(STOP DRIVE FOR STOMACH)    [DON'T AND DON'T DRINK]      -(MOST OF THE THINGS WE DO FOR STOMACH), TO FEEL THE HUNGER (LEAST REASON)
+	(STOP DRIVE BETWEEN THIES)  [DON'T BE IN RELATIONSHIP DURING WHOLE RAMDAN]
+   -AAKHIRA
+	(TO DRIVE TO WORDS AAKHRAAA)[EXTRA SALAH, EXTRA CHARISH, ZIKAR, READ QURA, EXTRA SALAH IN NIGHT, STANDING IN FRONT OF ALLAH ]
+	
+	->SHUTDOWN THE DRIVE OF DUNYA
+	->INTERNAL TO DRIVE AAKHIRAAAA

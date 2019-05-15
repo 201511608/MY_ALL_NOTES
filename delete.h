@@ -8,7 +8,7 @@
 // 4  ::  Phd Proposal
 // 5  ::  Colleges
 // 6  ::  Drones
-
+// 7  ::  mn
 
 // 0 
 // Hair Straighitning
@@ -175,3 +175,55 @@ B.Sc Nutrition And Food Technology Botany Chemistry
 // 8
 // CNC
 	Computer Numerical Controle
+	
+// 9
+// Interest Money
+576.00
+1672.00
+2843.00
+4027.00
+4665.00
+4725.00
+5154.00
+
+Total: 23710.
+
+
+
+
+// 9
+// 
+As i Care for Quality of work.
+Quality of work is propotional to Time. 
+Which may lead to No/Least bugs. If No Bugs No Problem to Clients, no Problem for Techiniqual support.
+
+As Per the Specification Topics ..
+The Minimum time require to complete is July 15.
+For More Details: Please find the attached Detail Genune TimeLine File and Specification File.
+
+Minimum time is July 15.
+Maximum may extend to August. 
+(As there is no Documentation and flowCharts.The Only Option is test and trail Method.)
+
+Sorry to say i do not accept any Ungenune Time Line.
+Which may lead to Poor Timeline, Poor work, Low Quality and My Performance as well.
+
+
+
+Status of works:
+	GUI WORK 80% COMPLEATED
+	DESIGN AND CHECK STUFF : 50 %
+		Flexural design compleated
+		Shear design compleated
+		Torsion Shear Compleated
+		Flexural Torsion Design compleated { New design none have implemented before }
+				{Please find the attached New flow charts for TorsionFlexural Design. Designed by @Pathan & Suman}
+
+
+
+
+
+ 
+
+ 
+ 
