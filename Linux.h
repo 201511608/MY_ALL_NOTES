@@ -143,7 +143,7 @@ http://www.computerhope.com/unix/zip.htm
 59.	sftp   ‘secure file transfor portocal’
  
 
-60.	vim/vi  ;nano ;pico ;emac ;gedit  ‘editing tools’
+60.	vim/vi  ;nano ;pico ;emac ;gedit ;leafpad  ‘editing tools’
 
 
 
@@ -263,3 +263,6 @@ Touch *    //to update all files in server !!
 ///////////////////////////////////////////////////////////////////////////
 
 
+// Run .bash or .sh files
+sh filename.sh
+// chmod 777 Filename // DoubleClick Runsss
