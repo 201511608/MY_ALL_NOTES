@@ -13,6 +13,11 @@ C++...............................
 11 //
 
 
+// 0
+// C++  GuideLine Dockument
+https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md
+
+
 // :: 1
 ///////////////////////////////////////////////////////
 // C++  Naming Conventions
