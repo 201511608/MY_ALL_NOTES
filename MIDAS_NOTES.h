@@ -14,7 +14,7 @@ MIDAS_NOTES
 //10  :: Elements Types
 //11  :: Element VS Member
 //12  :: 2-Span PSC Composit I Girder Bridge
-//13  :: 
+//13  :: DIFFERENCE BETWEEN BRIDGE AND FLYOVER
 //14  :: 
 //15  :: 
 
@@ -322,11 +322,23 @@ Weight Density = 0
 
 
 
+// 13 
+// DIFFERENCE BETWEEN BRIDGE AND FLYOVER
+BRIDGE:
+1. The drainage structure which facilitates a communication route for carrying road or
+   railway traffic across an obstruction or depression with
+   or without water is called a bridge.
+2. Bridge is a structure which is built over natural obstructions such as rivers,
+   valleys to connect two locations separated by these obstructions.
 
 
+FLYOVERS:
+1. Flyover is an overpass, a high-level road bridge that crosse s over
+   a highway interchange or intersection.
 
-
-
+2. It is a structure which joints two or more points which are 
+   separated by accessible routes or a man-made structure to cut
+   the traffic for faster mode of traveling.
 
 
 

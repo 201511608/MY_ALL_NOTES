@@ -9,6 +9,7 @@
 // 5  ::  Colleges
 // 6  ::  Drones
 // 7  ::  mn
+// 8  :: JobHunt technical
 
 // 0 
 // Hair Straighitning
@@ -188,6 +189,8 @@ B.Sc Nutrition And Food Technology Botany Chemistry
 
 Total: 23710.
 
+//10000+11000+500
+
 
 
 
@@ -213,4 +216,25 @@ Pathan Muzafar Ali Khan
     
 
  
+ Print_RCB_LSD_101_Crack_IS456( double dEceff, double dn,   double dX,     double dSigma_s, double dEps_s,
+							    double dEps_h, double da_p, double dEps_m, double dBarDia,  double dcmin    )
+
+
+// 8
+// Job Searching techniques
+Searching technique on Naukri:
+1. Search for the job you want to apply
+2. If you feel that job is nice, put a direct mail to HR, who have posted that job
+3. keep checking your in 
+boxstep 2 is very importantKabhi
+ kabar tujhe woh job ki profile visit kare toh hr
+ ka mail id bhi malum hojata, woh uthake direct gmail 
+ se mail kardenaYe steps bohot important, this is what 
+ will fetch you good job
+ 
+ 
+ // One Month paid for priority_quick in Naukri.
+ 
+ 
+ // 9
  

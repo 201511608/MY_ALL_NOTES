@@ -488,9 +488,18 @@ Stage is the step before to make a commit, you add modified files to "Staged fil
 git stash
 git add  // you add files (stage) with
 
+    // https://youtu.be/KLEDKgMmbBI
+git stash save "Savename"
+git stash list  // show to older // do not delete stash list
+git stash pop   // show to older // deletes stash list  // Preview old stash list   like 3 2 1 0
+git stash drop STASHID// remove perticular stash list
+GIT stash clear  // remove all stash // move to HEAD
+
 // DEPTH
 Clone depth" is a feature of git to reduce server load: Instead of cloning the complete repository
 (as usually done with git), using clone depth just clones the last clone-depth-number revisions of your repository.
 In literature this
 
+ 
+ 
  

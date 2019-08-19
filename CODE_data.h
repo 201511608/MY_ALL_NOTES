@@ -1139,6 +1139,21 @@ else if( m_pMyDB->m_iDgnCode ==IS456_2000)
 	
 	double dHc = m_pMyDB->m_dD[0];
 	
+		// ddc.
+	int iSect = m_pMyDB->m_iSectNo;
+	_RCSC_BRES_SECT SectBResData;
+	SectBResData.Initialize();
+	m_pMyDB->m_arSectBResData.Lookup(iSect, SectBResData);
+	
+	CString strMainBar1 = (bTop)? SectBResData.strTopBarNa1[iPosiNo][0] : SectBResData.strBotBarNa1[iPosiNo][0];
+	CString strMainBar2 = (bTop)? SectBResData.strTopBarNa2[iPosiNo][0] : SectBResData.strBotBarNa2[iPosiNo][0];
+	double dMainDia1 = m_pMyDB->m_pDoc->m_pMatlDB->Get_RebarDia(strMainBar1);	
+	double dMainDia2 = m_pMyDB->m_pDoc->m_pMatlDB->Get_RebarDia(strMainBar2);
+	
+	double dAv1	 = m_pMyDB->m_pDoc->m_pMatlDB->Get_RebarArea(m_strSubBarNa); // global variable  // Bar diameter
+	double dSubBarDia = m_pMyDB->m_pDoc->m_pMatlDB->Get_RebarDia(m_strSubBarNa);				 // Bar Spacing
+		
+	
 	double As1 = dAs1*iBarNum;
 	double As2 = dAs2*iTopBarNum;
 	m_dAs[0] = As1;
@@ -1189,6 +1204,9 @@ else if( m_pMyDB->m_iDgnCode ==IS456_2000)
 		m_ddz[0] = Get_Deff(FALSE); //m_dHc - dBot_eff;
 		m_ddz[1] = dHc - Get_Deff(TRUE);
 		m_d1		 = m_ddz[0];
+		
+			int iSect	 = m_pMyDB->m_iSectNo;
+	double dHc = m_pMyDB->m_dD[0];
 		
 	}
 	else if(Kopt==2) // For Negative Moment
@@ -1505,7 +1523,7 @@ m_iType   = (m_pMyDB->m_iSectShp==7) ? 1 : 2;  // rect:1
 	dAvShear=
 	
 	
-	// Moment
+// Moment
 double dMu = (bTop ? m_dMuN : m_dMuP);
 
 // Shear
@@ -1547,3 +1565,47 @@ Calc_Page(3); // In Page (3)
 	
 _RCSC_BRES_ELEM ElemBResData;
 _RCSC_BRES_LCOM LcomBResData;
+
+
+
+// Data Getting Exchanged 
+
+	void CRCSC_BeamDesign::Set_OutputPosiData(_RCSC_BRES_POSI& ResPosiData, _RCSC_BSER_POSI& SerPosiData)
+
+// Technique
+// Chage value via Class address
+CRCSC_BeamDesign*	 m_pBeam;  		// m_nLcomNoT
+m_pCodeCheck->m_pBeam->m_nLcomNoT  = SortData.nLcomT[j];  // From other file/class/function
+
+
+
+// 
+double dCs = Calc_Cs_LSD(dfc,dft,m_dcen,ds,iCase,dfs2,des2);
+
+
+// DeflectionLImiits
+	else  if(m_iDgnCode==IS456_2000)         { aDefLims.Add(250.); aDefLims.Add(250.); }
+	
+	// IS456
+	// COLUMN
+		switch (m_pMyDB->m_nCode_Length)
+	{
+	case D_UNITSYS_LENGTH_INDEX_IN: dEmax =  10000.0; break;
+	case D_UNITSYS_LENGTH_INDEX_CM: dEmax =  25400.0; break;
+	case D_UNITSYS_LENGTH_INDEX_MM: dEmax = 254000.0; break;
+	default: ASSERT(FALSE); break;
+	}  
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
