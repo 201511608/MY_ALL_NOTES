@@ -1,12 +1,12 @@
 // Quran and Hadees
 ////
 //
-// 0  ::  
-// 1  :: WHY WE FAST::
-// 2  ::   
+// 0  :: Prophit
+// 1  :: Quran
+// 2  :: Quran Aayas
 // 3  ::  
 // 4  ::   
-// 4  ::   
+// 5  ::   WHY WE FAST::
 
 
 // 0
@@ -25,63 +25,81 @@
 -> NASEEHAT THO AAQAL MAND HI KHABOOL KARTE HI
 -> Agar saacha hi tho, Daleel pash karo...
 -> Hakikath may Allah kafi hi gavah k leya
-	// Aayas Imp
-		22:78
-		67:65 // JudgementDay
-		67:71 // Sigle handedly Created 
-		02:153
-		02:170
-		02:176
-		02:183
-		02:208
-		02:212
-		02:213
-		02:219  Alchol
-		02:220  Merriage with Kuffar
-		02:229,230 Taalaq and ask us toremember
-		02:254 Money to be Spend
-		02:255
-		02:256 NoCompulsion
-		02:257 Eeman as Friend of Allah
-		02:265 Money to be Spend
-		02:267 Don't take the bad stuff
-		02:275,276, 277 Sood: Interest 
-		02:282 // Note a record of Money
-		02:286 // DUVA
-		03:04  // QURAN SAPERATES TRUTH AND FALSE // AND OTHER BOOKS // WHICH OBEYS OTHER BOOKS AND SAPERATE TRUTH AND FALSE
-		03:10  // DUVA
-		03:20  // OUR DUTY JUST TO CONBVEY MESSAGE
-		03:26  REMEMBER THE AAYATH
-		03:30  // FriendShip
-		03:38  // jise che use be hisaab Risk ata ramata hi !!
-		03:47,49  // Allah wish say be it be, it will be it.
-		03:54,55 // Among the planner Allah is the Great Planner
-		03:66   // don't fight unknowledge fully !
-		03:101 // A path is Stright Path
-		03:111, 126,127  //Help from dusman
-		03:118,146  // Friends
-		03:154  // Naseeb of deathPlace
-		03:159  // Determination
-		03:192 // Khudarat par Garu aur fikar !! *****
-		03:194 // Duva
-		03:195 // Badlay for wrong happen by A
-		03:196 // do not get dhoka by non m happy
 
-		04:03 // Marriage Marriage one best and Bandhi !!!
-		04:07,11,12 // Son daughter and ristadaar Property distirute for childrens af death of parents
-		04:16  // Adulty : Uni,Homo
-		04:19  // Dont restrict Girls//Womens, // If wife no equalent// Allah will bring good.
-		04:23  // To whome can marriage
-		04:101 // Less Namz during safar //
-		04:115 // Path
-		04:118 // shirk
-		04:122 // Reward what we do !
-		04:145 // Friend -ask Aalim
+// Quran Aayas Imp
+	22:78
+	67:65 // JudgementDay
+	67:71 // Sigle handedly Created 
+	02:153
+	02:170
+	02:176
+	02:183
+	02:208
+	02:212
+	02:213
+	02:219  Alchol
+	02:220  Merriage with Kuffar
+	02:229,230 Taalaq and ask us toremember
+	02:254 Money to be Spend
+	02:255
+	02:256 NoCompulsion
+	02:257 Eeman as Friend of Allah
+	02:265 Money to be Spend
+	02:267 Don't take the bad stuff
+	02:275,276, 277 Sood: Interest 
+	02:282 // Note a record of Money
+	02:286 // DUVA
+	03:04  // QURAN SAPERATES TRUTH AND FALSE // AND OTHER BOOKS // WHICH OBEYS OTHER BOOKS AND SAPERATE TRUTH AND FALSE
+	03:10  // DUVA
+	03:20  // OUR DUTY JUST TO CONBVEY MESSAGE
+	03:26  REMEMBER THE AAYATH
+	03:30  // FriendShip
+	03:38  // jise che use be hisaab Risk ata ramata hi !!
+	03:47,49  // Allah wish say be it be, it will be it.
+	03:54,55 // Among the planner Allah is the Great Planner
+	03:66   // don't fight unknowledge fully !
+	03:101 // A path is Stright Path
+	03:111, 126,127  //Help from dusman
+	03:118,146  // Friends
+	03:154  // Naseeb of deathPlace
+	03:159  // Determination
+	03:192 // Khudarat par Garu aur fikar !! *****
+	03:194 // Duva
+	03:195 // Badlay for wrong happen by A
+	03:196 // do not get dhoka by non m happy
+
+	04:03 // Marriage Marriage one best and Bandhi !!!
+	04:07,11,12 // Son daughter and ristadaar Property distirute for childrens af death of parents
+	04:16  // Adulty : Uni,Homo
+	04:19  // Dont restrict Girls//Womens, // If wife no equalent// Allah will bring good.
+	04:24 // Nikha, Bandhi
+	04:32 // Male work to male benifits // Female work to female benifits
+	04:36 // Behave good with Others
+	04:42 // Man will wish to put in graveyard and be leveled it
+	04:43  // Tiamum
+	04:49  // paakiza kahene vale 
+	04:54 // Skin Replacement for pain in Hell !
+	04:59 // If Conflict // Obey Q&H
+	04:64 // Give haq dava and do nasheehat
+	04:75 // Duva
+	04:78 // FIDA, NUKSAN FROM OUR DEEDS ONLY !
+	04:81 // IF its is wrong quran will find many wrong stuff !
+	04:84 // good works will have its share. Bad gudance will have its share !
+	04:94 // Do Thaquiq
+	04:23  // To whome can marriage
+	04:101 // Less Namz during safar //
+	04:115 // Path
+	04:118 // shirk
+	04:122 // Reward what we do !
+	04:145 // Friend -ask Aalim
+	04:146 // ALLAH KI RAASI KO MAZOOBT PAKADNA
+	04:157 // ISAA(ASW) NO Crucefication
+	04: 162,163 // Prophit Names
+			
+				
+
 				
 				
-		
-		
-		
 
 
 
@@ -96,6 +114,8 @@
 -> Your are ther to get rid of darkness not to be part of it.
 -> Who is your Hero I Follow Him, My Hero is Mohammad(sws). // The Most Follower of whole Human History !
 -> Jaahilo say na uljhooo !
+
+
 //// Phrases
 -> Damage done in the Name of religion, not just my own faith but all the worlds Major faith.
 -> Misrepresentation, misuse and manipulation of religion Scripture.
@@ -105,7 +125,7 @@
 -> Insult, Threat.. Not for use. for society
 -> Distorted Religious Messages.Its not easy to change.
 
-
+// Womens
 -> Khatija(r.a) Was a Financiar. :Influntic Womens Islam....!!
 -> The best of you is those, is the best to there famalies.
 
@@ -114,7 +134,6 @@
 
 // Motivation to Do
 -> Zikar -> Love (we rememver the love 'hard time' : we love Allah than anyone so we do zikar )
-
 
 // Motivation
 -> What starts here, Changes the world/Life.
@@ -140,7 +159,7 @@
    > Those people changes the life of those another people 
    > In Five Generations Changes the Lives of 1 Crore People by this present 100 Peoples {1000x10 x 10 x 10 x 10 x 10}
 
--> Never Loosing Attitude.Never GiveUp, When tthey quit i keep going, when they sneep i work harder.
+-> Never Loosing Attitude.Never GiveUp, When they quit i keep going, when they sneep i work harder.
 -> I am a Dream Chaser, Onlyl I chase my Dream !
 
 -> You Need to Get things Done.
@@ -149,7 +168,7 @@
 
 
 
-// 1
+// 5
 // WHY WE FAST::
  ->SELFCONTROLE :
    -DUNYA
@@ -160,3 +179,9 @@
 	
 	->SHUTDOWN THE DRIVE OF DUNYA
 	->INTERNAL TO DRIVE AAKHIRAAAA
+
+// Sleep
+The Shorter your sleep the shorter your life.
+	-> Sleep [6-8] hours
+	-> Regularity in sleeping (Isthakamath).
+						Sleep soon after Isha.

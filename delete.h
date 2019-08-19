@@ -193,37 +193,24 @@ Total: 23710.
 
 // 9
 // 
-As i Care for Quality of work.
-Quality of work is propotional to Time. 
-Which may lead to No/Least bugs. If No Bugs No Problem to Clients, no Problem for Techiniqual support.
+Dear Sir,
+I would like to express my concern.
+As Per the given requirements of Specification Topics the Minimum time require to complete is July 15 and maximum may extend till August.
+Please find attached Detailed Genuine timeline File.
 
-As Per the Specification Topics ..
-The Minimum time require to complete is July 15.
-For More Details: Please find the attached Detail Genune TimeLine File and Specification File.
+Minimum and maximum time is due to : Updating with True Specification, New Algorithm, Rigorous Testing:
+As there is no Documentation and Flow Charts, which leads to adoption of test and trial process, which takes time.
 
-Minimum time is July 15.
-Maximum may extend to August. 
-(As there is no Documentation and flowCharts.The Only Option is test and trail Method.)
+As I care for quality of work and quality of work is proportional to Time. 
+Sorry to say, but I do not accept any Unrealistic Deadline, Which may lead to Poor Time Management, Poor work, Low Quality Program,
+buggy Program, Clients bugs problem, Trapping in bug Fixing, affects my performance and company performance as well.
 
-Sorry to say i do not accept any Ungenune Time Line.
-Which may lead to Poor Timeline, Poor work, Low Quality and My Performance as well.
-
+Request to please consider Genuine timeline, to enable project delivery with high quality and performance.
 
 
-Status of works:
-	GUI WORK 80% COMPLEATED
-	DESIGN AND CHECK STUFF : 50 %
-		Flexural design compleated
-		Shear design compleated
-		Torsion Shear Compleated
-		Flexural Torsion Design compleated { New design none have implemented before }
-				{Please find the attached New flow charts for TorsionFlexural Design. Designed by @Pathan & Suman}
-
-
-
-
-
- 
+Regards,
+Pathan Muzafar Ali Khan
+    
 
  
  

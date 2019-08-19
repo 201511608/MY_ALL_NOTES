@@ -1,7 +1,7 @@
 SCIENCE
 ////////// CONTENT
 // 0  :: Basic 
-// 1  :: 
+// 1  :: Sleep
 // 2  ::  
 // 3  ::  
 // 4  ::  
@@ -30,4 +30,13 @@ That disassembles or dysfunctional  unnecessary components
 It allows the 
 Orderly degradation and 
 Recycling of cellular components.
-Autophagy begins when liver glycogen is depleted, around 12-16 hours into a fast. 
+Autophagy begins when liver glycogen is depleted, around 12-16 hours into a fast.
+
+
+
+// 1
+// Sleep
+The Shorter your sleep the shorter your life.
+	-> Sleep [6-8] hours
+	-> Regularity in sleeping (Isthakamath). Sleep soon after Isha.
+	
