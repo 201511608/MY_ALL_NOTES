@@ -9,6 +9,8 @@ n Linux, every thing is file
 .  Current Dirctory  [ls  .]
 .. parent directory (previous) [ls  ..]
 ~ Home   [ls  ~]
+ 
+su - // go to root directory
 
 //
 Ls  [flag] [file]
